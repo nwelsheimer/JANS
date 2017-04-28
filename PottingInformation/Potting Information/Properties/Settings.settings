@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Potting_Information.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="defSite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AL</Value>
+    </Setting>
+    <Setting Name="defPlan" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="defLabel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="defType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Finished Containers</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

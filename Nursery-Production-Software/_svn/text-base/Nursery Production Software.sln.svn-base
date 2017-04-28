@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nursery Production Software", "Nursery Production Software.csproj", "{E6B908F2-9675-424D-9847-5B404B49AC24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tag Printing Application", "..\Tag Printing Application\Tag Printing Application.csproj", "{4B67CF6E-09B1-4BB8-8A23-1D2E403AAA8E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup NPS", "..\Setup NPS\Setup NPS.vdproj", "{AB924E9E-9245-4739-9F19-1B19B09B86AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report Viewer", "..\Report Viewer\Report Viewer\Report Viewer.csproj", "{E730E453-89E4-485E-BD18-E9A5015FBF70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6B908F2-9675-424D-9847-5B404B49AC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6B908F2-9675-424D-9847-5B404B49AC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6B908F2-9675-424D-9847-5B404B49AC24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6B908F2-9675-424D-9847-5B404B49AC24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B67CF6E-09B1-4BB8-8A23-1D2E403AAA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B67CF6E-09B1-4BB8-8A23-1D2E403AAA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B67CF6E-09B1-4BB8-8A23-1D2E403AAA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B67CF6E-09B1-4BB8-8A23-1D2E403AAA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB924E9E-9245-4739-9F19-1B19B09B86AB}.Debug|Any CPU.ActiveCfg = Debug
+		{AB924E9E-9245-4739-9F19-1B19B09B86AB}.Release|Any CPU.ActiveCfg = Release
+		{AB924E9E-9245-4739-9F19-1B19B09B86AB}.Release|Any CPU.Build.0 = Release
+		{E730E453-89E4-485E-BD18-E9A5015FBF70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E730E453-89E4-485E-BD18-E9A5015FBF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E730E453-89E4-485E-BD18-E9A5015FBF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E730E453-89E4-485E-BD18-E9A5015FBF70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

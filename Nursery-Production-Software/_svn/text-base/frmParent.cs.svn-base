@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Nursery_Production_Software
+{
+    public partial class frmParent : Form
+    {
+        public frmParent()
+        {
+            InitializeComponent();
+        }
+
+        private void btnPlanning_Click(object sender, EventArgs e)
+        {
+            frmDetails f = new frmDetails("planning");
+            f.Show();
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            frmDetails f = new frmDetails("order");
+            f.Show();
+
+        }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+            frmDetails f = new frmDetails("inventory");
+            f.Show();
+        }
+
+        private void btnProduction_Click(object sender, EventArgs e)
+        {
+            frmDetails f = new frmDetails("production");
+            f.Show();
+        }
+
+        private void btnShipping_Click(object sender, EventArgs e)
+        {
+            frmDetails f = new frmDetails("shipping");
+            f.Show();
+        }
+
+        private void btnAccounting_Click(object sender, EventArgs e)
+        {
+            frmDetails f = new frmDetails("accounting");
+            f.Show();
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            frmDetails f = new frmDetails("history");
+            f.Show();
+        }
+
+        private void btnReporting_Click(object sender, EventArgs e)
+        {
+            Report_Viewer.frmReportViewer f = new Report_Viewer.frmReportViewer();
+            f.Show();
+        }
+
+
+
+    }
+}
