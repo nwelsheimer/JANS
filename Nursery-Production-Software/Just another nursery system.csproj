@@ -125,6 +125,7 @@
     <Compile Include="class\plSlider.Designer.cs">
       <DependentUpon>plSlider.cs</DependentUpon>
     </Compile>
+    <Compile Include="etc\metroTools.cs" />
     <Compile Include="etc\dbio.cs" />
     <Compile Include="etc\Global4k.cs" />
     <Compile Include="frmMain.cs">

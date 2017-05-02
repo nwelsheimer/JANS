@@ -62,6 +62,27 @@ namespace General
             }
         }
 
+        public static void connectToDB()
+        {
+            RegistryKey jans = Global.get_reg_key("JANS", true);
+            try
+            {
+                string dbServer = jans.GetValue("dbHost").ToString();//Properties.Settings.Default.dbServer;
+                string dbName = jans.GetValue("dbName").ToString();//Properties.Settings.Default.dbName;
+                string dbUser = jans.GetValue("dbUser").ToString();//Properties.Settings.Default.dbUser;
+                string dbPass = jans.GetValue("dbPass").ToString();//Properties.Settings.Default.dbPassword;
+                string dbPort = jans.GetValue("dbPort").ToString();//Properties.Settings.Default.dbPassword;
+
+                //This basically makes sure that we can connect to SBI. They can't select a plan unless they do this.
+                //2-16-2017 Rewrite for new production module. SBI in house now.
+                //Global.SetConnectionString("SBI","Server="+dbServer+";Database="+dbName+";Integrated Security=SSPI;User ID="+dbUser+";Password="+dbPass);
+                Global.SetConnectionString(dbServer, dbName, dbPort, dbUser, dbPass);
+            }
+            catch
+            {  }
+            // }
+        }
+
         public static void BulkUpdate(DataTable update, string tempTableName, string tempTableQuery, string updateQuery)
         {
             

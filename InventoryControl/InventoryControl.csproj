@@ -60,6 +60,9 @@
     <Compile Include="..\Nursery-Production-Software\etc\Global4k.cs">
       <Link>Global4k.cs</Link>
     </Compile>
+    <Compile Include="..\Nursery-Production-Software\etc\metroTools.cs">
+      <Link>metroTools.cs</Link>
+    </Compile>
     <Compile Include="frmInvCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
