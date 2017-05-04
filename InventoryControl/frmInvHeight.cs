@@ -21,7 +21,9 @@ namespace InventoryControl
         public frmInvHeight()
         {
             InitializeComponent();
+
             Global.connectToDB(); //faster method for setting up DB connectivity in JANS. Use this going forward
+            usp_INV_SelectHeightsTableAdapter.Connection.ConnectionString = Global.SQLCON;
 
             this.StyleManager = sm; //Assign the style manager to the form
             sm.Owner = this;
