@@ -240,15 +240,11 @@ namespace Pre_Battler
                         worksheet.Column(3).Width = 15;
                         worksheet.Column(4).Width = 15;
 
-                        // lets set the header text 
-                        worksheet.HeaderFooter.OddHeader.CenteredText = fileName+ " Pre-battle report";
-                        // add the page number to the footer plus the total number of pages
-                        worksheet.HeaderFooter.OddFooter.RightAlignedText =
-                            string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
-                        // add the sheet name to the footer
-                        worksheet.HeaderFooter.OddFooter.CenteredText = ExcelHeaderFooter.SheetName;
-                        // add the file path to the footer
-                        worksheet.HeaderFooter.OddFooter.LeftAlignedText = ExcelHeaderFooter.FilePath + ExcelHeaderFooter.FileName;
+                        //set narrow margins
+                        worksheet.PrinterSettings.TopMargin = (decimal).5 / 2.54M;
+                        worksheet.PrinterSettings.RightMargin = (decimal).5 / 2.54M;
+                        worksheet.PrinterSettings.BottomMargin = (decimal).5 / 2.54M;
+                        worksheet.PrinterSettings.LeftMargin = (decimal).5 / 2.54M;
                     }
                     //Second, create detail tab. Let the shoehorning begin TAB2
                     if (storeDetail != null)
@@ -317,16 +313,12 @@ namespace Pre_Battler
                         storeDetail.Column(1).Width = 20;
                         storeDetail.Column(2).Width = 12;
                         storeDetail.Column(3).Width = 26;
-
-                        // lets set the header text 
-                        storeDetail.HeaderFooter.OddHeader.CenteredText = fileName + " Pre-battle report";
-                        // add the page number to the footer plus the total number of pages
-                        storeDetail.HeaderFooter.OddFooter.RightAlignedText =
-                            string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
-                        // add the sheet name to the footer
-                        storeDetail.HeaderFooter.OddFooter.CenteredText = ExcelHeaderFooter.SheetName;
-                        // add the file path to the footer
-                        storeDetail.HeaderFooter.OddFooter.LeftAlignedText = ExcelHeaderFooter.FilePath + ExcelHeaderFooter.FileName;
+                        
+                        //set narrow margins
+                        storeDetail.PrinterSettings.TopMargin = (decimal).5 / 2.54M;
+                        storeDetail.PrinterSettings.RightMargin = (decimal).5 / 2.54M;
+                        storeDetail.PrinterSettings.BottomMargin = (decimal).5 / 2.54M;
+                        storeDetail.PrinterSettings.LeftMargin = (decimal).5 / 2.54M;
                     }
                     //Third, if the shoe don't fit, get a bigger hammer TAB3
                     // set some core property values

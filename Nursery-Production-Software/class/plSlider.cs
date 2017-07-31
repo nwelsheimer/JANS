@@ -70,14 +70,6 @@ namespace Nursery_Production_Software.Class
         public void swipe(bool show = true)
         {
             this.Visible = true;
-            Transition _transasition = new Transitions.Transition(new TransitionType_EaseInEaseOut(500));
-            _transasition.add(this, "Left", show ? 0 : this.Width);
-            _transasition.run();
-
-            while (this.Left != (show ? 0 : this.Width))
-            {
-                Application.DoEvents();
-            }
 
             if (!show)
             {

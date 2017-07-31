@@ -216,13 +216,15 @@
             this.dgPottingDetail.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgPottingDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgPottingDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgPottingDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgPottingDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPottingDetail.Location = new System.Drawing.Point(0, 80);
             this.dgPottingDetail.Name = "dgPottingDetail";
             this.dgPottingDetail.RowHeadersVisible = false;
             this.dgPottingDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgPottingDetail.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgPottingDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPottingDetail.Size = new System.Drawing.Size(1007, 560);
             this.dgPottingDetail.TabIndex = 24;

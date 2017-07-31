@@ -23,10 +23,6 @@ namespace InventoryControl
             InitializeComponent();
 
             Global.connectToDB(); //faster method for setting up DB connectivity in JANS. Use this going forward
-            usp_INV_SelectHeightsTableAdapter.Connection.ConnectionString = Global.SQLCON;
-
-            this.StyleManager = sm; //Assign the style manager to the form
-            sm.Owner = this;
 
             cmbSite.DataSource = Global.GetData("usp_SYS_GetSites").Tables[0]; //Set up site combo
             cmbSite.ValueMember = "id";
@@ -38,7 +34,6 @@ namespace InventoryControl
         {
             if (cmbSite.SelectedValue.ToString() != "")
                 itemHeights = Global.GetData("usp_INV_SelectHeights @siteId=" + cmbSite.SelectedValue).Tables[0];
-            grdHeight.DataSource = itemHeights;
             ugrdHeights.DataSource = itemHeights;
         }
         

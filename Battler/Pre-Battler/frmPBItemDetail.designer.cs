@@ -69,6 +69,7 @@
             this.tOOLSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXPORTTOEXCELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rEFRESHAVAILABILITYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aDDSTORETOSESSIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sELECTCOLUMNSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sAVELAYOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgExport = new System.ComponentModel.BackgroundWorker();
@@ -77,7 +78,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblSKUCounter = new System.Windows.Forms.Label();
             this.pgBar = new Infragistics.Win.UltraWinProgressBar.UltraProgressBar();
-            this.aDDSTORETOSESSIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.ugrdItemDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugrdRanks)).BeginInit();
             this.pnlRank.SuspendLayout();
@@ -107,7 +107,6 @@
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             appearance1.ForeColorDisabled = System.Drawing.Color.Black;
             this.ugrdItemDetail.DisplayLayout.Appearance = appearance1;
-            this.ugrdItemDetail.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
             this.ugrdItemDetail.DisplayLayout.ColumnChooserEnabled = Infragistics.Win.DefaultableBoolean.True;
             this.ugrdItemDetail.DisplayLayout.GroupByBox.Hidden = true;
             this.ugrdItemDetail.DisplayLayout.InterBandSpacing = 10;
@@ -449,6 +448,13 @@
             this.rEFRESHAVAILABILITYToolStripMenuItem.Text = "REFRESH AVAILABILITY";
             this.rEFRESHAVAILABILITYToolStripMenuItem.Click += new System.EventHandler(this.rEFRESHAVAILABILITYToolStripMenuItem_Click);
             // 
+            // aDDSTORETOSESSIONToolStripMenuItem
+            // 
+            this.aDDSTORETOSESSIONToolStripMenuItem.Name = "aDDSTORETOSESSIONToolStripMenuItem";
+            this.aDDSTORETOSESSIONToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.aDDSTORETOSESSIONToolStripMenuItem.Text = "ADD STORE TO SESSION";
+            this.aDDSTORETOSESSIONToolStripMenuItem.Click += new System.EventHandler(this.aDDSTORETOSESSIONToolStripMenuItem_Click);
+            // 
             // sELECTCOLUMNSToolStripMenuItem
             // 
             this.sELECTCOLUMNSToolStripMenuItem.Name = "sELECTCOLUMNSToolStripMenuItem";
@@ -519,13 +525,6 @@
             this.pgBar.TabIndex = 18;
             this.pgBar.Text = "[Formatted]";
             this.pgBar.Visible = false;
-            // 
-            // aDDSTORETOSESSIONToolStripMenuItem
-            // 
-            this.aDDSTORETOSESSIONToolStripMenuItem.Name = "aDDSTORETOSESSIONToolStripMenuItem";
-            this.aDDSTORETOSESSIONToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.aDDSTORETOSESSIONToolStripMenuItem.Text = "ADD STORE TO SESSION";
-            this.aDDSTORETOSESSIONToolStripMenuItem.Click += new System.EventHandler(this.aDDSTORETOSESSIONToolStripMenuItem_Click);
             // 
             // frmPBItemDetail
             // 

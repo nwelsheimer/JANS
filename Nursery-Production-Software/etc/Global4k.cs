@@ -157,6 +157,7 @@ namespace General
         {
             CheckConnection();
             SqlDataAdapter da = new SqlDataAdapter(query, sqlConn);
+            da.SelectCommand.CommandTimeout = 0;
             DataSet ds = new DataSet();
             try
             {

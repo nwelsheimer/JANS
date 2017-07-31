@@ -22,24 +22,7 @@ namespace Nursery_Production_Software.Class
         {
             InitializeComponent();
             
-            for (int i = 3; i < 13; i++)
-            {
-                //create the color tiles in the theme selector
-                MetroTile _tile = new MetroTile();
-                _tile.Size = new Size(30, 30);
-                _tile.Tag = i;
-                _tile.Style = (MetroColorStyle)i;
-                _tile.Click += _tile_Click;
-                flpSettings.Controls.Add(_tile);
-            }
             dbSettings();
-        }
-
-        void _tile_Click(object sender, EventArgs e)
-        {
-            //if you click the tiles, change the selected color scheme then save to reg
-            ((MetroForm)this.Parent).StyleManager.Style = (MetroColorStyle)((MetroTile)sender).Tag;
-            jans.SetValue("metroStyle", ((MetroTile)sender).Tag);
         }
         
         public void ShowSettings()
@@ -59,24 +42,6 @@ namespace Nursery_Production_Software.Class
 
             EventHandler handler = SettingClosed;
             if (handler != null) handler(this, e);
-        }
-
-        private void mrbDark_CheckedChanged(object sender, EventArgs e)
-        {
-            if (mrbDark.Checked)
-            {
-                ((MetroForm)this.Parent).StyleManager.Theme = MetroThemeStyle.Dark;
-                jans.SetValue("metroTheme", 2);
-            }
-        }
-
-        private void mrbLight_CheckedChanged(object sender, EventArgs e)
-        {
-            if (mrbLight.Checked)
-            {
-                ((MetroForm)this.Parent).StyleManager.Theme = MetroThemeStyle.Light;
-                jans.SetValue("metroTheme", 1);
-            }
         }
 
         #region Default settings
@@ -171,6 +136,11 @@ namespace Nursery_Production_Software.Class
             {
                 btnLogIn_Click(sender,e);
             }
+        }
+
+        private void lnkSettings_Click(object sender, EventArgs e)
+        {
+            ShowSettings();
         }
     }
 }

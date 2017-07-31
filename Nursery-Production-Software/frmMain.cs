@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using MetroFramework.Forms;
+using System.Deployment.Application;
 using System.Reflection;
 using Microsoft.Win32;
 using Nursery_Production_Software.Class;
@@ -12,7 +12,7 @@ using System.IO;
 
 namespace Nursery_Production_Software
 {
-    public partial class frmMain : MetroForm
+    public partial class frmMain : Form
     {
         plAuth _Auth = null;
         int userId = 0;
@@ -23,13 +23,12 @@ namespace Nursery_Production_Software
         public frmMain()
         {
             InitializeComponent();
-
-            this.Text = "JANS Login - " + Application.ProductVersion;
+            string version = System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed ?
+                ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Text = "JANS Login - " + version;
             this.Shown += frmMain_Shown;
 
             showLogin();
-
-            this.StyleManager = stylMan;
         }
 
         private void setStyles(MetroFramework.Components.MetroStyleManager sm)
@@ -47,17 +46,16 @@ namespace Nursery_Production_Software
         private void showLogin()
         {
             _Auth = new plAuth(this);
-            _Auth.SettingClosed += _AuthSettingsClose;
             _Auth.LogInSuccess += _AuthLoginSuccess;
             _Auth.swipe();
-            lnkSettings.Visible = true;
-            setStyles(stylMan);
         }
 
         void _AuthLoginSuccess(object sender, EventArgs e)
         {
             //Whole mess of things to build the menu system when you log in.
-            
+            userId = _Auth.userId;
+            fileMnu();
+
             //This table contains the complete menu system for this user
             DataTable menuSystem = Global.GetData("usp_SYS_MenuBuilder @userId=" + userId).Tables[0];
 
@@ -68,59 +66,33 @@ namespace Nursery_Production_Software
             //create one tab for each distinct menu
             foreach (DataRow dr in parents.Rows)
             {
-                //build the tab control and a fancy title label
-                MetroFramework.Controls.MetroTabPage menuPage = new MetroFramework.Controls.MetroTabPage();
-                MetroFramework.Controls.MetroLabel menuTitle = new MetroFramework.Controls.MetroLabel();
-                menuPage.Name = dr["MenuName"].ToString();
-                menuPage.Text = dr["MenuName"].ToString();
-                menuPage.StyleManager = stylMan;
-                //apply some formating to the label
-                menuTitle.Text = dr["MenuTitle"].ToString();
-                menuTitle.Location = new System.Drawing.Point(15, 20);
-                menuTitle.FontSize = MetroFramework.MetroLabelSize.Tall;
-                menuTitle.AutoSize = true;
-                menuTitle.StyleManager = stylMan;
-                menuPage.Controls.Add(menuTitle);
+                ToolStripMenuItem parent = new ToolStripMenuItem(dr["MenuName"].ToString());
+
                 //now fetch a list of the submenus from the orignal table that have the same name
                 DataView subTemp = menuSystem.DefaultView;
                 subTemp.RowFilter = "MenuName = '" + dr["MenuName"].ToString() +"'";
-                //and add the tiles
-                int x = 5;
-                int y = 70;
+
                 foreach (DataRow subdr in subTemp.ToTable().Rows)
                 {
-                    MetroFramework.Controls.MetroTile subtile = new MetroFramework.Controls.MetroTile();
-                    subtile.Size = new System.Drawing.Size(150, 150);
-                    subtile.Name = subdr["assmName"].ToString();
-                    subtile.Text = subdr["formName"].ToString();
-                    subtile.Tag = subdr["formCode"].ToString();
+                    ToolStripMenuItem subitem = new ToolStripMenuItem(subdr["formName"].ToString());
+                    subitem.Name = subdr["assmName"].ToString();
+                    subitem.Tag = subdr["formCode"].ToString();
 
                     try
                     {
                         Byte[] tileImage = new Byte[0];
                         tileImage = (Byte[])(subdr["image"]);
                         MemoryStream mem = new MemoryStream(tileImage);
-                        subtile.TileImage = Image.FromStream(mem);
-                        subtile.TileImageAlign = ContentAlignment.MiddleCenter;
-                        subtile.UseTileImage = true;
+                        subitem.Image = Image.FromStream(mem);
                     }
                     catch { }
-
-                    subtile.StyleManager = stylMan;
-                    subtile.Location = new System.Drawing.Point(x, y);
-
-                    subtile.Click += new EventHandler(DynamicButton_Click);
-                    subtile.MouseEnter += new EventHandler(DynamicMouseOver);
-                    subtile.MouseLeave += new EventHandler(DynamicMouseOut);
-
-                    menuPage.Controls.Add(subtile);
-
-                    x += 160;
+                    subitem.Click += new EventHandler(DynamicButton_Click);
+                    
+                    parent.DropDownItems.Add(subitem);
                 }
 
-                this.mtcMainMenu.Controls.Add(menuPage);
+                mnuMain.Items.Add(parent);
             }
-            lnkSettings.Visible = false;
             _Auth.swipe(false);
             userId = _Auth.userId;
         }
@@ -135,8 +107,8 @@ namespace Nursery_Production_Software
         }
         private void DynamicButton_Click(object sender, EventArgs e)
         {
-            string assemblyname = ((MetroFramework.Controls.MetroTile)sender).Name;
-            string formname = ((MetroFramework.Controls.MetroTile)sender).Tag.ToString();
+            string assemblyname = ((ToolStripMenuItem)sender).Name;
+            string formname = ((ToolStripMenuItem)sender).Tag.ToString();
             try
             {
                 Assembly myAssembly = Assembly.Load(assemblyname);
@@ -150,24 +122,18 @@ namespace Nursery_Production_Software
             }
         }
 #endregion
-
-        void _AuthSettingsClose(object sender, EventArgs e)
-        {
-            lnkSettings.Visible = true;
-            lnkSystem.Visible = true;
-        }
-
+        
         private void frmMain_Shown(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void lnkSettings_Click(object sender, EventArgs e)
+        private void fileMnu()
         {
-            lnkSettings.Visible = false;
-            lnkSystem.Visible = false;
-            
-            _Auth.ShowSettings();
+            ToolStripMenuItem fileMN = new ToolStripMenuItem("FILE");
+            fileMN.DropDownItems.Add("LOGOUT", null, lnLogout_Click);
+            fileMN.DropDownItems.Add("EXIT", null, lnExit_Click);
+            mnuMain.Items.Add(fileMN);
         }
 
         private void lnExit_Click(object sender, EventArgs e)
@@ -175,27 +141,10 @@ namespace Nursery_Production_Software
             this.Close();
         }
 
-        private void lnkSystem_Click(object sender, EventArgs e)
-        {
-            plSystem.Visible = true;
-            plSystem.BringToFront();
-            plSystem.Select();
-        }
-
-        private void plSystem_Leave(object sender, EventArgs e)
-        {
-            plSystem.Visible = false;
-        }
-
         private void lnLogout_Click(object sender, EventArgs e)
         {
+            mnuMain.Items.Clear();
             showLogin();
-        }
-
-        private void lnLock_Click(object sender, EventArgs e)
-        {
-            stylMan.Style = (MetroFramework.MetroColorStyle)5;
-            stylMan.Theme = (MetroFramework.MetroThemeStyle)2;
         }
 
         private void frmMain_KeyUp(object sender, KeyEventArgs e)

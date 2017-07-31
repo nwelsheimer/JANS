@@ -206,9 +206,9 @@ namespace Pre_Battler
             if (pnlLoadSession.Visible == true)
             {
                 frmPBItemDetail form = new frmPBItemDetail("LOAD", ugrdSession.ActiveRow.Cells["id"].Text, "", "");
+                form.FormClosed += new FormClosedEventHandler(detail_closed);
                 this.Hide();
-                form.ShowDialog();
-                this.Show();
+                form.Show();
             }
             else
             {
@@ -225,15 +225,20 @@ namespace Pre_Battler
                 {
                     string STs = string.Join(",", ShipTos.ToArray());
                     frmPBItemDetail form = new frmPBItemDetail(cmbSKULevel.SelectedValue.ToString(), cmbSite.SelectedValue.ToString(), STs, txtSessionName.Text);
+                    form.FormClosed += new FormClosedEventHandler(detail_closed);
                     this.Hide();
-                    form.ShowDialog();
-                    this.Show();
+                    form.Show();
                 }
                 else
                 {
                     MessageBox.Show("No records selected. Please select some stores to continue.");
                 }
             }
+        }
+
+        void detail_closed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
 
         private void grdStores_CellChange(object sender, CellEventArgs e)

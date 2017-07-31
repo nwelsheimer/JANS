@@ -127,46 +127,49 @@ namespace Pre_Battler
         }
 
         private void UpdateCellMath(int RowNum)
-        {
-            UltraGridRow updatedRow = ugrdItemDetail.Rows[RowNum];
-            //DataRow updatedRow = gridTable.Rows[RowNum]; This won't work, we need the rows from the grid.
-            string prodId = updatedRow.Cells["prodId"].Value.ToString();//this is the row we changed
-
-            //Round to nearest pack qty
-            decimal rounded = Convert.ToInt32(updatedRow.Cells["qtyRequested"].Value);
-            int packQty = Convert.ToInt32(updatedRow.Cells["PackQty"].Value);
-            rounded = Math.Round(rounded / packQty) * packQty;
-
-
+        {   //Refactored 5/15/2017 NDW - Made this a lot more efficient and less reliant on looping
+            List<String> prodId = new List<string>();
             int NewDemand = 0;
-            //Function does some basic math to recalculate the available quantities
-            //basically steps through the rows that match the currently selected SKU and
-            //recalculates the available inventory
+            int InStock = 0;
+            int OnOrder = 0;
+            int Committed = 0;
+            IEnumerable<DataRow> rows;
+            UltraGridRow updatedRow = null;
 
-            foreach (DataRow dr in gridTable.Rows)
-            {
-                if (dr["Id"].ToString() == updatedRow.Cells["Id"].Value.ToString())
-                    dr["qtyRequested"] = rounded;
-
-                if (dr["prodId"].ToString() == prodId)
+            if (RowNum > 0)
+            {   //If we are updating a specific row make the approach more surgical
+                updatedRow = ugrdItemDetail.Rows[RowNum];
+                prodId.Add(updatedRow.Cells["prodId"].Value.ToString());
+            }
+            else
+            {   //And if not, build a list of all the SKUs in the session
+                DataView SKUs = new DataView(gridTable);
+                SKUs.Sort = "prodId ASC";
+                DataTable skuDistinct = SKUs.ToTable(true, "prodId");
+                foreach (DataRow r in skuDistinct.Rows)
                 {
-                    NewDemand += Convert.ToInt32(dr["qtyRequested"]); //step through the rows, if the SKU matches, add the requested qty up for a new demand number
+                    prodId.Add(r["prodId"].ToString());
                 }
             }
 
-            //The new available amount is a bunch of math taking our newdemand in account
-            int newAvailable = Convert.ToInt32(updatedRow.Cells["qtyInStock"].Value) - NewDemand - Convert.ToInt32(updatedRow.Cells["qtyOnOrder"].Value) - Convert.ToInt32(updatedRow.Cells["qtyCommitted"].Value);
+            for (int n = 0; n < prodId.Count; n++)
+            {   //Now for each SKU in the list
+                //Round to nearest pack qty
+                rows = gridTable.Rows.Cast<DataRow>().Where(r => r["prodId"].ToString() == prodId[n]);
+                rows.ToList().ForEach(r => r.SetField("qtyRequested", Math.Round(Convert.ToDecimal(r["qtyRequested"]) / Convert.ToDecimal(r["packQty"]))*Convert.ToDecimal(r["packQty"])));
+                
+                //Calculate new totals using table computes instead of loops
+                NewDemand = Convert.ToInt32(gridTable.Compute("Sum(qtyRequested)", "prodId = " + prodId[n]));
+                InStock = Convert.ToInt32(gridTable.Compute("Max(qtyInStock)", "prodId = " + prodId[n]));
+                OnOrder = Convert.ToInt32(gridTable.Compute("Max(qtyOnOrder)", "prodId = " + prodId[n]));
+                Committed = Convert.ToInt32(gridTable.Compute("Max(qtyCommitted)", "prodId = " + prodId[n]));
 
-            foreach (DataRow dr in gridTable.Rows)
-            {
-                if (dr["prodId"].ToString() == prodId)
-                {
-                    dr["available"] = newAvailable; //update the available amount for all rows with matching SKU
-                }
+                //Set new available amounts for rows matching the selected SKU
+                rows.ToList().ForEach(r => r.SetField("available", InStock-NewDemand-OnOrder-Committed));
             }
 
             if (!bulkupdate)
-            {
+            {   //Recalc summaries if it's not a bulk update
                 calculateShelves(Convert.ToInt32(updatedRow.Cells["Id"].Value.ToString()));
                 calculateTotalOH(Convert.ToInt32(updatedRow.Cells["Id"].Value.ToString()));
             }
@@ -497,6 +500,7 @@ namespace Pre_Battler
             ugrdItemDetail.EndUpdate();
 
             ugrdItemDetail.UpdateData();
+            UpdateCellMath(0);
             calculateShelves();
             calculateTotalOH();
             pgBar.Visible = false;
@@ -585,6 +589,7 @@ namespace Pre_Battler
             ugrdItemDetail.EndUpdate();
 
             ugrdItemDetail.UpdateData();
+            UpdateCellMath(0);
             calculateShelves();
             calculateTotalOH();
             pgBar.Visible = false;
@@ -637,6 +642,7 @@ namespace Pre_Battler
             ugrdItemDetail.EndUpdate();
 
             ugrdItemDetail.UpdateData();
+            UpdateCellMath(0);
             calculateShelves();
             calculateTotalOH();
             pgBar.Visible = false;
