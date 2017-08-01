@@ -159,6 +159,7 @@
             this.btnUpdateUser.TabIndex = 15;
             this.btnUpdateUser.Text = "Update Info";
             this.btnUpdateUser.UseSelectable = true;
+            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
             // txtPassword
             // 

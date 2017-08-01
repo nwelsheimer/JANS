@@ -182,5 +182,21 @@ namespace Nursery_Production_Software
                 MessageBox.Show("Please enter a user name with a length greater than 3 to continue.");
             }
         }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            string newPassword = txtPassword.Text;
+            if (newPassword.Length >= 6)
+            {
+                string userid = lbUsers.SelectedValue.ToString();
+                string query = "update SYS_Users set password = CONVERT(VARCHAR(32), HashBytes('MD5', '"+newPassword+"'), 2) where id="+userid;
+                Global.ExecuteQuery(query);
+                txtPassword.Text = "";
+                MessageBox.Show("Password updated successfuly");
+            } else
+            {
+                MessageBox.Show("New password must be at least 5 characters long.");
+            }
+        }
     }
 }
