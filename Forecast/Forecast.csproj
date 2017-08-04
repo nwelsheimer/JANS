@@ -60,6 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Nursery-Production-Software\etc\Global4k.cs">
+      <Link>Global4k.cs</Link>
+    </Compile>
     <Compile Include="frmForecast.cs">
       <SubType>Form</SubType>
     </Compile>

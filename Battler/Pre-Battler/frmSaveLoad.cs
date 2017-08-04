@@ -128,7 +128,7 @@ namespace Pre_Battler
             grdStores.DisplayLayout.Bands[0].Columns["custom4"].Header.Caption = "Custom 4";
 
             //Load grid layout
-            battleEtc.GridLayout(grdStores,2,Properties.Settings.Default.grdStoreLayout);
+            Global.GridLayout(grdStores,2,Properties.Settings.Default.grdStoreLayout);
         }
         #endregion
         #region BS Functions

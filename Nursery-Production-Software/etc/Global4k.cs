@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Text;
 using System.Windows;
+using Infragistics.Win.UltraWinGrid;
 using Microsoft.Win32;
 using System.Windows.Forms;
 
@@ -151,6 +152,14 @@ namespace General
                 MessageBox.Show("Unknown error occurred:\n" + X.Message, "General Error", MessageBoxButtons.OK);
                 return "";
             }
+        }
+
+        public static SqlDataAdapter FillData(string query)
+        {
+            CheckConnection();
+            SqlDataAdapter da = new SqlDataAdapter(query, sqlConn);
+            da.SelectCommand.CommandTimeout = 0;
+            return da;
         }
 
         public static DataSet GetData(string query)
@@ -532,6 +541,30 @@ namespace General
             Char colLetter = (Char)(65 + (column - 1));
             return colLetter;
         }
+
+        public static string GridLayout(UltraGrid grid, int mode, string settings = "")
+        {
+            byte[] loa;
+            System.IO.MemoryStream lo;
+
+            switch (mode)
+            {
+                case 1://We are doing a save
+                    lo = new System.IO.MemoryStream();
+                    grid.DisplayLayout.Save(lo, PropertyCategories.All);
+                    loa = lo.ToArray();
+                    settings = System.Convert.ToBase64String(loa);
+                    return settings;
+                case 2://We are doing a load
+                    loa = System.Convert.FromBase64String(settings);
+                    lo = new System.IO.MemoryStream(loa);
+                    lo.Seek(0, System.IO.SeekOrigin.Begin);
+                    try { grid.DisplayLayout.Load(lo, PropertyCategories.All); } catch { }
+                    return "SUCCESS";
+            }
+            return "FAILED";
+        }
+
         #region Private Functions
         private static void CheckConnection()
         {

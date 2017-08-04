@@ -103,7 +103,7 @@ namespace Pre_Battler
             cmbSKUs.SelectedIndex = 0;
             ugrdRanks.DataSource = rankDistinct;
 
-            battleEtc.GridLayout(ugrdItemDetail, 2, Properties.Settings.Default.grdItemDetailLayout); //Load grid layout
+            Global.GridLayout(ugrdItemDetail, 2, Properties.Settings.Default.grdItemDetailLayout); //Load grid layout
             GridLayout(); //Apply formatting to grid and override settings we don't want them to change
             updateSummary(0);
         }
@@ -442,7 +442,7 @@ namespace Pre_Battler
         private void sAVELAYOUTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Call global4k's gridsave to make a layout in to a byte stream in to a byte array in to a string
-            Properties.Settings.Default.grdItemDetailLayout = battleEtc.GridLayout(ugrdItemDetail, 1);
+            Properties.Settings.Default.grdItemDetailLayout = Global.GridLayout(ugrdItemDetail, 1);
             Properties.Settings.Default.Save();
         }
 
