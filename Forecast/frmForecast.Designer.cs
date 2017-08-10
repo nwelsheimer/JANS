@@ -48,7 +48,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.cbInputLY = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.grdInputDetail = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lnSetup = new MetroFramework.Controls.MetroLink();
@@ -94,7 +94,7 @@
             this.cmbInputGroup.FormattingEnabled = true;
             this.cmbInputGroup.ItemHeight = 23;
             this.cmbInputGroup.Location = new System.Drawing.Point(42, 151);
-            this.cmbInputGroup.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbInputGroup.Margin = new System.Windows.Forms.Padding(6);
             this.cmbInputGroup.Name = "cmbInputGroup";
             this.cmbInputGroup.Size = new System.Drawing.Size(409, 29);
             this.cmbInputGroup.TabIndex = 4;
@@ -107,7 +107,7 @@
             this.cmbCustomer.FormattingEnabled = true;
             this.cmbCustomer.ItemHeight = 23;
             this.cmbCustomer.Location = new System.Drawing.Point(42, 244);
-            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(6);
             this.cmbCustomer.Name = "cmbCustomer";
             this.cmbCustomer.Size = new System.Drawing.Size(409, 29);
             this.cmbCustomer.TabIndex = 5;
@@ -119,7 +119,7 @@
             this.cbRegions.CheckOnClick = true;
             this.cbRegions.FormattingEnabled = true;
             this.cbRegions.Location = new System.Drawing.Point(473, 151);
-            this.cbRegions.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbRegions.Margin = new System.Windows.Forms.Padding(6);
             this.cbRegions.Name = "cbRegions";
             this.cbRegions.Size = new System.Drawing.Size(418, 124);
             this.cbRegions.TabIndex = 6;
@@ -140,10 +140,10 @@
             // 
             // 
             this.txtStartWeek.CustomButton.Image = null;
-            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(84, 4);
-            this.txtStartWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(46, 2);
+            this.txtStartWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6);
             this.txtStartWeek.CustomButton.Name = "";
-            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(68, 68);
+            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(37, 37);
             this.txtStartWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtStartWeek.CustomButton.TabIndex = 1;
             this.txtStartWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -152,7 +152,7 @@
             this.txtStartWeek.Lines = new string[] {
         "10"};
             this.txtStartWeek.Location = new System.Drawing.Point(906, 151);
-            this.txtStartWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtStartWeek.Margin = new System.Windows.Forms.Padding(6);
             this.txtStartWeek.MaxLength = 2;
             this.txtStartWeek.Name = "txtStartWeek";
             this.txtStartWeek.PasswordChar = '\0';
@@ -177,10 +177,10 @@
             // 
             // 
             this.txtEndWeek.CustomButton.Image = null;
-            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(84, 4);
-            this.txtEndWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(46, 2);
+            this.txtEndWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6);
             this.txtEndWeek.CustomButton.Name = "";
-            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(68, 68);
+            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(37, 37);
             this.txtEndWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEndWeek.CustomButton.TabIndex = 1;
             this.txtEndWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -189,7 +189,7 @@
             this.txtEndWeek.Lines = new string[] {
         "30"};
             this.txtEndWeek.Location = new System.Drawing.Point(1005, 151);
-            this.txtEndWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtEndWeek.Margin = new System.Windows.Forms.Padding(6);
             this.txtEndWeek.MaxLength = 2;
             this.txtEndWeek.Name = "txtEndWeek";
             this.txtEndWeek.PasswordChar = '\0';
@@ -211,7 +211,7 @@
             // metroButton1
             // 
             this.metroButton1.Location = new System.Drawing.Point(1260, 255);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.metroButton1.Margin = new System.Windows.Forms.Padding(6);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(185, 42);
             this.metroButton1.TabIndex = 9;
@@ -221,7 +221,7 @@
             // metroButton2
             // 
             this.metroButton2.Location = new System.Drawing.Point(1260, 181);
-            this.metroButton2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.metroButton2.Margin = new System.Windows.Forms.Padding(6);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(185, 42);
             this.metroButton2.TabIndex = 10;
@@ -232,7 +232,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(1102, 266);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(6);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(135, 29);
             this.checkBox1.TabIndex = 11;
@@ -243,7 +243,7 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(1102, 181);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(6);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(135, 29);
             this.checkBox2.TabIndex = 12;
@@ -254,29 +254,30 @@
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(1102, 223);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(6);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(135, 29);
             this.checkBox3.TabIndex = 13;
             this.checkBox3.Text = "checkBox3";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // cbInputLY
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(1102, 140);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(135, 29);
-            this.checkBox4.TabIndex = 14;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cbInputLY.AutoSize = true;
+            this.cbInputLY.Location = new System.Drawing.Point(1102, 140);
+            this.cbInputLY.Margin = new System.Windows.Forms.Padding(6);
+            this.cbInputLY.Name = "cbInputLY";
+            this.cbInputLY.Size = new System.Drawing.Size(175, 29);
+            this.cbInputLY.TabIndex = 14;
+            this.cbInputLY.Text = "Show LY Inputs";
+            this.cbInputLY.UseVisualStyleBackColor = true;
+            this.cbInputLY.CheckedChanged += new System.EventHandler(this.cbInputLY_CheckedChanged);
             // 
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.Location = new System.Drawing.Point(906, 207);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBox5.Margin = new System.Windows.Forms.Padding(6);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(135, 29);
             this.checkBox5.TabIndex = 15;
@@ -324,7 +325,7 @@
             this.grdInputDetail.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.grdInputDetail.Enabled = false;
             this.grdInputDetail.Location = new System.Drawing.Point(42, 308);
-            this.grdInputDetail.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grdInputDetail.Margin = new System.Windows.Forms.Padding(6);
             this.grdInputDetail.Name = "grdInputDetail";
             this.grdInputDetail.Size = new System.Drawing.Size(2218, 1146);
             this.grdInputDetail.TabIndex = 16;
@@ -336,7 +337,7 @@
             // 
             this.lnSetup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lnSetup.Location = new System.Drawing.Point(2123, 255);
-            this.lnSetup.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lnSetup.Margin = new System.Windows.Forms.Padding(6);
             this.lnSetup.Name = "lnSetup";
             this.lnSetup.Size = new System.Drawing.Size(138, 42);
             this.lnSetup.TabIndex = 17;
@@ -349,7 +350,7 @@
             // 
             this.btnRefresh.Enabled = false;
             this.btnRefresh.Location = new System.Drawing.Point(906, 255);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(185, 42);
             this.btnRefresh.TabIndex = 18;
@@ -362,7 +363,7 @@
             this.lnChooseColumns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lnChooseColumns.AutoSize = true;
             this.lnChooseColumns.Location = new System.Drawing.Point(42, 1455);
-            this.lnChooseColumns.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lnChooseColumns.Margin = new System.Windows.Forms.Padding(6);
             this.lnChooseColumns.Name = "lnChooseColumns";
             this.lnChooseColumns.Size = new System.Drawing.Size(183, 42);
             this.lnChooseColumns.TabIndex = 19;
@@ -375,7 +376,7 @@
             // 
             this.lnSaveLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lnSaveLayout.Location = new System.Drawing.Point(237, 1455);
-            this.lnSaveLayout.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lnSaveLayout.Margin = new System.Windows.Forms.Padding(6);
             this.lnSaveLayout.Name = "lnSaveLayout";
             this.lnSaveLayout.Size = new System.Drawing.Size(138, 42);
             this.lnSaveLayout.TabIndex = 20;
@@ -395,7 +396,7 @@
             this.Controls.Add(this.lnSetup);
             this.Controls.Add(this.grdInputDetail);
             this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.cbInputLY);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
@@ -410,7 +411,7 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmForecast";
             this.Padding = new System.Windows.Forms.Padding(37, 111, 37, 37);
             this.Text = "Forecasting";
@@ -437,7 +438,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox cbInputLY;
         private System.Windows.Forms.CheckBox checkBox5;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdInputDetail;
         private MetroFramework.Controls.MetroLink lnSetup;

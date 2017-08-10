@@ -158,6 +158,32 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[1].Columns["TotalRequested"].Header.Caption = "Input";
             grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].Header.Caption = "Product ID";
 
+            toggleInputLY(false); //Hide the LY inputs and make them read only
+        }
+
+        private void toggleInputLY(bool visible)
+        {
+            string columnHeader = "";
+
+            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[0].Columns)
+            {
+                columnHeader = uc.Key;
+                if(columnHeader.Length>=8 && columnHeader.Substring(columnHeader.Length-8)=="Input LY")
+                {
+                    uc.CellActivation = Activation.Disabled;
+                    uc.Hidden = !visible;
+                }
+            }
+
+            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
+            {
+                columnHeader = uc.Key;
+                if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Input LY")
+                {
+                    uc.CellActivation = Activation.Disabled;
+                    uc.Hidden = !visible;
+                }
+            }
         }
 
         private void txtStartWeek_KeyPress(object sender, KeyPressEventArgs e)
@@ -207,11 +233,11 @@ namespace Forecast
 
             foreach (UltraGridCell c in e.Row.Cells) //Loop through the cells and see if the detail total matches the summary line
             {
-                columnHeader = c.Column.ToString().Length>=4 ? c.Column.ToString() : "xxxx";
+                columnHeader = c.Column.Key.Length>=4 ? c.Column.Key : "xxxx";
                 if (int.TryParse(columnHeader.Substring(0,4), out n))
                 {
                     week = Convert.ToInt32(columnHeader.Substring(2,2));
-                    //rowTotal += c.Text Convert.ToInt32(c.Text);
+                    rowTotal += Convert.ToInt32(c.Text.Length>0 ? c.Text : "0");
                     //Highlight non growing weeks
                     if (week < startWeek || week > endWeek)
                         c.Appearance.BackColor = Color.Pink;
@@ -220,7 +246,7 @@ namespace Forecast
                     {
                         n = Convert.ToInt32(inDetail.Compute("sum([" + columnHeader + "])", "SKUKey = '" + skukey + "'"));
 
-                        if (n != Convert.ToInt32(c.Text))
+                        if (n != Convert.ToInt32(c.Text.Length>0 ? c.Text : "0"))
                         {
                             c.Appearance.ForeColor = Color.Red;
                             c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
@@ -263,6 +289,11 @@ namespace Forecast
         private void grdInputDetail_KeyDown(object sender, KeyEventArgs e)
         {
             Global.GridNavigation(grdInputDetail, e);
+        }
+
+        private void cbInputLY_CheckedChanged(object sender, EventArgs e)
+        {
+            toggleInputLY(cbInputLY.Checked);
         }
     }
 }
