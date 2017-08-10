@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MetroFramework.Forms;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
+using MetroFramework.Forms;
 using General;
 
 namespace Forecast
@@ -115,9 +111,14 @@ namespace Forecast
 
             grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].Hidden = true;
 
             grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["regionId"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].Hidden = true;
 
             grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].CellActivation = Activation.Disabled;
@@ -127,6 +128,10 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].CellActivation = Activation.Disabled;
+
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].Format = "c";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].Format = "c";
 
             grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].CellActivation = Activation.Disabled;
@@ -136,9 +141,22 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[1].Columns["Site"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[1].Columns["Cost"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[1].Columns["Price"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["regionId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].CellActivation = Activation.Disabled;
 
+            grdInputDetail.DisplayLayout.Bands[1].Columns["Cost"].Format = "c";
+            grdInputDetail.DisplayLayout.Bands[1].Columns["Price"].Format = "c";
 
-            //grdInputDetail.DisplayLayout.Bands[0].Columns["qtyRequested"].Header.Caption = "Quantity";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Caption = "SKU Description";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Caption = "Size";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Header.Caption = "Input";
+
+            grdInputDetail.DisplayLayout.Bands[1].Columns["ItemDescription"].Header.Caption = "Item Description";
+            grdInputDetail.DisplayLayout.Bands[1].Columns["SizeDescription"].Header.Caption = "Size";
+            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalRequested"].Header.Caption = "Input";
+            grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].Header.Caption = "Product ID";
 
         }
 
@@ -163,6 +181,88 @@ namespace Forecast
             Properties.Settings.Default.grdInputLayout = Global.GridLayout(grdInputDetail, 1);
             Properties.Settings.Default.Save();
             MessageBox.Show("Grid settings saved.");
+        }
+
+        private void grdInputDetail_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+            string skukey = "";
+
+            skukey = e.Row.Cells["SKUKey"].Text;
+            string columnHeader = "";
+            int week = 0;
+            int startWeek = 0;
+            int endWeek = 0;
+            int n;
+            int rowTotal = 0;
+
+            if (e.Row.Band.Index==0)
+            {
+                startWeek = Convert.ToInt32(inDetail.Compute("min([startWeek])", "SKUKey = '" + skukey + "'"));
+                endWeek = Convert.ToInt32(inDetail.Compute("max([endWeek])", "SKUKey = '" + skukey + "'"));
+            } else
+            {
+                startWeek = Convert.ToInt32(e.Row.Cells["startWeek"].Text);
+                endWeek = Convert.ToInt32(e.Row.Cells["endWeek"].Text);
+            }
+
+            foreach (UltraGridCell c in e.Row.Cells) //Loop through the cells and see if the detail total matches the summary line
+            {
+                columnHeader = c.Column.ToString().Length>=4 ? c.Column.ToString() : "xxxx";
+                if (int.TryParse(columnHeader.Substring(0,4), out n))
+                {
+                    week = Convert.ToInt32(columnHeader.Substring(2,2));
+                    //rowTotal += c.Text Convert.ToInt32(c.Text);
+                    //Highlight non growing weeks
+                    if (week < startWeek || week > endWeek)
+                        c.Appearance.BackColor = Color.Pink;
+
+                    if (e.Row.Band.Index == 0) //This is a mother row
+                    {
+                        n = Convert.ToInt32(inDetail.Compute("sum([" + columnHeader + "])", "SKUKey = '" + skukey + "'"));
+
+                        if (n != Convert.ToInt32(c.Text))
+                        {
+                            c.Appearance.ForeColor = Color.Red;
+                            c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                        }
+                        else
+                        {
+                            c.Appearance.ForeColor = Color.Black;
+                            c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
+                        }
+                    } 
+                }
+            }
+
+            //Check the horizontal totals now.
+            if (rowTotal != Convert.ToInt32(e.Row.Cells["TotalRequested"].Text))
+            {
+                e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Red;
+                e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+            } else
+            {
+                e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Black;
+                e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
+            }
+            
+        }
+
+        private void grdInputDetail_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+            e.Layout.Override.CellAppearance.BackColor = Color.White;
+            e.Layout.Override.CellAppearance.ForeColorDisabled = Color.Black;
+        }
+
+        private void lnSetup_Click(object sender, EventArgs e)
+        {
+            frmSetup f = new frmSetup();
+            f.ShowDialog();
+            f.Close();
+        }
+
+        private void grdInputDetail_KeyDown(object sender, KeyEventArgs e)
+        {
+            Global.GridNavigation(grdInputDetail, e);
         }
     }
 }

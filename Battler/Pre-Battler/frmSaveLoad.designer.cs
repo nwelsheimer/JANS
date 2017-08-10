@@ -84,9 +84,10 @@
             // cmbAccount
             // 
             this.cmbAccount.FormattingEnabled = true;
-            this.cmbAccount.Location = new System.Drawing.Point(64, 21);
+            this.cmbAccount.Location = new System.Drawing.Point(117, 39);
+            this.cmbAccount.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmbAccount.Name = "cmbAccount";
-            this.cmbAccount.Size = new System.Drawing.Size(178, 21);
+            this.cmbAccount.Size = new System.Drawing.Size(323, 32);
             this.cmbAccount.TabIndex = 0;
             this.cmbAccount.SelectedIndexChanged += new System.EventHandler(this.cmbAccount_SelectedIndexChanged);
             // 
@@ -94,9 +95,10 @@
             // 
             this.cmbSKULevel.Enabled = false;
             this.cmbSKULevel.FormattingEnabled = true;
-            this.cmbSKULevel.Location = new System.Drawing.Point(327, 21);
+            this.cmbSKULevel.Location = new System.Drawing.Point(600, 39);
+            this.cmbSKULevel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmbSKULevel.Name = "cmbSKULevel";
-            this.cmbSKULevel.Size = new System.Drawing.Size(121, 21);
+            this.cmbSKULevel.Size = new System.Drawing.Size(219, 32);
             this.cmbSKULevel.TabIndex = 1;
             this.cmbSKULevel.SelectedIndexChanged += new System.EventHandler(this.cmbSKULevel_SelectedIndexChanged);
             // 
@@ -104,20 +106,23 @@
             // 
             this.cmbSite.Enabled = false;
             this.cmbSite.FormattingEnabled = true;
-            this.cmbSite.Location = new System.Drawing.Point(506, 21);
+            this.cmbSite.Location = new System.Drawing.Point(928, 39);
+            this.cmbSite.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmbSite.Name = "cmbSite";
-            this.cmbSite.Size = new System.Drawing.Size(121, 21);
+            this.cmbSite.Size = new System.Drawing.Size(219, 32);
             this.cmbSite.TabIndex = 2;
             this.cmbSite.SelectedIndexChanged += new System.EventHandler(this.cmbSite_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fILEToolStripMenuItem,
             this.tOOLSToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1100, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
+            this.menuStrip1.Size = new System.Drawing.Size(2017, 42);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,13 +131,13 @@
             this.fILEToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cLOSEToolStripMenuItem});
             this.fILEToolStripMenuItem.Name = "fILEToolStripMenuItem";
-            this.fILEToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.fILEToolStripMenuItem.Size = new System.Drawing.Size(62, 34);
             this.fILEToolStripMenuItem.Text = "FILE";
             // 
             // cLOSEToolStripMenuItem
             // 
             this.cLOSEToolStripMenuItem.Name = "cLOSEToolStripMenuItem";
-            this.cLOSEToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.cLOSEToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
             this.cLOSEToolStripMenuItem.Text = "CLOSE";
             this.cLOSEToolStripMenuItem.Click += new System.EventHandler(this.cLOSEToolStripMenuItem_Click);
             // 
@@ -143,38 +148,40 @@
             this.sELECTCOLUMNSToolStripMenuItem,
             this.sAVELAYOUTToolStripMenuItem});
             this.tOOLSToolStripMenuItem.Name = "tOOLSToolStripMenuItem";
-            this.tOOLSToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.tOOLSToolStripMenuItem.Size = new System.Drawing.Size(88, 34);
             this.tOOLSToolStripMenuItem.Text = "TOOLS";
             // 
             // lOADSAVEDSESSIONToolStripMenuItem
             // 
             this.lOADSAVEDSESSIONToolStripMenuItem.Name = "lOADSAVEDSESSIONToolStripMenuItem";
-            this.lOADSAVEDSESSIONToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.lOADSAVEDSESSIONToolStripMenuItem.Size = new System.Drawing.Size(314, 34);
             this.lOADSAVEDSESSIONToolStripMenuItem.Text = "LOAD SAVED SESSION";
             this.lOADSAVEDSESSIONToolStripMenuItem.Click += new System.EventHandler(this.lOADSAVEDSESSIONToolStripMenuItem_Click);
             // 
             // sELECTCOLUMNSToolStripMenuItem
             // 
             this.sELECTCOLUMNSToolStripMenuItem.Name = "sELECTCOLUMNSToolStripMenuItem";
-            this.sELECTCOLUMNSToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.sELECTCOLUMNSToolStripMenuItem.Size = new System.Drawing.Size(314, 34);
             this.sELECTCOLUMNSToolStripMenuItem.Text = "SELECT COLUMNS";
             this.sELECTCOLUMNSToolStripMenuItem.Click += new System.EventHandler(this.sELECTCOLUMNSToolStripMenuItem_Click);
             // 
             // sAVELAYOUTToolStripMenuItem
             // 
             this.sAVELAYOUTToolStripMenuItem.Name = "sAVELAYOUTToolStripMenuItem";
-            this.sAVELAYOUTToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.sAVELAYOUTToolStripMenuItem.Size = new System.Drawing.Size(314, 34);
             this.sAVELAYOUTToolStripMenuItem.Text = "SAVE LAYOUT";
             this.sAVELAYOUTToolStripMenuItem.Click += new System.EventHandler(this.sAVELAYOUTToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbConnected,
             this.sbStoreCount});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 711);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1318);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1100, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 26, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(2017, 35);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -182,14 +189,14 @@
             // 
             this.sbConnected.ForeColor = System.Drawing.Color.Red;
             this.sbConnected.Name = "sbConnected";
-            this.sbConnected.Size = new System.Drawing.Size(43, 17);
+            this.sbConnected.Size = new System.Drawing.Size(76, 30);
             this.sbConnected.Text = "Offline";
             this.sbConnected.Click += new System.EventHandler(this.sbConnected_Click);
             // 
             // sbStoreCount
             // 
             this.sbStoreCount.Name = "sbStoreCount";
-            this.sbStoreCount.Size = new System.Drawing.Size(1042, 17);
+            this.sbStoreCount.Size = new System.Drawing.Size(1913, 30);
             this.sbStoreCount.Spring = true;
             this.sbStoreCount.Text = "Selected Stores: 0";
             this.sbStoreCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -198,9 +205,10 @@
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(993, 33);
+            this.btnNext.Location = new System.Drawing.Point(1821, 61);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(95, 47);
+            this.btnNext.Size = new System.Drawing.Size(174, 87);
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "NEXT ->";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -246,9 +254,10 @@
             this.grdStores.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
             this.grdStores.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.grdStores.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdStores.Location = new System.Drawing.Point(0, 111);
+            this.grdStores.Location = new System.Drawing.Point(0, 205);
+            this.grdStores.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.grdStores.Name = "grdStores";
-            this.grdStores.Size = new System.Drawing.Size(1100, 597);
+            this.grdStores.Size = new System.Drawing.Size(2017, 1102);
             this.grdStores.TabIndex = 6;
             this.grdStores.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdStores_InitializeLayout);
             this.grdStores.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdStores_CellChange);
@@ -258,9 +267,10 @@
             // chkSelectAll
             // 
             this.chkSelectAll.AutoSize = true;
-            this.chkSelectAll.Location = new System.Drawing.Point(21, 88);
+            this.chkSelectAll.Location = new System.Drawing.Point(39, 162);
+            this.chkSelectAll.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(70, 17);
+            this.chkSelectAll.Size = new System.Drawing.Size(120, 29);
             this.chkSelectAll.TabIndex = 7;
             this.chkSelectAll.Text = "Select All";
             this.chkSelectAll.UseVisualStyleBackColor = true;
@@ -269,27 +279,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 24);
+            this.label1.Location = new System.Drawing.Point(6, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(98, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Account:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(253, 24);
+            this.label2.Location = new System.Drawing.Point(464, 44);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.Size = new System.Drawing.Size(122, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "SKU Level:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(470, 24);
+            this.label3.Location = new System.Drawing.Point(862, 44);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.Size = new System.Drawing.Size(57, 25);
             this.label3.TabIndex = 10;
             this.label3.Text = "Site:";
             // 
@@ -302,9 +315,11 @@
             this.groupBox1.Controls.Add(this.cmbSKULevel);
             this.groupBox1.Controls.Add(this.cmbAccount);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(14, 27);
+            this.groupBox1.Location = new System.Drawing.Point(26, 50);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(652, 52);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Size = new System.Drawing.Size(1195, 96);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Session Setup";
@@ -312,9 +327,10 @@
             // txtSessionName
             // 
             this.txtSessionName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSessionName.Location = new System.Drawing.Point(690, 49);
+            this.txtSessionName.Location = new System.Drawing.Point(1265, 90);
+            this.txtSessionName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtSessionName.Name = "txtSessionName";
-            this.txtSessionName.Size = new System.Drawing.Size(285, 20);
+            this.txtSessionName.Size = new System.Drawing.Size(519, 29);
             this.txtSessionName.TabIndex = 12;
             this.txtSessionName.TextChanged += new System.EventHandler(this.txtSessionName_TextChanged);
             // 
@@ -323,9 +339,10 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(687, 33);
+            this.label4.Location = new System.Drawing.Point(1260, 61);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.Size = new System.Drawing.Size(152, 25);
             this.label4.TabIndex = 11;
             this.label4.Text = "Session Name";
             // 
@@ -335,9 +352,10 @@
             this.pnlLoadSession.Controls.Add(this.lblClose);
             this.pnlLoadSession.Controls.Add(this.label5);
             this.pnlLoadSession.Controls.Add(this.ugrdSession);
-            this.pnlLoadSession.Location = new System.Drawing.Point(190, 159);
+            this.pnlLoadSession.Location = new System.Drawing.Point(348, 294);
+            this.pnlLoadSession.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlLoadSession.Name = "pnlLoadSession";
-            this.pnlLoadSession.Size = new System.Drawing.Size(720, 415);
+            this.pnlLoadSession.Size = new System.Drawing.Size(1318, 764);
             this.pnlLoadSession.TabIndex = 13;
             this.pnlLoadSession.Visible = false;
             // 
@@ -345,9 +363,10 @@
             // 
             this.lblClose.AutoSize = true;
             this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClose.Location = new System.Drawing.Point(641, 6);
+            this.lblClose.Location = new System.Drawing.Point(1175, 11);
+            this.lblClose.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(67, 13);
+            this.lblClose.Size = new System.Drawing.Size(121, 25);
             this.lblClose.TabIndex = 11;
             this.lblClose.Text = "CLOSE [X]";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
@@ -357,9 +376,10 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 6);
+            this.label5.Location = new System.Drawing.Point(7, 11);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(223, 13);
+            this.label5.Size = new System.Drawing.Size(378, 25);
             this.label5.TabIndex = 14;
             this.label5.Text = "Select session to load and press next.";
             // 
@@ -400,9 +420,10 @@
             this.ugrdSession.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.ugrdSession.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.ugrdSession.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.ugrdSession.Location = new System.Drawing.Point(7, 22);
+            this.ugrdSession.Location = new System.Drawing.Point(13, 41);
+            this.ugrdSession.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ugrdSession.Name = "ugrdSession";
-            this.ugrdSession.Size = new System.Drawing.Size(701, 381);
+            this.ugrdSession.Size = new System.Drawing.Size(1285, 703);
             this.ugrdSession.TabIndex = 0;
             this.ugrdSession.AfterRowActivate += new System.EventHandler(this.ugrdSession_AfterRowActivate);
             this.ugrdSession.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ugrdSession_DoubleClickRow);
@@ -410,23 +431,25 @@
             // 
             // mnSessionRightClick
             // 
+            this.mnSessionRightClick.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.mnSessionRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miInactive});
             this.mnSessionRightClick.Name = "mnSessionRightClick";
-            this.mnSessionRightClick.Size = new System.Drawing.Size(148, 26);
+            this.mnSessionRightClick.Size = new System.Drawing.Size(214, 38);
             // 
             // miInactive
             // 
             this.miInactive.Name = "miInactive";
-            this.miInactive.Size = new System.Drawing.Size(147, 22);
+            this.miInactive.Size = new System.Drawing.Size(213, 34);
             this.miInactive.Text = "make inactive";
             this.miInactive.Click += new System.EventHandler(this.miInactive_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(126, 85);
+            this.btnExport.Location = new System.Drawing.Point(231, 157);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(140, 19);
+            this.btnExport.Size = new System.Drawing.Size(257, 35);
             this.btnExport.TabIndex = 14;
             this.btnExport.Text = "Export store list to excel";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -434,9 +457,10 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(295, 85);
+            this.btnImport.Location = new System.Drawing.Point(541, 157);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(140, 19);
+            this.btnImport.Size = new System.Drawing.Size(257, 35);
             this.btnImport.TabIndex = 15;
             this.btnImport.Text = "Import store list from excel";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -444,9 +468,9 @@
             // 
             // frmSaveLoad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 733);
+            this.ClientSize = new System.Drawing.Size(2017, 1353);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.pnlLoadSession);
@@ -460,6 +484,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmSaveLoad";
             this.Text = "Pre-Battler";
             this.menuStrip1.ResumeLayout(false);

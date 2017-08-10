@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 //using MySql.Data;
 //using MySql.Data.MySqlClient;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using System.Text;
-using System.Windows;
 using Infragistics.Win.UltraWinGrid;
 using Microsoft.Win32;
 using System.Windows.Forms;
@@ -541,7 +535,7 @@ namespace General
             Char colLetter = (Char)(65 + (column - 1));
             return colLetter;
         }
-
+        #region UltraGrid Functions
         public static string GridLayout(UltraGrid grid, int mode, string settings = "")
         {
             byte[] loa;
@@ -565,6 +559,31 @@ namespace General
             return "FAILED";
         }
 
+        public static void GridNavigation(UltraGrid grid, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
+                    grid.PerformAction(UltraGridAction.AboveCell, false, false);
+                    e.Handled = true;
+                    grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
+                    break;
+                case Keys.Down:
+                    grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
+                    grid.PerformAction(UltraGridAction.BelowCell, false, false);
+                    e.Handled = true;
+                    grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
+                    break;
+                case Keys.Enter:
+                    grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
+                    grid.PerformAction(UltraGridAction.BelowCell, false, false);
+                    e.Handled = true;
+                    grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
+                    break;
+            }
+        }
+#endregion
         #region Private Functions
         private static void CheckConnection()
         {

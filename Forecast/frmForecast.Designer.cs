@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -55,7 +61,8 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 60);
+            this.metroLabel1.Location = new System.Drawing.Point(42, 111);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(79, 19);
             this.metroLabel1.TabIndex = 0;
@@ -64,7 +71,8 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(23, 110);
+            this.metroLabel2.Location = new System.Drawing.Point(42, 203);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(66, 19);
             this.metroLabel2.TabIndex = 1;
@@ -73,7 +81,8 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(258, 60);
+            this.metroLabel3.Location = new System.Drawing.Point(473, 111);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(104, 19);
             this.metroLabel3.TabIndex = 2;
@@ -84,9 +93,10 @@
             this.cmbInputGroup.Enabled = false;
             this.cmbInputGroup.FormattingEnabled = true;
             this.cmbInputGroup.ItemHeight = 23;
-            this.cmbInputGroup.Location = new System.Drawing.Point(23, 82);
+            this.cmbInputGroup.Location = new System.Drawing.Point(42, 151);
+            this.cmbInputGroup.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmbInputGroup.Name = "cmbInputGroup";
-            this.cmbInputGroup.Size = new System.Drawing.Size(225, 29);
+            this.cmbInputGroup.Size = new System.Drawing.Size(409, 29);
             this.cmbInputGroup.TabIndex = 4;
             this.cmbInputGroup.UseSelectable = true;
             this.cmbInputGroup.SelectedIndexChanged += new System.EventHandler(this.cmbInputGroup_SelectedIndexChanged);
@@ -96,9 +106,10 @@
             this.cmbCustomer.Enabled = false;
             this.cmbCustomer.FormattingEnabled = true;
             this.cmbCustomer.ItemHeight = 23;
-            this.cmbCustomer.Location = new System.Drawing.Point(23, 132);
+            this.cmbCustomer.Location = new System.Drawing.Point(42, 244);
+            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(225, 29);
+            this.cmbCustomer.Size = new System.Drawing.Size(409, 29);
             this.cmbCustomer.TabIndex = 5;
             this.cmbCustomer.UseSelectable = true;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
@@ -107,16 +118,18 @@
             // 
             this.cbRegions.CheckOnClick = true;
             this.cbRegions.FormattingEnabled = true;
-            this.cbRegions.Location = new System.Drawing.Point(258, 82);
+            this.cbRegions.Location = new System.Drawing.Point(473, 151);
+            this.cbRegions.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbRegions.Name = "cbRegions";
-            this.cbRegions.Size = new System.Drawing.Size(230, 79);
+            this.cbRegions.Size = new System.Drawing.Size(418, 124);
             this.cbRegions.TabIndex = 6;
             // 
             // metroLabel4
             // 
-            this.metroLabel4.Location = new System.Drawing.Point(494, 60);
+            this.metroLabel4.Location = new System.Drawing.Point(906, 111);
+            this.metroLabel4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(101, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(185, 35);
             this.metroLabel4.TabIndex = 3;
             this.metroLabel4.Text = "Filter Weeks";
             this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -127,9 +140,10 @@
             // 
             // 
             this.txtStartWeek.CustomButton.Image = null;
-            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(25, 1);
+            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(84, 4);
+            this.txtStartWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtStartWeek.CustomButton.Name = "";
-            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(68, 68);
             this.txtStartWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtStartWeek.CustomButton.TabIndex = 1;
             this.txtStartWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -137,7 +151,8 @@
             this.txtStartWeek.CustomButton.Visible = false;
             this.txtStartWeek.Lines = new string[] {
         "10"};
-            this.txtStartWeek.Location = new System.Drawing.Point(494, 82);
+            this.txtStartWeek.Location = new System.Drawing.Point(906, 151);
+            this.txtStartWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtStartWeek.MaxLength = 2;
             this.txtStartWeek.Name = "txtStartWeek";
             this.txtStartWeek.PasswordChar = '\0';
@@ -147,7 +162,7 @@
             this.txtStartWeek.SelectionLength = 0;
             this.txtStartWeek.SelectionStart = 0;
             this.txtStartWeek.ShortcutsEnabled = true;
-            this.txtStartWeek.Size = new System.Drawing.Size(47, 23);
+            this.txtStartWeek.Size = new System.Drawing.Size(86, 42);
             this.txtStartWeek.TabIndex = 7;
             this.txtStartWeek.Text = "10";
             this.txtStartWeek.UseSelectable = true;
@@ -162,9 +177,10 @@
             // 
             // 
             this.txtEndWeek.CustomButton.Image = null;
-            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(25, 1);
+            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(84, 4);
+            this.txtEndWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtEndWeek.CustomButton.Name = "";
-            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(68, 68);
             this.txtEndWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEndWeek.CustomButton.TabIndex = 1;
             this.txtEndWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -172,7 +188,8 @@
             this.txtEndWeek.CustomButton.Visible = false;
             this.txtEndWeek.Lines = new string[] {
         "30"};
-            this.txtEndWeek.Location = new System.Drawing.Point(548, 82);
+            this.txtEndWeek.Location = new System.Drawing.Point(1005, 151);
+            this.txtEndWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtEndWeek.MaxLength = 2;
             this.txtEndWeek.Name = "txtEndWeek";
             this.txtEndWeek.PasswordChar = '\0';
@@ -182,7 +199,7 @@
             this.txtEndWeek.SelectionLength = 0;
             this.txtEndWeek.SelectionStart = 0;
             this.txtEndWeek.ShortcutsEnabled = true;
-            this.txtEndWeek.Size = new System.Drawing.Size(47, 23);
+            this.txtEndWeek.Size = new System.Drawing.Size(86, 42);
             this.txtEndWeek.TabIndex = 8;
             this.txtEndWeek.Text = "30";
             this.txtEndWeek.UseSelectable = true;
@@ -193,18 +210,20 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(687, 138);
+            this.metroButton1.Location = new System.Drawing.Point(1260, 255);
+            this.metroButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(101, 23);
+            this.metroButton1.Size = new System.Drawing.Size(185, 42);
             this.metroButton1.TabIndex = 9;
             this.metroButton1.Text = "metroButton1";
             this.metroButton1.UseSelectable = true;
             // 
             // metroButton2
             // 
-            this.metroButton2.Location = new System.Drawing.Point(687, 98);
+            this.metroButton2.Location = new System.Drawing.Point(1260, 181);
+            this.metroButton2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(101, 23);
+            this.metroButton2.Size = new System.Drawing.Size(185, 42);
             this.metroButton2.TabIndex = 10;
             this.metroButton2.Text = "metroButton2";
             this.metroButton2.UseSelectable = true;
@@ -212,9 +231,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(601, 144);
+            this.checkBox1.Location = new System.Drawing.Point(1102, 266);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(135, 29);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -222,9 +242,10 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(601, 98);
+            this.checkBox2.Location = new System.Drawing.Point(1102, 181);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
+            this.checkBox2.Size = new System.Drawing.Size(135, 29);
             this.checkBox2.TabIndex = 12;
             this.checkBox2.Text = "checkBox2";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -232,9 +253,10 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(601, 121);
+            this.checkBox3.Location = new System.Drawing.Point(1102, 223);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(80, 17);
+            this.checkBox3.Size = new System.Drawing.Size(135, 29);
             this.checkBox3.TabIndex = 13;
             this.checkBox3.Text = "checkBox3";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -242,9 +264,10 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(601, 76);
+            this.checkBox4.Location = new System.Drawing.Point(1102, 140);
+            this.checkBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(80, 17);
+            this.checkBox4.Size = new System.Drawing.Size(135, 29);
             this.checkBox4.TabIndex = 14;
             this.checkBox4.Text = "checkBox4";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -252,9 +275,10 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(494, 112);
+            this.checkBox5.Location = new System.Drawing.Point(906, 207);
+            this.checkBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(80, 17);
+            this.checkBox5.Size = new System.Drawing.Size(135, 29);
             this.checkBox5.TabIndex = 15;
             this.checkBox5.Text = "checkBox5";
             this.checkBox5.UseVisualStyleBackColor = true;
@@ -264,38 +288,70 @@
             this.grdInputDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            appearance1.BackColor = System.Drawing.SystemColors.ControlLight;
+            appearance1.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance1.ForeColorDisabled = System.Drawing.Color.Black;
+            this.grdInputDetail.DisplayLayout.Appearance = appearance1;
             this.grdInputDetail.DisplayLayout.GroupByBox.Hidden = true;
+            this.grdInputDetail.DisplayLayout.InterBandSpacing = 10;
             this.grdInputDetail.DisplayLayout.MaxColScrollRegions = 1;
             this.grdInputDetail.DisplayLayout.MaxRowScrollRegions = 1;
             this.grdInputDetail.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Synchronized;
             this.grdInputDetail.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.grdInputDetail.DisplayLayout.Override.CardAreaAppearance = appearance2;
+            appearance3.BackColor = System.Drawing.SystemColors.Control;
+            appearance3.BackColor2 = System.Drawing.SystemColors.ControlLightLight;
+            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdInputDetail.DisplayLayout.Override.CellAppearance = appearance3;
             this.grdInputDetail.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            appearance4.BackColor = System.Drawing.SystemColors.Control;
+            appearance4.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance4.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdInputDetail.DisplayLayout.Override.HeaderAppearance = appearance4;
             this.grdInputDetail.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdInputDetail.DisplayLayout.Override.RowSelectorAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            appearance6.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
+            appearance6.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdInputDetail.DisplayLayout.Override.SelectedRowAppearance = appearance6;
+            this.grdInputDetail.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdInputDetail.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
             this.grdInputDetail.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.grdInputDetail.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.grdInputDetail.Enabled = false;
-            this.grdInputDetail.Location = new System.Drawing.Point(23, 167);
+            this.grdInputDetail.Location = new System.Drawing.Point(42, 308);
+            this.grdInputDetail.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.grdInputDetail.Name = "grdInputDetail";
-            this.grdInputDetail.Size = new System.Drawing.Size(1210, 621);
+            this.grdInputDetail.Size = new System.Drawing.Size(2218, 1146);
             this.grdInputDetail.TabIndex = 16;
+            this.grdInputDetail.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdInputDetail_InitializeLayout);
+            this.grdInputDetail.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdInputDetail_InitializeRow);
+            this.grdInputDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdInputDetail_KeyDown);
             // 
             // lnSetup
             // 
             this.lnSetup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnSetup.Location = new System.Drawing.Point(1158, 138);
+            this.lnSetup.Location = new System.Drawing.Point(2123, 255);
+            this.lnSetup.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lnSetup.Name = "lnSetup";
-            this.lnSetup.Size = new System.Drawing.Size(75, 23);
+            this.lnSetup.Size = new System.Drawing.Size(138, 42);
             this.lnSetup.TabIndex = 17;
             this.lnSetup.Text = "Setup";
             this.lnSetup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lnSetup.UseSelectable = true;
+            this.lnSetup.Click += new System.EventHandler(this.lnSetup_Click);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Enabled = false;
-            this.btnRefresh.Location = new System.Drawing.Point(494, 138);
+            this.btnRefresh.Location = new System.Drawing.Point(906, 255);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(101, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(185, 42);
             this.btnRefresh.TabIndex = 18;
             this.btnRefresh.Text = "Refresh Data";
             this.btnRefresh.UseSelectable = true;
@@ -305,9 +361,10 @@
             // 
             this.lnChooseColumns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lnChooseColumns.AutoSize = true;
-            this.lnChooseColumns.Location = new System.Drawing.Point(23, 788);
+            this.lnChooseColumns.Location = new System.Drawing.Point(42, 1455);
+            this.lnChooseColumns.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lnChooseColumns.Name = "lnChooseColumns";
-            this.lnChooseColumns.Size = new System.Drawing.Size(100, 23);
+            this.lnChooseColumns.Size = new System.Drawing.Size(183, 42);
             this.lnChooseColumns.TabIndex = 19;
             this.lnChooseColumns.Text = "Choose Columns";
             this.lnChooseColumns.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -317,9 +374,10 @@
             // lnSaveLayout
             // 
             this.lnSaveLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lnSaveLayout.Location = new System.Drawing.Point(129, 788);
+            this.lnSaveLayout.Location = new System.Drawing.Point(237, 1455);
+            this.lnSaveLayout.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lnSaveLayout.Name = "lnSaveLayout";
-            this.lnSaveLayout.Size = new System.Drawing.Size(75, 23);
+            this.lnSaveLayout.Size = new System.Drawing.Size(138, 42);
             this.lnSaveLayout.TabIndex = 20;
             this.lnSaveLayout.Text = "Save Layout";
             this.lnSaveLayout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -328,9 +386,9 @@
             // 
             // frmForecast
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1256, 815);
+            this.ClientSize = new System.Drawing.Size(2303, 1505);
             this.Controls.Add(this.lnSaveLayout);
             this.Controls.Add(this.lnChooseColumns);
             this.Controls.Add(this.btnRefresh);
@@ -352,7 +410,9 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmForecast";
+            this.Padding = new System.Windows.Forms.Padding(37, 111, 37, 37);
             this.Text = "Forecasting";
             this.Load += new System.EventHandler(this.frmForecast_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdInputDetail)).EndInit();
