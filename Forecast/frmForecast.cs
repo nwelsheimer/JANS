@@ -14,6 +14,7 @@ namespace Forecast
         DataSet inputDetail = new DataSet();
         DataTable inHeader = new DataTable();
         DataTable inDetail = new DataTable();
+        bool loading = true;
 
 #region Startup routines
         public frmForecast()
@@ -36,32 +37,60 @@ namespace Forecast
         private void grdInputDetail_InitializeLayout(object sender, InitializeLayoutEventArgs e)
         {
             e.Layout.Override.CellAppearance.BackColor = Color.White;
-            e.Layout.Override.CellAppearance.ForeColorDisabled = Color.Black;
+            //e.Layout.Override.CellAppearance.ForeColorDisabled = Color.Black;
+            e.Layout.Override.WrapHeaderText = Infragistics.Win.DefaultableBoolean.True;
+            e.Layout.Bands[0].ColHeaderLines = 2;
+            e.Layout.Bands[1].ColHeaderLines = 2;
         }
 #endregion
 #region Grid building
-        private void buildGrid(string query)
+        private void buildGrid(string query) //Fills the tables and creates the dataset relationships
         {
-            inDetail.Reset();
-            inHeader.Reset();
+
+            inDetail.Clear();
+            inHeader.Clear();
+
+            string columnHeader = "";
+            int n;
+            var weekColumns = new List<string>();
+
+            foreach (DataColumn dc in inHeader.Columns)
+            {
+                columnHeader = dc.ColumnName.Length >= 4 ? dc.ColumnName : "xxxx"; //Sanity check to make sure we have enough spaces to parse
+                if (int.TryParse(columnHeader.Substring(0, 4), out n)) //It's a number so it must be a week
+                {
+                    weekColumns.Add(columnHeader);
+                }
+            }
+
+            foreach (var week in weekColumns)
+            {
+                inHeader.Columns.Remove(week);
+                inDetail.Columns.Remove(week);
+            }
 
             Global.FillData(query + '1').Fill(inHeader);
             Global.FillData(query + '0').Fill(inDetail);
-            
-            //Set up data tables
-            inHeader.TableName = "Header";
-            inDetail.TableName = "Detail";
-            inputDetail.Tables.Add(inHeader);
-            inputDetail.Tables.Add(inDetail);
-            DataRelation dr = new DataRelation("DR", inHeader.Columns["SKUKey"], inDetail.Columns["SKUKey"], true);
-            inputDetail.Relations.Add(dr);
+
+            if (loading)
+            {            
+                //Set up data tables
+                inHeader.TableName = "Header";
+                inDetail.TableName = "Detail";
+                inputDetail.Tables.Add(inHeader);
+                inputDetail.Tables.Add(inDetail);
+                DataRelation dr = new DataRelation("DR", inHeader.Columns["SKUKey"], inDetail.Columns["SKUKey"], true);
+                inputDetail.Relations.Add(dr);
+                loading = false;
+            }
         }
 
-        private void GridLayout()
+        private void GridLayout() //Disables certain columns for editing, changes header names, hides columns, etc.
         {
-            //Global settings to enable/disable hide etc.
+            //Load user preferances
             Global.GridLayout(grdInputDetail, 2, Properties.Settings.Default.grdInputLayout);
 
+            //Now override any weird adjustments the user might have done if we want it to look a certain way
             grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].Hidden = true;
@@ -110,73 +139,101 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[1].Columns["SizeDescription"].Header.Caption = "Size";
             grdInputDetail.DisplayLayout.Bands[1].Columns["TotalRequested"].Header.Caption = "Input";
             grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].Header.Caption = "Product ID";
+            
+            string columnHeader = "";
+            int n;
+
+            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[0].Columns)
+            {
+                columnHeader = uc.Key.Length >= 4 ? uc.Key : "xxxx"; //Sanity check to make sure we have enough spaces to parse
+                if (int.TryParse(columnHeader.Substring(0, 4), out n)) //It's a number so it must be a week
+                {
+                    grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].Width = 55;
+                    grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].Width = 55;
+                    if (columnHeader.Substring(5) != "Input")
+                    {
+                        grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].CellActivation = Activation.Disabled;
+                        grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].CellActivation = Activation.Disabled;
+                    }
+                }
+            }
 
             toggleInputLY(false); //Hide the LY values and make them read only
             togglePlannedLY(false);
             toggleShippedLY(false);
         }
-        private void grdInputDetail_InitializeRow(object sender, InitializeRowEventArgs e)
+
+        private void grdInputDetail_InitializeRow(object sender, InitializeRowEventArgs e) //Occurs whenever rows are updated, heavy lifting happens here.
         {
-            string skukey = "";
-
-            skukey = e.Row.Cells["SKUKey"].Text;
-            string columnHeader = "";
-            int week = 0;
-            int startWeek = 0;
-            int endWeek = 0;
-            int n;
-            int rowTotal = 0;
-
-            if (e.Row.Band.Index==0)
+            if (grdInputDetail.Enabled)
             {
-                startWeek = Convert.ToInt32(inDetail.Compute("min([startWeek])", "SKUKey = '" + skukey + "'"));
-                endWeek = Convert.ToInt32(inDetail.Compute("max([endWeek])", "SKUKey = '" + skukey + "'"));
-            } else
-            {
-                startWeek = Convert.ToInt32(e.Row.Cells["startWeek"].Text);
-                endWeek = Convert.ToInt32(e.Row.Cells["endWeek"].Text);
-            }
+                string skukey = "";
 
-            foreach (UltraGridCell c in e.Row.Cells) //Loop through the cells and see if the detail total matches the summary line
-            {
-                columnHeader = c.Column.Key.Length>=4 ? c.Column.Key : "xxxx";
-                if (int.TryParse(columnHeader.Substring(0,4), out n))
+                skukey = e.Row.Cells["SKUKey"].Text;
+                string columnHeader = "";
+                string columnSource = "";
+                int week = 0;
+                int startWeek = 0;
+                int endWeek = 0;
+                int n;
+                int rowTotal = 0;
+
+                //Establish grow weeks for SKU/item row to use later in the code
+                if (e.Row.Band.Index == 0)
                 {
-                    week = Convert.ToInt32(columnHeader.Substring(2,2));
-                    rowTotal += Convert.ToInt32(c.Text.Length>0 ? c.Text : "0");
-                    //Highlight non growing weeks
-                    if (week < startWeek || week > endWeek)
-                        c.Appearance.BackColor = Color.Pink;
+                    startWeek = Convert.ToInt32(inDetail.Compute("min([startWeek])", "SKUKey = '" + skukey + "'"));
+                    endWeek = Convert.ToInt32(inDetail.Compute("max([endWeek])", "SKUKey = '" + skukey + "'"));
+                }
+                else
+                {
+                    startWeek = Convert.ToInt32(e.Row.Cells["startWeek"].Text);
+                    endWeek = Convert.ToInt32(e.Row.Cells["endWeek"].Text);
+                }
 
-                    if (e.Row.Band.Index == 0) //This is a mother row
+                foreach (UltraGridCell c in e.Row.Cells) //Loop through the cells and see if the detail total matches the summary line
+                {
+                    columnHeader = c.Column.Key.Length >= 4 ? c.Column.Key : "xxxx"; //Sanity check to make sure we have enough spaces to parse
+                    if (int.TryParse(columnHeader.Substring(0, 4), out n)) //It's a number so it must be a week
                     {
-                        n = Convert.ToInt32(inDetail.Compute("sum([" + columnHeader + "])", "SKUKey = '" + skukey + "'"));
+                        week = Convert.ToInt32(columnHeader.Substring(2, 2));
+                        columnSource = columnHeader.Substring(5);
 
-                        if (n != Convert.ToInt32(c.Text.Length>0 ? c.Text : "0"))
+                        if (columnSource == "Input")
+                            rowTotal += Convert.ToInt32(c.Text.Length > 0 ? c.Text : "0");
+                        
+                        if (week < startWeek || week > endWeek) //Highlight non growing weeks
+                            c.Appearance.BackColor = Color.Pink;
+
+                        if (e.Row.Band.Index == 0 && columnSource == "Input") //This is a mother row
                         {
-                            c.Appearance.ForeColor = Color.Red;
-                            c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                            n = Convert.ToInt32(inDetail.Compute("sum([" + columnHeader + "])", "SKUKey = '" + skukey + "'"));
+
+                            if (n != Convert.ToInt32(c.Text.Length > 0 ? c.Text : "0"))
+                            {
+                                c.Appearance.ForeColor = Color.Red;
+                                c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                            }
+                            else
+                            {
+                                c.Appearance.ForeColor = Color.Black;
+                                c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
+                            }
                         }
-                        else
-                        {
-                            c.Appearance.ForeColor = Color.Black;
-                            c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
-                        }
-                    } 
+                    }
+                }
+
+                //Check the horizontal totals now. Highlight non matching ones
+                if (rowTotal != Convert.ToInt32(e.Row.Cells["TotalRequested"].Text))
+                {
+                    e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Red;
+                    e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                }
+                else
+                {
+                    e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Black;
+                    e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
                 }
             }
-
-            //Check the horizontal totals now.
-            if (rowTotal != Convert.ToInt32(e.Row.Cells["TotalRequested"].Text))
-            {
-                e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Red;
-                e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
-            } else
-            {
-                e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Black;
-                e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
-            }
-
         }
 #endregion
 #region Column toggles
@@ -298,6 +355,9 @@ namespace Forecast
                 string query = "usp_FC_SelectInputDetail @startWeek='" + startWeek + "', @endWeek='" + endWeek + "', @nameIds='" + regions + "', @band=";
                 loadingSpinner.Spinning = true;
                 loadingSpinner.Visible = true;
+                pnLoading.Visible = true;
+
+                grdInputDetail.Enabled = false;
                 bgLoading.RunWorkerAsync(query);
             }
             else
@@ -361,9 +421,11 @@ namespace Forecast
         {
             loadingSpinner.Spinning = false;
             loadingSpinner.Visible = false;
+            pnLoading.Visible = false;
             grdInputDetail.Enabled = true;
 
             grdInputDetail.DataSource = inputDetail;
+
             GridLayout();//Set up the display of the grid
         }
 

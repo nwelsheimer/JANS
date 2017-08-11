@@ -66,5 +66,12 @@ namespace Forecast
         {
 
         }
+
+        private void lnReset_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.grdInputLayout = "";
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Defaults set. Close and open application now.");
+        }
     }
 }
