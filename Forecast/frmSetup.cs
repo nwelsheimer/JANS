@@ -39,10 +39,10 @@ namespace Forecast
         {
             disableControls();
 
-            cmbCustomer.DataSource = Global.GetData("usp_FC_SelectSetup").Tables[0].DefaultView;
-            cmbCustomer.DisplayMember = "companyName";
-            cmbCustomer.ValueMember = "id";
-            cmbCustomer.SelectedIndex = -1;
+            //cmbCustomer.DataSource = Global.GetData("usp_FC_SelectSetup").Tables[0].DefaultView;
+            //cmbCustomer.DisplayMember = "companyName";
+            //cmbCustomer.ValueMember = "id";
+            //cmbCustomer.SelectedIndex = -1;
 
             cmbInputName.DataSource = Global.GetData("usp_FC_SelectSetup @selection=1").Tables[0].DefaultView;
             cmbInputName.DisplayMember = "description";

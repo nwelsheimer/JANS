@@ -158,7 +158,9 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[1].Columns["TotalRequested"].Header.Caption = "Input";
             grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].Header.Caption = "Product ID";
 
-            toggleInputLY(false); //Hide the LY inputs and make them read only
+            toggleInputLY(false); //Hide the LY values and make them read only
+            togglePlannedLY(false);
+            toggleShippedLY(false);
         }
 
         private void toggleInputLY(bool visible)
@@ -179,6 +181,54 @@ namespace Forecast
             {
                 columnHeader = uc.Key;
                 if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Input LY")
+                {
+                    uc.CellActivation = Activation.Disabled;
+                    uc.Hidden = !visible;
+                }
+            }
+        }
+        private void togglePlannedLY(bool visible)
+        {
+            string columnHeader = "";
+
+            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[0].Columns)
+            {
+                columnHeader = uc.Key;
+                if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Planned LY")
+                {
+                    uc.CellActivation = Activation.Disabled;
+                    uc.Hidden = !visible;
+                }
+            }
+
+            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
+            {
+                columnHeader = uc.Key;
+                if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Planned LY")
+                {
+                    uc.CellActivation = Activation.Disabled;
+                    uc.Hidden = !visible;
+                }
+            }
+        }
+        private void toggleShippedLY(bool visible)
+        {
+            string columnHeader = "";
+
+            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[0].Columns)
+            {
+                columnHeader = uc.Key;
+                if (columnHeader.Length >= 10 && columnHeader.Substring(columnHeader.Length - 10) == "Shipped LY")
+                {
+                    uc.CellActivation = Activation.Disabled;
+                    uc.Hidden = !visible;
+                }
+            }
+
+            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
+            {
+                columnHeader = uc.Key;
+                if (columnHeader.Length >= 10 && columnHeader.Substring(columnHeader.Length - 10) == "Shipped LY")
                 {
                     uc.CellActivation = Activation.Disabled;
                     uc.Hidden = !visible;
@@ -294,6 +344,16 @@ namespace Forecast
         private void cbInputLY_CheckedChanged(object sender, EventArgs e)
         {
             toggleInputLY(cbInputLY.Checked);
+        }
+
+        private void cbPlannedLY_CheckedChanged(object sender, EventArgs e)
+        {
+            togglePlannedLY(cbPlannedLY.Checked);
+        }
+
+        private void cbShippedLY_CheckedChanged(object sender, EventArgs e)
+        {
+            toggleShippedLY(cbShippedLY.Checked);
         }
     }
 }
