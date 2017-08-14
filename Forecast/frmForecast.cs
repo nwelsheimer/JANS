@@ -72,6 +72,8 @@ namespace Forecast
             Global.FillData(query + '1').Fill(inHeader);
             Global.FillData(query + '0').Fill(inDetail);
 
+            TotalInputs();
+
             if (loading)
             {            
                 //Set up data tables
@@ -111,6 +113,9 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
 
             grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].Format = "c";
             grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].Format = "c";
@@ -127,6 +132,9 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInput"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
 
             grdInputDetail.DisplayLayout.Bands[1].Columns["Cost"].Format = "c";
             grdInputDetail.DisplayLayout.Bands[1].Columns["Price"].Format = "c";
@@ -134,12 +142,18 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Caption = "SKU Description";
             grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Caption = "Size";
             grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Header.Caption = "Input";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Header.Caption = "Total Input";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
 
             grdInputDetail.DisplayLayout.Bands[1].Columns["ItemDescription"].Header.Caption = "Item Description";
             grdInputDetail.DisplayLayout.Bands[1].Columns["SizeDescription"].Header.Caption = "Size";
             grdInputDetail.DisplayLayout.Bands[1].Columns["TotalRequested"].Header.Caption = "Input";
             grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].Header.Caption = "Product ID";
-            
+            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInput"].Header.Caption = "Total Input";
+            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
+            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
+
             string columnHeader = "";
             int n;
 
@@ -233,6 +247,72 @@ namespace Forecast
                     e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Black;
                     e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
                 }
+
+            }
+        }
+        #endregion
+#region Math section
+        private void TotalInputs(string prodId = "")
+        {
+            int totalInput = 0;
+            string columnHeader = "";
+            int n;
+
+            if (prodId.Length > 0) //A product ID was specified, only update the specific row in the datatable.
+            {
+                string searchExp = "prodId = " + prodId;
+                DataRow[] headerRows = inHeader.Select(searchExp);
+                DataRow[] detailRows = inDetail.Select(searchExp);
+
+                foreach (DataRow dr in headerRows)
+                {
+                    for (int c = 0; c < inHeader.Columns.Count; c++)
+                    {
+                        columnHeader = inHeader.Columns[c].ColumnName.Length > 5 ? inHeader.Columns[c].ColumnName : "xxxxx";
+                        if (int.TryParse(columnHeader.Substring(0, 4), out n) && inHeader.Columns[c].ColumnName.Substring(inHeader.Columns[c].ColumnName.Length - 5) == "Input")
+                            totalInput += Convert.ToInt32(dr[c].ToString());
+                    }
+                    dr["TotalInput"] = totalInput.ToString();
+                    totalInput = 0;
+                }
+
+                foreach (DataRow dr in detailRows)
+                {
+                    for (int c = 0; c < inDetail.Columns.Count; c++)
+                    {
+                        columnHeader = inDetail.Columns[c].ColumnName.Length > 5 ? inDetail.Columns[c].ColumnName : "xxxxx";
+                        if (int.TryParse(columnHeader.Substring(0, 4), out n) && inDetail.Columns[c].ColumnName.Substring(inDetail.Columns[c].ColumnName.Length - 5) == "Input")
+                            totalInput += Convert.ToInt32(dr[c].ToString());
+                    }
+                    dr["TotalInput"] = totalInput.ToString();
+                    totalInput = 0;
+                }
+            }
+            else //No product id, probably the initial load, so calculate the whole table.
+            {
+                foreach (DataRow dr in inHeader.Rows)
+                {
+                    for (int c = 0; c < inHeader.Columns.Count; c++)
+                    {
+                        columnHeader = inHeader.Columns[c].ColumnName.Length > 5 ? inHeader.Columns[c].ColumnName : "xxxxx";
+                        if (int.TryParse(columnHeader.Substring(0, 4), out n) && inHeader.Columns[c].ColumnName.Substring(inHeader.Columns[c].ColumnName.Length - 5) == "Input")
+                            totalInput += Convert.ToInt32(dr[c].ToString());
+                    }
+                    dr["TotalInput"] = totalInput.ToString();
+                    totalInput = 0;
+                }
+
+                foreach (DataRow dr in inDetail.Rows)
+                {
+                    for (int c = 0; c < inDetail.Columns.Count; c++)
+                    {
+                        columnHeader = inDetail.Columns[c].ColumnName.Length > 5 ? inDetail.Columns[c].ColumnName : "xxxxx";
+                        if (int.TryParse(columnHeader.Substring(0, 4), out n) && inDetail.Columns[c].ColumnName.Substring(inDetail.Columns[c].ColumnName.Length - 5) == "Input")
+                            totalInput += Convert.ToInt32(dr[c].ToString());
+                    }
+                    dr["TotalInput"] = totalInput.ToString();
+                    totalInput = 0;
+                }
             }
         }
 #endregion
@@ -292,7 +372,7 @@ namespace Forecast
             foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[0].Columns)
             {
                 columnHeader = uc.Key;
-                if (columnHeader.Length >= 10 && columnHeader.Substring(columnHeader.Length - 10) == "Shipped LY")
+                if (columnHeader.Length >= 7 && columnHeader.Substring(columnHeader.Length - 7) == "Ship LY")
                 {
                     uc.CellActivation = Activation.Disabled;
                     uc.Hidden = !visible;
@@ -302,7 +382,7 @@ namespace Forecast
             foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
             {
                 columnHeader = uc.Key;
-                if (columnHeader.Length >= 10 && columnHeader.Substring(columnHeader.Length - 10) == "Shipped LY")
+                if (columnHeader.Length >= 7 && columnHeader.Substring(columnHeader.Length - 7) == "Ship LY")
                 {
                     uc.CellActivation = Activation.Disabled;
                     uc.Hidden = !visible;
@@ -433,6 +513,12 @@ namespace Forecast
         {
             buildGrid((string)e.Argument);
         }
-#endregion 
+        #endregion
+#region Update region
+        private void grdInputDetail_AfterCellUpdate(object sender, CellEventArgs e)
+        {
+            TotalInputs(e.Cell.Row.Cells["prodId"].Text);
+        }
+#endregion
     }
 }
