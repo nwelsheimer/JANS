@@ -62,6 +62,8 @@
             this.bgLoading = new System.ComponentModel.BackgroundWorker();
             this.pnLoading = new MetroFramework.Controls.MetroPanel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.pnColapse = new MetroFramework.Controls.MetroPanel();
+            this.pnExpand = new MetroFramework.Controls.MetroPanel();
             ((System.ComponentModel.ISupportInitialize)(this.grdInputDetail)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,7 +73,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(43, 111);
+            this.metroLabel1.Location = new System.Drawing.Point(107, 111);
             this.metroLabel1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(79, 19);
@@ -81,7 +83,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(43, 202);
+            this.metroLabel2.Location = new System.Drawing.Point(107, 206);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(66, 19);
@@ -103,10 +105,10 @@
             this.cmbInputGroup.Enabled = false;
             this.cmbInputGroup.FormattingEnabled = true;
             this.cmbInputGroup.ItemHeight = 23;
-            this.cmbInputGroup.Location = new System.Drawing.Point(43, 152);
+            this.cmbInputGroup.Location = new System.Drawing.Point(107, 152);
             this.cmbInputGroup.Margin = new System.Windows.Forms.Padding(6);
             this.cmbInputGroup.Name = "cmbInputGroup";
-            this.cmbInputGroup.Size = new System.Drawing.Size(410, 29);
+            this.cmbInputGroup.Size = new System.Drawing.Size(346, 29);
             this.cmbInputGroup.TabIndex = 4;
             this.cmbInputGroup.UseSelectable = true;
             this.cmbInputGroup.SelectedIndexChanged += new System.EventHandler(this.cmbInputGroup_SelectedIndexChanged);
@@ -116,10 +118,10 @@
             this.cmbCustomer.Enabled = false;
             this.cmbCustomer.FormattingEnabled = true;
             this.cmbCustomer.ItemHeight = 23;
-            this.cmbCustomer.Location = new System.Drawing.Point(43, 244);
+            this.cmbCustomer.Location = new System.Drawing.Point(107, 244);
             this.cmbCustomer.Margin = new System.Windows.Forms.Padding(6);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(410, 29);
+            this.cmbCustomer.Size = new System.Drawing.Size(346, 29);
             this.cmbCustomer.TabIndex = 5;
             this.cmbCustomer.UseSelectable = true;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
@@ -485,11 +487,47 @@
             this.metroLabel5.Text = "Loading Input Data...";
             this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // pnColapse
+            // 
+            this.pnColapse.BackgroundImage = global::Forecast.Properties.Resources.delete;
+            this.pnColapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnColapse.Enabled = false;
+            this.pnColapse.HorizontalScrollbarBarColor = true;
+            this.pnColapse.HorizontalScrollbarHighlightOnWheel = false;
+            this.pnColapse.HorizontalScrollbarSize = 10;
+            this.pnColapse.Location = new System.Drawing.Point(74, 275);
+            this.pnColapse.Name = "pnColapse";
+            this.pnColapse.Size = new System.Drawing.Size(25, 25);
+            this.pnColapse.TabIndex = 26;
+            this.pnColapse.VerticalScrollbarBarColor = true;
+            this.pnColapse.VerticalScrollbarHighlightOnWheel = false;
+            this.pnColapse.VerticalScrollbarSize = 10;
+            this.pnColapse.Click += new System.EventHandler(this.pnColapse_Click);
+            // 
+            // pnExpand
+            // 
+            this.pnExpand.BackgroundImage = global::Forecast.Properties.Resources.add;
+            this.pnExpand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnExpand.Enabled = false;
+            this.pnExpand.HorizontalScrollbarBarColor = true;
+            this.pnExpand.HorizontalScrollbarHighlightOnWheel = false;
+            this.pnExpand.HorizontalScrollbarSize = 10;
+            this.pnExpand.Location = new System.Drawing.Point(43, 275);
+            this.pnExpand.Name = "pnExpand";
+            this.pnExpand.Size = new System.Drawing.Size(25, 25);
+            this.pnExpand.TabIndex = 25;
+            this.pnExpand.VerticalScrollbarBarColor = true;
+            this.pnExpand.VerticalScrollbarHighlightOnWheel = false;
+            this.pnExpand.VerticalScrollbarSize = 10;
+            this.pnExpand.Click += new System.EventHandler(this.pnExpand_Click);
+            // 
             // frmForecast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1926, 837);
+            this.Controls.Add(this.pnColapse);
+            this.Controls.Add(this.pnExpand);
             this.Controls.Add(this.pnLoading);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -555,6 +593,8 @@
         private System.ComponentModel.BackgroundWorker bgLoading;
         private MetroFramework.Controls.MetroPanel pnLoading;
         private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroPanel pnExpand;
+        private MetroFramework.Controls.MetroPanel pnColapse;
     }
 }
 
