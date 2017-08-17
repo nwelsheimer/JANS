@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9B90D4DC-AD83-47C2-BD3C-F49040883968}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Forecast</RootNamespace>
     <AssemblyName>Forecast</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Infragistics4.Shared.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
@@ -113,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_1129279.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trumperpillar2.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

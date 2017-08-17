@@ -58,16 +58,18 @@
             this.rdUnits = new System.Windows.Forms.RadioButton();
             this.rdCost = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.loadingSpinner = new MetroFramework.Controls.MetroProgressSpinner();
-            this.bgLoading = new System.ComponentModel.BackgroundWorker();
-            this.pnLoading = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.bgHeader = new System.ComponentModel.BackgroundWorker();
+            this.bgDetail = new System.ComponentModel.BackgroundWorker();
             this.pnColapse = new MetroFramework.Controls.MetroPanel();
             this.pnExpand = new MetroFramework.Controls.MetroPanel();
+            this.pnLoading = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdInputDetail)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnLoading.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -182,6 +184,7 @@
             this.txtStartWeek.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtStartWeek.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtStartWeek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStartWeek_KeyPress);
+            this.txtStartWeek.Leave += new System.EventHandler(this.txtStartWeek_Leave);
             // 
             // txtEndWeek
             // 
@@ -219,6 +222,7 @@
             this.txtEndWeek.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEndWeek.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtEndWeek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEndWeek_KeyPress);
+            this.txtEndWeek.Leave += new System.EventHandler(this.txtEndWeek_Leave);
             // 
             // btnSumVertical
             // 
@@ -439,53 +443,15 @@
             this.panel1.Size = new System.Drawing.Size(222, 142);
             this.panel1.TabIndex = 22;
             // 
-            // loadingSpinner
+            // bgHeader
             // 
-            this.loadingSpinner.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loadingSpinner.BackColor = System.Drawing.Color.DarkGray;
-            this.loadingSpinner.Location = new System.Drawing.Point(124, 75);
-            this.loadingSpinner.Maximum = 100;
-            this.loadingSpinner.Name = "loadingSpinner";
-            this.loadingSpinner.Size = new System.Drawing.Size(80, 80);
-            this.loadingSpinner.Speed = 2F;
-            this.loadingSpinner.Spinning = false;
-            this.loadingSpinner.TabIndex = 23;
-            this.loadingSpinner.UseSelectable = true;
-            this.loadingSpinner.Value = 50;
-            this.loadingSpinner.Visible = false;
+            this.bgHeader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgHeader_DoWork);
+            this.bgHeader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgHeader_RunWorkerCompleted);
             // 
-            // bgLoading
+            // bgDetail
             // 
-            this.bgLoading.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgLoading_DoWork);
-            this.bgLoading.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgLoading_RunWorkerCompleted);
-            // 
-            // pnLoading
-            // 
-            this.pnLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnLoading.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnLoading.Controls.Add(this.metroLabel5);
-            this.pnLoading.Controls.Add(this.loadingSpinner);
-            this.pnLoading.HorizontalScrollbarBarColor = true;
-            this.pnLoading.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnLoading.HorizontalScrollbarSize = 10;
-            this.pnLoading.Location = new System.Drawing.Point(796, 336);
-            this.pnLoading.Name = "pnLoading";
-            this.pnLoading.Size = new System.Drawing.Size(335, 165);
-            this.pnLoading.TabIndex = 24;
-            this.pnLoading.VerticalScrollbarBarColor = true;
-            this.pnLoading.VerticalScrollbarHighlightOnWheel = false;
-            this.pnLoading.VerticalScrollbarSize = 10;
-            this.pnLoading.Visible = false;
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 4);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(329, 56);
-            this.metroLabel5.TabIndex = 24;
-            this.metroLabel5.Text = "Loading Input Data...";
-            this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.bgDetail.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgDetail_DoWork);
+            this.bgDetail.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgDetail_RunWorkerCompleted);
             // 
             // pnColapse
             // 
@@ -520,6 +486,44 @@
             this.pnExpand.VerticalScrollbarHighlightOnWheel = false;
             this.pnExpand.VerticalScrollbarSize = 10;
             this.pnExpand.Click += new System.EventHandler(this.pnExpand_Click);
+            // 
+            // pnLoading
+            // 
+            this.pnLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnLoading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnLoading.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnLoading.Controls.Add(this.metroLabel5);
+            this.pnLoading.Controls.Add(this.pictureBox1);
+            this.pnLoading.HorizontalScrollbarBarColor = true;
+            this.pnLoading.HorizontalScrollbarHighlightOnWheel = false;
+            this.pnLoading.HorizontalScrollbarSize = 10;
+            this.pnLoading.Location = new System.Drawing.Point(646, 254);
+            this.pnLoading.Name = "pnLoading";
+            this.pnLoading.Size = new System.Drawing.Size(635, 313);
+            this.pnLoading.TabIndex = 24;
+            this.pnLoading.VerticalScrollbarBarColor = true;
+            this.pnLoading.VerticalScrollbarHighlightOnWheel = false;
+            this.pnLoading.VerticalScrollbarSize = 10;
+            this.pnLoading.Visible = false;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel5.Location = new System.Drawing.Point(152, 4);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(329, 56);
+            this.metroLabel5.TabIndex = 24;
+            this.metroLabel5.Text = "Loading Input Data...";
+            this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Forecast.Properties.Resources.trumperpillar2;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(627, 248);
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
             // 
             // frmForecast
             // 
@@ -558,6 +562,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnLoading.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,12 +594,13 @@
         private System.Windows.Forms.RadioButton rdUnits;
         private System.Windows.Forms.RadioButton rdCost;
         private System.Windows.Forms.RadioButton rdRetail;
-        private MetroFramework.Controls.MetroProgressSpinner loadingSpinner;
-        private System.ComponentModel.BackgroundWorker bgLoading;
         private MetroFramework.Controls.MetroPanel pnLoading;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroPanel pnExpand;
         private MetroFramework.Controls.MetroPanel pnColapse;
+        private System.ComponentModel.BackgroundWorker bgHeader;
+        private System.ComponentModel.BackgroundWorker bgDetail;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

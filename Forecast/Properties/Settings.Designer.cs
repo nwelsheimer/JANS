@@ -34,5 +34,29 @@ namespace Forecast.Properties {
                 this["grdInputLayout"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string startWeek {
+            get {
+                return ((string)(this["startWeek"]));
+            }
+            set {
+                this["startWeek"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public string endWeek {
+            get {
+                return ((string)(this["endWeek"]));
+            }
+            set {
+                this["endWeek"] = value;
+            }
+        }
     }
 }

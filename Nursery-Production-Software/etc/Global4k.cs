@@ -57,6 +57,12 @@ namespace General
             }
         }
 
+        public static SqlConnection extSQL()
+        {
+            CheckConnection();
+            return sqlConn;
+        }
+
         public static void connectToDB()
         {
             RegistryKey jans = Global.get_reg_key("JANS", true);

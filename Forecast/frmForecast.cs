@@ -13,10 +13,12 @@ namespace Forecast
     {
         DataSet inputDetail = new DataSet();
         DataTable inHeader = new DataTable();
+        DataTable bgHeaderTable = new DataTable();
         DataTable inDetail = new DataTable();
+        DataTable bgDetailTable = new DataTable();
         bool loading = true;
 
-#region Startup routines
+        #region Startup routines
         public frmForecast()
         {
             InitializeComponent();
@@ -32,6 +34,9 @@ namespace Forecast
             cmbInputGroup.DisplayMember = "description";
             cmbInputGroup.SelectedIndex = -1;
             cmbInputGroup.Enabled = true;
+
+            txtStartWeek.Text = Properties.Settings.Default.startWeek;
+            txtEndWeek.Text = Properties.Settings.Default.endWeek;
         }
 
         private void grdInputDetail_InitializeLayout(object sender, InitializeLayoutEventArgs e)
@@ -43,41 +48,15 @@ namespace Forecast
             e.Layout.Bands[1].ColHeaderLines = 2;
         }
 #endregion
-#region Grid building
-        private void buildGrid(string query) //Fills the tables and creates the dataset relationships
+        #region Grid building
+        private void buildGrid() //Fills the tables and creates the dataset relationships
         {
-
-            inDetail.Clear();
-            inHeader.Clear();
-
-            string columnHeader = "";
-            int n;
-            var weekColumns = new List<string>();
-
-            foreach (DataColumn dc in inHeader.Columns)
-            {
-                columnHeader = dc.ColumnName.Length >= 4 ? dc.ColumnName : "xxxx"; //Sanity check to make sure we have enough spaces to parse
-                if (int.TryParse(columnHeader.Substring(0, 4), out n)) //It's a number so it must be a week
-                {
-                    weekColumns.Add(columnHeader);
-                }
-            }
-
-            foreach (var week in weekColumns)
-            {
-                inHeader.Columns.Remove(week);
-                inDetail.Columns.Remove(week);
-            }
-
-            Global.FillData(query + '1').Fill(inHeader);
-            Global.FillData(query + '0').Fill(inDetail);
-
             TotalInputs();
             TotalInputLY();
             TotalShipped();
 
             if (loading)
-            {            
+            {
                 //Set up data tables
                 inHeader.TableName = "Header";
                 inDetail.TableName = "Detail";
@@ -85,6 +64,7 @@ namespace Forecast
                 inputDetail.Tables.Add(inDetail);
                 DataRelation dr = new DataRelation("DR", inHeader.Columns["SKUKey"], inDetail.Columns["SKUKey"], true);
                 inputDetail.Relations.Add(dr);
+                grdInputDetail.DataSource = inputDetail;
                 loading = false;
             }
         }
@@ -99,6 +79,10 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].Hidden = true;
+
+            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
             grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].CellActivation = Activation.Disabled;
@@ -136,6 +120,13 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].Hidden = true;
+
+            grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
             grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].CellActivation = Activation.Disabled;
             grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].CellActivation = Activation.Disabled;
@@ -183,6 +174,9 @@ namespace Forecast
                     grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].Format = "n0";
                     grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].Format = "n0";
 
+                    grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+                    grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+
                     if (columnHeader.Substring(5) != "Input")
                     {
                         grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].CellActivation = Activation.Disabled;
@@ -194,6 +188,12 @@ namespace Forecast
             toggleInputLY(false); //Hide the LY values and make them read only
             togglePlannedLY(false);
             toggleShippedLY(false);
+            
+            pnLoading.Visible = false;
+            grdInputDetail.Enabled = true;
+            grdInputDetail.Rows.Refresh(RefreshRow.FireInitializeRow, true);
+            pnExpand.Enabled = true;
+            pnColapse.Enabled = true;
         }
 
         private void grdInputDetail_InitializeRow(object sender, InitializeRowEventArgs e) //Occurs whenever rows are updated, heavy lifting happens here.
@@ -241,7 +241,7 @@ namespace Forecast
                         {
                             n = Convert.ToInt32(inDetail.Compute("sum([" + columnHeader + "])", "SKUKey = '" + skukey + "'"));
 
-                            if (n != Convert.ToInt32(c.Text.Length > 0 ? c.Text : "0"))
+                            if (n != int.Parse(c.Text.Length > 0 ? c.Text : "0", System.Globalization.NumberStyles.AllowThousands))
                             {
                                 c.Appearance.ForeColor = Color.Red;
                                 c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
@@ -270,7 +270,7 @@ namespace Forecast
             }
         }
         #endregion
-#region Math section
+        #region Math section
         private void TotalInputs(string prodId = "")
         {
             int totalInput = 0;
@@ -315,7 +315,7 @@ namespace Forecast
                     {
                         columnHeader = inHeader.Columns[c].ColumnName.Length > 5 ? inHeader.Columns[c].ColumnName : "xxxxx";
                         if (int.TryParse(columnHeader.Substring(0, 4), out n) && inHeader.Columns[c].ColumnName.Substring(inHeader.Columns[c].ColumnName.Length - 5) == "Input")
-                            totalInput += Convert.ToInt32(dr[c].ToString());
+                            totalInput += int.Parse(dr[c].ToString(),System.Globalization.NumberStyles.AllowThousands);
                     }
                     dr["TotalInput"] = totalInput.ToString();
                     totalInput = 0;
@@ -327,7 +327,7 @@ namespace Forecast
                     {
                         columnHeader = inDetail.Columns[c].ColumnName.Length > 5 ? inDetail.Columns[c].ColumnName : "xxxxx";
                         if (int.TryParse(columnHeader.Substring(0, 4), out n) && inDetail.Columns[c].ColumnName.Substring(inDetail.Columns[c].ColumnName.Length - 5) == "Input")
-                            totalInput += Convert.ToInt32(dr[c].ToString());
+                            totalInput += int.Parse(dr[c].ToString(), System.Globalization.NumberStyles.AllowThousands);
                     }
                     dr["TotalInput"] = totalInput.ToString();
                     totalInput = 0;
@@ -405,7 +405,7 @@ namespace Forecast
             }
         }
         #endregion
-#region Column toggles
+        #region Column toggles
         private void toggleInputLY(bool visible)
         {
             string columnHeader = "";
@@ -437,7 +437,7 @@ namespace Forecast
             foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[0].Columns)
             {
                 columnHeader = uc.Key;
-                if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Planned LY")
+                if (columnHeader.Length >= 4 && columnHeader.Substring(columnHeader.Length - 4) == "Plan")
                 {
                     uc.CellActivation = Activation.Disabled;
                     uc.Hidden = !visible;
@@ -447,7 +447,7 @@ namespace Forecast
             foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
             {
                 columnHeader = uc.Key;
-                if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Planned LY")
+                if (columnHeader.Length >= 4 && columnHeader.Substring(columnHeader.Length - 4) == "Plan")
                 {
                     uc.CellActivation = Activation.Disabled;
                     uc.Hidden = !visible;
@@ -479,7 +479,7 @@ namespace Forecast
             }
         }
         #endregion
-#region Comboboxes
+        #region Comboboxes
         private void cmbInputGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbInputGroup.Enabled)
@@ -506,33 +506,16 @@ namespace Forecast
             }
         }
         #endregion
-#region BS Button pushing stuff
+        #region BS Button pushing stuff
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void pnExpand_Click(object sender, EventArgs e)
         {
-            string startWeek = txtStartWeek.Text;
-            string endWeek = txtEndWeek.Text;
-            if (startWeek.Length > 0 && endWeek.Length > 0 && cbRegions.CheckedItems.Count > 0)
-            {
-                List<string> nameIds = new List<string>();
-                foreach (DataRowView dv in cbRegions.CheckedItems)
-                {
-                    nameIds.Add(dv[cbRegions.ValueMember].ToString());
-                }
+            grdInputDetail.Rows.ExpandAll(true);
+        }
 
-                string regions = string.Join(",", nameIds.ToArray());
-                string query = "usp_FC_SelectInputDetail @startWeek='" + startWeek + "', @endWeek='" + endWeek + "', @nameIds='" + regions + "', @band=";
-                loadingSpinner.Spinning = true;
-                loadingSpinner.Visible = true;
-                pnLoading.Visible = true;
-
-                grdInputDetail.Enabled = false;
-                bgLoading.RunWorkerAsync(query);
-            }
-            else
-            {
-                MessageBox.Show("Please select one or more regions and enter valid start/end weeks to continue.");
-            }
+        private void pnColapse_Click(object sender, EventArgs e)
+        {
+            grdInputDetail.Rows.CollapseAll(true);
         }
 
         private void lnSetup_Click(object sender, EventArgs e)
@@ -572,54 +555,166 @@ namespace Forecast
 
         private void txtStartWeek_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && txtStartWeek.Text.Length <=2;
+
         }
 
         private void txtEndWeek_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && txtEndWeek.Text.Length <=2;
         }
 
         private void lnChooseColumns_Click(object sender, EventArgs e)
         {
             grdInputDetail.ShowColumnChooser();
         }
-        #endregion
-#region Background loader
-        private void bgLoading_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+
+        private void txtStartWeek_Leave(object sender, EventArgs e)
         {
-            loadingSpinner.Spinning = false;
-            loadingSpinner.Visible = false;
-            pnLoading.Visible = false;
-            grdInputDetail.Enabled = true;
-            pnExpand.Enabled = true;
-            pnColapse.Enabled = true;
-
-            grdInputDetail.DataSource = inputDetail;
-
-            GridLayout();//Set up the display of the grid
+            Properties.Settings.Default.startWeek = txtStartWeek.Text;
+            Properties.Settings.Default.Save();
         }
 
-        private void bgLoading_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void txtEndWeek_Leave(object sender, EventArgs e)
         {
-            buildGrid((string)e.Argument);
+            Properties.Settings.Default.endWeek = txtEndWeek.Text;
+            Properties.Settings.Default.Save();
         }
         #endregion
-#region Update region
+        #region Background loader
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            string startWeek = txtStartWeek.Text;
+            string endWeek = txtEndWeek.Text;
+            if (startWeek.Length > 0 && endWeek.Length > 0 && cbRegions.CheckedItems.Count > 0)
+            {
+                //Clear the tables
+                inDetail.Clear();
+                inHeader.Clear();
+
+                string columnHeader = "";
+                int n;
+                var weekColumns = new List<string>();
+
+                //Clear out the column headers for the weeks (we let it fill a new list in)
+                foreach (DataColumn dc in inHeader.Columns)
+                {
+                    columnHeader = dc.ColumnName.Length >= 4 ? dc.ColumnName : "xxxx"; //Sanity check to make sure we have enough spaces to parse
+                    if (int.TryParse(columnHeader.Substring(0, 4), out n)) //It's a number so it must be a week
+                    {
+                        weekColumns.Add(columnHeader);
+                    }
+                }
+
+                foreach (var week in weekColumns)
+                {
+                    inHeader.Columns.Remove(week);
+                    inDetail.Columns.Remove(week);
+                }
+
+                //Create list of regions
+                List<string> nameIds = new List<string>();
+                foreach (DataRowView dv in cbRegions.CheckedItems)
+                {
+                    nameIds.Add(dv[cbRegions.ValueMember].ToString());
+                }
+
+                //Build query
+                string regions = string.Join(",", nameIds.ToArray());
+                string query = "usp_FC_SelectInputDetail @startWeek='" + startWeek + "', @endWeek='" + endWeek + "', @nameIds='" + regions + "', @band=";
+
+                //Display loading panel
+                pnLoading.Visible = true;
+                grdInputDetail.Enabled = false;
+
+                //Fire off background processes
+                bgHeader.RunWorkerAsync(query);
+                bgDetail.RunWorkerAsync(query);
+            }
+            else
+            {
+                MessageBox.Show("Please select one or more regions and enter valid start/end weeks to continue.");
+            }
+        }
+
+        private void bgHeader_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(Global.SQLCON);
+            using (sc)
+            {
+                using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand((string)e.Argument + '1', sc))
+                {
+                    sc.Open();
+
+                    System.Data.SqlClient.SqlDataReader read = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    if (read.HasRows)
+                    {
+                        bgHeaderTable.Reset();
+                        bgHeaderTable.Load(read);
+                    }
+                }
+            }
+        }
+
+        private void bgHeader_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            inHeader.Merge(bgHeaderTable);
+            foreach (DataColumn col in inHeader.Columns) col.ReadOnly = false;
+
+            if (!bgDetail.IsBusy)
+            {
+                buildGrid();
+                GridLayout();//Set up the display of the grid
+            }
+        }
+
+        private void bgDetail_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(Global.SQLCON);
+            using (sc)
+            {
+                using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand((string)e.Argument + '0', sc))
+                {
+                    sc.Open();
+
+                    System.Data.SqlClient.SqlDataReader read = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    if (read.HasRows)
+                    {
+                        bgDetailTable.Reset();
+                        bgDetailTable.Load(read);
+                    }
+                }
+            }
+        }
+
+        private void bgDetail_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            inDetail.Merge(bgDetailTable);
+            foreach (DataColumn col in inDetail.Columns) col.ReadOnly = false;
+
+            if (!bgHeader.IsBusy)
+            {
+                buildGrid();
+                GridLayout();//Set up the display of the grid
+            }
+        }
+        #endregion
+        #region Update region
         private void grdInputDetail_AfterCellUpdate(object sender, CellEventArgs e)
         {
-            TotalInputs(e.Cell.Row.Cells["prodId"].Text);
+            string band = e.Cell.Row.Band.Index.ToString();
+            string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
+            int qty = int.Parse(e.Cell.Text, System.Globalization.NumberStyles.AllowThousands);
+            string prodId = e.Cell.Row.Cells["prodId"].Text;
+            string region = e.Cell.Row.Cells["regionId"].Text;
+            string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
+            string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0,4);
+
+            TotalInputs(prodId);
+
+            Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + qty + ", @prodId=" + prodId + 
+                                                        ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "'");
         }
         #endregion
-
-        private void pnExpand_Click(object sender, EventArgs e)
-        {
-            grdInputDetail.Rows.ExpandAll(true);
-        }
-
-        private void pnColapse_Click(object sender, EventArgs e)
-        {
-            grdInputDetail.Rows.CollapseAll(true);
-        }
     }
 }
