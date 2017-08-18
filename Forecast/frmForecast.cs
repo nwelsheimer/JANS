@@ -539,6 +539,7 @@ namespace Forecast
 
         private void grdInputDetail_KeyDown(object sender, KeyEventArgs e)
         {
+        //    e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.);
             Global.GridNavigation(grdInputDetail, e);
         }
 
