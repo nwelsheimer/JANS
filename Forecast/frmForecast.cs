@@ -194,6 +194,10 @@ namespace Forecast
             grdInputDetail.Rows.Refresh(RefreshRow.FireInitializeRow, true);
             pnExpand.Enabled = true;
             pnColapse.Enabled = true;
+            cbInputLY.Enabled = true;
+            cbPlannedLY.Enabled = true;
+            cbShippedLY.Enabled = true;
+
         }
 
         private void grdInputDetail_InitializeRow(object sender, InitializeRowEventArgs e) //Occurs whenever rows are updated, heavy lifting happens here.
@@ -702,19 +706,38 @@ namespace Forecast
         #region Update region
         private void grdInputDetail_AfterCellUpdate(object sender, CellEventArgs e)
         {
-            string band = e.Cell.Row.Band.Index.ToString();
-            string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
-            int qty = int.Parse(e.Cell.Text, System.Globalization.NumberStyles.AllowThousands);
-            string prodId = e.Cell.Row.Cells["prodId"].Text;
-            string region = e.Cell.Row.Cells["regionId"].Text;
-            string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
-            string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0,4);
+            int n = 0;
+            int.TryParse(e.Cell.Text, out n);
+            if (n > -1)
+            {
+                string band = e.Cell.Row.Band.Index.ToString();
+                string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
+                //   int qty = int.Parse(e.Cell.Text, System.Globalization.NumberStyles.AllowThousands);
+                string prodId = e.Cell.Row.Cells["prodId"].Text;
+                string region = e.Cell.Row.Cells["regionId"].Text;
+                string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
+                string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0, 4);
 
-            TotalInputs(prodId);
+                TotalInputs(prodId);
 
-            Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + qty + ", @prodId=" + prodId + 
-                                                        ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "'");
+                Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
+                                                            ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "'");
+            }
+            else {
+            e.Cell.Value = "0";
+            grdInputDetail.UpdateData();
+            }
         }
         #endregion
+
+        private void grdInputDetail_BeforeCellUpdate(object sender, BeforeCellUpdateEventArgs e)
+        {
+            int n = 0;
+            int.TryParse(e.Cell.Text, out n);
+            if (n < 0)
+            {
+                e.Cell.CancelUpdate();
+            }
+        }
     }
 }
