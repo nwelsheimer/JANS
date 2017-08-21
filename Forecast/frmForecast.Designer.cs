@@ -75,7 +75,8 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(58, 60);
+            this.metroLabel1.Location = new System.Drawing.Point(106, 111);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(79, 19);
             this.metroLabel1.TabIndex = 0;
@@ -84,7 +85,8 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(58, 112);
+            this.metroLabel2.Location = new System.Drawing.Point(106, 207);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(66, 19);
             this.metroLabel2.TabIndex = 1;
@@ -93,7 +95,8 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(258, 60);
+            this.metroLabel3.Location = new System.Drawing.Point(473, 111);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(104, 19);
             this.metroLabel3.TabIndex = 2;
@@ -104,9 +107,10 @@
             this.cmbInputGroup.Enabled = false;
             this.cmbInputGroup.FormattingEnabled = true;
             this.cmbInputGroup.ItemHeight = 23;
-            this.cmbInputGroup.Location = new System.Drawing.Point(58, 82);
+            this.cmbInputGroup.Location = new System.Drawing.Point(106, 151);
+            this.cmbInputGroup.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmbInputGroup.Name = "cmbInputGroup";
-            this.cmbInputGroup.Size = new System.Drawing.Size(191, 29);
+            this.cmbInputGroup.Size = new System.Drawing.Size(347, 29);
             this.cmbInputGroup.TabIndex = 4;
             this.cmbInputGroup.UseSelectable = true;
             this.cmbInputGroup.SelectedIndexChanged += new System.EventHandler(this.cmbInputGroup_SelectedIndexChanged);
@@ -116,9 +120,10 @@
             this.cmbCustomer.Enabled = false;
             this.cmbCustomer.FormattingEnabled = true;
             this.cmbCustomer.ItemHeight = 23;
-            this.cmbCustomer.Location = new System.Drawing.Point(58, 132);
+            this.cmbCustomer.Location = new System.Drawing.Point(106, 244);
+            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(191, 29);
+            this.cmbCustomer.Size = new System.Drawing.Size(347, 29);
             this.cmbCustomer.TabIndex = 5;
             this.cmbCustomer.UseSelectable = true;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
@@ -127,16 +132,18 @@
             // 
             this.cbRegions.CheckOnClick = true;
             this.cbRegions.FormattingEnabled = true;
-            this.cbRegions.Location = new System.Drawing.Point(258, 82);
+            this.cbRegions.Location = new System.Drawing.Point(473, 151);
+            this.cbRegions.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbRegions.Name = "cbRegions";
-            this.cbRegions.Size = new System.Drawing.Size(230, 49);
+            this.cbRegions.Size = new System.Drawing.Size(418, 76);
             this.cbRegions.TabIndex = 6;
             // 
             // metroLabel4
             // 
-            this.metroLabel4.Location = new System.Drawing.Point(494, 60);
+            this.metroLabel4.Location = new System.Drawing.Point(906, 111);
+            this.metroLabel4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(101, 18);
+            this.metroLabel4.Size = new System.Drawing.Size(185, 33);
             this.metroLabel4.TabIndex = 3;
             this.metroLabel4.Text = "Filter Weeks";
             this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -147,9 +154,10 @@
             // 
             // 
             this.txtStartWeek.CustomButton.Image = null;
-            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(14, 1);
+            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(84, 4);
+            this.txtStartWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtStartWeek.CustomButton.Name = "";
-            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(11, 11);
+            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(68, 68);
             this.txtStartWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtStartWeek.CustomButton.TabIndex = 1;
             this.txtStartWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -157,7 +165,8 @@
             this.txtStartWeek.CustomButton.Visible = false;
             this.txtStartWeek.Lines = new string[] {
         "10"};
-            this.txtStartWeek.Location = new System.Drawing.Point(494, 82);
+            this.txtStartWeek.Location = new System.Drawing.Point(906, 151);
+            this.txtStartWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtStartWeek.MaxLength = 2;
             this.txtStartWeek.Name = "txtStartWeek";
             this.txtStartWeek.PasswordChar = '\0';
@@ -167,7 +176,7 @@
             this.txtStartWeek.SelectionLength = 0;
             this.txtStartWeek.SelectionStart = 0;
             this.txtStartWeek.ShortcutsEnabled = true;
-            this.txtStartWeek.Size = new System.Drawing.Size(47, 23);
+            this.txtStartWeek.Size = new System.Drawing.Size(86, 42);
             this.txtStartWeek.TabIndex = 7;
             this.txtStartWeek.Text = "10";
             this.txtStartWeek.UseSelectable = true;
@@ -183,9 +192,10 @@
             // 
             // 
             this.txtEndWeek.CustomButton.Image = null;
-            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(14, 1);
+            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(84, 4);
+            this.txtEndWeek.CustomButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtEndWeek.CustomButton.Name = "";
-            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(11, 11);
+            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(68, 68);
             this.txtEndWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEndWeek.CustomButton.TabIndex = 1;
             this.txtEndWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -193,7 +203,8 @@
             this.txtEndWeek.CustomButton.Visible = false;
             this.txtEndWeek.Lines = new string[] {
         "30"};
-            this.txtEndWeek.Location = new System.Drawing.Point(548, 82);
+            this.txtEndWeek.Location = new System.Drawing.Point(1005, 151);
+            this.txtEndWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtEndWeek.MaxLength = 2;
             this.txtEndWeek.Name = "txtEndWeek";
             this.txtEndWeek.PasswordChar = '\0';
@@ -203,7 +214,7 @@
             this.txtEndWeek.SelectionLength = 0;
             this.txtEndWeek.SelectionStart = 0;
             this.txtEndWeek.ShortcutsEnabled = true;
-            this.txtEndWeek.Size = new System.Drawing.Size(47, 23);
+            this.txtEndWeek.Size = new System.Drawing.Size(86, 42);
             this.txtEndWeek.TabIndex = 8;
             this.txtEndWeek.Text = "30";
             this.txtEndWeek.UseSelectable = true;
@@ -215,18 +226,20 @@
             // 
             // btnSumVertical
             // 
-            this.btnSumVertical.Location = new System.Drawing.Point(861, 139);
+            this.btnSumVertical.Location = new System.Drawing.Point(1579, 257);
+            this.btnSumVertical.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSumVertical.Name = "btnSumVertical";
-            this.btnSumVertical.Size = new System.Drawing.Size(101, 23);
+            this.btnSumVertical.Size = new System.Drawing.Size(185, 42);
             this.btnSumVertical.TabIndex = 9;
             this.btnSumVertical.Text = "Sum vertically";
             this.btnSumVertical.UseSelectable = true;
             // 
             // btnSumHorizontal
             // 
-            this.btnSumHorizontal.Location = new System.Drawing.Point(861, 112);
+            this.btnSumHorizontal.Location = new System.Drawing.Point(1579, 207);
+            this.btnSumHorizontal.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSumHorizontal.Name = "btnSumHorizontal";
-            this.btnSumHorizontal.Size = new System.Drawing.Size(101, 23);
+            this.btnSumHorizontal.Size = new System.Drawing.Size(185, 42);
             this.btnSumHorizontal.TabIndex = 10;
             this.btnSumHorizontal.Text = "Sum horizontally";
             this.btnSumHorizontal.UseSelectable = true;
@@ -235,9 +248,10 @@
             // 
             this.cbPlannedLY.AutoSize = true;
             this.cbPlannedLY.Enabled = false;
-            this.cbPlannedLY.Location = new System.Drawing.Point(3, 34);
+            this.cbPlannedLY.Location = new System.Drawing.Point(6, 63);
+            this.cbPlannedLY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbPlannedLY.Name = "cbPlannedLY";
-            this.cbPlannedLY.Size = new System.Drawing.Size(111, 17);
+            this.cbPlannedLY.Size = new System.Drawing.Size(194, 29);
             this.cbPlannedLY.TabIndex = 11;
             this.cbPlannedLY.Text = "Show Planned LY";
             this.cbPlannedLY.UseVisualStyleBackColor = true;
@@ -247,9 +261,10 @@
             // 
             this.cbShippedLY.AutoSize = true;
             this.cbShippedLY.Enabled = false;
-            this.cbShippedLY.Location = new System.Drawing.Point(3, 56);
+            this.cbShippedLY.Location = new System.Drawing.Point(6, 103);
+            this.cbShippedLY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbShippedLY.Name = "cbShippedLY";
-            this.cbShippedLY.Size = new System.Drawing.Size(111, 17);
+            this.cbShippedLY.Size = new System.Drawing.Size(195, 29);
             this.cbShippedLY.TabIndex = 12;
             this.cbShippedLY.Text = "Show Shipped LY";
             this.cbShippedLY.UseVisualStyleBackColor = true;
@@ -259,9 +274,10 @@
             // 
             this.cbInputLY.AutoSize = true;
             this.cbInputLY.Enabled = false;
-            this.cbInputLY.Location = new System.Drawing.Point(3, 10);
+            this.cbInputLY.Location = new System.Drawing.Point(6, 18);
+            this.cbInputLY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbInputLY.Name = "cbInputLY";
-            this.cbInputLY.Size = new System.Drawing.Size(96, 17);
+            this.cbInputLY.Size = new System.Drawing.Size(165, 29);
             this.cbInputLY.TabIndex = 14;
             this.cbInputLY.Text = "Show Input LY";
             this.cbInputLY.UseVisualStyleBackColor = true;
@@ -307,22 +323,23 @@
             this.grdInputDetail.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.grdInputDetail.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.grdInputDetail.Enabled = false;
-            this.grdInputDetail.Location = new System.Drawing.Point(23, 167);
+            this.grdInputDetail.Location = new System.Drawing.Point(42, 308);
+            this.grdInputDetail.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.grdInputDetail.Name = "grdInputDetail";
-            this.grdInputDetail.Size = new System.Drawing.Size(1004, 252);
+            this.grdInputDetail.Size = new System.Drawing.Size(1841, 465);
             this.grdInputDetail.TabIndex = 16;
             this.grdInputDetail.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdInputDetail_AfterCellUpdate);
             this.grdInputDetail.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdInputDetail_InitializeLayout);
             this.grdInputDetail.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdInputDetail_InitializeRow);
-            this.grdInputDetail.BeforeCellUpdate += new Infragistics.Win.UltraWinGrid.BeforeCellUpdateEventHandler(this.grdInputDetail_BeforeCellUpdate);
             this.grdInputDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdInputDetail_KeyDown);
             // 
             // lnSetup
             // 
             this.lnSetup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnSetup.Location = new System.Drawing.Point(980, 138);
+            this.lnSetup.Location = new System.Drawing.Point(1797, 255);
+            this.lnSetup.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lnSetup.Name = "lnSetup";
-            this.lnSetup.Size = new System.Drawing.Size(54, 23);
+            this.lnSetup.Size = new System.Drawing.Size(99, 42);
             this.lnSetup.TabIndex = 17;
             this.lnSetup.Text = "Setup";
             this.lnSetup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -332,9 +349,10 @@
             // btnRefresh
             // 
             this.btnRefresh.Enabled = false;
-            this.btnRefresh.Location = new System.Drawing.Point(494, 115);
+            this.btnRefresh.Location = new System.Drawing.Point(906, 212);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(101, 47);
+            this.btnRefresh.Size = new System.Drawing.Size(185, 87);
             this.btnRefresh.TabIndex = 18;
             this.btnRefresh.Text = "Refresh Data";
             this.btnRefresh.UseSelectable = true;
@@ -344,9 +362,10 @@
             // 
             this.lnChooseColumns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lnChooseColumns.AutoSize = true;
-            this.lnChooseColumns.Location = new System.Drawing.Point(23, 427);
+            this.lnChooseColumns.Location = new System.Drawing.Point(42, 788);
+            this.lnChooseColumns.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lnChooseColumns.Name = "lnChooseColumns";
-            this.lnChooseColumns.Size = new System.Drawing.Size(100, 23);
+            this.lnChooseColumns.Size = new System.Drawing.Size(183, 42);
             this.lnChooseColumns.TabIndex = 19;
             this.lnChooseColumns.Text = "Choose Columns";
             this.lnChooseColumns.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -356,9 +375,10 @@
             // lnSaveLayout
             // 
             this.lnSaveLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lnSaveLayout.Location = new System.Drawing.Point(129, 427);
+            this.lnSaveLayout.Location = new System.Drawing.Point(237, 788);
+            this.lnSaveLayout.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lnSaveLayout.Name = "lnSaveLayout";
-            this.lnSaveLayout.Size = new System.Drawing.Size(75, 23);
+            this.lnSaveLayout.Size = new System.Drawing.Size(138, 42);
             this.lnSaveLayout.TabIndex = 20;
             this.lnSaveLayout.Text = "Save Layout";
             this.lnSaveLayout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -370,9 +390,11 @@
             this.groupBox1.Controls.Add(this.rdRetail);
             this.groupBox1.Controls.Add(this.rdUnits);
             this.groupBox1.Controls.Add(this.rdCost);
-            this.groupBox1.Location = new System.Drawing.Point(733, 77);
+            this.groupBox1.Location = new System.Drawing.Point(1344, 142);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(122, 86);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Size = new System.Drawing.Size(224, 159);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Display historical";
@@ -380,9 +402,10 @@
             // rdRetail
             // 
             this.rdRetail.AutoSize = true;
-            this.rdRetail.Location = new System.Drawing.Point(6, 62);
+            this.rdRetail.Location = new System.Drawing.Point(11, 114);
+            this.rdRetail.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rdRetail.Name = "rdRetail";
-            this.rdRetail.Size = new System.Drawing.Size(52, 17);
+            this.rdRetail.Size = new System.Drawing.Size(85, 29);
             this.rdRetail.TabIndex = 2;
             this.rdRetail.Text = "Retail";
             this.rdRetail.UseVisualStyleBackColor = true;
@@ -391,9 +414,10 @@
             // 
             this.rdUnits.AutoSize = true;
             this.rdUnits.Checked = true;
-            this.rdUnits.Location = new System.Drawing.Point(6, 16);
+            this.rdUnits.Location = new System.Drawing.Point(11, 30);
+            this.rdUnits.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rdUnits.Name = "rdUnits";
-            this.rdUnits.Size = new System.Drawing.Size(49, 17);
+            this.rdUnits.Size = new System.Drawing.Size(81, 29);
             this.rdUnits.TabIndex = 1;
             this.rdUnits.TabStop = true;
             this.rdUnits.Text = "Units";
@@ -402,9 +426,10 @@
             // rdCost
             // 
             this.rdCost.AutoSize = true;
-            this.rdCost.Location = new System.Drawing.Point(6, 39);
+            this.rdCost.Location = new System.Drawing.Point(11, 72);
+            this.rdCost.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rdCost.Name = "rdCost";
-            this.rdCost.Size = new System.Drawing.Size(93, 17);
+            this.rdCost.Size = new System.Drawing.Size(168, 29);
             this.rdCost.TabIndex = 0;
             this.rdCost.Text = "Customer Cost";
             this.rdCost.UseVisualStyleBackColor = true;
@@ -415,9 +440,10 @@
             this.panel1.Controls.Add(this.cbPlannedLY);
             this.panel1.Controls.Add(this.cbInputLY);
             this.panel1.Controls.Add(this.cbShippedLY);
-            this.panel1.Location = new System.Drawing.Point(605, 83);
+            this.panel1.Location = new System.Drawing.Point(1109, 153);
+            this.panel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(122, 78);
+            this.panel1.Size = new System.Drawing.Size(222, 142);
             this.panel1.TabIndex = 22;
             // 
             // bgHeader
@@ -437,15 +463,15 @@
             this.pnColapse.Enabled = false;
             this.pnColapse.HorizontalScrollbarBarColor = true;
             this.pnColapse.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnColapse.HorizontalScrollbarSize = 5;
-            this.pnColapse.Location = new System.Drawing.Point(40, 149);
-            this.pnColapse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnColapse.HorizontalScrollbarSize = 9;
+            this.pnColapse.Location = new System.Drawing.Point(73, 275);
+            this.pnColapse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnColapse.Name = "pnColapse";
-            this.pnColapse.Size = new System.Drawing.Size(14, 14);
+            this.pnColapse.Size = new System.Drawing.Size(26, 26);
             this.pnColapse.TabIndex = 26;
             this.pnColapse.VerticalScrollbarBarColor = true;
             this.pnColapse.VerticalScrollbarHighlightOnWheel = false;
-            this.pnColapse.VerticalScrollbarSize = 5;
+            this.pnColapse.VerticalScrollbarSize = 9;
             this.pnColapse.Click += new System.EventHandler(this.pnColapse_Click);
             // 
             // pnExpand
@@ -455,15 +481,15 @@
             this.pnExpand.Enabled = false;
             this.pnExpand.HorizontalScrollbarBarColor = true;
             this.pnExpand.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnExpand.HorizontalScrollbarSize = 5;
-            this.pnExpand.Location = new System.Drawing.Point(23, 149);
-            this.pnExpand.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnExpand.HorizontalScrollbarSize = 9;
+            this.pnExpand.Location = new System.Drawing.Point(42, 275);
+            this.pnExpand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnExpand.Name = "pnExpand";
-            this.pnExpand.Size = new System.Drawing.Size(14, 14);
+            this.pnExpand.Size = new System.Drawing.Size(26, 26);
             this.pnExpand.TabIndex = 25;
             this.pnExpand.VerticalScrollbarBarColor = true;
             this.pnExpand.VerticalScrollbarHighlightOnWheel = false;
-            this.pnExpand.VerticalScrollbarSize = 5;
+            this.pnExpand.VerticalScrollbarSize = 9;
             this.pnExpand.Click += new System.EventHandler(this.pnExpand_Click);
             // 
             // pnLoading
@@ -475,24 +501,24 @@
             this.pnLoading.Controls.Add(this.pictureBox1);
             this.pnLoading.HorizontalScrollbarBarColor = true;
             this.pnLoading.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnLoading.HorizontalScrollbarSize = 5;
-            this.pnLoading.Location = new System.Drawing.Point(352, 138);
-            this.pnLoading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnLoading.HorizontalScrollbarSize = 9;
+            this.pnLoading.Location = new System.Drawing.Point(645, 255);
+            this.pnLoading.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnLoading.Name = "pnLoading";
-            this.pnLoading.Size = new System.Drawing.Size(347, 170);
+            this.pnLoading.Size = new System.Drawing.Size(635, 312);
             this.pnLoading.TabIndex = 24;
             this.pnLoading.VerticalScrollbarBarColor = true;
             this.pnLoading.VerticalScrollbarHighlightOnWheel = false;
-            this.pnLoading.VerticalScrollbarSize = 5;
+            this.pnLoading.VerticalScrollbarSize = 9;
             this.pnLoading.Visible = false;
             // 
             // metroLabel5
             // 
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel5.Location = new System.Drawing.Point(83, 2);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(152, 4);
+            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(179, 30);
+            this.metroLabel5.Size = new System.Drawing.Size(328, 55);
             this.metroLabel5.TabIndex = 24;
             this.metroLabel5.Text = "Loading Input Data...";
             this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -500,18 +526,18 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Forecast.Properties.Resources.trumperpillar2;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 33);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(342, 134);
+            this.pictureBox1.Size = new System.Drawing.Size(627, 247);
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             // 
             // frmForecast
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 453);
+            this.ClientSize = new System.Drawing.Size(1927, 836);
             this.Controls.Add(this.pnColapse);
             this.Controls.Add(this.pnExpand);
             this.Controls.Add(this.pnLoading);
@@ -533,8 +559,9 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmForecast";
-            this.Padding = new System.Windows.Forms.Padding(20, 60, 20, 21);
+            this.Padding = new System.Windows.Forms.Padding(37, 111, 37, 39);
             this.Text = "Forecasting";
             this.Load += new System.EventHandler(this.frmForecast_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdInputDetail)).EndInit();

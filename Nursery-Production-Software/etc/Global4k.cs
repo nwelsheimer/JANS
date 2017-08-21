@@ -581,6 +581,18 @@ namespace General
                     e.Handled = true;
                     grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
                     break;
+                case Keys.Left:
+                    grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
+                    grid.PerformAction(UltraGridAction.PrevCell, false, false);
+                    e.Handled = true;
+                    grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
+                    break;
+                case Keys.Right:
+                    grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
+                    grid.PerformAction(UltraGridAction.NextCell, false, false);
+                    e.Handled = true;
+                    grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
+                    break;
                 case Keys.Enter:
                     grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
                     grid.PerformAction(UltraGridAction.BelowCell, false, false);
