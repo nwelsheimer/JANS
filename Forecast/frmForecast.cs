@@ -862,5 +862,22 @@ namespace Forecast
             }
         }
         #endregion
+        #region Export
+        private void lnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+
+            sf.FileName = "export.xls";
+            sf.Filter = "Excel (*.xls)|*.xls|All Files (*.*)|*.*";
+
+            if (sf.ShowDialog() == DialogResult.OK)
+                this.exportExcel.Export(this.grdInputDetail, sf.FileName);
+        }
+
+        private void exportExcel_ExportStarted(object sender, Infragistics.Win.UltraWinGrid.ExcelExport.ExportStartedEventArgs e)
+        {
+            e.Layout.Bands[0].Override.HeaderPlacement = HeaderPlacement.FixedOnTop;
+        }
+#endregion
     }
 }
