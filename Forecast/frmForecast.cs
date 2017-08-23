@@ -16,6 +16,7 @@ namespace Forecast
         DataTable bgHeaderTable = new DataTable();
         DataTable inDetail = new DataTable();
         DataTable bgDetailTable = new DataTable();
+        DataTable summaryInfo = new DataTable();
         bool loading = true;
 
         #region Startup routines
@@ -55,6 +56,8 @@ namespace Forecast
             TotalInputLY();
             TotalShipped();
             TotalPlanned();
+
+            buildSummaryTables();
 
             if (loading)
             {
@@ -214,6 +217,7 @@ namespace Forecast
             pnLoading.Visible = false;
             grdInputDetail.Enabled = true;
             grdInputDetail.Rows.Refresh(RefreshRow.FireInitializeRow, true);
+            //grdSummary.Enabled = true;
             pnExpand.Enabled = true;
             pnColapse.Enabled = true;
             cbInputLY.Checked = false;
@@ -297,6 +301,36 @@ namespace Forecast
                 }
 
             }
+        }
+
+        private void buildSummaryTables() //Clear and create table structure in the summary table based on the week columns in the header table
+        {
+            string columnHeader = "";
+            int n;
+
+            summaryInfo.Reset();
+
+            DataView v = new DataView(inDetail);
+            summaryInfo = v.ToTable(true, "Site");
+
+            for (int c = 0; c < inHeader.Columns.Count; c++)
+            {
+                columnHeader = inHeader.Columns[c].ColumnName.Length > 5 ? inHeader.Columns[c].ColumnName : "xxxxx";
+                if (int.TryParse(columnHeader.Substring(0, 4), out n) && inHeader.Columns[c].ColumnName.Substring(inHeader.Columns[c].ColumnName.Length - 5) == "Input")
+                    summaryInfo.Columns.Add(columnHeader.Substring(0, 4));
+            }
+            calculateSummary();
+
+            grdSummary.DataSource = summaryInfo;
+
+            foreach (UltraGridColumn c in grdSummary.DisplayLayout.Bands[0].Columns)
+            {
+                c.CellActivation = Activation.Disabled;
+                c.Width = 55;
+                c.Format = "n0";
+            }
+
+            grdSummary.Enabled = true;
         }
         #endregion
         #region Math section
@@ -466,6 +500,39 @@ namespace Forecast
                 }
                 dr["TotalShippedLY"] = totalShipped.ToString();
                 totalShipped = 0;
+            }
+        }
+
+        private void calculateSummary(string site = "", string week = "")
+        {
+            int qty;
+            string columnHeader = "";
+
+            if (site.Length>0) //inputs were specified, save some time and only update the one cell
+            {
+                qty = 0;
+                columnHeader = week + " Input";
+                qty = Convert.ToInt32(inDetail.Compute("SUM([" + columnHeader + "])", "Site = '" + site + "'").ToString());
+
+                DataRow[] r = summaryInfo.Select("Site = '"+site+"'");
+
+                foreach (DataRow dr in r)
+                {
+                    dr[week] = qty;
+                }
+            } else //probably initial load. Compute the whole grid.
+            {
+                foreach (DataRow dr in summaryInfo.Rows)
+                {
+                    site = dr["Site"].ToString();
+                    for (int i = 1; i<summaryInfo.Columns.Count;i++)
+                    {
+                        qty = 0;
+                        columnHeader = summaryInfo.Columns[i].ColumnName + " Input";
+                        qty = Convert.ToInt32(inDetail.Compute("SUM(["+columnHeader+"])", "Site = '"+site+"'").ToString());
+                        dr[i] = qty.ToString("N0");
+                    }
+                }
             }
         }
         #endregion
@@ -785,6 +852,9 @@ namespace Forecast
 
                 Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
                                                             ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "'");
+
+                if (band == "1")
+                    calculateSummary(e.Cell.Row.Cells["Site"].Text, readyWeek);
             }
             else {
             e.Cell.Value = "0";

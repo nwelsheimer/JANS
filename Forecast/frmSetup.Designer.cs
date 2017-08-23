@@ -48,10 +48,10 @@
             // 
             this.cmbInputName.FormattingEnabled = true;
             this.cmbInputName.ItemHeight = 23;
-            this.cmbInputName.Location = new System.Drawing.Point(55, 175);
-            this.cmbInputName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbInputName.Location = new System.Drawing.Point(30, 95);
+            this.cmbInputName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbInputName.Name = "cmbInputName";
-            this.cmbInputName.Size = new System.Drawing.Size(413, 29);
+            this.cmbInputName.Size = new System.Drawing.Size(227, 29);
             this.cmbInputName.TabIndex = 0;
             this.cmbInputName.UseSelectable = true;
             this.cmbInputName.SelectedIndexChanged += new System.EventHandler(this.cmbInputName_SelectedIndexChanged);
@@ -60,39 +60,38 @@
             // 
             this.cmbCustomer.FormattingEnabled = true;
             this.cmbCustomer.ItemHeight = 23;
-            this.cmbCustomer.Location = new System.Drawing.Point(713, 175);
-            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCustomer.Location = new System.Drawing.Point(389, 95);
+            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(420, 29);
+            this.cmbCustomer.Size = new System.Drawing.Size(231, 29);
             this.cmbCustomer.TabIndex = 1;
             this.cmbCustomer.UseSelectable = true;
             // 
             // lbRegions
             // 
             this.lbRegions.FormattingEnabled = true;
-            this.lbRegions.ItemHeight = 24;
-            this.lbRegions.Location = new System.Drawing.Point(55, 290);
-            this.lbRegions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbRegions.Location = new System.Drawing.Point(30, 157);
+            this.lbRegions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbRegions.Name = "lbRegions";
-            this.lbRegions.Size = new System.Drawing.Size(413, 388);
+            this.lbRegions.Size = new System.Drawing.Size(227, 212);
             this.lbRegions.TabIndex = 3;
             this.lbRegions.SelectedIndexChanged += new System.EventHandler(this.lbRegions_SelectedIndexChanged);
             // 
             // cbAssignedPlans
             // 
             this.cbAssignedPlans.FormattingEnabled = true;
-            this.cbAssignedPlans.Location = new System.Drawing.Point(55, 857);
-            this.cbAssignedPlans.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbAssignedPlans.Location = new System.Drawing.Point(30, 464);
+            this.cbAssignedPlans.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAssignedPlans.Name = "cbAssignedPlans";
-            this.cbAssignedPlans.Size = new System.Drawing.Size(420, 364);
+            this.cbAssignedPlans.Size = new System.Drawing.Size(231, 199);
             this.cbAssignedPlans.TabIndex = 4;
             // 
             // btnAddRegion
             // 
-            this.btnAddRegion.Location = new System.Drawing.Point(303, 759);
-            this.btnAddRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddRegion.Location = new System.Drawing.Point(165, 411);
+            this.btnAddRegion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddRegion.Name = "btnAddRegion";
-            this.btnAddRegion.Size = new System.Drawing.Size(167, 42);
+            this.btnAddRegion.Size = new System.Drawing.Size(91, 23);
             this.btnAddRegion.TabIndex = 6;
             this.btnAddRegion.Text = "Add Region";
             this.btnAddRegion.UseSelectable = true;
@@ -103,18 +102,18 @@
             // 
             // 
             this.txtNewRegion.CustomButton.Image = null;
-            this.txtNewRegion.CustomButton.Location = new System.Drawing.Point(697, 4);
-            this.txtNewRegion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNewRegion.CustomButton.Location = new System.Drawing.Point(113, 1);
+            this.txtNewRegion.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNewRegion.CustomButton.Name = "";
-            this.txtNewRegion.CustomButton.Size = new System.Drawing.Size(68, 68);
+            this.txtNewRegion.CustomButton.Size = new System.Drawing.Size(11, 11);
             this.txtNewRegion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtNewRegion.CustomButton.TabIndex = 1;
             this.txtNewRegion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtNewRegion.CustomButton.UseSelectable = true;
             this.txtNewRegion.CustomButton.Visible = false;
             this.txtNewRegion.Lines = new string[0];
-            this.txtNewRegion.Location = new System.Drawing.Point(55, 700);
-            this.txtNewRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNewRegion.Location = new System.Drawing.Point(30, 379);
+            this.txtNewRegion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNewRegion.MaxLength = 32767;
             this.txtNewRegion.Name = "txtNewRegion";
             this.txtNewRegion.PasswordChar = '\0';
@@ -124,7 +123,7 @@
             this.txtNewRegion.SelectionLength = 0;
             this.txtNewRegion.SelectionStart = 0;
             this.txtNewRegion.ShortcutsEnabled = true;
-            this.txtNewRegion.Size = new System.Drawing.Size(420, 42);
+            this.txtNewRegion.Size = new System.Drawing.Size(229, 23);
             this.txtNewRegion.TabIndex = 8;
             this.txtNewRegion.UseSelectable = true;
             this.txtNewRegion.WaterMark = "New Region";
@@ -135,8 +134,8 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(55, 126);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(30, 68);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(123, 19);
             this.metroLabel1.TabIndex = 10;
@@ -146,8 +145,8 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(55, 240);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(30, 130);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(57, 19);
             this.metroLabel2.TabIndex = 11;
@@ -157,8 +156,8 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(55, 807);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel3.Location = new System.Drawing.Point(30, 437);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(100, 19);
             this.metroLabel3.TabIndex = 12;
@@ -168,8 +167,8 @@
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel4.Location = new System.Drawing.Point(713, 240);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel4.Location = new System.Drawing.Point(389, 130);
+            this.metroLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(95, 19);
             this.metroLabel4.TabIndex = 13;
@@ -179,8 +178,8 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(713, 126);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(389, 68);
+            this.metroLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(128, 19);
             this.metroLabel5.TabIndex = 14;
@@ -188,10 +187,10 @@
             // 
             // metroLink1
             // 
-            this.metroLink1.Location = new System.Drawing.Point(479, 192);
-            this.metroLink1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroLink1.Location = new System.Drawing.Point(261, 104);
+            this.metroLink1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(95, 22);
+            this.metroLink1.Size = new System.Drawing.Size(52, 12);
             this.metroLink1.TabIndex = 15;
             this.metroLink1.Text = "+ ADD";
             this.metroLink1.UseSelectable = true;
@@ -199,19 +198,19 @@
             // lbSKURegions
             // 
             this.lbSKURegions.FormattingEnabled = true;
-            this.lbSKURegions.ItemHeight = 24;
-            this.lbSKURegions.Location = new System.Drawing.Point(713, 290);
-            this.lbSKURegions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbSKURegions.Location = new System.Drawing.Point(389, 157);
+            this.lbSKURegions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbSKURegions.Name = "lbSKURegions";
-            this.lbSKURegions.Size = new System.Drawing.Size(413, 388);
+            this.lbSKURegions.Size = new System.Drawing.Size(227, 212);
             this.lbSKURegions.TabIndex = 16;
             // 
             // lnReset
             // 
             this.lnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnReset.Location = new System.Drawing.Point(860, 1250);
+            this.lnReset.Location = new System.Drawing.Point(475, 642);
+            this.lnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lnReset.Name = "lnReset";
-            this.lnReset.Size = new System.Drawing.Size(266, 23);
+            this.lnReset.Size = new System.Drawing.Size(145, 21);
             this.lnReset.TabIndex = 17;
             this.lnReset.Text = "Reset Defaults";
             this.lnReset.UseSelectable = true;
@@ -219,9 +218,9 @@
             // 
             // frmSetup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 1296);
+            this.ClientSize = new System.Drawing.Size(646, 692);
             this.Controls.Add(this.lnReset);
             this.Controls.Add(this.lbSKURegions);
             this.Controls.Add(this.metroLink1);
@@ -236,9 +235,9 @@
             this.Controls.Add(this.lbRegions);
             this.Controls.Add(this.cmbCustomer);
             this.Controls.Add(this.cmbInputName);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmSetup";
-            this.Padding = new System.Windows.Forms.Padding(20, 111, 20, 20);
+            this.Padding = new System.Windows.Forms.Padding(11, 60, 11, 11);
             this.Resizable = false;
             this.Text = "Setup";
             this.Load += new System.EventHandler(this.frmSetup_Load);
