@@ -85,6 +85,26 @@ namespace Forecast
 
                 cbAssignedPlans.Enabled = false;
                 DataTable plans = Global.GetData("usp_FC_SelectSetup @selection=5, @input=" + lbRegions.SelectedValue.ToString()).Tables[0];
+                cbAssignedPlans.DataSource = plans;
+                cbAssignedPlans.DisplayMember = "Description";
+                cbAssignedPlans.ValueMember = "Id";
+                
+                bool selected = false;
+                string id = "";
+                index = 0;
+                foreach (DataRow r in plans.Rows)
+                {
+                    selected = Convert.ToBoolean(r["Selected"]);
+                    id = r["Id"].ToString();
+                    index = cbAssignedPlans.Items.IndexOf(id);
+                    for (int i = 0; i < cbAssignedPlans.Items.Count; i++)
+                    {
+                        if (((System.Data.DataRowView)(cbAssignedPlans.Items[i])).Row.ItemArray[0].ToString() == id)
+                            cbAssignedPlans.SetItemChecked(i, selected);
+                    }
+                }
+
+                cbAssignedPlans.Enabled = true;
             }
         }
 
@@ -139,6 +159,43 @@ namespace Forecast
             {
                 Global.ExecuteQuery("usp_FC_UpdateRegions @id=" + lbRegions.SelectedValue.ToString() + ", @skuLevelId="+lbSKURegions.SelectedValue.ToString());
             }
+        }
+
+        private void cbAssignedPlans_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (cbAssignedPlans.Enabled)
+            {
+                string planId = cbAssignedPlans.SelectedValue.ToString();
+                string regionId = lbRegions.SelectedValue.ToString();
+                string cbState = e.NewValue == CheckState.Checked ? "1" : "0";
+
+                Global.ExecuteQuery("usp_FC_updateRegionplans @regionId="+regionId+", @planId="+planId+", @cbState=" + cbState);
+            }
+        }
+
+        private void btnAddGroup_Click(object sender, EventArgs e)
+        {
+            string newGroupName = txtNewInputName.Text;
+            string newYear = txtYear.Text;
+            bool copyExisting = cbCopyFrom.Checked;
+
+            if (newGroupName.Length > 0 && newYear.Length > 0)
+            {
+                if (copyExisting && cmbInputName.SelectedIndex == -1)
+                    MessageBox.Show("You must select an existing group from the drop down to use the copy feature.");
+                else
+                {
+                    string oldId = copyExisting ? cmbInputName.SelectedValue.ToString() : "0";
+                    Global.ExecuteQuery("usp_FC_InsertNewGroup @newGroupName="+newGroupName+", @newYear="+newYear+", @oldInputId=" + oldId);
+                    txtNewInputName.Text = "";
+                }
+            } else
+                MessageBox.Show("Please enter a group name and year to continue.");
+        }
+
+        private void txtYear_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && txtYear.Text.Length <= 4;
         }
     }
 }

@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="metroLabel7.Text" xml:space="preserve">
+    <value>To add a new input sheet, type the name in the box below and press add. If you wish to use an existing input sheet as a template, check the box 'Copy from existing', select the group you wish to use as a template, type in a name, then press add.</value>
+  </data>
 </root>
