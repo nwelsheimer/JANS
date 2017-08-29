@@ -9,7 +9,7 @@ using General;
 
 namespace Forecast
 {
-    public partial class frmForecast : MetroForm
+    public partial class frmForecast : Form
     {
         DataSet inputDetail = new DataSet();
         DataTable inHeader = new DataTable();
@@ -18,6 +18,7 @@ namespace Forecast
         DataTable bgDetailTable = new DataTable();
         DataTable summaryInfo = new DataTable();
         bool loading = true;
+        string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
         #region Startup routines
         public frmForecast()
@@ -837,7 +838,15 @@ namespace Forecast
         private void grdInputDetail_AfterCellUpdate(object sender, CellEventArgs e)
         {
             int n = 0;
-            int.TryParse(e.Cell.Text, out n);
+            try
+            {
+                n= int.Parse(e.Cell.Text, System.Globalization.NumberStyles.AllowThousands);
+            } catch
+            {
+                n = -1;
+            }
+
+            //int.TryParse(e.Cell.Text, out n);
             if (n > -1)
             {
                 string band = e.Cell.Row.Band.Index.ToString();
@@ -851,7 +860,7 @@ namespace Forecast
                 TotalInputs(prodId);
 
                 Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
-                                                            ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "'");
+                                                            ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "', @userName='"+userName+"'");
 
                 if (band == "1")
                     calculateSummary(e.Cell.Row.Cells["Site"].Text, readyWeek);

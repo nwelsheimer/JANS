@@ -132,9 +132,9 @@
             this.grdInputDetail.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.grdInputDetail.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.grdInputDetail.Enabled = false;
-            this.grdInputDetail.Location = new System.Drawing.Point(7, 175);
+            this.grdInputDetail.Location = new System.Drawing.Point(7, 130);
             this.grdInputDetail.Name = "grdInputDetail";
-            this.grdInputDetail.Size = new System.Drawing.Size(704, 265);
+            this.grdInputDetail.Size = new System.Drawing.Size(704, 310);
             this.grdInputDetail.TabIndex = 16;
             this.grdInputDetail.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdInputDetail_AfterCellUpdate);
             this.grdInputDetail.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdInputDetail_InitializeLayout);
@@ -198,7 +198,7 @@
             this.pnLoading.HorizontalScrollbarHighlightOnWheel = false;
             this.pnLoading.HorizontalScrollbarSize = 5;
             this.pnLoading.Location = new System.Drawing.Point(184, 209);
-            this.pnLoading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnLoading.Margin = new System.Windows.Forms.Padding(2);
             this.pnLoading.Name = "pnLoading";
             this.pnLoading.Size = new System.Drawing.Size(347, 170);
             this.pnLoading.TabIndex = 24;
@@ -222,7 +222,7 @@
             // 
             this.pictureBox1.Image = global::Forecast.Properties.Resources.trumperpillar2;
             this.pictureBox1.Location = new System.Drawing.Point(2, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(342, 134);
             this.pictureBox1.TabIndex = 25;
@@ -241,8 +241,8 @@
             this.pnMainMenu.HorizontalScrollbarBarColor = true;
             this.pnMainMenu.HorizontalScrollbarHighlightOnWheel = false;
             this.pnMainMenu.HorizontalScrollbarSize = 5;
-            this.pnMainMenu.Location = new System.Drawing.Point(7, 51);
-            this.pnMainMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnMainMenu.Location = new System.Drawing.Point(7, 5);
+            this.pnMainMenu.Margin = new System.Windows.Forms.Padding(2);
             this.pnMainMenu.Name = "pnMainMenu";
             this.pnMainMenu.Size = new System.Drawing.Size(705, 120);
             this.pnMainMenu.TabIndex = 28;
@@ -258,7 +258,7 @@
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 5;
             this.metroPanel4.Location = new System.Drawing.Point(493, 0);
-            this.metroPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel4.Name = "metroPanel4";
             this.metroPanel4.Size = new System.Drawing.Size(0, 118);
             this.metroPanel4.TabIndex = 32;
@@ -295,7 +295,7 @@
             this.grdSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdSummary.Enabled = false;
             this.grdSummary.Location = new System.Drawing.Point(0, 0);
-            this.grdSummary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grdSummary.Margin = new System.Windows.Forms.Padding(2);
             this.grdSummary.Name = "grdSummary";
             this.grdSummary.Size = new System.Drawing.Size(0, 118);
             this.grdSummary.TabIndex = 2;
@@ -306,7 +306,7 @@
             this.ultraSplitter2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ultraSplitter2.Dock = System.Windows.Forms.DockStyle.Right;
             this.ultraSplitter2.Location = new System.Drawing.Point(431, 0);
-            this.ultraSplitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ultraSplitter2.Margin = new System.Windows.Forms.Padding(2);
             this.ultraSplitter2.Name = "ultraSplitter2";
             this.ultraSplitter2.RestoreExtent = 471;
             this.ultraSplitter2.Size = new System.Drawing.Size(15, 118);
@@ -315,7 +315,7 @@
             // ultraSplitter1
             // 
             this.ultraSplitter1.Location = new System.Drawing.Point(478, 0);
-            this.ultraSplitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ultraSplitter1.Margin = new System.Windows.Forms.Padding(2);
             this.ultraSplitter1.Name = "ultraSplitter1";
             this.ultraSplitter1.RestoreExtent = 719;
             this.ultraSplitter1.Size = new System.Drawing.Size(15, 118);
@@ -334,7 +334,7 @@
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 8;
             this.metroPanel3.Location = new System.Drawing.Point(446, 0);
-            this.metroPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel3.Name = "metroPanel3";
             this.metroPanel3.Size = new System.Drawing.Size(257, 118);
             this.metroPanel3.TabIndex = 29;
@@ -474,7 +474,7 @@
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 8;
             this.metroPanel1.Location = new System.Drawing.Point(0, 0);
-            this.metroPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(478, 118);
             this.metroPanel1.TabIndex = 28;
@@ -503,7 +503,7 @@
             this.pnColapse.HorizontalScrollbarHighlightOnWheel = false;
             this.pnColapse.HorizontalScrollbarSize = 5;
             this.pnColapse.Location = new System.Drawing.Point(21, 90);
-            this.pnColapse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnColapse.Margin = new System.Windows.Forms.Padding(2);
             this.pnColapse.Name = "pnColapse";
             this.pnColapse.Size = new System.Drawing.Size(14, 14);
             this.pnColapse.TabIndex = 26;
@@ -521,7 +521,7 @@
             this.pnExpand.HorizontalScrollbarHighlightOnWheel = false;
             this.pnExpand.HorizontalScrollbarSize = 5;
             this.pnExpand.Location = new System.Drawing.Point(3, 90);
-            this.pnExpand.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnExpand.Margin = new System.Windows.Forms.Padding(2);
             this.pnExpand.Name = "pnExpand";
             this.pnExpand.Size = new System.Drawing.Size(14, 14);
             this.pnExpand.TabIndex = 25;
@@ -533,9 +533,9 @@
             // btnRefresh
             // 
             this.btnRefresh.Enabled = false;
-            this.btnRefresh.Location = new System.Drawing.Point(383, 62);
+            this.btnRefresh.Location = new System.Drawing.Point(383, 73);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(79, 36);
+            this.btnRefresh.Size = new System.Drawing.Size(79, 25);
             this.btnRefresh.TabIndex = 18;
             this.btnRefresh.Text = "Refresh Data";
             this.btnRefresh.UseSelectable = true;
@@ -568,7 +568,7 @@
             this.cbRegions.FormattingEnabled = true;
             this.cbRegions.Location = new System.Drawing.Point(341, 3);
             this.cbRegions.Name = "cbRegions";
-            this.cbRegions.Size = new System.Drawing.Size(133, 49);
+            this.cbRegions.Size = new System.Drawing.Size(133, 64);
             this.cbRegions.TabIndex = 6;
             // 
             // cmbInputGroup
@@ -589,9 +589,9 @@
             // 
             // 
             this.txtStartWeek.CustomButton.Image = null;
-            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(16, 1);
+            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(29, 1);
             this.txtStartWeek.CustomButton.Name = "";
-            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(11, 11);
+            this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtStartWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtStartWeek.CustomButton.TabIndex = 1;
             this.txtStartWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -634,9 +634,9 @@
             // 
             // 
             this.txtEndWeek.CustomButton.Image = null;
-            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(16, 1);
+            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(29, 1);
             this.txtEndWeek.CustomButton.Name = "";
-            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(11, 11);
+            this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtEndWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEndWeek.CustomButton.TabIndex = 1;
             this.txtEndWeek.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;

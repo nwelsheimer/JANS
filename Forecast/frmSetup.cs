@@ -186,7 +186,7 @@ namespace Forecast
                 else
                 {
                     string oldId = copyExisting ? cmbInputName.SelectedValue.ToString() : "0";
-                    Global.ExecuteQuery("usp_FC_InsertNewGroup @newGroupName="+newGroupName+", @newYear="+newYear+", @oldInputId=" + oldId);
+                    Global.ExecuteQuery("usp_FC_InsertNewGroup @newGroupName='"+newGroupName+"', @newYear='"+newYear+"', @oldInputId=" + oldId);
                     txtNewInputName.Text = "";
                 }
             } else
