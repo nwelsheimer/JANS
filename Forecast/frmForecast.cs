@@ -18,7 +18,9 @@ namespace Forecast
         DataTable bgDetailTable = new DataTable();
         DataTable summaryInfo = new DataTable();
         bool loading = true;
+        bool bySku = true;
         string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+        System.Globalization.NumberStyles styles = System.Globalization.NumberStyles.AllowThousands | System.Globalization.NumberStyles.AllowTrailingSign | System.Globalization.NumberStyles.AllowLeadingSign;
 
         #region Startup routines
         public frmForecast()
@@ -47,7 +49,8 @@ namespace Forecast
             //e.Layout.Override.CellAppearance.ForeColorDisabled = Color.Black;
             e.Layout.Override.WrapHeaderText = Infragistics.Win.DefaultableBoolean.True;
             e.Layout.Bands[0].ColHeaderLines = 2;
-            e.Layout.Bands[1].ColHeaderLines = 2;
+            if (bySku)
+                e.Layout.Bands[1].ColHeaderLines = 2;
         }
 #endregion
         #region Grid building
@@ -82,110 +85,118 @@ namespace Forecast
 
             //Now override any weird adjustments the user might have done if we want it to look a certain way
             //Band 0 - SKU rows
-            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Hidden = true;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].Hidden = true;
+            if (bySku)
+            {
+                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Hidden = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].Hidden = true;
 
-            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
-            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].CellActivation = Activation.Disabled;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].CellActivation = Activation.Disabled;
 
-            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].Header.Fixed = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Header.Fixed = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Header.Fixed = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].Header.Fixed = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Fixed = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Fixed = true;
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].Header.Fixed = true;
 
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].Format = "c";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].Format = "c";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Format = "n0";
+                grdInputDetail.DisplayLayout.Bands[0].Override.FixedHeaderIndicator = FixedHeaderIndicator.None;
 
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Caption = "SKU Description";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Caption = "Size";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Header.Caption = "Input";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Header.Caption = "Total Input";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
-            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Header.Caption = "Total Plan";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].Format = "c";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].Format = "c";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Format = "n0";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Format = "n0";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Format = "n0";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Format = "n0";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].Format = "n0";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Format = "n0";
+
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Caption = "SKU Description";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Caption = "Size";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Header.Caption = "Input";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Header.Caption = "Total Input";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
+                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Header.Caption = "Total Plan";
+            }
 
             //Band 1 - detail rows
-            grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].Hidden = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].Hidden = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["regionId"].Hidden = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].Hidden = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].Hidden = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].Hidden = true;
+            int band = bySku ? 1 : 0;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["prodId"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["SKUKey"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["regionId"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["siteId"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["startWeek"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["endWeek"].Hidden = true;
 
-            grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["siteId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["startWeek"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["endWeek"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
-            grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["ItemDescription"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["SizeDescription"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Site"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Cost"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Price"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["regionId"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["siteId"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["startWeek"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["endWeek"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInput"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalPlanned"].CellActivation = Activation.Disabled;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Scanned"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["prodId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["SKUKey"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["ProductID"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["ItemDescription"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["SizeDescription"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Site"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Cost"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Price"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["regionId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["siteId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["startWeek"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["endWeek"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalInput"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalPlanned"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Scanned"].CellActivation = Activation.Disabled;
 
-            grdInputDetail.DisplayLayout.Bands[1].Columns["prodId"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["SKUKey"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["ItemDescription"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["SizeDescription"].Header.Fixed = true;
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Site"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["prodId"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["SKUKey"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["ProductID"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["ItemDescription"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["SizeDescription"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Site"].Header.Fixed = true;
 
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Cost"].Format = "c";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Price"].Format = "c";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInput"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInputLY"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalShippedLY"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalPlanned"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["Scanned"].Format = "n0";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalRequested"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[band].Override.FixedHeaderIndicator = FixedHeaderIndicator.None;
 
-            grdInputDetail.DisplayLayout.Bands[1].Columns["ItemDescription"].Header.Caption = "Item Description";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["SizeDescription"].Header.Caption = "Size";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalRequested"].Header.Caption = "Input";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["ProductID"].Header.Caption = "Product ID";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInput"].Header.Caption = "Total Input";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
-            grdInputDetail.DisplayLayout.Bands[1].Columns["TotalPlanned"].Header.Caption = "Total Plan";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Cost"].Format = "c";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Price"].Format = "c";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalInput"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalInputLY"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalShippedLY"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalPlanned"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["Scanned"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalRequested"].Format = "n0";
+
+            grdInputDetail.DisplayLayout.Bands[band].Columns["ItemDescription"].Header.Caption = "Item Description";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["SizeDescription"].Header.Caption = "Size";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalRequested"].Header.Caption = "Input";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["ProductID"].Header.Caption = "Product ID";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalInput"].Header.Caption = "Total Input";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
+            grdInputDetail.DisplayLayout.Bands[band].Columns["TotalPlanned"].Header.Caption = "Total Plan";
 
             string columnHeader = "";
             int n;
@@ -196,17 +207,17 @@ namespace Forecast
                 if (int.TryParse(columnHeader.Substring(0, 4), out n)) //It's a number so it must be a week
                 {
                     grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].Width = 55;
-                    grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].Width = 55;
+                    grdInputDetail.DisplayLayout.Bands[band].Columns[columnHeader].Width = 55;
                     grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].Format = "n0";
-                    grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].Format = "n0";
+                    grdInputDetail.DisplayLayout.Bands[band].Columns[columnHeader].Format = "n0";
 
                     grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-                    grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+                    grdInputDetail.DisplayLayout.Bands[band].Columns[columnHeader].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
                     if (columnHeader.Substring(5) != "Input")
                     {
                         grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].CellActivation = Activation.Disabled;
-                        grdInputDetail.DisplayLayout.Bands[1].Columns[columnHeader].CellActivation = Activation.Disabled;
+                        grdInputDetail.DisplayLayout.Bands[band].Columns[columnHeader].CellActivation = Activation.Disabled;
                     }
                 }
             }
@@ -227,7 +238,7 @@ namespace Forecast
             cbPlannedLY.Enabled = true;
             cbShippedLY.Checked = false;
             cbShippedLY.Enabled = true;
-
+            grpGrouping.Enabled = true;
         }
 
         private void grdInputDetail_InitializeRow(object sender, InitializeRowEventArgs e) //Occurs whenever rows are updated, heavy lifting happens here.
@@ -244,6 +255,7 @@ namespace Forecast
                 int endWeek = 0;
                 int n;
                 int rowTotal = 0;
+                
 
                 //Establish grow weeks for SKU/item row to use later in the code
                 if (e.Row.Band.Index == 0)
@@ -266,7 +278,7 @@ namespace Forecast
                         columnSource = columnHeader.Substring(5);
 
                         if (columnSource == "Input")
-                            rowTotal += int.Parse(c.Text.Length > 0 ? c.Value.ToString() : "0", System.Globalization.NumberStyles.AllowThousands);
+                            rowTotal += int.Parse(c.Text.Length > 0 ? c.Value.ToString() : "0", styles);
                         
                         if (week < startWeek || week > endWeek) //Highlight non growing weeks
                             c.Appearance.BackColor = Color.Pink;
@@ -275,7 +287,7 @@ namespace Forecast
                         {
                             n = Convert.ToInt32(inDetail.Compute("sum([" + columnHeader + "])", "SKUKey = '" + skukey + "'"));
 
-                            if (n != int.Parse(c.Value.ToString().Length > 0 ? c.Value.ToString() : "0", System.Globalization.NumberStyles.AllowThousands))
+                            if (n != int.Parse(c.Value.ToString().Length > 0 ? c.Value.ToString() : "0", styles))
                             {
                                 c.Appearance.ForeColor = Color.Red;
                                 c.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
@@ -290,7 +302,7 @@ namespace Forecast
                 }
 
                 //Check the horizontal totals now. Highlight non matching ones
-                if (rowTotal != int.Parse(e.Row.Cells["TotalRequested"].Text, System.Globalization.NumberStyles.AllowThousands))
+                if (rowTotal != int.Parse(e.Row.Cells["TotalRequested"].Text, styles))
                 {
                     e.Row.Cells["TotalRequested"].Appearance.ForeColor = Color.Red;
                     e.Row.Cells["TotalRequested"].Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
@@ -332,6 +344,30 @@ namespace Forecast
             }
 
             grdSummary.Enabled = true;
+        }
+
+        private void grdInputDetail_AfterColPosChanged(object sender, AfterColPosChangedEventArgs e)
+        {
+            if ((e.PosChanged == PosChanged.Moved || e.PosChanged == PosChanged.Swapped) && bySku)
+            {
+                UltraGrid grid = (UltraGrid)sender;
+                grid.EventManager.SetEnabled(GridEventIds.AfterColPosChanged, false);
+
+                try
+                {
+                    int band = e.ColumnHeaders[0].Band.Index;
+                    int columnIndex = e.ColumnHeaders[0].Column.Index;
+                    int columnPosition = e.ColumnHeaders[0].Column.Header.VisiblePosition;
+
+                    band = band == 1 ? 0 : 1;
+
+                    grid.DisplayLayout.Bands[band].Columns[columnIndex].Header.VisiblePosition = columnPosition;
+                }
+                finally
+                {
+                    grid.EventManager.SetEnabled(GridEventIds.AfterColPosChanged, true);
+                }
+            }
         }
         #endregion
         #region Math section
@@ -552,13 +588,16 @@ namespace Forecast
                 }
             }
 
-            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
+            if (bySku)
             {
-                columnHeader = uc.Key;
-                if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Input LY")
+                foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
                 {
-                    uc.CellActivation = Activation.Disabled;
-                    uc.Hidden = !visible;
+                    columnHeader = uc.Key;
+                    if (columnHeader.Length >= 8 && columnHeader.Substring(columnHeader.Length - 8) == "Input LY")
+                    {
+                        uc.CellActivation = Activation.Disabled;
+                        uc.Hidden = !visible;
+                    }
                 }
             }
         }
@@ -576,13 +615,16 @@ namespace Forecast
                 }
             }
 
-            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
+            if (bySku)
             {
-                columnHeader = uc.Key;
-                if (columnHeader.Length >= 4 && columnHeader.Substring(columnHeader.Length - 4) == "Plan")
+                foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
                 {
-                    uc.CellActivation = Activation.Disabled;
-                    uc.Hidden = !visible;
+                    columnHeader = uc.Key;
+                    if (columnHeader.Length >= 4 && columnHeader.Substring(columnHeader.Length - 4) == "Plan")
+                    {
+                        uc.CellActivation = Activation.Disabled;
+                        uc.Hidden = !visible;
+                    }
                 }
             }
         }
@@ -600,13 +642,16 @@ namespace Forecast
                 }
             }
 
-            foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
+            if (bySku)
             {
-                columnHeader = uc.Key;
-                if (columnHeader.Length >= 7 && columnHeader.Substring(columnHeader.Length - 7) == "Ship LY")
+                foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[1].Columns)
                 {
-                    uc.CellActivation = Activation.Disabled;
-                    uc.Hidden = !visible;
+                    columnHeader = uc.Key;
+                    if (columnHeader.Length >= 7 && columnHeader.Substring(columnHeader.Length - 7) == "Ship LY")
+                    {
+                        uc.CellActivation = Activation.Disabled;
+                        uc.Hidden = !visible;
+                    }
                 }
             }
         }
@@ -838,36 +883,59 @@ namespace Forecast
         private void grdInputDetail_AfterCellUpdate(object sender, CellEventArgs e)
         {
             int n = 0;
+
+            string band = e.Cell.Row.Band.Index.ToString();
+            string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
+            string prodId = e.Cell.Row.Cells["prodId"].Text;
+            string region = e.Cell.Row.Cells["regionId"].Text;
+            string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
+            string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0, 4);
+            string skuKey = e.Cell.Row.Cells["SKUKey"].Text;
+
             try
             {
-                n= int.Parse(e.Cell.Text, System.Globalization.NumberStyles.AllowThousands);
+                n= int.Parse(e.Cell.Text, styles);
             } catch
             {
-                n = -1;
+                e.Cell.Value = 0;
+                grdInputDetail.UpdateData();
             }
-
-            //int.TryParse(e.Cell.Text, out n);
+            
             if (n > -1)
             {
-                string band = e.Cell.Row.Band.Index.ToString();
-                string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
-                //   int qty = int.Parse(e.Cell.Text, System.Globalization.NumberStyles.AllowThousands);
-                string prodId = e.Cell.Row.Cells["prodId"].Text;
-                string region = e.Cell.Row.Cells["regionId"].Text;
-                string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
-                string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0, 4);
-
                 TotalInputs(prodId);
 
                 Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
                                                             ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "', @userName='"+userName+"'");
 
-                if (band == "1")
+                if (band == "1" && header == "0")
                     calculateSummary(e.Cell.Row.Cells["Site"].Text, readyWeek);
             }
             else {
-            e.Cell.Value = "0";
-            grdInputDetail.UpdateData();
+                int newValue = 0;
+                int dividen = 0;
+                int divisor = n * -1;
+                if (divisor > 0)
+                {
+                    if (band == "1")
+                    {
+                        if (header == "1")
+                        { //Detail total requested field
+                            dividen = int.Parse(inHeader.Compute("SUM([TotalRequested])", "SKUKey = '"+skuKey+"'").ToString(),styles);
+                        }
+                        else
+                        {
+                            dividen = int.Parse(inDetail.Compute("SUM([TotalRequested])", "prodId = " + prodId).ToString(), styles);
+                            dividen = dividen > 0 ? dividen : int.Parse(inHeader.Compute("SUM(["+readyWeek+" Input])", "SKUKey = '" + skuKey + "'").ToString(), styles);
+                        }
+                    } else
+                        if (header == "0")
+                            dividen = int.Parse(inHeader.Compute("SUM([TotalRequested])", "SKUKey = '" + skuKey + "'").ToString(), styles);
+                }
+
+                newValue = dividen * divisor / 100;
+                e.Cell.Value = newValue;
+                grdInputDetail.UpdateData();
             }
         }
         #endregion
@@ -886,7 +954,32 @@ namespace Forecast
         private void exportExcel_ExportStarted(object sender, Infragistics.Win.UltraWinGrid.ExcelExport.ExportStartedEventArgs e)
         {
             e.Layout.Bands[0].Override.HeaderPlacement = HeaderPlacement.FixedOnTop;
+            e.Layout.Bands[1].ColHeadersVisible = false;
+            foreach (UltraGridBand b in e.Layout.Bands)
+                b.Indentation = 0;
         }
-#endregion
+        #endregion
+
+        private void rdBySku_CheckedChanged(object sender, EventArgs e)
+        {
+            bySku = rdBySku.Checked;
+            if (bySku)
+            {
+                grdInputDetail.Enabled = false;
+                grdInputDetail.DataSource = inputDetail;
+                GridLayout();
+            }
+        }
+
+        private void rdByItem_CheckedChanged(object sender, EventArgs e)
+        {
+            bySku = rdBySku.Checked;
+            if (!bySku)
+            {
+                grdInputDetail.Enabled = false;
+                grdInputDetail.DataSource = inDetail;
+                GridLayout();
+            }
+        }
     }
 }

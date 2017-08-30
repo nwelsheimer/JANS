@@ -34,6 +34,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>forecastico_GuK_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Infragistics4.Documents.Excel.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Shared.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
@@ -129,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trumperpillar2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="forecastico_GuK_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

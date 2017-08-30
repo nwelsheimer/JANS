@@ -41,6 +41,7 @@
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmForecast));
             this.grdInputDetail = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lnSetup = new MetroFramework.Controls.MetroLink();
             this.lnChooseColumns = new MetroFramework.Controls.MetroLink();
@@ -56,6 +57,10 @@
             this.ultraSplitter2 = new Infragistics.Win.Misc.UltraSplitter();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.grpGrouping = new System.Windows.Forms.GroupBox();
+            this.rdBySku = new System.Windows.Forms.RadioButton();
+            this.rdByItem = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbPlannedLY = new System.Windows.Forms.CheckBox();
             this.cbInputLY = new System.Windows.Forms.CheckBox();
@@ -87,6 +92,7 @@
             this.metroPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdSummary)).BeginInit();
             this.metroPanel3.SuspendLayout();
+            this.grpGrouping.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -134,18 +140,19 @@
             this.grdInputDetail.Enabled = false;
             this.grdInputDetail.Location = new System.Drawing.Point(7, 130);
             this.grdInputDetail.Name = "grdInputDetail";
-            this.grdInputDetail.Size = new System.Drawing.Size(704, 310);
+            this.grdInputDetail.Size = new System.Drawing.Size(730, 260);
             this.grdInputDetail.TabIndex = 16;
             this.grdInputDetail.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdInputDetail_AfterCellUpdate);
             this.grdInputDetail.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdInputDetail_InitializeLayout);
             this.grdInputDetail.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdInputDetail_InitializeRow);
+            this.grdInputDetail.AfterColPosChanged += new Infragistics.Win.UltraWinGrid.AfterColPosChangedEventHandler(this.grdInputDetail_AfterColPosChanged);
             this.grdInputDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdInputDetail_KeyDown);
             // 
             // lnSetup
             // 
             this.lnSetup.Location = new System.Drawing.Point(3, 58);
             this.lnSetup.Name = "lnSetup";
-            this.lnSetup.Size = new System.Drawing.Size(54, 23);
+            this.lnSetup.Size = new System.Drawing.Size(43, 23);
             this.lnSetup.TabIndex = 17;
             this.lnSetup.Text = "Setup";
             this.lnSetup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -156,7 +163,7 @@
             // 
             this.lnChooseColumns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lnChooseColumns.AutoSize = true;
-            this.lnChooseColumns.Location = new System.Drawing.Point(7, 446);
+            this.lnChooseColumns.Location = new System.Drawing.Point(7, 396);
             this.lnChooseColumns.Name = "lnChooseColumns";
             this.lnChooseColumns.Size = new System.Drawing.Size(100, 23);
             this.lnChooseColumns.TabIndex = 19;
@@ -168,7 +175,7 @@
             // lnSaveLayout
             // 
             this.lnSaveLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lnSaveLayout.Location = new System.Drawing.Point(113, 446);
+            this.lnSaveLayout.Location = new System.Drawing.Point(113, 396);
             this.lnSaveLayout.Name = "lnSaveLayout";
             this.lnSaveLayout.Size = new System.Drawing.Size(75, 23);
             this.lnSaveLayout.TabIndex = 20;
@@ -197,7 +204,7 @@
             this.pnLoading.HorizontalScrollbarBarColor = true;
             this.pnLoading.HorizontalScrollbarHighlightOnWheel = false;
             this.pnLoading.HorizontalScrollbarSize = 5;
-            this.pnLoading.Location = new System.Drawing.Point(184, 209);
+            this.pnLoading.Location = new System.Drawing.Point(197, 184);
             this.pnLoading.Margin = new System.Windows.Forms.Padding(2);
             this.pnLoading.Name = "pnLoading";
             this.pnLoading.Size = new System.Drawing.Size(347, 170);
@@ -244,7 +251,7 @@
             this.pnMainMenu.Location = new System.Drawing.Point(7, 5);
             this.pnMainMenu.Margin = new System.Windows.Forms.Padding(2);
             this.pnMainMenu.Name = "pnMainMenu";
-            this.pnMainMenu.Size = new System.Drawing.Size(705, 120);
+            this.pnMainMenu.Size = new System.Drawing.Size(731, 120);
             this.pnMainMenu.TabIndex = 28;
             this.pnMainMenu.VerticalScrollbarBarColor = true;
             this.pnMainMenu.VerticalScrollbarHighlightOnWheel = false;
@@ -257,7 +264,7 @@
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 5;
-            this.metroPanel4.Location = new System.Drawing.Point(493, 0);
+            this.metroPanel4.Location = new System.Drawing.Point(384, 0);
             this.metroPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel4.Name = "metroPanel4";
             this.metroPanel4.Size = new System.Drawing.Size(0, 118);
@@ -305,7 +312,7 @@
             // 
             this.ultraSplitter2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ultraSplitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ultraSplitter2.Location = new System.Drawing.Point(431, 0);
+            this.ultraSplitter2.Location = new System.Drawing.Point(351, 0);
             this.ultraSplitter2.Margin = new System.Windows.Forms.Padding(2);
             this.ultraSplitter2.Name = "ultraSplitter2";
             this.ultraSplitter2.RestoreExtent = 471;
@@ -314,7 +321,7 @@
             // 
             // ultraSplitter1
             // 
-            this.ultraSplitter1.Location = new System.Drawing.Point(478, 0);
+            this.ultraSplitter1.Location = new System.Drawing.Point(369, 0);
             this.ultraSplitter1.Margin = new System.Windows.Forms.Padding(2);
             this.ultraSplitter1.Name = "ultraSplitter1";
             this.ultraSplitter1.RestoreExtent = 719;
@@ -324,6 +331,8 @@
             // metroPanel3
             // 
             this.metroPanel3.AutoScroll = true;
+            this.metroPanel3.Controls.Add(this.checkBox1);
+            this.metroPanel3.Controls.Add(this.grpGrouping);
             this.metroPanel3.Controls.Add(this.panel1);
             this.metroPanel3.Controls.Add(this.btnSumHorizontal);
             this.metroPanel3.Controls.Add(this.btnSumVertical);
@@ -333,15 +342,62 @@
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 8;
-            this.metroPanel3.Location = new System.Drawing.Point(446, 0);
+            this.metroPanel3.Location = new System.Drawing.Point(366, 0);
             this.metroPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel3.Name = "metroPanel3";
-            this.metroPanel3.Size = new System.Drawing.Size(257, 118);
+            this.metroPanel3.Size = new System.Drawing.Size(363, 118);
             this.metroPanel3.TabIndex = 29;
             this.metroPanel3.VerticalScrollbar = true;
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 5;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(5, 90);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(105, 17);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.Text = "Subtotal By SKU";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // grpGrouping
+            // 
+            this.grpGrouping.Controls.Add(this.rdBySku);
+            this.grpGrouping.Controls.Add(this.rdByItem);
+            this.grpGrouping.Enabled = false;
+            this.grpGrouping.Location = new System.Drawing.Point(133, 64);
+            this.grpGrouping.Name = "grpGrouping";
+            this.grpGrouping.Size = new System.Drawing.Size(119, 50);
+            this.grpGrouping.TabIndex = 23;
+            this.grpGrouping.TabStop = false;
+            this.grpGrouping.Text = "Grid Grouping";
+            // 
+            // rdBySku
+            // 
+            this.rdBySku.AutoSize = true;
+            this.rdBySku.Checked = true;
+            this.rdBySku.Location = new System.Drawing.Point(5, 14);
+            this.rdBySku.Name = "rdBySku";
+            this.rdBySku.Size = new System.Drawing.Size(62, 17);
+            this.rdBySku.TabIndex = 1;
+            this.rdBySku.TabStop = true;
+            this.rdBySku.Text = "By SKU";
+            this.rdBySku.UseVisualStyleBackColor = true;
+            this.rdBySku.CheckedChanged += new System.EventHandler(this.rdBySku_CheckedChanged);
+            // 
+            // rdByItem
+            // 
+            this.rdByItem.AutoSize = true;
+            this.rdByItem.Location = new System.Drawing.Point(5, 30);
+            this.rdByItem.Name = "rdByItem";
+            this.rdByItem.Size = new System.Drawing.Size(60, 17);
+            this.rdByItem.TabIndex = 0;
+            this.rdByItem.Text = "By Item";
+            this.rdByItem.UseVisualStyleBackColor = true;
+            this.rdByItem.CheckedChanged += new System.EventHandler(this.rdByItem_CheckedChanged);
             // 
             // panel1
             // 
@@ -349,16 +405,16 @@
             this.panel1.Controls.Add(this.cbPlannedLY);
             this.panel1.Controls.Add(this.cbInputLY);
             this.panel1.Controls.Add(this.cbShippedLY);
-            this.panel1.Location = new System.Drawing.Point(134, 9);
+            this.panel1.Location = new System.Drawing.Point(133, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(118, 65);
+            this.panel1.Size = new System.Drawing.Size(118, 57);
             this.panel1.TabIndex = 22;
             // 
             // cbPlannedLY
             // 
             this.cbPlannedLY.AutoSize = true;
             this.cbPlannedLY.Enabled = false;
-            this.cbPlannedLY.Location = new System.Drawing.Point(3, 23);
+            this.cbPlannedLY.Location = new System.Drawing.Point(3, 20);
             this.cbPlannedLY.Name = "cbPlannedLY";
             this.cbPlannedLY.Size = new System.Drawing.Size(111, 17);
             this.cbPlannedLY.TabIndex = 11;
@@ -382,7 +438,7 @@
             // 
             this.cbShippedLY.AutoSize = true;
             this.cbShippedLY.Enabled = false;
-            this.cbShippedLY.Location = new System.Drawing.Point(3, 42);
+            this.cbShippedLY.Location = new System.Drawing.Point(3, 37);
             this.cbShippedLY.Name = "cbShippedLY";
             this.cbShippedLY.Size = new System.Drawing.Size(111, 17);
             this.cbShippedLY.TabIndex = 12;
@@ -392,18 +448,18 @@
             // 
             // btnSumHorizontal
             // 
-            this.btnSumHorizontal.Location = new System.Drawing.Point(134, 79);
+            this.btnSumHorizontal.Location = new System.Drawing.Point(258, 11);
             this.btnSumHorizontal.Name = "btnSumHorizontal";
-            this.btnSumHorizontal.Size = new System.Drawing.Size(120, 30);
+            this.btnSumHorizontal.Size = new System.Drawing.Size(96, 30);
             this.btnSumHorizontal.TabIndex = 10;
             this.btnSumHorizontal.Text = "Sum horizontally";
             this.btnSumHorizontal.UseSelectable = true;
             // 
             // btnSumVertical
             // 
-            this.btnSumVertical.Location = new System.Drawing.Point(5, 79);
+            this.btnSumVertical.Location = new System.Drawing.Point(258, 45);
             this.btnSumVertical.Name = "btnSumVertical";
-            this.btnSumVertical.Size = new System.Drawing.Size(122, 30);
+            this.btnSumVertical.Size = new System.Drawing.Size(96, 30);
             this.btnSumVertical.TabIndex = 9;
             this.btnSumVertical.Text = "Sum vertically";
             this.btnSumVertical.UseSelectable = true;
@@ -415,7 +471,7 @@
             this.groupBox1.Controls.Add(this.rdCost);
             this.groupBox1.Location = new System.Drawing.Point(5, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(122, 70);
+            this.groupBox1.Size = new System.Drawing.Size(122, 78);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Display historical";
@@ -423,7 +479,7 @@
             // rdRetail
             // 
             this.rdRetail.AutoSize = true;
-            this.rdRetail.Location = new System.Drawing.Point(5, 51);
+            this.rdRetail.Location = new System.Drawing.Point(5, 54);
             this.rdRetail.Name = "rdRetail";
             this.rdRetail.Size = new System.Drawing.Size(52, 17);
             this.rdRetail.TabIndex = 2;
@@ -434,7 +490,7 @@
             // 
             this.rdUnits.AutoSize = true;
             this.rdUnits.Checked = true;
-            this.rdUnits.Location = new System.Drawing.Point(5, 14);
+            this.rdUnits.Location = new System.Drawing.Point(5, 16);
             this.rdUnits.Name = "rdUnits";
             this.rdUnits.Size = new System.Drawing.Size(49, 17);
             this.rdUnits.TabIndex = 1;
@@ -445,7 +501,7 @@
             // rdCost
             // 
             this.rdCost.AutoSize = true;
-            this.rdCost.Location = new System.Drawing.Point(5, 32);
+            this.rdCost.Location = new System.Drawing.Point(5, 35);
             this.rdCost.Name = "rdCost";
             this.rdCost.Size = new System.Drawing.Size(93, 17);
             this.rdCost.TabIndex = 0;
@@ -476,7 +532,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(0, 0);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(478, 118);
+            this.metroPanel1.Size = new System.Drawing.Size(369, 118);
             this.metroPanel1.TabIndex = 28;
             this.metroPanel1.VerticalScrollbar = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -485,7 +541,7 @@
             // 
             // lnExport
             // 
-            this.lnExport.Location = new System.Drawing.Point(216, 82);
+            this.lnExport.Location = new System.Drawing.Point(124, 58);
             this.lnExport.Name = "lnExport";
             this.lnExport.Size = new System.Drawing.Size(97, 23);
             this.lnExport.TabIndex = 27;
@@ -533,9 +589,9 @@
             // btnRefresh
             // 
             this.btnRefresh.Enabled = false;
-            this.btnRefresh.Location = new System.Drawing.Point(383, 73);
+            this.btnRefresh.Location = new System.Drawing.Point(124, 84);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(79, 25);
+            this.btnRefresh.Size = new System.Drawing.Size(92, 25);
             this.btnRefresh.TabIndex = 18;
             this.btnRefresh.Text = "Refresh Data";
             this.btnRefresh.UseSelectable = true;
@@ -543,11 +599,11 @@
             // 
             // metroLabel4
             // 
-            this.metroLabel4.Location = new System.Drawing.Point(75, 62);
+            this.metroLabel4.Location = new System.Drawing.Point(52, 58);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(117, 17);
+            this.metroLabel4.Size = new System.Drawing.Size(66, 17);
             this.metroLabel4.TabIndex = 3;
-            this.metroLabel4.Text = "Filter Weeks";
+            this.metroLabel4.Text = "Weeks";
             this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // cmbCustomer
@@ -557,7 +613,7 @@
             this.cmbCustomer.ItemHeight = 23;
             this.cmbCustomer.Location = new System.Drawing.Point(150, 23);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(185, 29);
+            this.cmbCustomer.Size = new System.Drawing.Size(210, 29);
             this.cmbCustomer.TabIndex = 5;
             this.cmbCustomer.UseSelectable = true;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
@@ -566,9 +622,9 @@
             // 
             this.cbRegions.CheckOnClick = true;
             this.cbRegions.FormattingEnabled = true;
-            this.cbRegions.Location = new System.Drawing.Point(341, 3);
+            this.cbRegions.Location = new System.Drawing.Point(227, 58);
             this.cbRegions.Name = "cbRegions";
-            this.cbRegions.Size = new System.Drawing.Size(133, 64);
+            this.cbRegions.Size = new System.Drawing.Size(133, 49);
             this.cbRegions.TabIndex = 6;
             // 
             // cmbInputGroup
@@ -589,7 +645,7 @@
             // 
             // 
             this.txtStartWeek.CustomButton.Image = null;
-            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(29, 1);
+            this.txtStartWeek.CustomButton.Location = new System.Drawing.Point(8, 1);
             this.txtStartWeek.CustomButton.Name = "";
             this.txtStartWeek.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtStartWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -599,7 +655,7 @@
             this.txtStartWeek.CustomButton.Visible = false;
             this.txtStartWeek.Lines = new string[] {
         "10"};
-            this.txtStartWeek.Location = new System.Drawing.Point(76, 82);
+            this.txtStartWeek.Location = new System.Drawing.Point(52, 78);
             this.txtStartWeek.MaxLength = 2;
             this.txtStartWeek.Name = "txtStartWeek";
             this.txtStartWeek.PasswordChar = '\0';
@@ -609,7 +665,7 @@
             this.txtStartWeek.SelectionLength = 0;
             this.txtStartWeek.SelectionStart = 0;
             this.txtStartWeek.ShortcutsEnabled = true;
-            this.txtStartWeek.Size = new System.Drawing.Size(51, 23);
+            this.txtStartWeek.Size = new System.Drawing.Size(30, 23);
             this.txtStartWeek.TabIndex = 7;
             this.txtStartWeek.Text = "10";
             this.txtStartWeek.UseSelectable = true;
@@ -634,7 +690,7 @@
             // 
             // 
             this.txtEndWeek.CustomButton.Image = null;
-            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(29, 1);
+            this.txtEndWeek.CustomButton.Location = new System.Drawing.Point(8, 1);
             this.txtEndWeek.CustomButton.Name = "";
             this.txtEndWeek.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtEndWeek.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -644,7 +700,7 @@
             this.txtEndWeek.CustomButton.Visible = false;
             this.txtEndWeek.Lines = new string[] {
         "30"};
-            this.txtEndWeek.Location = new System.Drawing.Point(141, 82);
+            this.txtEndWeek.Location = new System.Drawing.Point(88, 78);
             this.txtEndWeek.MaxLength = 2;
             this.txtEndWeek.Name = "txtEndWeek";
             this.txtEndWeek.PasswordChar = '\0';
@@ -654,7 +710,7 @@
             this.txtEndWeek.SelectionLength = 0;
             this.txtEndWeek.SelectionStart = 0;
             this.txtEndWeek.ShortcutsEnabled = true;
-            this.txtEndWeek.Size = new System.Drawing.Size(51, 23);
+            this.txtEndWeek.Size = new System.Drawing.Size(30, 23);
             this.txtEndWeek.TabIndex = 8;
             this.txtEndWeek.Text = "30";
             this.txtEndWeek.UseSelectable = true;
@@ -682,12 +738,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 472);
+            this.ClientSize = new System.Drawing.Size(744, 422);
             this.Controls.Add(this.pnMainMenu);
             this.Controls.Add(this.pnLoading);
             this.Controls.Add(this.lnSaveLayout);
             this.Controls.Add(this.lnChooseColumns);
             this.Controls.Add(this.grdInputDetail);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmForecast";
             this.Padding = new System.Windows.Forms.Padding(0, 60, 0, 0);
             this.Text = "Forecast";
@@ -699,6 +756,9 @@
             this.metroPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdSummary)).EndInit();
             this.metroPanel3.ResumeLayout(false);
+            this.metroPanel3.PerformLayout();
+            this.grpGrouping.ResumeLayout(false);
+            this.grpGrouping.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -750,6 +810,10 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid grdSummary;
         private MetroFramework.Controls.MetroLink lnExport;
         private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter exportExcel;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox grpGrouping;
+        private System.Windows.Forms.RadioButton rdBySku;
+        private System.Windows.Forms.RadioButton rdByItem;
     }
 }
 
