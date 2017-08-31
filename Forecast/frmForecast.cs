@@ -692,6 +692,28 @@ namespace Forecast
             this.UseWaitCursor = false;
         }
 
+        private void rdBySku_CheckedChanged(object sender, EventArgs e)
+        {
+            bySku = rdBySku.Checked;
+            if (bySku)
+            {
+                grdInputDetail.Enabled = false;
+                grdInputDetail.DataSource = inputDetail;
+                GridLayout();
+            }
+        }
+
+        private void rdByItem_CheckedChanged(object sender, EventArgs e)
+        {
+            bySku = rdBySku.Checked;
+            if (!bySku)
+            {
+                grdInputDetail.Enabled = false;
+                grdInputDetail.DataSource = inDetail;
+                GridLayout();
+            }
+        }
+
         private void pnColapse_Click(object sender, EventArgs e)
         {
             grdInputDetail.Rows.CollapseAll(true);
@@ -799,9 +821,16 @@ namespace Forecast
                     nameIds.Add(dv[cbRegions.ValueMember].ToString());
                 }
 
+                //What units for historical?
+                string cost = "0";
+                if (rdCost.Checked)
+                    cost = "1";
+                if (rdRetail.Checked)
+                    cost = "2";
+
                 //Build query
                 string regions = string.Join(",", nameIds.ToArray());
-                string query = "usp_FC_SelectInputDetail @startWeek='" + startWeek + "', @endWeek='" + endWeek + "', @nameIds='" + regions + "', @band=";
+                string query = "usp_FC_SelectInputDetail @startWeek='" + startWeek + "', @endWeek='" + endWeek + "', @nameIds='" + regions + "', @cost="+cost+", @band=";
 
                 //Display loading panel
                 pnLoading.Visible = true;
@@ -959,27 +988,5 @@ namespace Forecast
                 b.Indentation = 0;
         }
         #endregion
-
-        private void rdBySku_CheckedChanged(object sender, EventArgs e)
-        {
-            bySku = rdBySku.Checked;
-            if (bySku)
-            {
-                grdInputDetail.Enabled = false;
-                grdInputDetail.DataSource = inputDetail;
-                GridLayout();
-            }
-        }
-
-        private void rdByItem_CheckedChanged(object sender, EventArgs e)
-        {
-            bySku = rdBySku.Checked;
-            if (!bySku)
-            {
-                grdInputDetail.Enabled = false;
-                grdInputDetail.DataSource = inDetail;
-                GridLayout();
-            }
-        }
     }
 }
