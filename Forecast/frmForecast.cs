@@ -117,7 +117,7 @@ namespace Forecast
                 grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Fixed = true;
                 grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].Header.Fixed = true;
 
-                grdInputDetail.DisplayLayout.Bands[0].Override.FixedHeaderIndicator = FixedHeaderIndicator.None;
+                grdInputDetail.DisplayLayout.Bands[0].Override.FixedHeaderIndicator = FixedHeaderIndicator.InSwapDropDown;
 
                 grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].Format = "c";
                 grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].Format = "c";
@@ -178,7 +178,7 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[band].Columns["SizeDescription"].Header.Fixed = true;
             grdInputDetail.DisplayLayout.Bands[band].Columns["Site"].Header.Fixed = true;
 
-            grdInputDetail.DisplayLayout.Bands[band].Override.FixedHeaderIndicator = FixedHeaderIndicator.None;
+            grdInputDetail.DisplayLayout.Bands[band].Override.FixedHeaderIndicator = FixedHeaderIndicator.InSwapDropDown;
 
             grdInputDetail.DisplayLayout.Bands[band].Columns["Cost"].Format = "c";
             grdInputDetail.DisplayLayout.Bands[band].Columns["Price"].Format = "c";
@@ -911,60 +911,66 @@ namespace Forecast
         #region Update region
         private void grdInputDetail_AfterCellUpdate(object sender, CellEventArgs e)
         {
-            int n = 0;
-
-            string band = e.Cell.Row.Band.Index.ToString();
-            string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
-            string prodId = e.Cell.Row.Cells["prodId"].Text;
-            string region = e.Cell.Row.Cells["regionId"].Text;
-            string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
-            string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0, 4);
-            string skuKey = e.Cell.Row.Cells["SKUKey"].Text;
-
-            try
+            if (!e.Cell.Row.IsFilterRow)
             {
-                n= int.Parse(e.Cell.Text, styles);
-            } catch
-            {
-                e.Cell.Value = 0;
-                grdInputDetail.UpdateData();
-            }
-            
-            if (n > -1)
-            {
-                TotalInputs(prodId);
+                int n = 0;
 
-                Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
-                                                            ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "', @userName='"+userName+"'");
+                string band = e.Cell.Row.Band.Index.ToString();
+                string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
+                string prodId = e.Cell.Row.Cells["prodId"].Text;
+                string region = e.Cell.Row.Cells["regionId"].Text;
+                string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
+                string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0, 4);
+                string skuKey = e.Cell.Row.Cells["SKUKey"].Text;
 
-                if (band == "1" && header == "0")
-                    calculateSummary(e.Cell.Row.Cells["Site"].Text, readyWeek);
-            }
-            else {
-                int newValue = 0;
-                int dividen = 0;
-                int divisor = n * -1;
-                if (divisor > 0)
+                try
                 {
-                    if (band == "1")
-                    {
-                        if (header == "1")
-                        { //Detail total requested field
-                            dividen = int.Parse(inHeader.Compute("SUM([TotalRequested])", "SKUKey = '"+skuKey+"'").ToString(),styles);
-                        }
-                        else
-                        {
-                            dividen = int.Parse(inDetail.Compute("SUM([TotalRequested])", "prodId = " + prodId).ToString(), styles);
-                            dividen = dividen > 0 ? dividen : int.Parse(inHeader.Compute("SUM(["+readyWeek+" Input])", "SKUKey = '" + skuKey + "'").ToString(), styles);
-                        }
-                    } else
-                        if (header == "0")
-                            dividen = int.Parse(inHeader.Compute("SUM([TotalRequested])", "SKUKey = '" + skuKey + "'").ToString(), styles);
+                    n = int.Parse(e.Cell.Text, styles);
+                }
+                catch
+                {
+                    e.Cell.Value = 0;
+                    grdInputDetail.UpdateData();
                 }
 
-                newValue = dividen * divisor / 100;
-                e.Cell.Value = newValue;
-                grdInputDetail.UpdateData();
+                if (n > -1)
+                {
+                    TotalInputs(prodId);
+
+                    Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
+                                                                ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "', @userName='" + userName + "'");
+
+                    if (band == "1" && header == "0")
+                        calculateSummary(e.Cell.Row.Cells["Site"].Text, readyWeek);
+                }
+                else
+                {
+                    int newValue = 0;
+                    int dividen = 0;
+                    int divisor = n * -1;
+                    if (divisor > 0)
+                    {
+                        if (band == "1")
+                        {
+                            if (header == "1")
+                            { //Detail total requested field
+                                dividen = int.Parse(inHeader.Compute("SUM([TotalRequested])", "SKUKey = '" + skuKey + "'").ToString(), styles);
+                            }
+                            else
+                            {
+                                dividen = int.Parse(inDetail.Compute("SUM([TotalRequested])", "prodId = " + prodId).ToString(), styles);
+                                dividen = dividen > 0 ? dividen : int.Parse(inHeader.Compute("SUM([" + readyWeek + " Input])", "SKUKey = '" + skuKey + "'").ToString(), styles);
+                            }
+                        }
+                        else
+                            if (header == "0")
+                            dividen = int.Parse(inHeader.Compute("SUM([TotalRequested])", "SKUKey = '" + skuKey + "'").ToString(), styles);
+                    }
+
+                    newValue = dividen * divisor / 100;
+                    e.Cell.Value = newValue;
+                    grdInputDetail.UpdateData();
+                }
             }
         }
         #endregion

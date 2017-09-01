@@ -121,6 +121,9 @@
             appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
             this.grdInputDetail.DisplayLayout.Override.CellAppearance = appearance3;
             this.grdInputDetail.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.grdInputDetail.DisplayLayout.Override.FilterOperatorDefaultValue = Infragistics.Win.UltraWinGrid.FilterOperatorDefaultValue.Contains;
+            this.grdInputDetail.DisplayLayout.Override.FilterOperatorLocation = Infragistics.Win.UltraWinGrid.FilterOperatorLocation.Hidden;
+            this.grdInputDetail.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             appearance4.BackColor = System.Drawing.SystemColors.Control;
             appearance4.BackColor2 = System.Drawing.SystemColors.ControlDark;
             appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
