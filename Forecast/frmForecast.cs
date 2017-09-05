@@ -239,6 +239,7 @@ namespace Forecast
             cbShippedLY.Checked = false;
             cbShippedLY.Enabled = true;
             grpGrouping.Enabled = true;
+            cksubtotalSKU.Enabled = true;
         }
 
         private void grdInputDetail_InitializeRow(object sender, InitializeRowEventArgs e) //Occurs whenever rows are updated, heavy lifting happens here.
@@ -915,7 +916,7 @@ namespace Forecast
             {
                 int n = 0;
 
-                string band = e.Cell.Row.Band.Index.ToString();
+                string band = bySku ? e.Cell.Row.Band.Index.ToString() : "1";
                 string header = e.Cell.Column.Key == "TotalRequested" ? "1" : "0";
                 string prodId = e.Cell.Row.Cells["prodId"].Text;
                 string region = e.Cell.Row.Cells["regionId"].Text;
@@ -994,5 +995,10 @@ namespace Forecast
                 b.Indentation = 0;
         }
         #endregion
+
+        private void cksubtotalSKU_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -57,7 +57,7 @@
             this.ultraSplitter2 = new Infragistics.Win.Misc.UltraSplitter();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cksubtotalSKU = new System.Windows.Forms.CheckBox();
             this.grpGrouping = new System.Windows.Forms.GroupBox();
             this.rdBySku = new System.Windows.Forms.RadioButton();
             this.rdByItem = new System.Windows.Forms.RadioButton();
@@ -334,7 +334,7 @@
             // metroPanel3
             // 
             this.metroPanel3.AutoScroll = true;
-            this.metroPanel3.Controls.Add(this.checkBox1);
+            this.metroPanel3.Controls.Add(this.cksubtotalSKU);
             this.metroPanel3.Controls.Add(this.grpGrouping);
             this.metroPanel3.Controls.Add(this.panel1);
             this.metroPanel3.Controls.Add(this.btnSumHorizontal);
@@ -355,16 +355,17 @@
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 5;
             // 
-            // checkBox1
+            // cksubtotalSKU
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(5, 90);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(105, 17);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "Subtotal By SKU";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cksubtotalSKU.AutoSize = true;
+            this.cksubtotalSKU.Enabled = false;
+            this.cksubtotalSKU.Location = new System.Drawing.Point(5, 90);
+            this.cksubtotalSKU.Name = "cksubtotalSKU";
+            this.cksubtotalSKU.Size = new System.Drawing.Size(105, 17);
+            this.cksubtotalSKU.TabIndex = 15;
+            this.cksubtotalSKU.Text = "Subtotal By SKU";
+            this.cksubtotalSKU.UseVisualStyleBackColor = true;
+            this.cksubtotalSKU.CheckedChanged += new System.EventHandler(this.cksubtotalSKU_CheckedChanged);
             // 
             // grpGrouping
             // 
@@ -813,7 +814,7 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid grdSummary;
         private MetroFramework.Controls.MetroLink lnExport;
         private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter exportExcel;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cksubtotalSKU;
         private System.Windows.Forms.GroupBox grpGrouping;
         private System.Windows.Forms.RadioButton rdBySku;
         private System.Windows.Forms.RadioButton rdByItem;
