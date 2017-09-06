@@ -93,6 +93,16 @@ namespace Forecast.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QlJ4V {
+            get {
+                object obj = ResourceManager.GetObject("QlJ4V", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap trumperpillar2 {
             get {
                 object obj = ResourceManager.GetObject("trumperpillar2", resourceCulture);

@@ -990,7 +990,7 @@ namespace Forecast
         private void exportExcel_ExportStarted(object sender, Infragistics.Win.UltraWinGrid.ExcelExport.ExportStartedEventArgs e)
         {
             e.Layout.Bands[0].Override.HeaderPlacement = HeaderPlacement.FixedOnTop;
-            e.Layout.Bands[1].ColHeadersVisible = false;
+            if (bySku) e.Layout.Bands[1].ColHeadersVisible = false;
             foreach (UltraGridBand b in e.Layout.Bands)
                 b.Indentation = 0;
         }

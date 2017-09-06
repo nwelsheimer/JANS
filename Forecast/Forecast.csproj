@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="forecastico_GuK_icon.ico" />
+    <None Include="Resources\QlJ4V.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

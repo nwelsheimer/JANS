@@ -50,7 +50,6 @@
             this.bgDetail = new System.ComponentModel.BackgroundWorker();
             this.pnLoading = new MetroFramework.Controls.MetroPanel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnMainMenu = new MetroFramework.Controls.MetroPanel();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.grdSummary = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -73,8 +72,6 @@
             this.rdCost = new System.Windows.Forms.RadioButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.lnExport = new MetroFramework.Controls.MetroLink();
-            this.pnColapse = new MetroFramework.Controls.MetroPanel();
-            this.pnExpand = new MetroFramework.Controls.MetroPanel();
             this.btnRefresh = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.cmbCustomer = new MetroFramework.Controls.MetroComboBox();
@@ -85,9 +82,11 @@
             this.txtEndWeek = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.exportExcel = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.pnColapse = new MetroFramework.Controls.MetroPanel();
+            this.pnExpand = new MetroFramework.Controls.MetroPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdInputDetail)).BeginInit();
             this.pnLoading.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnMainMenu.SuspendLayout();
             this.metroPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdSummary)).BeginInit();
@@ -96,6 +95,7 @@
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // grdInputDetail
@@ -207,10 +207,10 @@
             this.pnLoading.HorizontalScrollbarBarColor = true;
             this.pnLoading.HorizontalScrollbarHighlightOnWheel = false;
             this.pnLoading.HorizontalScrollbarSize = 5;
-            this.pnLoading.Location = new System.Drawing.Point(197, 184);
+            this.pnLoading.Location = new System.Drawing.Point(199, 94);
             this.pnLoading.Margin = new System.Windows.Forms.Padding(2);
             this.pnLoading.Name = "pnLoading";
-            this.pnLoading.Size = new System.Drawing.Size(347, 170);
+            this.pnLoading.Size = new System.Drawing.Size(348, 234);
             this.pnLoading.TabIndex = 24;
             this.pnLoading.VerticalScrollbarBarColor = true;
             this.pnLoading.VerticalScrollbarHighlightOnWheel = false;
@@ -227,16 +227,6 @@
             this.metroLabel5.TabIndex = 24;
             this.metroLabel5.Text = "Loading Input Data...";
             this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Forecast.Properties.Resources.trumperpillar2;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(342, 134);
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
             // 
             // pnMainMenu
             // 
@@ -554,42 +544,6 @@
             this.lnExport.UseSelectable = true;
             this.lnExport.Click += new System.EventHandler(this.lnExport_Click);
             // 
-            // pnColapse
-            // 
-            this.pnColapse.BackgroundImage = global::Forecast.Properties.Resources.delete;
-            this.pnColapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnColapse.Enabled = false;
-            this.pnColapse.HorizontalScrollbarBarColor = true;
-            this.pnColapse.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnColapse.HorizontalScrollbarSize = 5;
-            this.pnColapse.Location = new System.Drawing.Point(21, 90);
-            this.pnColapse.Margin = new System.Windows.Forms.Padding(2);
-            this.pnColapse.Name = "pnColapse";
-            this.pnColapse.Size = new System.Drawing.Size(14, 14);
-            this.pnColapse.TabIndex = 26;
-            this.pnColapse.VerticalScrollbarBarColor = true;
-            this.pnColapse.VerticalScrollbarHighlightOnWheel = false;
-            this.pnColapse.VerticalScrollbarSize = 5;
-            this.pnColapse.Click += new System.EventHandler(this.pnColapse_Click);
-            // 
-            // pnExpand
-            // 
-            this.pnExpand.BackgroundImage = global::Forecast.Properties.Resources.add;
-            this.pnExpand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnExpand.Enabled = false;
-            this.pnExpand.HorizontalScrollbarBarColor = true;
-            this.pnExpand.HorizontalScrollbarHighlightOnWheel = false;
-            this.pnExpand.HorizontalScrollbarSize = 5;
-            this.pnExpand.Location = new System.Drawing.Point(3, 90);
-            this.pnExpand.Margin = new System.Windows.Forms.Padding(2);
-            this.pnExpand.Name = "pnExpand";
-            this.pnExpand.Size = new System.Drawing.Size(14, 14);
-            this.pnExpand.TabIndex = 25;
-            this.pnExpand.VerticalScrollbarBarColor = true;
-            this.pnExpand.VerticalScrollbarHighlightOnWheel = false;
-            this.pnExpand.VerticalScrollbarSize = 5;
-            this.pnExpand.Click += new System.EventHandler(this.pnExpand_Click);
-            // 
             // btnRefresh
             // 
             this.btnRefresh.Enabled = false;
@@ -738,6 +692,56 @@
             this.exportExcel.BandSpacing = Infragistics.Win.UltraWinGrid.ExcelExport.BandSpacing.None;
             this.exportExcel.ExportStarted += new Infragistics.Win.UltraWinGrid.ExcelExport.ExportStartedEventHandler(this.exportExcel_ExportStarted);
             // 
+            // pnColapse
+            // 
+            this.pnColapse.BackgroundImage = global::Forecast.Properties.Resources.delete;
+            this.pnColapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnColapse.Enabled = false;
+            this.pnColapse.HorizontalScrollbarBarColor = true;
+            this.pnColapse.HorizontalScrollbarHighlightOnWheel = false;
+            this.pnColapse.HorizontalScrollbarSize = 5;
+            this.pnColapse.Location = new System.Drawing.Point(21, 90);
+            this.pnColapse.Margin = new System.Windows.Forms.Padding(2);
+            this.pnColapse.Name = "pnColapse";
+            this.pnColapse.Size = new System.Drawing.Size(14, 14);
+            this.pnColapse.TabIndex = 26;
+            this.pnColapse.VerticalScrollbarBarColor = true;
+            this.pnColapse.VerticalScrollbarHighlightOnWheel = false;
+            this.pnColapse.VerticalScrollbarSize = 5;
+            this.pnColapse.Click += new System.EventHandler(this.pnColapse_Click);
+            // 
+            // pnExpand
+            // 
+            this.pnExpand.BackgroundImage = global::Forecast.Properties.Resources.add;
+            this.pnExpand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnExpand.Enabled = false;
+            this.pnExpand.HorizontalScrollbarBarColor = true;
+            this.pnExpand.HorizontalScrollbarHighlightOnWheel = false;
+            this.pnExpand.HorizontalScrollbarSize = 5;
+            this.pnExpand.Location = new System.Drawing.Point(3, 90);
+            this.pnExpand.Margin = new System.Windows.Forms.Padding(2);
+            this.pnExpand.Name = "pnExpand";
+            this.pnExpand.Size = new System.Drawing.Size(14, 14);
+            this.pnExpand.TabIndex = 25;
+            this.pnExpand.VerticalScrollbarBarColor = true;
+            this.pnExpand.VerticalScrollbarHighlightOnWheel = false;
+            this.pnExpand.VerticalScrollbarSize = 5;
+            this.pnExpand.Click += new System.EventHandler(this.pnExpand_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::Forecast.Properties.Resources.QlJ4V;
+            this.pictureBox1.Location = new System.Drawing.Point(45, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(256, 192);
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmForecast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -755,7 +759,6 @@
             this.Load += new System.EventHandler(this.frmForecast_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdInputDetail)).EndInit();
             this.pnLoading.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnMainMenu.ResumeLayout(false);
             this.metroPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdSummary)).EndInit();
@@ -769,6 +772,7 @@
             this.groupBox1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
