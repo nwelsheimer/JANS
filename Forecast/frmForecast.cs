@@ -4,7 +4,6 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
-using MetroFramework.Forms;
 using General;
 
 namespace Forecast
@@ -19,6 +18,7 @@ namespace Forecast
         DataTable summaryInfo = new DataTable();
         bool loading = true;
         bool bySku = true;
+        bool skuSubtotals = false;
         string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
         System.Globalization.NumberStyles styles = System.Globalization.NumberStyles.AllowThousands | System.Globalization.NumberStyles.AllowTrailingSign | System.Globalization.NumberStyles.AllowLeadingSign;
 
@@ -52,7 +52,7 @@ namespace Forecast
             if (bySku)
                 e.Layout.Bands[1].ColHeaderLines = 2;
         }
-#endregion
+        #endregion
         #region Grid building
         private void buildGrid() //Fills the tables and creates the dataset relationships
         {
@@ -77,68 +77,10 @@ namespace Forecast
             }
         }
 
-        private void GridLayout() //Disables certain columns for editing, changes header names, hides columns, etc.
+        private void formatDetail()
         {
-            //Load user preferances
-            Global.GridLayout(grdInputDetail, 2, Properties.Settings.Default.grdInputLayout);
-            grdInputDetail.DisplayLayout.UseFixedHeaders = true;
-
-            //Now override any weird adjustments the user might have done if we want it to look a certain way
-            //Band 0 - SKU rows
-            if (bySku)
-            {
-                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Hidden = true;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].Hidden = true;
-
-                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-
-                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].CellActivation = Activation.Disabled;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].CellActivation = Activation.Disabled;
-
-                grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Header.Fixed = true;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Header.Fixed = true;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].Header.Fixed = true;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Fixed = true;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Fixed = true;
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].Header.Fixed = true;
-
-                grdInputDetail.DisplayLayout.Bands[0].Override.FixedHeaderIndicator = FixedHeaderIndicator.InSwapDropDown;
-
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].Format = "c";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].Format = "c";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Format = "n0";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Format = "n0";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Format = "n0";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Format = "n0";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].Format = "n0";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Format = "n0";
-
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Caption = "SKU Description";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Caption = "Size";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Header.Caption = "Input";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Header.Caption = "Total Input";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
-                grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Header.Caption = "Total Plan";
-            }
-
-            //Band 1 - detail rows
             int band = bySku ? 1 : 0;
+
             grdInputDetail.DisplayLayout.Bands[band].Columns["prodId"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[band].Columns["SKUKey"].Hidden = true;
             grdInputDetail.DisplayLayout.Bands[band].Columns["regionId"].Hidden = true;
@@ -197,8 +139,64 @@ namespace Forecast
             grdInputDetail.DisplayLayout.Bands[band].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
             grdInputDetail.DisplayLayout.Bands[band].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
             grdInputDetail.DisplayLayout.Bands[band].Columns["TotalPlanned"].Header.Caption = "Total Plan";
+        }
 
+        private void formatHeader()
+        {
+            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Hidden = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].Hidden = true;
+
+            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+
+            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["regionId"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].CellActivation = Activation.Disabled;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].CellActivation = Activation.Disabled;
+
+            grdInputDetail.DisplayLayout.Bands[0].Columns["prodId"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUKey"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKU"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Fixed = true;
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Region"].Header.Fixed = true;
+
+            grdInputDetail.DisplayLayout.Bands[0].Override.FixedHeaderIndicator = FixedHeaderIndicator.InSwapDropDown;
+
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Cost"].Format = "c";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Price"].Format = "c";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["Scanned"].Format = "n0";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Format = "n0";
+
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUDescription"].Header.Caption = "SKU Description";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["SKUSize"].Header.Caption = "Size";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalRequested"].Header.Caption = "Input";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInput"].Header.Caption = "Total Input";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalInputLY"].Header.Caption = "Total Input LY";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalShippedLY"].Header.Caption = "Total Ship LY";
+            grdInputDetail.DisplayLayout.Bands[0].Columns["TotalPlanned"].Header.Caption = "Total Plan";
+        }
+
+        private void adjustInputColumns()
+        {
             string columnHeader = "";
+            int band = bySku ? 1 : 0;
             int n;
 
             foreach (UltraGridColumn uc in grdInputDetail.DisplayLayout.Bands[0].Columns)
@@ -219,8 +217,28 @@ namespace Forecast
                         grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].CellActivation = Activation.Disabled;
                         grdInputDetail.DisplayLayout.Bands[band].Columns[columnHeader].CellActivation = Activation.Disabled;
                     }
+
+                    if (columnHeader.Substring(5) == "Input" && skuSubtotals)
+                        grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].CellActivation = Activation.Disabled;
+                    else
+                        grdInputDetail.DisplayLayout.Bands[0].Columns[columnHeader].CellActivation = Activation.AllowEdit;
                 }
             }
+        }
+
+        private void GridLayout() //Disables certain columns for editing, changes header names, hides columns, etc.
+        {
+            //Load user preferances
+            Global.GridLayout(grdInputDetail, 2, Properties.Settings.Default.grdInputLayout);
+            grdInputDetail.DisplayLayout.UseFixedHeaders = true;
+
+            //Now override any weird adjustments the user might have done if we want it to look a certain way
+            if (bySku)
+                formatHeader(); //Band 0 - SKU rows
+
+            formatDetail(); //Band 1 - detail rows
+
+            adjustInputColumns(); //Set column widths and enable / disable columns
 
             toggleInputLY(false); //Hide the LY values and make them read only
             togglePlannedLY(false);
@@ -229,7 +247,6 @@ namespace Forecast
             pnLoading.Visible = false;
             grdInputDetail.Enabled = true;
             grdInputDetail.Rows.Refresh(RefreshRow.FireInitializeRow, true);
-            //grdSummary.Enabled = true;
             pnExpand.Enabled = true;
             pnColapse.Enabled = true;
             cbInputLY.Checked = false;
@@ -695,24 +712,31 @@ namespace Forecast
 
         private void rdBySku_CheckedChanged(object sender, EventArgs e)
         {
+            grpGrouping.Enabled = false;
             bySku = rdBySku.Checked;
+            cksubtotalSKU.Enabled = bySku;
             if (bySku)
             {
                 grdInputDetail.Enabled = false;
                 grdInputDetail.DataSource = inputDetail;
                 GridLayout();
             }
+            grpGrouping.Enabled = true;
         }
 
         private void rdByItem_CheckedChanged(object sender, EventArgs e)
         {
+            grpGrouping.Enabled = false;
             bySku = rdBySku.Checked;
+            cksubtotalSKU.Enabled = bySku;
             if (!bySku)
             {
+                cksubtotalSKU.Checked = false;
                 grdInputDetail.Enabled = false;
                 grdInputDetail.DataSource = inDetail;
                 GridLayout();
             }
+            grpGrouping.Enabled = true;
         }
 
         private void pnColapse_Click(object sender, EventArgs e)
@@ -822,16 +846,9 @@ namespace Forecast
                     nameIds.Add(dv[cbRegions.ValueMember].ToString());
                 }
 
-                //What units for historical?
-                string cost = "0";
-                if (rdCost.Checked)
-                    cost = "1";
-                if (rdRetail.Checked)
-                    cost = "2";
-
                 //Build query
                 string regions = string.Join(",", nameIds.ToArray());
-                string query = "usp_FC_SelectInputDetail @startWeek='" + startWeek + "', @endWeek='" + endWeek + "', @nameIds='" + regions + "', @cost="+cost+", @band=";
+                string query = "usp_FC_SelectInputDetail @startWeek='" + startWeek + "', @endWeek='" + endWeek + "', @nameIds='" + regions + "', @band=";
 
                 //Display loading panel
                 pnLoading.Visible = true;
@@ -923,6 +940,7 @@ namespace Forecast
                 string site = band == "1" ? e.Cell.Row.Cells["siteId"].Text : "0";
                 string readyWeek = header == "1" ? "0000" : e.Cell.Column.Key.Substring(0, 4);
                 string skuKey = e.Cell.Row.Cells["SKUKey"].Text;
+                bool doUpdate = skuSubtotals && band == "0" && header == "0" ? false : true;
 
                 try
                 {
@@ -938,8 +956,9 @@ namespace Forecast
                 {
                     TotalInputs(prodId);
 
-                    Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
-                                                                ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "', @userName='" + userName + "'");
+                    if (doUpdate)
+                        Global.ExecuteQuery("usp_FC_UpdateInputSheets @band=" + band + ", @header=" + header + ", @qty=" + n.ToString() + ", @prodId=" + prodId +
+                                                ", @regionId=" + region + ", @siteId=" + site + ", @readyWeek='" + readyWeek + "', @userName='" + userName + "'");
 
                     if (band == "1" && header == "0")
                         calculateSummary(e.Cell.Row.Cells["Site"].Text, readyWeek);
@@ -998,7 +1017,29 @@ namespace Forecast
 
         private void cksubtotalSKU_CheckedChanged(object sender, EventArgs e)
         {
+            skuSubtotals = cksubtotalSKU.Checked;
 
+            if (skuSubtotals && bySku)
+            {
+                bgHeaderTable.Clear();
+                bgHeaderTable = inHeader.Copy();
+
+                string columnHeader = "";
+                int band = bySku ? 1 : 0;
+                int n;
+                int subtotal;
+
+                foreach (DataRow dr in inHeader.Rows)
+                {
+                    //columnHeader = 
+                    if (columnHeader.Substring(5) == "Input" && skuSubtotals)
+                    {
+                        subtotal = 0;
+
+                    }
+                }
+            }
+            adjustInputColumns();
         }
     }
 }
