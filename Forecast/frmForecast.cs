@@ -1018,28 +1018,33 @@ namespace Forecast
         private void cksubtotalSKU_CheckedChanged(object sender, EventArgs e)
         {
             skuSubtotals = cksubtotalSKU.Checked;
+            grdInputDetail.Enabled = false;
+            string columnHeader = "";
+            int band = bySku ? 1 : 0;
+            int n;
 
             if (skuSubtotals && bySku)
             {
                 bgHeaderTable.Clear();
-                bgHeaderTable = inHeader.Copy();
-
-                string columnHeader = "";
-                int band = bySku ? 1 : 0;
-                int n;
-                int subtotal;
+                bgHeaderTable.Merge(inHeader);
 
                 foreach (DataRow dr in inHeader.Rows)
                 {
-                    //columnHeader = 
-                    if (columnHeader.Substring(5) == "Input" && skuSubtotals)
+                    foreach (DataColumn dc in inHeader.Columns)
                     {
-                        subtotal = 0;
-
+                        columnHeader = dc.ColumnName.Length >= 5 ? dc.ColumnName : "xxxxx";
+                        if (columnHeader.Substring(5) == "Input" && skuSubtotals && int.TryParse(columnHeader.Substring(0, 4), out n))
+                        {
+                            dr[dc] = "0";
+                        }
                     }
                 }
+            } else
+            {
+                inHeader.Merge(bgHeaderTable);
             }
             adjustInputColumns();
+            grdInputDetail.Enabled = true;
         }
     }
 }
