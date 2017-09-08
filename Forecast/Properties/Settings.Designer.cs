@@ -58,5 +58,17 @@ namespace Forecast.Properties {
                 this["endWeek"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool skuSubtotals {
+            get {
+                return ((bool)(this["skuSubtotals"]));
+            }
+            set {
+                this["skuSubtotals"] = value;
+            }
+        }
     }
 }

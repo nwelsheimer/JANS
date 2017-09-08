@@ -41,6 +41,7 @@ namespace Forecast
 
             txtStartWeek.Text = Properties.Settings.Default.startWeek;
             txtEndWeek.Text = Properties.Settings.Default.endWeek;
+            cksubtotalSKU.Checked = Properties.Settings.Default.skuSubtotals;
         }
 
         private void grdInputDetail_InitializeLayout(object sender, InitializeLayoutEventArgs e)
@@ -245,6 +246,9 @@ namespace Forecast
             toggleShippedLY(false);
             
             pnLoading.Visible = false;
+
+            ShowSKUSubtotals();
+
             grdInputDetail.Enabled = true;
             grdInputDetail.Rows.Refresh(RefreshRow.FireInitializeRow, true);
             pnExpand.Enabled = true;
@@ -558,6 +562,64 @@ namespace Forecast
             }
         }
 
+        private void ShowSKUSubtotals()
+        {
+            skuSubtotals = cksubtotalSKU.Checked;
+            grdInputDetail.Enabled = false;
+            string columnHeader = "";
+            int band = bySku ? 1 : 0;
+            int n;
+            int value;
+            int subtotal;
+            DataRow[] foundRow;
+
+            if (skuSubtotals && bySku)
+            {
+                bgHeaderTable.Clear();
+                bgHeaderTable.Merge(inHeader);
+
+                foreach (DataRow dr in inHeader.Rows)
+                {
+                    subtotal = 0;
+                    foreach (DataColumn dc in inHeader.Columns)
+                    {
+                        columnHeader = dc.ColumnName.Length >= 5 ? dc.ColumnName : "xxxxx";
+                        if (columnHeader.Substring(5) == "Input" && skuSubtotals && int.TryParse(columnHeader.Substring(0, 4), out n))
+                        {
+                            value = int.Parse(inDetail.Compute("SUM([" + columnHeader + "])", "SKUKey='" + dr["SKUKey"].ToString() + "'").ToString(), styles);
+                            subtotal += value;
+                            dr[dc] = value;
+                        }
+                    }
+                    dr["TotalInput"] = subtotal;
+                }
+            }
+            else
+            {
+                foreach (DataRow dr in bgHeaderTable.Rows)
+                {
+                    subtotal = 0;
+                    foundRow = inHeader.Select("SKUKey='" + dr["SKUKey"].ToString() + "'");
+                    foreach (DataColumn dc in bgHeaderTable.Columns)
+                    {
+                        columnHeader = dc.ColumnName.Length >= 5 ? dc.ColumnName : "xxxxx";
+                        if (columnHeader.Substring(5) == "Input" && !skuSubtotals && int.TryParse(columnHeader.Substring(0, 4), out n))
+                        {
+                            foreach (DataRow subdr in foundRow)
+                            {
+                                value = int.Parse(dr[dc].ToString(), styles);
+                                subtotal += value;
+                                subdr[columnHeader] = value;
+                                subdr["TotalInput"] = subtotal;
+                            }
+                        }
+                    }
+                }
+            }
+            adjustInputColumns();
+            grdInputDetail.Enabled = true;
+        }
+
         private void calculateSummary(string site = "", string week = "")
         {
             int qty;
@@ -708,6 +770,16 @@ namespace Forecast
             this.UseWaitCursor = true;
             grdInputDetail.Rows.ExpandAll(true);
             this.UseWaitCursor = false;
+        }
+
+        private void cksubtotalSKU_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cksubtotalSKU.Enabled)
+            {
+                Properties.Settings.Default.skuSubtotals = cksubtotalSKU.Checked;
+                Properties.Settings.Default.Save();
+                ShowSKUSubtotals();
+            }
         }
 
         private void rdBySku_CheckedChanged(object sender, EventArgs e)
@@ -1014,37 +1086,5 @@ namespace Forecast
                 b.Indentation = 0;
         }
         #endregion
-
-        private void cksubtotalSKU_CheckedChanged(object sender, EventArgs e)
-        {
-            skuSubtotals = cksubtotalSKU.Checked;
-            grdInputDetail.Enabled = false;
-            string columnHeader = "";
-            int band = bySku ? 1 : 0;
-            int n;
-
-            if (skuSubtotals && bySku)
-            {
-                bgHeaderTable.Clear();
-                bgHeaderTable.Merge(inHeader);
-
-                foreach (DataRow dr in inHeader.Rows)
-                {
-                    foreach (DataColumn dc in inHeader.Columns)
-                    {
-                        columnHeader = dc.ColumnName.Length >= 5 ? dc.ColumnName : "xxxxx";
-                        if (columnHeader.Substring(5) == "Input" && skuSubtotals && int.TryParse(columnHeader.Substring(0, 4), out n))
-                        {
-                            dr[dc] = "0";
-                        }
-                    }
-                }
-            } else
-            {
-                inHeader.Merge(bgHeaderTable);
-            }
-            adjustInputColumns();
-            grdInputDetail.Enabled = true;
-        }
     }
 }

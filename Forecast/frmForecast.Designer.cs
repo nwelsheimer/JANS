@@ -407,7 +407,7 @@
             this.panel1.Controls.Add(this.cbPlannedLY);
             this.panel1.Controls.Add(this.cbInputLY);
             this.panel1.Controls.Add(this.cbShippedLY);
-            this.panel1.Location = new System.Drawing.Point(5, 6);
+            this.panel1.Location = new System.Drawing.Point(5, 18);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(118, 57);
             this.panel1.TabIndex = 22;
@@ -418,9 +418,9 @@
             this.cbPlannedLY.Enabled = false;
             this.cbPlannedLY.Location = new System.Drawing.Point(3, 20);
             this.cbPlannedLY.Name = "cbPlannedLY";
-            this.cbPlannedLY.Size = new System.Drawing.Size(111, 17);
+            this.cbPlannedLY.Size = new System.Drawing.Size(95, 17);
             this.cbPlannedLY.TabIndex = 11;
-            this.cbPlannedLY.Text = "Show Planned LY";
+            this.cbPlannedLY.Text = "Show Planned";
             this.cbPlannedLY.UseVisualStyleBackColor = true;
             this.cbPlannedLY.CheckedChanged += new System.EventHandler(this.cbPlannedLY_CheckedChanged);
             // 
