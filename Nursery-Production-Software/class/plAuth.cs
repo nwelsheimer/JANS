@@ -108,15 +108,16 @@ namespace Nursery_Production_Software.Class
             string password = txtPassword.Text;
             int doLogin = 0;
 
-            Global.SetConnectionString(txtHost.Text, txtDb.Text, txtPort.Text, txtDBUser.Text, txtDBPass.Text);
+            if (Global.mySql)
+            { Global.SetConnectionString(txtHost.Text, txtDb.Text, txtPort.Text, username, password); }
+            else { Global.SetConnectionString(txtHost.Text, txtDb.Text, txtPort.Text, txtDBUser.Text, txtDBPass.Text); }
 
             try
             {
-                doLogin = Convert.ToInt16(Global.GetData("usp_SYS_Login @username='" + username + "', @password='" + password + "'").Tables[0].Rows[0][0]);
-            } catch
-            {
-                MetroMessageBox.Show(this, "There was an issue connecting to the server. Please check your connection settings.");
+                //doLogin = Convert.ToInt16(Global.GetData("usp_SYS_Login @username='" + username + "', @password='" + password + "'").Tables[0].Rows[0][0]);
+                doLogin = Convert.ToInt16(Global.GetData("call usp_SYS_Login('" + username + "','" + password + "')").Tables[0].Rows[0][0]);
             }
+            catch { }
 
             //raise loginsuccess if we won
             if (doLogin > 0)
@@ -124,9 +125,6 @@ namespace Nursery_Production_Software.Class
                 userId = doLogin;
                 EventHandler handler = LogInSuccess;
                 if (handler != null) handler(this, e);
-            } else
-            {
-                MetroMessageBox.Show(this,"Invalid username or password provided. Please try again.");
             }
         }
 

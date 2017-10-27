@@ -9,6 +9,7 @@ using System.Security.Permissions;
 using Infragistics.Win.UltraWinGrid;
 using Microsoft.Win32;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 //TODO(JLT): Set up App-level Registry properties in Program.cs files that can override Sawyer-level
 //TODO(JLT): set up the cascading Form.Text idea so only one taskbar button will show text of currently open form, and revert when form is closed.
@@ -23,37 +24,87 @@ namespace General
             validPhone = @"^(\d{3})?\d{7}",
             strAppSubKey;
         public static RegistryKey keyHKLM_AppSubKey;
+        public static bool mySql = true; //NDW - 10/27/2017 - Added mySQL support
         #endregion
 
         #region Private Properties
         private static RegistryKey keyHKLM_TopRegKey;
         private static string strHKLM_TopRegKey = @"Software\Sawyer";
         private static SqlConnection sqlConn = null; //= new SqlConnection(SQLCON);
+
+        private static MySqlConnection mySqlConn = null; //NDW - 10/27/2017 - Added mySQL support
         #endregion
 
         #region Public Data Functions
         public static bool ExecuteQuery(string query)
         {
             CheckConnection();
-            SqlCommand com = new SqlCommand(query, sqlConn);
-            com.Connection.Open();
-            try
+
+            if (mySql)  //NDW - 10/27/2017 - Added mySQL support
             {
-                com.ExecuteNonQuery();
-                com.Connection.Close();
-                return true;
+                try
+                {
+                    mySqlConn.Open();
+                }
+                catch (MySqlException ex)
+                {
+                    switch (ex.Number)
+                    {
+                        case 0:
+                            MessageBox.Show("Cannot connect to MariaDB server. Contact administrator");
+                            break;
+                        case 1045:
+                            MessageBox.Show("Invalid username/password, please check your settings and try again");
+                            break;
+                        default:
+                            MessageBox.Show("MariaDB SQL error.\n" + ex.Message);
+                            break;
+                    }
+                    return false;
+                }
+
+                MySqlCommand com = new MySqlCommand(query, mySqlConn);
+                try
+                {
+                    com.ExecuteNonQuery();
+                    com.Connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("MariaDB SQL error.\n" + ex.Message);
+                    com.Connection.Close();
+                    return false;
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show("Some other error:\n" + x.Message);
+                    com.Connection.Close();
+                    return false;
+                }
             }
-            catch (SqlException sqlX)
+            else
             {
-                MessageBox.Show("SQL Error:\n" + sqlX.Message + "\n\nSQL: " + query, "SQL Error", MessageBoxButtons.OK);
-                com.Connection.Close();
-                return false;
-            }
-            catch (Exception X)
-            {
-                MessageBox.Show("Some other error:\n" + X.Message);
-                com.Connection.Close();
-                return false;
+                SqlCommand com = new SqlCommand(query, sqlConn);
+                com.Connection.Open();
+                try
+                {
+                    com.ExecuteNonQuery();
+                    com.Connection.Close();
+                    return true;
+                }
+                catch (SqlException sqlX)
+                {
+                    MessageBox.Show("SQL Error:\n" + sqlX.Message + "\n\nSQL: " + query, "SQL Error", MessageBoxButtons.OK);
+                    com.Connection.Close();
+                    return false;
+                }
+                catch (Exception X)
+                {
+                    MessageBox.Show("Some other error:\n" + X.Message);
+                    com.Connection.Close();
+                    return false;
+                }
             }
         }
 
@@ -65,7 +116,7 @@ namespace General
 
         public static void connectToDB()
         {
-            RegistryKey jans = Global.get_reg_key("JANS", true);
+            RegistryKey jans = get_reg_key("JANS", true);
             try
             {
                 string dbServer = jans.GetValue("dbHost").ToString();//Properties.Settings.Default.dbServer;
@@ -77,7 +128,8 @@ namespace General
                 //This basically makes sure that we can connect to SBI. They can't select a plan unless they do this.
                 //2-16-2017 Rewrite for new production module. SBI in house now.
                 //Global.SetConnectionString("SBI","Server="+dbServer+";Database="+dbName+";Integrated Security=SSPI;User ID="+dbUser+";Password="+dbPass);
-                Global.SetConnectionString(dbServer, dbName, dbPort, dbUser, dbPass);
+                SetConnectionString(dbServer, dbName, dbPort, dbUser, dbPass);
+                CheckConnection();
             }
             catch
             {  }
@@ -165,24 +217,64 @@ namespace General
         public static DataSet GetData(string query)
         {
             CheckConnection();
-            SqlDataAdapter da = new SqlDataAdapter(query, sqlConn);
-            da.SelectCommand.CommandTimeout = 0;
             DataSet ds = new DataSet();
-            try
+
+            if (mySql)
             {
-                da.Fill(ds);
+                try
+                {
+                    mySqlConn.Open();
+                }
+                catch (MySqlException ex)
+                {
+                    switch (ex.Number)
+                    {
+                        case 0:
+                            MessageBox.Show("Cannot connect to MariaDB server. Contact administrator");
+                            break;
+                        case 1045:
+                            MessageBox.Show("Invalid username/password, please check your settings and try again");
+                            break;
+                        default:
+                            MessageBox.Show("MariaDB SQL error.\n" + ex.Message);
+                            break;
+                    }
+                }
+
+                MySqlDataAdapter da = new MySqlDataAdapter(query, mySqlConn);
+                try
+                {
+                    da.Fill(ds);
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("MariaDB SQL error.\n" + ex.Message);
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show("Some other error:\n" + x.Message);
+                }
             }
-            catch (SqlException sqlX)
+            else
             {
-                //com.Connection.Close();
-                MessageBox.Show("SQL Error occurred:\n" + sqlX.Message + "\n\nSQL: " + query, "SQL Error", MessageBoxButtons.OK);
-                return null;
-            }
-            catch (Exception X)
-            {
-                //com.Connection.Close();
-                MessageBox.Show("Unknown error occurred:\n" + X.Message, "General Error", MessageBoxButtons.OK);
-                return null;
+                SqlDataAdapter da = new SqlDataAdapter(query, sqlConn);
+                da.SelectCommand.CommandTimeout = 0;
+                try
+                {
+                    da.Fill(ds);
+                }
+                catch (SqlException sqlX)
+                {
+                    //com.Connection.Close();
+                    MessageBox.Show("SQL Error occurred:\n" + sqlX.Message + "\n\nSQL: " + query, "SQL Error", MessageBoxButtons.OK);
+                    return null;
+                }
+                catch (Exception X)
+                {
+                    //com.Connection.Close();
+                    MessageBox.Show("Unknown error occurred:\n" + X.Message, "General Error", MessageBoxButtons.OK);
+                    return null;
+                }
             }
             return ds;
         }
@@ -233,39 +325,31 @@ namespace General
 
         public static void SetConnectionString(string server, string db, string port = "1433", string username = "", string password = "")
         {
-            try
+            //NDW - 10/27/2017 - Adding mySQL support
+            if (mySql)
             {
-                //Scabbing on functionality to connect to the remote SBI server, while hopefully maintaining this code for future in house apps
-                if (server == "SBI")
+                SQLCON = "server="+server+";port="+port+";uid="+username+";pwd="+password+";database="+db+";";
+            }
+            else
+            {
+                SQLCON = "Data Source=" + server;
+                if (port == "")
                 {
-                    SQLCON = db;
+                    SQLCON += ";Initial Catalog=" + db;
                 }
                 else
                 {
-                    SQLCON = "Data Source=" + server;
-                    if (port == "")
-                    {
-                        SQLCON += ";Initial Catalog=" + db;
-                    }
-                    else
-                    {
-                        SQLCON += "," + port + ";Initial Catalog=" + db;
-                    }
-
-                    if (username == "")
-                    {
-                        SQLCON += ";Integrated Security=True;";
-                    }
-                    else
-                    {
-                        SQLCON += ";User Id=" + username + "; Password=" + password + ";";
-                    }
+                    SQLCON += "," + port + ";Initial Catalog=" + db;
                 }
 
-            }
-            catch (Exception)
-            {
-                SQLCON = GetConnectionString();
+                if (username == "")
+                {
+                    SQLCON += ";Integrated Security=True;";
+                }
+                else
+                {
+                    SQLCON += ";User Id=" + username + "; Password=" + password + ";";
+                }
             }
         }
         #endregion
@@ -605,9 +689,20 @@ namespace General
         #region Private Functions
         private static void CheckConnection()
         {
-            if (sqlConn == null)
+            if (mySql)
+            {   //NDW - 10/27/2017 - Added mySQL support
+                if (mySqlConn == null)
+                {
+                    mySqlConn = new MySqlConnection(SQLCON);
+                }
+            }
+            else
             {
-                sqlConn = new SqlConnection(SQLCON);
+                if (sqlConn == null)
+                {
+
+                    sqlConn = new SqlConnection(SQLCON);
+                }
             }
         }
 
