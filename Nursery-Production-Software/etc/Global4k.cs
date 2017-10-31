@@ -42,27 +42,6 @@ namespace General
 
             if (mySql)  //NDW - 10/27/2017 - Added mySQL support
             {
-                try
-                {
-                    mySqlConn.Open();
-                }
-                catch (MySqlException ex)
-                {
-                    switch (ex.Number)
-                    {
-                        case 0:
-                            MessageBox.Show("Cannot connect to MariaDB server. Contact administrator");
-                            break;
-                        case 1045:
-                            MessageBox.Show("Invalid username/password, please check your settings and try again");
-                            break;
-                        default:
-                            MessageBox.Show("MariaDB SQL error.\n" + ex.Message);
-                            break;
-                    }
-                    return false;
-                }
-
                 MySqlCommand com = new MySqlCommand(query, mySqlConn);
                 try
                 {
@@ -221,26 +200,6 @@ namespace General
 
             if (mySql)
             {
-                try
-                {
-                    mySqlConn.Open();
-                }
-                catch (MySqlException ex)
-                {
-                    switch (ex.Number)
-                    {
-                        case 0:
-                            MessageBox.Show("Cannot connect to MariaDB server. Contact administrator");
-                            break;
-                        case 1045:
-                            MessageBox.Show("Invalid username/password, please check your settings and try again");
-                            break;
-                        default:
-                            MessageBox.Show("MariaDB SQL error.\n" + ex.Message);
-                            break;
-                    }
-                }
-
                 MySqlDataAdapter da = new MySqlDataAdapter(query, mySqlConn);
                 try
                 {
@@ -694,6 +653,28 @@ namespace General
                 if (mySqlConn == null)
                 {
                     mySqlConn = new MySqlConnection(SQLCON);
+                }
+                if (mySqlConn.State!=ConnectionState.Open)
+                {
+                    try
+                    {
+                        mySqlConn.Open();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        switch (ex.Number)
+                        {
+                            case 0:
+                                MessageBox.Show("Cannot connect to MariaDB server. Contact administrator");
+                                break;
+                            case 1045:
+                                MessageBox.Show("Invalid username/password, please check your settings and try again");
+                                break;
+                            default:
+                                MessageBox.Show("MariaDB SQL error.\n" + ex.Message);
+                                break;
+                        }
+                    }
                 }
             }
             else
