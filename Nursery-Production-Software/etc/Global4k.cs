@@ -24,7 +24,7 @@ namespace General
             validPhone = @"^(\d{3})?\d{7}",
             strAppSubKey;
         public static RegistryKey keyHKLM_AppSubKey;
-        public static bool mySql = true; //NDW - 10/27/2017 - Added mySQL support
+        public static bool mySql = false; //NDW - 10/27/2017 - Added mySQL support
         #endregion
 
         #region Private Properties

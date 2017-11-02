@@ -57,8 +57,8 @@ namespace Nursery_Production_Software
             fileMnu();
 
             //This table contains the complete menu system for this user
-            //DataTable menuSystem = Global.GetData("usp_SYS_MenuBuilder @userId=" + userId).Tables[0];
-            DataTable menuSystem = Global.GetData("call usp_SYS_MenuBuilder(" + userId + ")").Tables[0];
+            DataTable menuSystem = Global.GetData("usp_SYS_MenuBuilder @userId=" + userId).Tables[0];
+            //DataTable menuSystem = Global.GetData("call usp_SYS_MenuBuilder(" + userId + ")").Tables[0];
 
             //filter a distinct list of parent menus
             DataView temp = menuSystem.DefaultView;

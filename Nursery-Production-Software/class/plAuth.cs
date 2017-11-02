@@ -114,8 +114,8 @@ namespace Nursery_Production_Software.Class
 
             try
             {
-                //doLogin = Convert.ToInt16(Global.GetData("usp_SYS_Login @username='" + username + "', @password='" + password + "'").Tables[0].Rows[0][0]);
-                doLogin = Convert.ToInt16(Global.GetData("call usp_SYS_Login('" + username + "','" + password + "')").Tables[0].Rows[0][0]);
+                doLogin = Convert.ToInt16(Global.GetData("usp_SYS_Login @username='" + username + "', @password='" + password + "'").Tables[0].Rows[0][0]);
+                //doLogin = Convert.ToInt16(Global.GetData("call usp_SYS_Login('" + username + "','" + password + "')").Tables[0].Rows[0][0]);
             }
             catch { }
 

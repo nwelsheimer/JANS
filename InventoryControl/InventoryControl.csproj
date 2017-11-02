@@ -84,6 +84,16 @@
     <Compile Include="frmInvHeight.Designer.cs">
       <DependentUpon>frmInvHeight.cs</DependentUpon>
     </Compile>
+    <Compile Include="NMSDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NMSDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NMSDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NMSDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmInvCatalog.resx">
@@ -102,6 +112,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="NMSDataSet.xsc">
+      <DependentUpon>NMSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NMSDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NMSDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NMSDataSet.xss">
+      <DependentUpon>NMSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NMSDataSet1.xsc">
+      <DependentUpon>NMSDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="NMSDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NMSDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NMSDataSet1.xss">
+      <DependentUpon>NMSDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
