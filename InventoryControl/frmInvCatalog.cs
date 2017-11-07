@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace InventoryControl
 {
-    public partial class frmInvCatalog : Form
+    public partial class frmInvCatalog : DevExpress.XtraEditors.XtraForm
     {
         public frmInvCatalog()
         {
