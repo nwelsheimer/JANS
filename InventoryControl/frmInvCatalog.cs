@@ -25,8 +25,6 @@ namespace InventoryControl
             syS_SiteTableAdapter1.Fill(dsSite.SYS_Site);
             iC_inventoryGradesTableAdapter1.Fill(dsGrade.IC_inventoryGrades);
             iC_divisionTableAdapter1.Fill(dsDivision.IC_division);
-            iC_enviromentTableAdapter1.Fill(dsEnviroment.IC_enviroment);
-            iC_enviromentTableAdapter2.Fill(dsEnviroment.IC_enviroment);
             iC_typeTableAdapter1.Fill(dsType.IC_type);
         }
 
