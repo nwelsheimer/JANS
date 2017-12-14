@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryControl", "..\Inve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forecast", "..\Forecast\Forecast.csproj", "{9B90D4DC-AD83-47C2-BD3C-F49040883968}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RackOptimizer", "..\RackOptimizer\RackOptimizer.csproj", "{E187CBFA-86A5-4075-82CF-50264D01FDE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{9B90D4DC-AD83-47C2-BD3C-F49040883968}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B90D4DC-AD83-47C2-BD3C-F49040883968}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B90D4DC-AD83-47C2-BD3C-F49040883968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E187CBFA-86A5-4075-82CF-50264D01FDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E187CBFA-86A5-4075-82CF-50264D01FDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E187CBFA-86A5-4075-82CF-50264D01FDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E187CBFA-86A5-4075-82CF-50264D01FDE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

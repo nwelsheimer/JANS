@@ -69,9 +69,33 @@
             this.colphone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coldflt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.dsType = new InventoryControl.NMSDataSet();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colid6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldescription7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.grdSoil = new DevExpress.XtraGrid.GridControl();
             this.dsSoil = new InventoryControl.NMSDataSet();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colid2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldescription2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colsort2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.grdZone = new DevExpress.XtraGrid.GridControl();
             this.dsZone = new InventoryControl.NMSDataSet();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colid1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldescription1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colsort1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.grdExposure = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colsort = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.tabCatalog = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabSizes = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabLocations = new DevExpress.XtraBars.Navigation.TabNavigationPage();
@@ -81,33 +105,18 @@
             this.iC_inventoryGradesTableAdapter1 = new InventoryControl.NMSDataSetTableAdapters.IC_inventoryGradesTableAdapter();
             this.iC_divisionTableAdapter1 = new InventoryControl.NMSDataSetTableAdapters.IC_divisionTableAdapter();
             this.iC_typeTableAdapter1 = new InventoryControl.NMSDataSetTableAdapters.IC_typeTableAdapter();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.grdExposure = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colsort = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.grdZone = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colid1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldescription1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colsort1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.grdSoil = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colid2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldescription2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colsort2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colid6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldescription7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
+            this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControl4 = new DevExpress.XtraGrid.GridControl();
+            this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControl5 = new DevExpress.XtraGrid.GridControl();
+            this.gridView12 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.dsExposure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabsICInventory)).BeginInit();
             this.tabsICInventory.SuspendLayout();
+            this.tabICItems.SuspendLayout();
             this.tabConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -124,19 +133,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdSite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSoil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsZone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSoil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSoil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdZone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsZone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdExposure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdZone)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSoil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            this.tabCatalog.SuspendLayout();
+            this.tabSizes.SuspendLayout();
+            this.tabLocations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).BeginInit();
             this.SuspendLayout();
             // 
             // dsExposure
@@ -179,6 +199,7 @@
             // tabICItems
             // 
             this.tabICItems.Caption = "Inventory Items";
+            this.tabICItems.Controls.Add(this.gridControl2);
             this.tabICItems.Name = "tabICItems";
             this.tabICItems.Size = new System.Drawing.Size(1163, 674);
             // 
@@ -509,63 +530,6 @@
             this.labelControl8.TabIndex = 8;
             this.labelControl8.Text = "Site";
             // 
-            // dsType
-            // 
-            this.dsType.DataSetName = "NMSDataSet";
-            this.dsType.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsSoil
-            // 
-            this.dsSoil.DataSetName = "NMSDataSet";
-            this.dsSoil.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsZone
-            // 
-            this.dsZone.DataSetName = "NMSDataSet";
-            this.dsZone.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tabCatalog
-            // 
-            this.tabCatalog.Caption = "Item Master";
-            this.tabCatalog.Name = "tabCatalog";
-            this.tabCatalog.Size = new System.Drawing.Size(1181, 689);
-            // 
-            // tabSizes
-            // 
-            this.tabSizes.Caption = "Size Master";
-            this.tabSizes.Name = "tabSizes";
-            this.tabSizes.Size = new System.Drawing.Size(1181, 689);
-            // 
-            // tabLocations
-            // 
-            this.tabLocations.Caption = "Location Master";
-            this.tabLocations.Name = "tabLocations";
-            this.tabLocations.Size = new System.Drawing.Size(1163, 674);
-            // 
-            // iC_zoneTableAdapter1
-            // 
-            this.iC_zoneTableAdapter1.ClearBeforeFill = true;
-            // 
-            // iC_soilTableAdapter1
-            // 
-            this.iC_soilTableAdapter1.ClearBeforeFill = true;
-            // 
-            // syS_SiteTableAdapter1
-            // 
-            this.syS_SiteTableAdapter1.ClearBeforeFill = true;
-            // 
-            // iC_inventoryGradesTableAdapter1
-            // 
-            this.iC_inventoryGradesTableAdapter1.ClearBeforeFill = true;
-            // 
-            // iC_divisionTableAdapter1
-            // 
-            this.iC_divisionTableAdapter1.ClearBeforeFill = true;
-            // 
-            // iC_typeTableAdapter1
-            // 
-            this.iC_typeTableAdapter1.ClearBeforeFill = true;
-            // 
             // panelControl3
             // 
             this.panelControl3.Controls.Add(this.gridControl1);
@@ -582,17 +546,187 @@
             this.panelControl3.Size = new System.Drawing.Size(404, 674);
             this.panelControl3.TabIndex = 8;
             // 
-            // labelControl2
+            // gridControl1
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl2.Location = new System.Drawing.Point(2, 2);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(400, 13);
-            this.labelControl2.TabIndex = 7;
-            this.labelControl2.Text = "Exposure";
+            this.gridControl1.DataMember = "IC_type";
+            this.gridControl1.DataSource = this.dsType;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(2, 515);
+            this.gridControl1.MainView = this.gridView4;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(400, 157);
+            this.gridControl1.TabIndex = 14;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView4});
+            // 
+            // dsType
+            // 
+            this.dsType.DataSetName = "NMSDataSet";
+            this.dsType.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView4
+            // 
+            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colid6,
+            this.coldescription7});
+            this.gridView4.CustomizationFormBounds = new System.Drawing.Rectangle(3237, 273, 202, 176);
+            this.gridView4.GridControl = this.gridControl1;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridView4.OptionsView.ShowGroupPanel = false;
+            // 
+            // colid6
+            // 
+            this.colid6.FieldName = "id";
+            this.colid6.Name = "colid6";
+            // 
+            // coldescription7
+            // 
+            this.coldescription7.Caption = "Type";
+            this.coldescription7.FieldName = "description";
+            this.coldescription7.Name = "coldescription7";
+            this.coldescription7.Visible = true;
+            this.coldescription7.VisibleIndex = 0;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl4.Location = new System.Drawing.Point(2, 502);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(400, 13);
+            this.labelControl4.TabIndex = 13;
+            this.labelControl4.Text = "Type";
+            // 
+            // grdSoil
+            // 
+            this.grdSoil.DataMember = "IC_soil";
+            this.grdSoil.DataSource = this.dsSoil;
+            this.grdSoil.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grdSoil.Location = new System.Drawing.Point(2, 349);
+            this.grdSoil.MainView = this.gridView3;
+            this.grdSoil.Name = "grdSoil";
+            this.grdSoil.Size = new System.Drawing.Size(400, 153);
+            this.grdSoil.TabIndex = 12;
+            this.grdSoil.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // dsSoil
+            // 
+            this.dsSoil.DataSetName = "NMSDataSet";
+            this.dsSoil.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colid2,
+            this.coldescription2,
+            this.colsort2});
+            this.gridView3.GridControl = this.grdSoil;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // colid2
+            // 
+            this.colid2.FieldName = "id";
+            this.colid2.Name = "colid2";
+            // 
+            // coldescription2
+            // 
+            this.coldescription2.Caption = "Soil";
+            this.coldescription2.FieldName = "description";
+            this.coldescription2.Name = "coldescription2";
+            this.coldescription2.Visible = true;
+            this.coldescription2.VisibleIndex = 0;
+            this.coldescription2.Width = 313;
+            // 
+            // colsort2
+            // 
+            this.colsort2.Caption = "Sort";
+            this.colsort2.FieldName = "sort";
+            this.colsort2.Name = "colsort2";
+            this.colsort2.Visible = true;
+            this.colsort2.VisibleIndex = 1;
+            this.colsort2.Width = 69;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl3.Location = new System.Drawing.Point(2, 336);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(400, 13);
+            this.labelControl3.TabIndex = 11;
+            this.labelControl3.Text = "Soil";
+            // 
+            // grdZone
+            // 
+            this.grdZone.DataMember = "IC_zone";
+            this.grdZone.DataSource = this.dsZone;
+            this.grdZone.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grdZone.Location = new System.Drawing.Point(2, 181);
+            this.grdZone.MainView = this.gridView2;
+            this.grdZone.Name = "grdZone";
+            this.grdZone.Size = new System.Drawing.Size(400, 155);
+            this.grdZone.TabIndex = 10;
+            this.grdZone.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // dsZone
+            // 
+            this.dsZone.DataSetName = "NMSDataSet";
+            this.dsZone.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colid1,
+            this.coldescription1,
+            this.colsort1});
+            this.gridView2.GridControl = this.grdZone;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // colid1
+            // 
+            this.colid1.FieldName = "id";
+            this.colid1.Name = "colid1";
+            // 
+            // coldescription1
+            // 
+            this.coldescription1.Caption = "Zone";
+            this.coldescription1.FieldName = "description";
+            this.coldescription1.Name = "coldescription1";
+            this.coldescription1.Visible = true;
+            this.coldescription1.VisibleIndex = 0;
+            this.coldescription1.Width = 313;
+            // 
+            // colsort1
+            // 
+            this.colsort1.Caption = "Sort";
+            this.colsort1.FieldName = "sort";
+            this.colsort1.Name = "colsort1";
+            this.colsort1.Visible = true;
+            this.colsort1.VisibleIndex = 1;
+            this.colsort1.Width = 69;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl1.Location = new System.Drawing.Point(2, 168);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(400, 13);
+            this.labelControl1.TabIndex = 9;
+            this.labelControl1.Text = "Zone";
             // 
             // grdExposure
             // 
@@ -644,172 +778,122 @@
             this.colsort.VisibleIndex = 1;
             this.colsort.Width = 48;
             // 
-            // labelControl1
+            // labelControl2
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl1.Location = new System.Drawing.Point(2, 168);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(400, 13);
-            this.labelControl1.TabIndex = 9;
-            this.labelControl1.Text = "Zone";
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl2.Location = new System.Drawing.Point(2, 2);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(400, 13);
+            this.labelControl2.TabIndex = 7;
+            this.labelControl2.Text = "Exposure";
             // 
-            // grdZone
+            // tabCatalog
             // 
-            this.grdZone.DataMember = "IC_zone";
-            this.grdZone.DataSource = this.dsZone;
-            this.grdZone.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grdZone.Location = new System.Drawing.Point(2, 181);
-            this.grdZone.MainView = this.gridView2;
-            this.grdZone.Name = "grdZone";
-            this.grdZone.Size = new System.Drawing.Size(400, 155);
-            this.grdZone.TabIndex = 10;
-            this.grdZone.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.tabCatalog.Caption = "Item Master";
+            this.tabCatalog.Controls.Add(this.gridControl3);
+            this.tabCatalog.Name = "tabCatalog";
+            this.tabCatalog.Size = new System.Drawing.Size(1163, 674);
             // 
-            // gridView2
+            // tabSizes
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colid1,
-            this.coldescription1,
-            this.colsort1});
-            this.gridView2.GridControl = this.grdZone;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.tabSizes.Caption = "Size Master";
+            this.tabSizes.Controls.Add(this.gridControl4);
+            this.tabSizes.Name = "tabSizes";
+            this.tabSizes.Size = new System.Drawing.Size(1163, 674);
             // 
-            // colid1
+            // tabLocations
             // 
-            this.colid1.FieldName = "id";
-            this.colid1.Name = "colid1";
+            this.tabLocations.Caption = "Location Master";
+            this.tabLocations.Controls.Add(this.gridControl5);
+            this.tabLocations.Name = "tabLocations";
+            this.tabLocations.Size = new System.Drawing.Size(1163, 674);
             // 
-            // coldescription1
+            // iC_zoneTableAdapter1
             // 
-            this.coldescription1.Caption = "Zone";
-            this.coldescription1.FieldName = "description";
-            this.coldescription1.Name = "coldescription1";
-            this.coldescription1.Visible = true;
-            this.coldescription1.VisibleIndex = 0;
-            this.coldescription1.Width = 313;
+            this.iC_zoneTableAdapter1.ClearBeforeFill = true;
             // 
-            // colsort1
+            // iC_soilTableAdapter1
             // 
-            this.colsort1.Caption = "Sort";
-            this.colsort1.FieldName = "sort";
-            this.colsort1.Name = "colsort1";
-            this.colsort1.Visible = true;
-            this.colsort1.VisibleIndex = 1;
-            this.colsort1.Width = 69;
+            this.iC_soilTableAdapter1.ClearBeforeFill = true;
             // 
-            // labelControl3
+            // syS_SiteTableAdapter1
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl3.Location = new System.Drawing.Point(2, 336);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(400, 13);
-            this.labelControl3.TabIndex = 11;
-            this.labelControl3.Text = "Soil";
+            this.syS_SiteTableAdapter1.ClearBeforeFill = true;
             // 
-            // grdSoil
+            // iC_inventoryGradesTableAdapter1
             // 
-            this.grdSoil.DataMember = "IC_soil";
-            this.grdSoil.DataSource = this.dsSoil;
-            this.grdSoil.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grdSoil.Location = new System.Drawing.Point(2, 349);
-            this.grdSoil.MainView = this.gridView3;
-            this.grdSoil.Name = "grdSoil";
-            this.grdSoil.Size = new System.Drawing.Size(400, 153);
-            this.grdSoil.TabIndex = 12;
-            this.grdSoil.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
+            this.iC_inventoryGradesTableAdapter1.ClearBeforeFill = true;
             // 
-            // gridView3
+            // iC_divisionTableAdapter1
             // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colid2,
-            this.coldescription2,
-            this.colsort2});
-            this.gridView3.GridControl = this.grdSoil;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.iC_divisionTableAdapter1.ClearBeforeFill = true;
             // 
-            // colid2
+            // iC_typeTableAdapter1
             // 
-            this.colid2.FieldName = "id";
-            this.colid2.Name = "colid2";
+            this.iC_typeTableAdapter1.ClearBeforeFill = true;
             // 
-            // coldescription2
+            // gridControl2
             // 
-            this.coldescription2.Caption = "Soil";
-            this.coldescription2.FieldName = "description";
-            this.coldescription2.Name = "coldescription2";
-            this.coldescription2.Visible = true;
-            this.coldescription2.VisibleIndex = 0;
-            this.coldescription2.Width = 313;
+            this.gridControl2.Location = new System.Drawing.Point(25, 105);
+            this.gridControl2.MainView = this.gridView9;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(400, 200);
+            this.gridControl2.TabIndex = 0;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView9});
             // 
-            // colsort2
+            // gridView9
             // 
-            this.colsort2.Caption = "Sort";
-            this.colsort2.FieldName = "sort";
-            this.colsort2.Name = "colsort2";
-            this.colsort2.Visible = true;
-            this.colsort2.VisibleIndex = 1;
-            this.colsort2.Width = 69;
+            this.gridView9.GridControl = this.gridControl2;
+            this.gridView9.Name = "gridView9";
             // 
-            // labelControl4
+            // gridControl3
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl4.Location = new System.Drawing.Point(2, 502);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(400, 13);
-            this.labelControl4.TabIndex = 13;
-            this.labelControl4.Text = "Type";
+            this.gridControl3.Location = new System.Drawing.Point(143, 185);
+            this.gridControl3.MainView = this.gridView10;
+            this.gridControl3.Name = "gridControl3";
+            this.gridControl3.Size = new System.Drawing.Size(400, 200);
+            this.gridControl3.TabIndex = 0;
+            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView10});
             // 
-            // gridControl1
+            // gridView10
             // 
-            this.gridControl1.DataMember = "IC_type";
-            this.gridControl1.DataSource = this.dsType;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(2, 515);
-            this.gridControl1.MainView = this.gridView4;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(400, 157);
-            this.gridControl1.TabIndex = 14;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView4});
+            this.gridView10.GridControl = this.gridControl3;
+            this.gridView10.Name = "gridView10";
             // 
-            // gridView4
+            // gridControl4
             // 
-            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colid6,
-            this.coldescription7});
-            this.gridView4.CustomizationFormBounds = new System.Drawing.Rectangle(3237, 273, 202, 176);
-            this.gridView4.GridControl = this.gridControl1;
-            this.gridView4.Name = "gridView4";
-            this.gridView4.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
-            this.gridView4.OptionsView.ShowGroupPanel = false;
+            this.gridControl4.Location = new System.Drawing.Point(151, 229);
+            this.gridControl4.MainView = this.gridView11;
+            this.gridControl4.Name = "gridControl4";
+            this.gridControl4.Size = new System.Drawing.Size(400, 200);
+            this.gridControl4.TabIndex = 0;
+            this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView11});
             // 
-            // colid6
+            // gridView11
             // 
-            this.colid6.FieldName = "id";
-            this.colid6.Name = "colid6";
+            this.gridView11.GridControl = this.gridControl4;
+            this.gridView11.Name = "gridView11";
             // 
-            // coldescription7
+            // gridControl5
             // 
-            this.coldescription7.Caption = "Type";
-            this.coldescription7.FieldName = "description";
-            this.coldescription7.Name = "coldescription7";
-            this.coldescription7.Visible = true;
-            this.coldescription7.VisibleIndex = 0;
+            this.gridControl5.Location = new System.Drawing.Point(32, 72);
+            this.gridControl5.MainView = this.gridView12;
+            this.gridControl5.Name = "gridControl5";
+            this.gridControl5.Size = new System.Drawing.Size(400, 200);
+            this.gridControl5.TabIndex = 0;
+            this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView12});
+            // 
+            // gridView12
+            // 
+            this.gridView12.GridControl = this.gridControl5;
+            this.gridView12.Name = "gridView12";
             // 
             // frmInvCatalog
             // 
@@ -823,6 +907,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsExposure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabsICInventory)).EndInit();
             this.tabsICInventory.ResumeLayout(false);
+            this.tabICItems.ResumeLayout(false);
             this.tabConfig.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
@@ -839,19 +924,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdSite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSoil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsZone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSoil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSoil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdZone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsZone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdExposure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdZone)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSoil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            this.tabCatalog.ResumeLayout(false);
+            this.tabSizes.ResumeLayout(false);
+            this.tabLocations.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -933,5 +1029,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn colid1;
         private DevExpress.XtraGrid.Columns.GridColumn coldescription1;
         private DevExpress.XtraGrid.Columns.GridColumn colsort1;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
+        private DevExpress.XtraGrid.GridControl gridControl3;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView10;
+        private DevExpress.XtraGrid.GridControl gridControl4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView11;
+        private DevExpress.XtraGrid.GridControl gridControl5;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView12;
     }
 }

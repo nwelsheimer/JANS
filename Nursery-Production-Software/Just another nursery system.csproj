@@ -241,6 +241,10 @@
       <Project>{58cebb45-0a24-4e4e-8a21-796940145203}</Project>
       <Name>PottingInformation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RackOptimizer\RackOptimizer.csproj">
+      <Project>{e187cbfa-86a5-4075-82cf-50264d01fde5}</Project>
+      <Name>RackOptimizer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="log4net">
