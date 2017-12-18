@@ -35,14 +35,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Infragistics4.Shared.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.Misc.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.UltraWinDataSource.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
@@ -82,39 +74,16 @@
     <Compile Include="..\Nursery-Production-Software\etc\metroTools.cs">
       <Link>metroTools.cs</Link>
     </Compile>
-    <Compile Include="frmInvCatalog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmInvCatalog.Designer.cs">
-      <DependentUpon>frmInvCatalog.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmInvHeight.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInvHeight.Designer.cs">
       <DependentUpon>frmInvHeight.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProductCatalog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProductCatalog.Designer.cs">
-      <DependentUpon>frmProductCatalog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NMSDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NMSDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmInvCatalog.resx">
-      <DependentUpon>frmInvCatalog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmInvHeight.resx">
       <DependentUpon>frmInvHeight.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmProductCatalog.resx">
-      <DependentUpon>frmProductCatalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -126,17 +95,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="NMSDataSet.xsc">
-      <DependentUpon>NMSDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="NMSDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>NMSDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NMSDataSet.xss">
-      <DependentUpon>NMSDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
