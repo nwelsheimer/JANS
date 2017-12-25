@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -53,10 +54,34 @@
       Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
       this.cmbSession = new System.Windows.Forms.ComboBox();
       this.panel1 = new System.Windows.Forms.Panel();
-      this.label7 = new System.Windows.Forms.Label();
-      this.label6 = new System.Windows.Forms.Label();
+      this.lblRoundDown = new System.Windows.Forms.Label();
+      this.lblRoundUp = new System.Windows.Forms.Label();
       this.label5 = new System.Windows.Forms.Label();
       this.label4 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
@@ -65,34 +90,86 @@
       this.lblTotalStores = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
-      this.tabControl1 = new System.Windows.Forms.TabControl();
-      this.tabPage1 = new System.Windows.Forms.TabPage();
+      this.tcRackOptimize = new System.Windows.Forms.TabControl();
+      this.tabShelves = new System.Windows.Forms.TabPage();
       this.grdPartialShelves = new Infragistics.Win.UltraWinGrid.UltraGrid();
-      this.tabPage2 = new System.Windows.Forms.TabPage();
-      this.chkFullShelves = new System.Windows.Forms.CheckBox();
-      this.btnRefresh = new System.Windows.Forms.Button();
+      this.mnuColumns = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.columnChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.saveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.panel2 = new System.Windows.Forms.Panel();
-      this.btnApply = new System.Windows.Forms.Button();
       this.label9 = new System.Windows.Forms.Label();
+      this.btnApply = new System.Windows.Forms.Button();
+      this.chkFullShelves = new System.Windows.Forms.CheckBox();
+      this.tabRackSetup = new System.Windows.Forms.TabPage();
+      this.pnlRackWarning1 = new System.Windows.Forms.Panel();
+      this.label20 = new System.Windows.Forms.Label();
+      this.grdSessionInventory = new Infragistics.Win.UltraWinGrid.UltraGrid();
+      this.panel4 = new System.Windows.Forms.Panel();
+      this.label22 = new System.Windows.Forms.Label();
+      this.txtThreshold = new System.Windows.Forms.MaskedTextBox();
+      this.label21 = new System.Windows.Forms.Label();
+      this.grdStoreRacks = new Infragistics.Win.UltraWinGrid.UltraGrid();
+      this.tabRacks = new System.Windows.Forms.TabPage();
+      this.pnLoading = new System.Windows.Forms.Panel();
+      this.pictureBox1 = new System.Windows.Forms.PictureBox();
+      this.lbLoadingStatus = new System.Windows.Forms.Label();
+      this.barLoading = new Infragistics.Win.UltraWinProgressBar.UltraProgressBar();
+      this.grdRackOptimize = new Infragistics.Win.UltraWinGrid.UltraGrid();
+      this.panel5 = new System.Windows.Forms.Panel();
+      this.btnUpdateRacks = new System.Windows.Forms.Button();
+      this.btnCalc = new System.Windows.Forms.Button();
+      this.btnRefresh = new System.Windows.Forms.Button();
       this.panel3 = new System.Windows.Forms.Panel();
-      this.grdRackRound = new Infragistics.Win.UltraWinGrid.UltraGrid();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.lblRack3 = new System.Windows.Forms.Label();
+      this.label19 = new System.Windows.Forms.Label();
+      this.label15 = new System.Windows.Forms.Label();
+      this.label14 = new System.Windows.Forms.Label();
+      this.label13 = new System.Windows.Forms.Label();
+      this.label12 = new System.Windows.Forms.Label();
+      this.label7 = new System.Windows.Forms.Label();
+      this.label10 = new System.Windows.Forms.Label();
+      this.label17 = new System.Windows.Forms.Label();
+      this.label18 = new System.Windows.Forms.Label();
+      this.label11 = new System.Windows.Forms.Label();
+      this.label6 = new System.Windows.Forms.Label();
+      this.label16 = new System.Windows.Forms.Label();
+      this.lblRack1 = new System.Windows.Forms.Label();
+      this.lblRack2 = new System.Windows.Forms.Label();
+      this.lblRack4 = new System.Windows.Forms.Label();
+      this.lblRack5 = new System.Windows.Forms.Label();
+      this.lblRack6 = new System.Windows.Forms.Label();
       this.lvRackRound = new System.Windows.Forms.ListView();
+      this.fltShelvesProvider = new Infragistics.Win.SupportDialogs.FilterUIProvider.UltraGridFilterUIProvider(this.components);
+      this.bgUpdateRacks = new System.ComponentModel.BackgroundWorker();
+      this.bgUpdateOrders = new System.ComponentModel.BackgroundWorker();
       this.panel1.SuspendLayout();
-      this.tabControl1.SuspendLayout();
-      this.tabPage1.SuspendLayout();
+      this.tcRackOptimize.SuspendLayout();
+      this.tabShelves.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.grdPartialShelves)).BeginInit();
-      this.tabPage2.SuspendLayout();
+      this.mnuColumns.SuspendLayout();
       this.panel2.SuspendLayout();
+      this.tabRackSetup.SuspendLayout();
+      this.pnlRackWarning1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.grdSessionInventory)).BeginInit();
+      this.panel4.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.grdStoreRacks)).BeginInit();
+      this.tabRacks.SuspendLayout();
+      this.pnLoading.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.grdRackOptimize)).BeginInit();
+      this.panel5.SuspendLayout();
       this.panel3.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.grdRackRound)).BeginInit();
+      this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // cmbSession
       // 
       this.cmbSession.FormattingEnabled = true;
-      this.cmbSession.Location = new System.Drawing.Point(12, 28);
+      this.cmbSession.Location = new System.Drawing.Point(18, 43);
+      this.cmbSession.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cmbSession.Name = "cmbSession";
-      this.cmbSession.Size = new System.Drawing.Size(253, 21);
+      this.cmbSession.Size = new System.Drawing.Size(378, 28);
       this.cmbSession.TabIndex = 0;
       this.cmbSession.SelectedIndexChanged += new System.EventHandler(this.cmbSession_SelectedIndexChanged);
       // 
@@ -100,8 +177,8 @@
       // 
       this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.panel1.Controls.Add(this.label7);
-      this.panel1.Controls.Add(this.label6);
+      this.panel1.Controls.Add(this.lblRoundDown);
+      this.panel1.Controls.Add(this.lblRoundUp);
       this.panel1.Controls.Add(this.label5);
       this.panel1.Controls.Add(this.label4);
       this.panel1.Controls.Add(this.label3);
@@ -109,46 +186,51 @@
       this.panel1.Controls.Add(this.lblPartialShelves);
       this.panel1.Controls.Add(this.lblTotalStores);
       this.panel1.Controls.Add(this.label1);
-      this.panel1.Location = new System.Drawing.Point(747, 12);
+      this.panel1.Location = new System.Drawing.Point(1529, 18);
+      this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(308, 84);
+      this.panel1.Size = new System.Drawing.Size(461, 128);
       this.panel1.TabIndex = 1;
       // 
-      // label7
+      // lblRoundDown
       // 
-      this.label7.AutoSize = true;
-      this.label7.Location = new System.Drawing.Point(279, 50);
-      this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(13, 13);
-      this.label7.TabIndex = 8;
-      this.label7.Text = "0";
+      this.lblRoundDown.AutoSize = true;
+      this.lblRoundDown.Location = new System.Drawing.Point(418, 77);
+      this.lblRoundDown.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRoundDown.Name = "lblRoundDown";
+      this.lblRoundDown.Size = new System.Drawing.Size(18, 20);
+      this.lblRoundDown.TabIndex = 8;
+      this.lblRoundDown.Text = "0";
       // 
-      // label6
+      // lblRoundUp
       // 
-      this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(279, 32);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(13, 13);
-      this.label6.TabIndex = 7;
-      this.label6.Text = "0";
+      this.lblRoundUp.AutoSize = true;
+      this.lblRoundUp.Location = new System.Drawing.Point(418, 49);
+      this.lblRoundUp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRoundUp.Name = "lblRoundUp";
+      this.lblRoundUp.Size = new System.Drawing.Size(18, 20);
+      this.lblRoundUp.TabIndex = 7;
+      this.lblRoundUp.Text = "0";
       // 
       // label5
       // 
       this.label5.AutoSize = true;
-      this.label5.ForeColor = System.Drawing.Color.Lime;
-      this.label5.Location = new System.Drawing.Point(180, 50);
+      this.label5.ForeColor = System.Drawing.Color.Red;
+      this.label5.Location = new System.Drawing.Point(270, 77);
+      this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(71, 13);
+      this.label5.Size = new System.Drawing.Size(103, 20);
       this.label5.TabIndex = 6;
       this.label5.Text = "Round down:";
       // 
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.ForeColor = System.Drawing.Color.Red;
-      this.label4.Location = new System.Drawing.Point(180, 32);
+      this.label4.ForeColor = System.Drawing.Color.Lime;
+      this.label4.Location = new System.Drawing.Point(270, 49);
+      this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(57, 13);
+      this.label4.Size = new System.Drawing.Size(83, 20);
       this.label4.TabIndex = 5;
       this.label4.Text = "Round up:";
       // 
@@ -156,9 +238,10 @@
       // 
       this.label3.AutoSize = true;
       this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.Location = new System.Drawing.Point(23, 32);
+      this.label3.Location = new System.Drawing.Point(34, 49);
+      this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(80, 13);
+      this.label3.Size = new System.Drawing.Size(118, 20);
       this.label3.TabIndex = 4;
       this.label3.Text = "Total Stores:";
       // 
@@ -166,27 +249,30 @@
       // 
       this.label2.AutoSize = true;
       this.label2.ForeColor = System.Drawing.Color.Olive;
-      this.label2.Location = new System.Drawing.Point(23, 50);
+      this.label2.Location = new System.Drawing.Point(34, 77);
+      this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(80, 13);
+      this.label2.Size = new System.Drawing.Size(117, 20);
       this.label2.TabIndex = 3;
       this.label2.Text = "Partial Shelves:";
       // 
       // lblPartialShelves
       // 
       this.lblPartialShelves.AutoSize = true;
-      this.lblPartialShelves.Location = new System.Drawing.Point(122, 50);
+      this.lblPartialShelves.Location = new System.Drawing.Point(183, 77);
+      this.lblPartialShelves.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblPartialShelves.Name = "lblPartialShelves";
-      this.lblPartialShelves.Size = new System.Drawing.Size(13, 13);
+      this.lblPartialShelves.Size = new System.Drawing.Size(18, 20);
       this.lblPartialShelves.TabIndex = 2;
       this.lblPartialShelves.Text = "0";
       // 
       // lblTotalStores
       // 
       this.lblTotalStores.AutoSize = true;
-      this.lblTotalStores.Location = new System.Drawing.Point(122, 32);
+      this.lblTotalStores.Location = new System.Drawing.Point(183, 49);
+      this.lblTotalStores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblTotalStores.Name = "lblTotalStores";
-      this.lblTotalStores.Size = new System.Drawing.Size(13, 13);
+      this.lblTotalStores.Size = new System.Drawing.Size(18, 20);
       this.lblTotalStores.TabIndex = 1;
       this.lblTotalStores.Text = "0";
       // 
@@ -194,9 +280,10 @@
       // 
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(3, 7);
+      this.label1.Location = new System.Drawing.Point(4, 11);
+      this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(87, 13);
+      this.label1.Size = new System.Drawing.Size(128, 20);
       this.label1.TabIndex = 0;
       this.label1.Text = "Rack Analysis";
       // 
@@ -204,39 +291,44 @@
       // 
       this.label8.AutoSize = true;
       this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label8.Location = new System.Drawing.Point(12, 9);
+      this.label8.Location = new System.Drawing.Point(18, 14);
+      this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label8.Name = "label8";
-      this.label8.Size = new System.Drawing.Size(174, 13);
+      this.label8.Size = new System.Drawing.Size(260, 20);
       this.label8.TabIndex = 9;
       this.label8.Text = "Replenishment Session Name";
       // 
-      // tabControl1
+      // tcRackOptimize
       // 
-      this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.tcRackOptimize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tabControl1.Controls.Add(this.tabPage1);
-      this.tabControl1.Controls.Add(this.tabPage2);
-      this.tabControl1.Location = new System.Drawing.Point(12, 79);
-      this.tabControl1.Name = "tabControl1";
-      this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(1047, 571);
-      this.tabControl1.TabIndex = 10;
+      this.tcRackOptimize.Controls.Add(this.tabShelves);
+      this.tcRackOptimize.Controls.Add(this.tabRackSetup);
+      this.tcRackOptimize.Controls.Add(this.tabRacks);
+      this.tcRackOptimize.Location = new System.Drawing.Point(18, 122);
+      this.tcRackOptimize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tcRackOptimize.Name = "tcRackOptimize";
+      this.tcRackOptimize.SelectedIndex = 0;
+      this.tcRackOptimize.Size = new System.Drawing.Size(1979, 969);
+      this.tcRackOptimize.TabIndex = 10;
       // 
-      // tabPage1
+      // tabShelves
       // 
-      this.tabPage1.Controls.Add(this.grdPartialShelves);
-      this.tabPage1.Controls.Add(this.panel2);
-      this.tabPage1.Location = new System.Drawing.Point(4, 22);
-      this.tabPage1.Name = "tabPage1";
-      this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage1.Size = new System.Drawing.Size(1039, 545);
-      this.tabPage1.TabIndex = 0;
-      this.tabPage1.Text = "Partial Shelves";
-      this.tabPage1.UseVisualStyleBackColor = true;
+      this.tabShelves.Controls.Add(this.grdPartialShelves);
+      this.tabShelves.Controls.Add(this.panel2);
+      this.tabShelves.Location = new System.Drawing.Point(4, 29);
+      this.tabShelves.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabShelves.Name = "tabShelves";
+      this.tabShelves.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabShelves.Size = new System.Drawing.Size(1971, 936);
+      this.tabShelves.TabIndex = 0;
+      this.tabShelves.Text = "Partial Shelves";
+      this.tabShelves.UseVisualStyleBackColor = true;
       // 
       // grdPartialShelves
       // 
+      this.grdPartialShelves.ContextMenuStrip = this.mnuColumns;
       appearance1.BackColor = System.Drawing.SystemColors.Window;
       appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
       this.grdPartialShelves.DisplayLayout.Appearance = appearance1;
@@ -271,16 +363,11 @@
       appearance7.BackColor = System.Drawing.SystemColors.Window;
       this.grdPartialShelves.DisplayLayout.Override.CardAreaAppearance = appearance7;
       appearance8.BorderColor = System.Drawing.Color.Silver;
+      appearance8.ForeColorDisabled = System.Drawing.Color.Black;
       appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
       this.grdPartialShelves.DisplayLayout.Override.CellAppearance = appearance8;
       this.grdPartialShelves.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
       this.grdPartialShelves.DisplayLayout.Override.CellPadding = 0;
-      this.grdPartialShelves.DisplayLayout.Override.FilterClearButtonLocation = Infragistics.Win.UltraWinGrid.FilterClearButtonLocation.Row;
-      this.grdPartialShelves.DisplayLayout.Override.FilterEvaluationTrigger = Infragistics.Win.UltraWinGrid.FilterEvaluationTrigger.OnCellValueChange;
-      this.grdPartialShelves.DisplayLayout.Override.FilterOperandStyle = Infragistics.Win.UltraWinGrid.FilterOperandStyle.Combo;
-      this.grdPartialShelves.DisplayLayout.Override.FilterOperatorDefaultValue = Infragistics.Win.UltraWinGrid.FilterOperatorDefaultValue.Contains;
-      this.grdPartialShelves.DisplayLayout.Override.FilterOperatorLocation = Infragistics.Win.UltraWinGrid.FilterOperatorLocation.Hidden;
-      this.grdPartialShelves.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
       appearance9.BackColor = System.Drawing.SystemColors.Control;
       appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
       appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
@@ -295,50 +382,46 @@
       appearance11.BorderColor = System.Drawing.Color.Silver;
       this.grdPartialShelves.DisplayLayout.Override.RowAppearance = appearance11;
       this.grdPartialShelves.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+      this.grdPartialShelves.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
       appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
       this.grdPartialShelves.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
       this.grdPartialShelves.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
       this.grdPartialShelves.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
       this.grdPartialShelves.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grdPartialShelves.Location = new System.Drawing.Point(3, 43);
+      this.grdPartialShelves.Location = new System.Drawing.Point(4, 67);
+      this.grdPartialShelves.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.grdPartialShelves.Name = "grdPartialShelves";
-      this.grdPartialShelves.Size = new System.Drawing.Size(1033, 499);
+      this.grdPartialShelves.Size = new System.Drawing.Size(1963, 864);
       this.grdPartialShelves.TabIndex = 0;
       this.grdPartialShelves.Text = "ultraGrid1";
+      this.grdPartialShelves.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdPartialShelves_AfterCellUpdate);
+      this.grdPartialShelves.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdPartialShelves_InitializeLayout);
       this.grdPartialShelves.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdPartialShelves_InitializeRow);
+      this.grdPartialShelves.BeforeCellUpdate += new Infragistics.Win.UltraWinGrid.BeforeCellUpdateEventHandler(this.grdPartialShelves_BeforeCellUpdate);
       this.grdPartialShelves.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdPartialShelves_KeyDown);
       // 
-      // tabPage2
+      // mnuColumns
       // 
-      this.tabPage2.Controls.Add(this.grdRackRound);
-      this.tabPage2.Location = new System.Drawing.Point(4, 22);
-      this.tabPage2.Name = "tabPage2";
-      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage2.Size = new System.Drawing.Size(1039, 545);
-      this.tabPage2.TabIndex = 1;
-      this.tabPage2.Text = "Partial Racks";
-      this.tabPage2.UseVisualStyleBackColor = true;
+      this.mnuColumns.ImageScalingSize = new System.Drawing.Size(24, 24);
+      this.mnuColumns.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.columnChooseToolStripMenuItem,
+            this.saveLayoutToolStripMenuItem});
+      this.mnuColumns.Name = "mnuColumns";
+      this.mnuColumns.Size = new System.Drawing.Size(220, 64);
       // 
-      // chkFullShelves
+      // columnChooseToolStripMenuItem
       // 
-      this.chkFullShelves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.chkFullShelves.AutoSize = true;
-      this.chkFullShelves.Location = new System.Drawing.Point(825, 6);
-      this.chkFullShelves.Name = "chkFullShelves";
-      this.chkFullShelves.Size = new System.Drawing.Size(121, 17);
-      this.chkFullShelves.TabIndex = 11;
-      this.chkFullShelves.Text = "Filter out full shelves";
-      this.chkFullShelves.UseVisualStyleBackColor = true;
-      this.chkFullShelves.CheckedChanged += new System.EventHandler(this.chkFullShelves_CheckedChanged);
+      this.columnChooseToolStripMenuItem.Name = "columnChooseToolStripMenuItem";
+      this.columnChooseToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
+      this.columnChooseToolStripMenuItem.Text = "Choose Columns";
+      this.columnChooseToolStripMenuItem.Click += new System.EventHandler(this.columnChooseToolStripMenuItem_Click);
       // 
-      // btnRefresh
+      // saveLayoutToolStripMenuItem
       // 
-      this.btnRefresh.Location = new System.Drawing.Point(289, 26);
-      this.btnRefresh.Name = "btnRefresh";
-      this.btnRefresh.Size = new System.Drawing.Size(90, 23);
-      this.btnRefresh.TabIndex = 12;
-      this.btnRefresh.Text = "Refresh Data";
-      this.btnRefresh.UseVisualStyleBackColor = true;
+      this.saveLayoutToolStripMenuItem.Name = "saveLayoutToolStripMenuItem";
+      this.saveLayoutToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
+      this.saveLayoutToolStripMenuItem.Text = "Save Layout";
+      this.saveLayoutToolStripMenuItem.Click += new System.EventHandler(this.saveLayoutToolStripMenuItem_Click);
       // 
       // panel2
       // 
@@ -346,134 +429,802 @@
       this.panel2.Controls.Add(this.btnApply);
       this.panel2.Controls.Add(this.chkFullShelves);
       this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel2.Location = new System.Drawing.Point(3, 3);
+      this.panel2.Location = new System.Drawing.Point(4, 5);
+      this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(1033, 40);
+      this.panel2.Size = new System.Drawing.Size(1963, 62);
       this.panel2.TabIndex = 1;
+      // 
+      // label9
+      // 
+      this.label9.Location = new System.Drawing.Point(4, 9);
+      this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(1126, 49);
+      this.label9.TabIndex = 13;
+      this.label9.Text = resources.GetString("label9.Text");
       // 
       // btnApply
       // 
       this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnApply.Location = new System.Drawing.Point(952, 6);
+      this.btnApply.Location = new System.Drawing.Point(1841, 9);
+      this.btnApply.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.btnApply.Name = "btnApply";
-      this.btnApply.Size = new System.Drawing.Size(75, 31);
+      this.btnApply.Size = new System.Drawing.Size(112, 48);
       this.btnApply.TabIndex = 12;
       this.btnApply.Text = "Apply";
       this.btnApply.UseVisualStyleBackColor = true;
+      this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
       // 
-      // label9
+      // chkFullShelves
       // 
-      this.label9.Location = new System.Drawing.Point(3, 6);
-      this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(751, 32);
-      this.label9.TabIndex = 13;
-      this.label9.Text = resources.GetString("label9.Text");
+      this.chkFullShelves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.chkFullShelves.AutoSize = true;
+      this.chkFullShelves.Location = new System.Drawing.Point(1654, 9);
+      this.chkFullShelves.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.chkFullShelves.Name = "chkFullShelves";
+      this.chkFullShelves.Size = new System.Drawing.Size(178, 24);
+      this.chkFullShelves.TabIndex = 11;
+      this.chkFullShelves.Text = "Filter out full shelves";
+      this.chkFullShelves.UseVisualStyleBackColor = true;
+      this.chkFullShelves.CheckedChanged += new System.EventHandler(this.chkFullShelves_CheckedChanged);
       // 
-      // panel3
+      // tabRackSetup
       // 
-      this.panel3.Controls.Add(this.lvRackRound);
-      this.panel3.Location = new System.Drawing.Point(433, 12);
-      this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(308, 84);
-      this.panel3.TabIndex = 13;
+      this.tabRackSetup.Controls.Add(this.pnlRackWarning1);
+      this.tabRackSetup.Controls.Add(this.grdSessionInventory);
+      this.tabRackSetup.Controls.Add(this.panel4);
+      this.tabRackSetup.Controls.Add(this.grdStoreRacks);
+      this.tabRackSetup.Location = new System.Drawing.Point(4, 29);
+      this.tabRackSetup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabRackSetup.Name = "tabRackSetup";
+      this.tabRackSetup.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabRackSetup.Size = new System.Drawing.Size(1971, 936);
+      this.tabRackSetup.TabIndex = 1;
+      this.tabRackSetup.Text = "Rack Setup";
+      this.tabRackSetup.UseVisualStyleBackColor = true;
       // 
-      // grdRackRound
+      // pnlRackWarning1
       // 
+      this.pnlRackWarning1.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pnlRackWarning1.BackColor = System.Drawing.Color.Gainsboro;
+      this.pnlRackWarning1.Controls.Add(this.label20);
+      this.pnlRackWarning1.Location = new System.Drawing.Point(654, 307);
+      this.pnlRackWarning1.Name = "pnlRackWarning1";
+      this.pnlRackWarning1.Size = new System.Drawing.Size(663, 323);
+      this.pnlRackWarning1.TabIndex = 14;
+      // 
+      // label20
+      // 
+      this.label20.BackColor = System.Drawing.Color.Red;
+      this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label20.Location = new System.Drawing.Point(0, 0);
+      this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label20.Name = "label20";
+      this.label20.Size = new System.Drawing.Size(663, 323);
+      this.label20.TabIndex = 14;
+      this.label20.Text = "WARNING: No racking data found. Try building racks in replenishment.";
+      this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // grdSessionInventory
+      // 
+      this.grdSessionInventory.ContextMenuStrip = this.mnuColumns;
       appearance13.BackColor = System.Drawing.SystemColors.Window;
       appearance13.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-      this.grdRackRound.DisplayLayout.Appearance = appearance13;
-      this.grdRackRound.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-      this.grdRackRound.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+      this.grdSessionInventory.DisplayLayout.Appearance = appearance13;
+      this.grdSessionInventory.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+      this.grdSessionInventory.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
       appearance14.BackColor = System.Drawing.SystemColors.ActiveBorder;
       appearance14.BackColor2 = System.Drawing.SystemColors.ControlDark;
       appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
       appearance14.BorderColor = System.Drawing.SystemColors.Window;
-      this.grdRackRound.DisplayLayout.GroupByBox.Appearance = appearance14;
+      this.grdSessionInventory.DisplayLayout.GroupByBox.Appearance = appearance14;
       appearance15.ForeColor = System.Drawing.SystemColors.GrayText;
-      this.grdRackRound.DisplayLayout.GroupByBox.BandLabelAppearance = appearance15;
-      this.grdRackRound.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+      this.grdSessionInventory.DisplayLayout.GroupByBox.BandLabelAppearance = appearance15;
+      this.grdSessionInventory.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
       appearance16.BackColor = System.Drawing.SystemColors.ControlLightLight;
       appearance16.BackColor2 = System.Drawing.SystemColors.Control;
       appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
       appearance16.ForeColor = System.Drawing.SystemColors.GrayText;
-      this.grdRackRound.DisplayLayout.GroupByBox.PromptAppearance = appearance16;
-      this.grdRackRound.DisplayLayout.MaxColScrollRegions = 1;
-      this.grdRackRound.DisplayLayout.MaxRowScrollRegions = 1;
+      this.grdSessionInventory.DisplayLayout.GroupByBox.PromptAppearance = appearance16;
+      this.grdSessionInventory.DisplayLayout.MaxColScrollRegions = 1;
+      this.grdSessionInventory.DisplayLayout.MaxRowScrollRegions = 1;
       appearance17.BackColor = System.Drawing.SystemColors.Window;
       appearance17.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.grdRackRound.DisplayLayout.Override.ActiveCellAppearance = appearance17;
+      this.grdSessionInventory.DisplayLayout.Override.ActiveCellAppearance = appearance17;
       appearance18.BackColor = System.Drawing.SystemColors.Highlight;
       appearance18.ForeColor = System.Drawing.SystemColors.HighlightText;
-      this.grdRackRound.DisplayLayout.Override.ActiveRowAppearance = appearance18;
-      this.grdRackRound.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
-      this.grdRackRound.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+      this.grdSessionInventory.DisplayLayout.Override.ActiveRowAppearance = appearance18;
+      this.grdSessionInventory.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+      this.grdSessionInventory.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+      this.grdSessionInventory.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
       appearance19.BackColor = System.Drawing.SystemColors.Window;
-      this.grdRackRound.DisplayLayout.Override.CardAreaAppearance = appearance19;
+      this.grdSessionInventory.DisplayLayout.Override.CardAreaAppearance = appearance19;
       appearance20.BorderColor = System.Drawing.Color.Silver;
+      appearance20.ForeColorDisabled = System.Drawing.Color.Black;
       appearance20.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-      this.grdRackRound.DisplayLayout.Override.CellAppearance = appearance20;
-      this.grdRackRound.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
-      this.grdRackRound.DisplayLayout.Override.CellPadding = 0;
+      this.grdSessionInventory.DisplayLayout.Override.CellAppearance = appearance20;
+      this.grdSessionInventory.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+      this.grdSessionInventory.DisplayLayout.Override.CellPadding = 0;
       appearance21.BackColor = System.Drawing.SystemColors.Control;
       appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
       appearance21.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
       appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
       appearance21.BorderColor = System.Drawing.SystemColors.Window;
-      this.grdRackRound.DisplayLayout.Override.GroupByRowAppearance = appearance21;
+      this.grdSessionInventory.DisplayLayout.Override.GroupByRowAppearance = appearance21;
       appearance22.TextHAlignAsString = "Left";
-      this.grdRackRound.DisplayLayout.Override.HeaderAppearance = appearance22;
-      this.grdRackRound.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-      this.grdRackRound.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+      this.grdSessionInventory.DisplayLayout.Override.HeaderAppearance = appearance22;
+      this.grdSessionInventory.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+      this.grdSessionInventory.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
       appearance23.BackColor = System.Drawing.SystemColors.Window;
       appearance23.BorderColor = System.Drawing.Color.Silver;
-      this.grdRackRound.DisplayLayout.Override.RowAppearance = appearance23;
-      this.grdRackRound.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+      this.grdSessionInventory.DisplayLayout.Override.RowAppearance = appearance23;
+      this.grdSessionInventory.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
       appearance24.BackColor = System.Drawing.SystemColors.ControlLight;
-      this.grdRackRound.DisplayLayout.Override.TemplateAddRowAppearance = appearance24;
-      this.grdRackRound.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-      this.grdRackRound.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-      this.grdRackRound.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-      this.grdRackRound.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grdRackRound.Location = new System.Drawing.Point(3, 3);
-      this.grdRackRound.Name = "grdRackRound";
-      this.grdRackRound.Size = new System.Drawing.Size(1033, 539);
-      this.grdRackRound.TabIndex = 0;
-      this.grdRackRound.Text = "ultraGrid1";
+      this.grdSessionInventory.DisplayLayout.Override.TemplateAddRowAppearance = appearance24;
+      this.grdSessionInventory.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+      this.grdSessionInventory.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+      this.grdSessionInventory.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.grdSessionInventory.Location = new System.Drawing.Point(570, 54);
+      this.grdSessionInventory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grdSessionInventory.Name = "grdSessionInventory";
+      this.grdSessionInventory.Size = new System.Drawing.Size(1397, 877);
+      this.grdSessionInventory.TabIndex = 2;
+      this.grdSessionInventory.Text = "ultraGrid1";
+      this.grdSessionInventory.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdSessionInventory_AfterCellUpdate);
+      this.grdSessionInventory.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdSessionInventory_InitializeLayout);
+      this.grdSessionInventory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSessionInventory_KeyDown);
+      // 
+      // panel4
+      // 
+      this.panel4.Controls.Add(this.label22);
+      this.panel4.Controls.Add(this.txtThreshold);
+      this.panel4.Controls.Add(this.label21);
+      this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel4.Location = new System.Drawing.Point(570, 5);
+      this.panel4.Name = "panel4";
+      this.panel4.Size = new System.Drawing.Size(1397, 49);
+      this.panel4.TabIndex = 1;
+      // 
+      // label22
+      // 
+      this.label22.AutoSize = true;
+      this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label22.Location = new System.Drawing.Point(7, 12);
+      this.label22.Name = "label22";
+      this.label22.Size = new System.Drawing.Size(185, 25);
+      this.label22.TabIndex = 3;
+      this.label22.Text = "Session Inventory";
+      // 
+      // txtThreshold
+      // 
+      this.txtThreshold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtThreshold.Location = new System.Drawing.Point(1317, 10);
+      this.txtThreshold.Mask = ".0";
+      this.txtThreshold.Name = "txtThreshold";
+      this.txtThreshold.Size = new System.Drawing.Size(70, 30);
+      this.txtThreshold.TabIndex = 2;
+      this.txtThreshold.Text = "7";
+      this.txtThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      // 
+      // label21
+      // 
+      this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.label21.AutoSize = true;
+      this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label21.Location = new System.Drawing.Point(1058, 12);
+      this.label21.Name = "label21";
+      this.label21.Size = new System.Drawing.Size(213, 25);
+      this.label21.TabIndex = 0;
+      this.label21.Text = "Rounding Threshold:";
+      // 
+      // grdStoreRacks
+      // 
+      this.grdStoreRacks.ContextMenuStrip = this.mnuColumns;
+      appearance25.BackColor = System.Drawing.SystemColors.Window;
+      appearance25.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+      this.grdStoreRacks.DisplayLayout.Appearance = appearance25;
+      this.grdStoreRacks.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
+      this.grdStoreRacks.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+      this.grdStoreRacks.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+      appearance26.BackColor = System.Drawing.SystemColors.ActiveBorder;
+      appearance26.BackColor2 = System.Drawing.SystemColors.ControlDark;
+      appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+      appearance26.BorderColor = System.Drawing.SystemColors.Window;
+      this.grdStoreRacks.DisplayLayout.GroupByBox.Appearance = appearance26;
+      appearance27.ForeColor = System.Drawing.SystemColors.GrayText;
+      this.grdStoreRacks.DisplayLayout.GroupByBox.BandLabelAppearance = appearance27;
+      this.grdStoreRacks.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+      appearance28.BackColor = System.Drawing.SystemColors.ControlLightLight;
+      appearance28.BackColor2 = System.Drawing.SystemColors.Control;
+      appearance28.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+      appearance28.ForeColor = System.Drawing.SystemColors.GrayText;
+      this.grdStoreRacks.DisplayLayout.GroupByBox.PromptAppearance = appearance28;
+      this.grdStoreRacks.DisplayLayout.MaxColScrollRegions = 1;
+      this.grdStoreRacks.DisplayLayout.MaxRowScrollRegions = 1;
+      appearance29.BackColor = System.Drawing.SystemColors.Window;
+      appearance29.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.grdStoreRacks.DisplayLayout.Override.ActiveCellAppearance = appearance29;
+      appearance30.BackColor = System.Drawing.SystemColors.Highlight;
+      appearance30.ForeColor = System.Drawing.SystemColors.HighlightText;
+      this.grdStoreRacks.DisplayLayout.Override.ActiveRowAppearance = appearance30;
+      this.grdStoreRacks.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+      this.grdStoreRacks.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+      this.grdStoreRacks.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+      appearance31.BackColor = System.Drawing.SystemColors.Window;
+      this.grdStoreRacks.DisplayLayout.Override.CardAreaAppearance = appearance31;
+      appearance32.BorderColor = System.Drawing.Color.Silver;
+      appearance32.ForeColorDisabled = System.Drawing.Color.Black;
+      appearance32.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+      this.grdStoreRacks.DisplayLayout.Override.CellAppearance = appearance32;
+      this.grdStoreRacks.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+      this.grdStoreRacks.DisplayLayout.Override.CellPadding = 0;
+      appearance33.BackColor = System.Drawing.SystemColors.Control;
+      appearance33.BackColor2 = System.Drawing.SystemColors.ControlDark;
+      appearance33.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+      appearance33.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+      appearance33.BorderColor = System.Drawing.SystemColors.Window;
+      this.grdStoreRacks.DisplayLayout.Override.GroupByRowAppearance = appearance33;
+      appearance34.TextHAlignAsString = "Left";
+      this.grdStoreRacks.DisplayLayout.Override.HeaderAppearance = appearance34;
+      this.grdStoreRacks.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+      this.grdStoreRacks.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+      appearance35.BackColor = System.Drawing.SystemColors.Window;
+      appearance35.BorderColor = System.Drawing.Color.Silver;
+      this.grdStoreRacks.DisplayLayout.Override.RowAppearance = appearance35;
+      this.grdStoreRacks.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+      appearance36.BackColor = System.Drawing.SystemColors.ControlLight;
+      this.grdStoreRacks.DisplayLayout.Override.TemplateAddRowAppearance = appearance36;
+      this.grdStoreRacks.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+      this.grdStoreRacks.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+      this.grdStoreRacks.Dock = System.Windows.Forms.DockStyle.Left;
+      this.grdStoreRacks.Location = new System.Drawing.Point(4, 5);
+      this.grdStoreRacks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grdStoreRacks.Name = "grdStoreRacks";
+      this.grdStoreRacks.Size = new System.Drawing.Size(566, 926);
+      this.grdStoreRacks.TabIndex = 0;
+      this.grdStoreRacks.Text = "ultraGrid1";
+      this.grdStoreRacks.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdStoreRacks_AfterCellUpdate);
+      this.grdStoreRacks.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdStoreRacks_InitializeLayout);
+      this.grdStoreRacks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdStoreRacks_KeyDown);
+      // 
+      // tabRacks
+      // 
+      this.tabRacks.Controls.Add(this.pnLoading);
+      this.tabRacks.Controls.Add(this.grdRackOptimize);
+      this.tabRacks.Controls.Add(this.panel5);
+      this.tabRacks.Location = new System.Drawing.Point(4, 29);
+      this.tabRacks.Name = "tabRacks";
+      this.tabRacks.Size = new System.Drawing.Size(1971, 936);
+      this.tabRacks.TabIndex = 2;
+      this.tabRacks.Text = "Partial Racks";
+      this.tabRacks.UseVisualStyleBackColor = true;
+      // 
+      // pnLoading
+      // 
+      this.pnLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pnLoading.Controls.Add(this.pictureBox1);
+      this.pnLoading.Controls.Add(this.lbLoadingStatus);
+      this.pnLoading.Controls.Add(this.barLoading);
+      this.pnLoading.Location = new System.Drawing.Point(693, 278);
+      this.pnLoading.Name = "pnLoading";
+      this.pnLoading.Size = new System.Drawing.Size(584, 380);
+      this.pnLoading.TabIndex = 4;
+      this.pnLoading.Visible = false;
+      // 
+      // pictureBox1
+      // 
+      this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+      this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pictureBox1.Image = global::RackOptimizer.Properties.Resources.desdpisy7qzw;
+      this.pictureBox1.Location = new System.Drawing.Point(0, 34);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(584, 314);
+      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.pictureBox1.TabIndex = 4;
+      this.pictureBox1.TabStop = false;
+      // 
+      // lbLoadingStatus
+      // 
+      this.lbLoadingStatus.Dock = System.Windows.Forms.DockStyle.Top;
+      this.lbLoadingStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbLoadingStatus.Location = new System.Drawing.Point(0, 0);
+      this.lbLoadingStatus.Name = "lbLoadingStatus";
+      this.lbLoadingStatus.Size = new System.Drawing.Size(584, 34);
+      this.lbLoadingStatus.TabIndex = 6;
+      this.lbLoadingStatus.Text = "OPTIMIZING ORDERS";
+      this.lbLoadingStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+      // 
+      // barLoading
+      // 
+      this.barLoading.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.barLoading.Location = new System.Drawing.Point(0, 348);
+      this.barLoading.Name = "barLoading";
+      this.barLoading.Size = new System.Drawing.Size(584, 32);
+      this.barLoading.TabIndex = 5;
+      this.barLoading.Text = "[Formatted]";
+      // 
+      // grdRackOptimize
+      // 
+      this.grdRackOptimize.ContextMenuStrip = this.mnuColumns;
+      appearance37.BackColor = System.Drawing.SystemColors.Window;
+      appearance37.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+      this.grdRackOptimize.DisplayLayout.Appearance = appearance37;
+      this.grdRackOptimize.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+      this.grdRackOptimize.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+      appearance38.BackColor = System.Drawing.SystemColors.ActiveBorder;
+      appearance38.BackColor2 = System.Drawing.SystemColors.ControlDark;
+      appearance38.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+      appearance38.BorderColor = System.Drawing.SystemColors.Window;
+      this.grdRackOptimize.DisplayLayout.GroupByBox.Appearance = appearance38;
+      appearance39.ForeColor = System.Drawing.SystemColors.GrayText;
+      this.grdRackOptimize.DisplayLayout.GroupByBox.BandLabelAppearance = appearance39;
+      this.grdRackOptimize.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+      appearance40.BackColor = System.Drawing.SystemColors.ControlLightLight;
+      appearance40.BackColor2 = System.Drawing.SystemColors.Control;
+      appearance40.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+      appearance40.ForeColor = System.Drawing.SystemColors.GrayText;
+      this.grdRackOptimize.DisplayLayout.GroupByBox.PromptAppearance = appearance40;
+      this.grdRackOptimize.DisplayLayout.MaxColScrollRegions = 1;
+      this.grdRackOptimize.DisplayLayout.MaxRowScrollRegions = 1;
+      appearance41.BackColor = System.Drawing.SystemColors.Window;
+      appearance41.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.grdRackOptimize.DisplayLayout.Override.ActiveCellAppearance = appearance41;
+      appearance42.BackColor = System.Drawing.SystemColors.Highlight;
+      appearance42.ForeColor = System.Drawing.SystemColors.HighlightText;
+      this.grdRackOptimize.DisplayLayout.Override.ActiveRowAppearance = appearance42;
+      this.grdRackOptimize.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+      this.grdRackOptimize.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+      this.grdRackOptimize.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+      appearance43.BackColor = System.Drawing.SystemColors.Window;
+      this.grdRackOptimize.DisplayLayout.Override.CardAreaAppearance = appearance43;
+      appearance44.BorderColor = System.Drawing.Color.Silver;
+      appearance44.ForeColorDisabled = System.Drawing.Color.Black;
+      appearance44.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+      this.grdRackOptimize.DisplayLayout.Override.CellAppearance = appearance44;
+      this.grdRackOptimize.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+      this.grdRackOptimize.DisplayLayout.Override.CellPadding = 0;
+      appearance45.BackColor = System.Drawing.SystemColors.Control;
+      appearance45.BackColor2 = System.Drawing.SystemColors.ControlDark;
+      appearance45.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+      appearance45.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+      appearance45.BorderColor = System.Drawing.SystemColors.Window;
+      this.grdRackOptimize.DisplayLayout.Override.GroupByRowAppearance = appearance45;
+      appearance46.TextHAlignAsString = "Left";
+      this.grdRackOptimize.DisplayLayout.Override.HeaderAppearance = appearance46;
+      this.grdRackOptimize.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+      this.grdRackOptimize.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+      appearance47.BackColor = System.Drawing.SystemColors.Window;
+      appearance47.BorderColor = System.Drawing.Color.Silver;
+      this.grdRackOptimize.DisplayLayout.Override.RowAppearance = appearance47;
+      this.grdRackOptimize.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+      appearance48.BackColor = System.Drawing.SystemColors.ControlLight;
+      this.grdRackOptimize.DisplayLayout.Override.TemplateAddRowAppearance = appearance48;
+      this.grdRackOptimize.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+      this.grdRackOptimize.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+      this.grdRackOptimize.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.grdRackOptimize.Location = new System.Drawing.Point(0, 63);
+      this.grdRackOptimize.Name = "grdRackOptimize";
+      this.grdRackOptimize.Size = new System.Drawing.Size(1971, 873);
+      this.grdRackOptimize.TabIndex = 0;
+      this.grdRackOptimize.Text = "ultraGrid1";
+      this.grdRackOptimize.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdRackOptimize_InitializeLayout);
+      this.grdRackOptimize.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdRackOptimize_InitializeRow);
+      this.grdRackOptimize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdRackOptimize_KeyDown);
+      // 
+      // panel5
+      // 
+      this.panel5.Controls.Add(this.btnUpdateRacks);
+      this.panel5.Controls.Add(this.btnCalc);
+      this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel5.Location = new System.Drawing.Point(0, 0);
+      this.panel5.Name = "panel5";
+      this.panel5.Size = new System.Drawing.Size(1971, 63);
+      this.panel5.TabIndex = 1;
+      // 
+      // btnUpdateRacks
+      // 
+      this.btnUpdateRacks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnUpdateRacks.BackColor = System.Drawing.Color.Red;
+      this.btnUpdateRacks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnUpdateRacks.ForeColor = System.Drawing.Color.White;
+      this.btnUpdateRacks.Location = new System.Drawing.Point(1756, 11);
+      this.btnUpdateRacks.Name = "btnUpdateRacks";
+      this.btnUpdateRacks.Size = new System.Drawing.Size(197, 40);
+      this.btnUpdateRacks.TabIndex = 1;
+      this.btnUpdateRacks.Text = "Process Changes";
+      this.btnUpdateRacks.UseVisualStyleBackColor = false;
+      this.btnUpdateRacks.Click += new System.EventHandler(this.btnUpdateRacks_Click);
+      // 
+      // btnCalc
+      // 
+      this.btnCalc.Location = new System.Drawing.Point(13, 13);
+      this.btnCalc.Name = "btnCalc";
+      this.btnCalc.Size = new System.Drawing.Size(197, 36);
+      this.btnCalc.TabIndex = 0;
+      this.btnCalc.Text = "Calculate Solution";
+      this.btnCalc.UseVisualStyleBackColor = true;
+      this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
+      // 
+      // btnRefresh
+      // 
+      this.btnRefresh.Location = new System.Drawing.Point(434, 40);
+      this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.btnRefresh.Name = "btnRefresh";
+      this.btnRefresh.Size = new System.Drawing.Size(135, 35);
+      this.btnRefresh.TabIndex = 12;
+      this.btnRefresh.Text = "Refresh Data";
+      this.btnRefresh.UseVisualStyleBackColor = true;
+      this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+      // 
+      // panel3
+      // 
+      this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.panel3.Controls.Add(this.tableLayoutPanel1);
+      this.panel3.Controls.Add(this.lvRackRound);
+      this.panel3.Location = new System.Drawing.Point(1059, 18);
+      this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.panel3.Name = "panel3";
+      this.panel3.Size = new System.Drawing.Size(462, 129);
+      this.panel3.TabIndex = 13;
+      // 
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+      this.tableLayoutPanel1.ColumnCount = 4;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+      this.tableLayoutPanel1.Controls.Add(this.lblRack3, 0, 4);
+      this.tableLayoutPanel1.Controls.Add(this.label19, 0, 4);
+      this.tableLayoutPanel1.Controls.Add(this.label15, 3, 1);
+      this.tableLayoutPanel1.Controls.Add(this.label14, 2, 1);
+      this.tableLayoutPanel1.Controls.Add(this.label13, 1, 1);
+      this.tableLayoutPanel1.Controls.Add(this.label12, 0, 1);
+      this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.label10, 2, 0);
+      this.tableLayoutPanel1.Controls.Add(this.label17, 0, 2);
+      this.tableLayoutPanel1.Controls.Add(this.label18, 0, 3);
+      this.tableLayoutPanel1.Controls.Add(this.label11, 2, 2);
+      this.tableLayoutPanel1.Controls.Add(this.label6, 2, 3);
+      this.tableLayoutPanel1.Controls.Add(this.label16, 2, 4);
+      this.tableLayoutPanel1.Controls.Add(this.lblRack1, 1, 2);
+      this.tableLayoutPanel1.Controls.Add(this.lblRack2, 1, 3);
+      this.tableLayoutPanel1.Controls.Add(this.lblRack4, 3, 2);
+      this.tableLayoutPanel1.Controls.Add(this.lblRack5, 3, 3);
+      this.tableLayoutPanel1.Controls.Add(this.lblRack6, 3, 4);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 5;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.05474F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.28954F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.28954F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.28954F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.07664F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 129);
+      this.tableLayoutPanel1.TabIndex = 5;
+      // 
+      // lblRack3
+      // 
+      this.lblRack3.AutoSize = true;
+      this.lblRack3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.lblRack3.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lblRack3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblRack3.Location = new System.Drawing.Point(97, 101);
+      this.lblRack3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRack3.Name = "lblRack3";
+      this.lblRack3.Size = new System.Drawing.Size(129, 27);
+      this.lblRack3.TabIndex = 26;
+      this.lblRack3.Text = "N/A";
+      this.lblRack3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label19
+      // 
+      this.label19.AutoSize = true;
+      this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label19.Location = new System.Drawing.Point(5, 101);
+      this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label19.Name = "label19";
+      this.label19.Size = new System.Drawing.Size(83, 27);
+      this.label19.TabIndex = 23;
+      this.label19.Text = ".3";
+      this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label15
+      // 
+      this.label15.AutoSize = true;
+      this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label15.Location = new System.Drawing.Point(327, 20);
+      this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label15.Name = "label15";
+      this.label15.Size = new System.Drawing.Size(130, 26);
+      this.label15.TabIndex = 17;
+      this.label15.Text = "Stores";
+      this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label14
+      // 
+      this.label14.AutoSize = true;
+      this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label14.Location = new System.Drawing.Point(235, 20);
+      this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(83, 26);
+      this.label14.TabIndex = 16;
+      this.label14.Text = "Rack %";
+      this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label13
+      // 
+      this.label13.AutoSize = true;
+      this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label13.Location = new System.Drawing.Point(97, 20);
+      this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label13.Name = "label13";
+      this.label13.Size = new System.Drawing.Size(129, 26);
+      this.label13.TabIndex = 15;
+      this.label13.Text = "Stores";
+      this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label12
+      // 
+      this.label12.AutoSize = true;
+      this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label12.Location = new System.Drawing.Point(5, 20);
+      this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label12.Name = "label12";
+      this.label12.Size = new System.Drawing.Size(83, 26);
+      this.label12.TabIndex = 14;
+      this.label12.Text = "Rack %";
+      this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label7
+      // 
+      this.label7.AutoSize = true;
+      this.label7.BackColor = System.Drawing.Color.Red;
+      this.tableLayoutPanel1.SetColumnSpan(this.label7, 2);
+      this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label7.Location = new System.Drawing.Point(5, 1);
+      this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(221, 18);
+      this.label7.TabIndex = 13;
+      this.label7.Text = "Round Down";
+      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label10
+      // 
+      this.label10.AutoSize = true;
+      this.label10.BackColor = System.Drawing.Color.Lime;
+      this.tableLayoutPanel1.SetColumnSpan(this.label10, 2);
+      this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label10.Location = new System.Drawing.Point(235, 1);
+      this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label10.Name = "label10";
+      this.label10.Size = new System.Drawing.Size(222, 18);
+      this.label10.TabIndex = 11;
+      this.label10.Text = "Round Up";
+      this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label17
+      // 
+      this.label17.AutoSize = true;
+      this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label17.Location = new System.Drawing.Point(5, 47);
+      this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label17.Name = "label17";
+      this.label17.Size = new System.Drawing.Size(83, 26);
+      this.label17.TabIndex = 21;
+      this.label17.Text = ".1";
+      this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label18
+      // 
+      this.label18.AutoSize = true;
+      this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label18.Location = new System.Drawing.Point(5, 74);
+      this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label18.Name = "label18";
+      this.label18.Size = new System.Drawing.Size(83, 26);
+      this.label18.TabIndex = 22;
+      this.label18.Text = ".2";
+      this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label11
+      // 
+      this.label11.AutoSize = true;
+      this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label11.Location = new System.Drawing.Point(235, 47);
+      this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label11.Name = "label11";
+      this.label11.Size = new System.Drawing.Size(83, 26);
+      this.label11.TabIndex = 19;
+      this.label11.Text = ".4";
+      this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label6.Location = new System.Drawing.Point(235, 74);
+      this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(83, 26);
+      this.label6.TabIndex = 18;
+      this.label6.Text = ".5";
+      this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label16
+      // 
+      this.label16.AutoSize = true;
+      this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label16.Location = new System.Drawing.Point(235, 101);
+      this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label16.Name = "label16";
+      this.label16.Size = new System.Drawing.Size(83, 27);
+      this.label16.TabIndex = 20;
+      this.label16.Text = ".6";
+      this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblRack1
+      // 
+      this.lblRack1.AutoSize = true;
+      this.lblRack1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.lblRack1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lblRack1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblRack1.Location = new System.Drawing.Point(97, 47);
+      this.lblRack1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRack1.Name = "lblRack1";
+      this.lblRack1.Size = new System.Drawing.Size(129, 26);
+      this.lblRack1.TabIndex = 24;
+      this.lblRack1.Text = "N/A";
+      this.lblRack1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblRack2
+      // 
+      this.lblRack2.AutoSize = true;
+      this.lblRack2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+      this.lblRack2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lblRack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblRack2.Location = new System.Drawing.Point(97, 74);
+      this.lblRack2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRack2.Name = "lblRack2";
+      this.lblRack2.Size = new System.Drawing.Size(129, 26);
+      this.lblRack2.TabIndex = 25;
+      this.lblRack2.Text = "N/A";
+      this.lblRack2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblRack4
+      // 
+      this.lblRack4.AutoSize = true;
+      this.lblRack4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.lblRack4.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lblRack4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblRack4.Location = new System.Drawing.Point(327, 47);
+      this.lblRack4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRack4.Name = "lblRack4";
+      this.lblRack4.Size = new System.Drawing.Size(130, 26);
+      this.lblRack4.TabIndex = 27;
+      this.lblRack4.Text = "N/A";
+      this.lblRack4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblRack5
+      // 
+      this.lblRack5.AutoSize = true;
+      this.lblRack5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.lblRack5.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lblRack5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblRack5.Location = new System.Drawing.Point(327, 74);
+      this.lblRack5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRack5.Name = "lblRack5";
+      this.lblRack5.Size = new System.Drawing.Size(130, 26);
+      this.lblRack5.TabIndex = 28;
+      this.lblRack5.Text = "N/A";
+      this.lblRack5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblRack6
+      // 
+      this.lblRack6.AutoSize = true;
+      this.lblRack6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+      this.lblRack6.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lblRack6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblRack6.Location = new System.Drawing.Point(327, 101);
+      this.lblRack6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblRack6.Name = "lblRack6";
+      this.lblRack6.Size = new System.Drawing.Size(130, 27);
+      this.lblRack6.TabIndex = 29;
+      this.lblRack6.Text = "N/A";
+      this.lblRack6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // lvRackRound
       // 
       this.lvRackRound.Dock = System.Windows.Forms.DockStyle.Fill;
       this.lvRackRound.Location = new System.Drawing.Point(0, 0);
+      this.lvRackRound.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.lvRackRound.Name = "lvRackRound";
-      this.lvRackRound.Size = new System.Drawing.Size(308, 84);
+      this.lvRackRound.Size = new System.Drawing.Size(462, 129);
       this.lvRackRound.TabIndex = 0;
       this.lvRackRound.UseCompatibleStateImageBehavior = false;
       // 
+      // bgUpdateRacks
+      // 
+      this.bgUpdateRacks.WorkerReportsProgress = true;
+      this.bgUpdateRacks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgUpdateRacks_DoWork);
+      this.bgUpdateRacks.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgUpdateRacks_ProgressChanged);
+      this.bgUpdateRacks.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgUpdateRacks_RunWorkerCompleted);
+      // 
+      // bgUpdateOrders
+      // 
+      this.bgUpdateOrders.WorkerReportsProgress = true;
+      this.bgUpdateOrders.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgUpdateOrders_DoWork);
+      this.bgUpdateOrders.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgUpdateOrders_ProgressChanged);
+      this.bgUpdateOrders.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgUpdateOrders_RunWorkerCompleted);
+      // 
       // frmRackOptimize
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1071, 662);
+      this.ClientSize = new System.Drawing.Size(2015, 1109);
       this.Controls.Add(this.panel3);
       this.Controls.Add(this.btnRefresh);
       this.Controls.Add(this.panel1);
-      this.Controls.Add(this.tabControl1);
+      this.Controls.Add(this.tcRackOptimize);
       this.Controls.Add(this.label8);
       this.Controls.Add(this.cmbSession);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "frmRackOptimize";
       this.Text = "Rack Optimization";
       this.Load += new System.EventHandler(this.frmRackOptimize_Load);
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
-      this.tabControl1.ResumeLayout(false);
-      this.tabPage1.ResumeLayout(false);
+      this.tcRackOptimize.ResumeLayout(false);
+      this.tabShelves.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.grdPartialShelves)).EndInit();
-      this.tabPage2.ResumeLayout(false);
+      this.mnuColumns.ResumeLayout(false);
       this.panel2.ResumeLayout(false);
       this.panel2.PerformLayout();
+      this.tabRackSetup.ResumeLayout(false);
+      this.pnlRackWarning1.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.grdSessionInventory)).EndInit();
+      this.panel4.ResumeLayout(false);
+      this.panel4.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.grdStoreRacks)).EndInit();
+      this.tabRacks.ResumeLayout(false);
+      this.pnLoading.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.grdRackOptimize)).EndInit();
+      this.panel5.ResumeLayout(false);
       this.panel3.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.grdRackRound)).EndInit();
+      this.tableLayoutPanel1.ResumeLayout(false);
+      this.tableLayoutPanel1.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -486,25 +1237,66 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label lblPartialShelves;
     private System.Windows.Forms.Label lblTotalStores;
-    private System.Windows.Forms.Label label7;
-    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.Label lblRoundDown;
+    private System.Windows.Forms.Label lblRoundUp;
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label8;
-    private System.Windows.Forms.TabControl tabControl1;
-    private System.Windows.Forms.TabPage tabPage1;
-    private System.Windows.Forms.TabPage tabPage2;
+    private System.Windows.Forms.TabControl tcRackOptimize;
+    private System.Windows.Forms.TabPage tabShelves;
+    private System.Windows.Forms.TabPage tabRackSetup;
     private Infragistics.Win.UltraWinGrid.UltraGrid grdPartialShelves;
     private System.Windows.Forms.CheckBox chkFullShelves;
     private System.Windows.Forms.Button btnRefresh;
     private System.Windows.Forms.Panel panel2;
     private System.Windows.Forms.Label label9;
     private System.Windows.Forms.Button btnApply;
-    private Infragistics.Win.UltraWinGrid.UltraGrid grdRackRound;
+    private Infragistics.Win.UltraWinGrid.UltraGrid grdStoreRacks;
     private System.Windows.Forms.Panel panel3;
     private System.Windows.Forms.ListView lvRackRound;
+    private System.Windows.Forms.TabPage tabRacks;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.Label label15;
+    private System.Windows.Forms.Label label14;
+    private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.Label label12;
+    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.Label lblRack3;
+    private System.Windows.Forms.Label label19;
+    private System.Windows.Forms.Label label17;
+    private System.Windows.Forms.Label label18;
+    private System.Windows.Forms.Label label11;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.Label label16;
+    private System.Windows.Forms.Label lblRack1;
+    private System.Windows.Forms.Label lblRack2;
+    private System.Windows.Forms.Label lblRack4;
+    private System.Windows.Forms.Label lblRack5;
+    private System.Windows.Forms.Label lblRack6;
+    private Infragistics.Win.UltraWinGrid.UltraGrid grdSessionInventory;
+    private System.Windows.Forms.Panel panel4;
+    private System.Windows.Forms.Panel pnlRackWarning1;
+    private System.Windows.Forms.Label label20;
+    private System.Windows.Forms.Label label22;
+    private System.Windows.Forms.MaskedTextBox txtThreshold;
+    private System.Windows.Forms.Label label21;
+    private Infragistics.Win.SupportDialogs.FilterUIProvider.UltraGridFilterUIProvider fltShelvesProvider;
+    private Infragistics.Win.UltraWinGrid.UltraGrid grdRackOptimize;
+    private System.Windows.Forms.Panel panel5;
+    private System.Windows.Forms.Button btnCalc;
+    private System.Windows.Forms.Button btnUpdateRacks;
+    private System.Windows.Forms.Panel pnLoading;
+    private System.Windows.Forms.Label lbLoadingStatus;
+    private Infragistics.Win.UltraWinProgressBar.UltraProgressBar barLoading;
+    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.ContextMenuStrip mnuColumns;
+    private System.Windows.Forms.ToolStripMenuItem columnChooseToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem saveLayoutToolStripMenuItem;
+    private System.ComponentModel.BackgroundWorker bgUpdateRacks;
+    private System.ComponentModel.BackgroundWorker bgUpdateOrders;
   }
 }
 
