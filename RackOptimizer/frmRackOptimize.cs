@@ -250,6 +250,11 @@ namespace RackOptimizer
 
       //Load user preferances
       Global.GridLayout(grdRackOptimize, 2, Properties.Settings.Default.rackOptimizeLayout);
+
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].Hidden = true;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
     }
 
     private void formatInventoryGrid()
@@ -516,15 +521,17 @@ namespace RackOptimizer
       float recordUpdate = 0;
       float percentComplete = 0;
       string orderId = "";
+      string ordId = "";
 
-      DataTable reRack = tempUpdate.ToTable(true, "OrderNum");
+      DataTable reRack = tempUpdate.ToTable(true, "OrderNum", "OrderId");
       recordUpdate = 100/reRack.Rows.Count;
 
       foreach (DataRow row in reRack.Rows)
       {
         orderId = row["OrderNum"].ToString();
+        ordId = row["OrderId"].ToString();
 
-        Global.ExecuteQuery("usp_RO_RackByOrder @orderId=" + orderId);
+        Global.ExecuteQuery("usp_RO_RackByOrder @orderId=" + orderId + ", @ordId=" + ordId + ",@sessionId=" + sessionId);
         percentComplete += recordUpdate;
         bgUpdateRacks.ReportProgress((int)percentComplete);
       }
