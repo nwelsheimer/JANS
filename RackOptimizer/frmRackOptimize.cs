@@ -76,77 +76,99 @@ namespace RackOptimizer
       grdRackOptimize.DataSource = rackRounding.DefaultView;
     }
 
+    private Boolean refreshRackAnalysis()
+    {
+      rackAnalysisSummary = Global.GetData("usp_RO_SelectRackAnalysis @sessionId=" + sessionId).Tables[0];
+
+      if (rackAnalysisSummary.Rows.Count > 0)
+      {
+        //Summary information
+        totalRackRound = Convert.ToInt32(rackAnalysisSummary.Rows[0]["Total"].ToString());
+        lblTotalStores.Text = rackAnalysisSummary.Rows[0]["StoreCount"].ToString();
+        lblPartialShelves.Text = rackAnalysisSummary.Rows[0]["PartialShelves"].ToString();
+        lblRoundUp.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0]["RoundUp"].ToString() : "N/A";
+        lblRoundDown.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0]["RoundDown"].ToString() : "N/A";
+
+        //Rack Rounding Summary
+        lblRack1.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".1"].ToString() : "N/A";
+        lblRack2.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".2"].ToString() : "N/A";
+        lblRack3.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".3"].ToString() : "N/A";
+        lblRack4.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".4"].ToString() : "N/A";
+        lblRack5.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".5"].ToString() : "N/A";
+        lblRack6.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".6"].ToString() : "N/A";
+
+        return true;
+      }
+      else
+        return false;
+    }
+
     private void refreshData()
     {
       sessionId = cmbSession.SelectedValue.ToString();
-      rackAnalysisSummary = Global.GetData("usp_RO_SelectRackAnalysis @sessionId=" + sessionId).Tables[0];
 
-      //Summary information
-      totalRackRound = Convert.ToInt32(rackAnalysisSummary.Rows[0]["Total"].ToString());
-      lblTotalStores.Text = rackAnalysisSummary.Rows[0]["StoreCount"].ToString();
-      lblPartialShelves.Text = rackAnalysisSummary.Rows[0]["PartialShelves"].ToString();
-      lblRoundUp.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0]["RoundUp"].ToString() : "N/A";
-      lblRoundDown.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0]["RoundDown"].ToString() : "N/A";
-
-      //Rack Rounding Summary
-      lblRack1.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".1"].ToString() : "N/A";
-      lblRack2.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".2"].ToString() : "N/A";
-      lblRack3.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".3"].ToString() : "N/A";
-      lblRack4.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".4"].ToString() : "N/A";
-      lblRack5.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".5"].ToString() : "N/A";
-      lblRack6.Text = totalRackRound > 0 ? rackAnalysisSummary.Rows[0][".6"].ToString() : "N/A";
-
-      partialShelves = Global.GetData("usp_RO_SelectPartialShelves @sessionId=" + sessionId).Tables[0];
-      
-      string sizeCode = "";
-      int qtyRemain = 0;
-      int available = 0;
-      double partial = 0.0;
-      int suggested;
-      string prodId = "";
-
-      foreach (DataRow dr in partialShelves.Rows)
+      if (refreshRackAnalysis())
       {
-        suggested = 0;
-        available = (int)Convert.ToDouble(dr["Available"].ToString());
-        prodId = dr["prodId"].ToString();
+        partialShelves = Global.GetData("usp_RO_SelectPartialShelves @sessionId=" + sessionId).Tables[0];
 
-        if (dr["sizeGroup"].ToString()!=sizeCode)
-        { //New size group
-          sizeCode = dr["SizeGroup"].ToString();
-          qtyRemain = (int)Convert.ToDouble(dr["UnitsNeeded"].ToString());
-          partial = Convert.ToDouble(dr["ShelfRound"].ToString());
-        }
+        string sizeCode = "";
+        int qtyRemain = 0;
+        int available = 0;
+        double partial = 0.0;
+        int suggested;
+        string prodId = "";
 
-        if (qtyRemain>0)
+        foreach (DataRow dr in partialShelves.Rows)
         {
-          if (partial <= .4)
-          {
-            suggested = qtyRemain * -1;
-            //update available qty
-            recalculateAvailableShelf(qtyRemain, available, prodId);
+          suggested = 0;
+          available = (int)Convert.ToDouble(dr["Available"].ToString());
+          prodId = dr["prodId"].ToString();
 
-            qtyRemain = 0;
+          if (dr["sizeGroup"].ToString() != sizeCode)
+          { //New size group
+            sizeCode = dr["SizeGroup"].ToString();
+            qtyRemain = (int)Convert.ToDouble(dr["UnitsNeeded"].ToString());
+            partial = Convert.ToDouble(dr["ShelfRound"].ToString());
           }
-          else
+
+          if (qtyRemain > 0)
           {
-            if (available > 0)
+            if (partial <= .4)
             {
-              suggested = available >= qtyRemain ? qtyRemain : available;
-              qtyRemain -= suggested;
-              //update available
-              recalculateAvailableShelf(suggested * -1, available, prodId);
+              suggested = qtyRemain * -1;
+              //update available qty
+              recalculateAvailableShelf(qtyRemain, available, prodId);
+
+              qtyRemain = 0;
+            }
+            else
+            {
+              if (available > 0)
+              {
+                suggested = available >= qtyRemain ? qtyRemain : available;
+                qtyRemain -= suggested;
+                //update available
+                recalculateAvailableShelf(suggested * -1, available, prodId);
+              }
             }
           }
+          dr["SuggestedQty"] = suggested.ToString();
         }
-        dr["SuggestedQty"] = suggested.ToString();
+
+        grdPartialShelves.DataSource = partialShelves.DefaultView;
+        filterZeroPartials();
+
+        formatShelvesGrid();
+
+        refreshRackData();
       }
-      
-      grdPartialShelves.DataSource = partialShelves.DefaultView;
-
-      formatShelvesGrid();
-
-      refreshRackData();
+      else
+      {
+        storeRackInfo.Clear();
+        sessionInventory.Clear();
+        rackRounding.Clear();
+        partialShelves.Clear();
+      }
     }
 #endregion
     #region Grid Building
@@ -329,6 +351,20 @@ namespace RackOptimizer
       if (Convert.ToInt32(e.Row.Cells["QtyAdjusted"].Value) == 0)
         e.Row.Cells["QtyAdjusted"].Appearance.ForeColor = Color.Black;
     }
+
+    private void filterZeroPartials()
+    {
+      bool hideFullShelf = chkFullShelves.Checked;
+
+      if (hideFullShelf)
+      {
+        partialShelves.DefaultView.RowFilter = "UnitsNeeded>0";
+      }
+      else
+      {
+        partialShelves.DefaultView.RowFilter = "";
+      }
+    }
     #endregion
     #region Button Pushing
     private void cmbSession_SelectedIndexChanged(object sender, EventArgs e)
@@ -370,15 +406,7 @@ namespace RackOptimizer
 
     private void chkFullShelves_CheckedChanged(object sender, EventArgs e)
     {
-      bool hideFullShelf = chkFullShelves.Checked;
-
-      if (hideFullShelf)
-      {
-        partialShelves.DefaultView.RowFilter = "UnitsNeeded>0";
-      } else
-      {
-        partialShelves.DefaultView.RowFilter = "";
-      }
+      filterZeroPartials();
     }
 
     private void btnCalc_Click(object sender, EventArgs e)
@@ -487,6 +515,8 @@ namespace RackOptimizer
       string exclude = Convert.ToBoolean(e.Cell.Row.Cells["Skip"].Text) ? "1" : "0";
 
       Global.ExecuteQuery("usp_RO_UpdateSessionStores @sessionId=" + sessionId + ", @shipId=" + shipId + ", @target=" + target + ", @exclude=" + exclude);
+
+      refreshRackAnalysis(); //Update analysis in case # of stores has changed
     }
 
     private void grdPartialShelves_AfterCellUpdate(object sender, CellEventArgs e)
@@ -586,6 +616,23 @@ namespace RackOptimizer
       refreshRoundingData();
       pnLoading.Visible = false;
     }
-#endregion
+    #endregion
+    #region Grid Filtering
+    private void grdStoreRacks_FilterCellValueChanged(object sender, FilterCellValueChangedEventArgs e)
+    {
+      chkFullShelves.Checked = false;
+    }
+
+    private void ckSelectAll_Click(object sender, EventArgs e)
+    {
+      bool checkState = ckSelectAll.Checked;
+      foreach (UltraGridRow r in grdStoreRacks.Rows.GetFilteredInNonGroupByRows())
+      {
+        r.Cells["Skip"].Value = checkState;
+      }
+
+      grdStoreRacks.UpdateData();
+    }
+  #endregion
   }
 }
