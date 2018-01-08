@@ -547,9 +547,9 @@
       this.grdSessionInventory.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
       this.grdSessionInventory.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
       this.grdSessionInventory.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grdSessionInventory.Location = new System.Drawing.Point(309, 35);
+      this.grdSessionInventory.Location = new System.Drawing.Point(410, 35);
       this.grdSessionInventory.Name = "grdSessionInventory";
-      this.grdSessionInventory.Size = new System.Drawing.Size(834, 493);
+      this.grdSessionInventory.Size = new System.Drawing.Size(733, 493);
       this.grdSessionInventory.TabIndex = 2;
       this.grdSessionInventory.Text = "ultraGrid1";
       this.grdSessionInventory.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdSessionInventory_AfterCellUpdate);
@@ -618,11 +618,12 @@
       this.grdStoreRacks.Dock = System.Windows.Forms.DockStyle.Left;
       this.grdStoreRacks.Location = new System.Drawing.Point(3, 35);
       this.grdStoreRacks.Name = "grdStoreRacks";
-      this.grdStoreRacks.Size = new System.Drawing.Size(306, 493);
+      this.grdStoreRacks.Size = new System.Drawing.Size(407, 493);
       this.grdStoreRacks.TabIndex = 0;
       this.grdStoreRacks.Text = "ultraGrid1";
       this.grdStoreRacks.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdStoreRacks_AfterCellUpdate);
       this.grdStoreRacks.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdStoreRacks_InitializeLayout);
+      this.grdStoreRacks.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdStoreRacks_CellChange);
       this.grdStoreRacks.FilterCellValueChanged += new Infragistics.Win.UltraWinGrid.FilterCellValueChangedEventHandler(this.grdStoreRacks_FilterCellValueChanged);
       this.grdStoreRacks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdStoreRacks_KeyDown);
       // 
