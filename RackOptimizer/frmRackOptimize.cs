@@ -131,6 +131,10 @@ namespace RackOptimizer
             partial = Convert.ToDouble(dr["ShelfRound"].ToString());
           }
 
+          //Add negative signs to round down 'units needed' --NDW 1/10/2018
+          if (partial <= .4)
+            dr["UnitsNeeded"] = (int)Convert.ToDouble(dr["UnitsNeeded"].ToString())*-1;
+
           if (qtyRemain > 0)
           {
             if (partial <= .4)
@@ -174,6 +178,11 @@ namespace RackOptimizer
     #region Grid Building
     private void formatShelvesGrid()
     {
+      grdPartialShelves.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
+     
+      //Load user preferances
+      Global.GridLayout(grdPartialShelves, 2, Properties.Settings.Default.partialShelvesLayout);
+
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SizeGroup"].Hidden = true;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SizeGroup"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["ShelfRound"].Hidden = true;
@@ -216,15 +225,15 @@ namespace RackOptimizer
       grdPartialShelves.DisplayLayout.Bands[0].Columns["UnitsNeeded"].Header.Caption = "Units Needed";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Available"].Header.Caption = "Available";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SuggestedQty"].Header.Caption = "Suggested Change";
-
-      grdPartialShelves.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
-
-      //Load user preferances
-      Global.GridLayout(grdPartialShelves, 2, Properties.Settings.Default.partialShelvesLayout);
     }
 
     private void formatStoreGrid()
     {
+      grdStoreRacks.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
+     
+      //Load user preferances
+      Global.GridLayout(grdStoreRacks, 2, Properties.Settings.Default.storeRacksLayout);
+
       grdStoreRacks.DisplayLayout.Bands[0].Columns["shipID"].Hidden = true;
       grdStoreRacks.DisplayLayout.Bands[0].Columns["shipId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
@@ -243,15 +252,15 @@ namespace RackOptimizer
       grdStoreRacks.DisplayLayout.Bands[0].Columns["Skip"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
 
       grdStoreRacks.DisplayLayout.Bands[0].Columns["SuggestedRacks"].MaskInput = "{double:2.0}";
-
-      grdStoreRacks.DisplayLayout.PerformAutoResizeColumns(false,PerformAutoSizeType.AllRowsInBand,true);
-
-      //Load user preferances
-      Global.GridLayout(grdStoreRacks, 2, Properties.Settings.Default.storeRacksLayout);
     }
 
     private void formatRoundingGrid()
     {
+      grdRackOptimize.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
+     
+      //Load user preferances
+      Global.GridLayout(grdRackOptimize, 2, Properties.Settings.Default.rackOptimizeLayout);
+
       grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].Hidden = true;
@@ -276,11 +285,6 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["available"].Header.Caption = "Available";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Racks"].Header.Caption = "Total Racks";
 
-      grdRackOptimize.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
-
-      //Load user preferances
-      Global.GridLayout(grdRackOptimize, 2, Properties.Settings.Default.rackOptimizeLayout);
-
       grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].Hidden = true;
@@ -289,6 +293,11 @@ namespace RackOptimizer
 
     private void formatInventoryGrid()
     {
+      grdSessionInventory.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
+     
+      //Load user preferances
+      Global.GridLayout(grdSessionInventory, 2, Properties.Settings.Default.sessionInventoryLayout);
+
       grdSessionInventory.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
       grdSessionInventory.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
       grdSessionInventory.DisplayLayout.Bands[0].Columns["sessionId"].Hidden = true;
@@ -332,11 +341,6 @@ namespace RackOptimizer
       grdSessionInventory.DisplayLayout.Bands[0].Columns["RndDwnMax"].Header.Appearance.BackColor = Color.Red;
       grdSessionInventory.DisplayLayout.Bands[0].Columns["RndUpPriority"].Header.Appearance.BackColor = Color.Green;
       grdSessionInventory.DisplayLayout.Bands[0].Columns["RndUpMax"].Header.Appearance.BackColor = Color.Green;
-
-      grdSessionInventory.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
-
-      //Load user preferances
-      Global.GridLayout(grdSessionInventory, 2, Properties.Settings.Default.sessionInventoryLayout);
     }
 
     private void grdPartialShelves_InitializeRow(object sender, InitializeRowEventArgs e)
@@ -348,6 +352,12 @@ namespace RackOptimizer
       if (Convert.ToInt32(e.Row.Cells["SuggestedQty"].Value) == 0)
         e.Row.Cells["SuggestedQty"].Appearance.ForeColor = Color.Black;
 
+      if (Convert.ToInt32(e.Row.Cells["UnitsNeeded"].Value) > 0)
+        e.Row.Cells["UnitsNeeded"].Appearance.ForeColor = Color.Green;
+      if (Convert.ToInt32(e.Row.Cells["UnitsNeeded"].Value) < 0)
+        e.Row.Cells["UnitsNeeded"].Appearance.ForeColor = Color.Red;
+      if (Convert.ToInt32(e.Row.Cells["UnitsNeeded"].Value) == 0)
+        e.Row.Cells["UnitsNeeded"].Appearance.ForeColor = Color.Black;
     }
 
     private void grdRackOptimize_InitializeRow(object sender, InitializeRowEventArgs e)
@@ -366,7 +376,7 @@ namespace RackOptimizer
 
       if (hideFullShelf)
       {
-        partialShelves.DefaultView.RowFilter = "UnitsNeeded>0";
+        partialShelves.DefaultView.RowFilter = "UnitsNeeded<>0";
       }
       else
       {
@@ -380,6 +390,24 @@ namespace RackOptimizer
       if (cmbSession.SelectedIndex >= 0)
       {
         refreshData();
+      }
+    }
+
+    private void label8_Click(object sender, EventArgs e)
+    {
+      lblClear.Visible = !lblClear.Visible;
+    }
+
+    private void lblClear_Click(object sender, EventArgs e)
+    {
+      if (MessageBox.Show("Clear saved column layout data?", "Question!", MessageBoxButtons.OKCancel) == DialogResult.OK)
+      {
+        Properties.Settings.Default.rackOptimizeLayout = "";
+        Properties.Settings.Default.partialShelvesLayout = "";
+        Properties.Settings.Default.sessionInventoryLayout = "";
+        Properties.Settings.Default.storeRacksLayout = "";
+
+        Properties.Settings.Default.Save();
       }
     }
 
@@ -626,11 +654,6 @@ namespace RackOptimizer
     }
     #endregion
     #region Grid Filtering
-    private void grdStoreRacks_FilterCellValueChanged(object sender, FilterCellValueChangedEventArgs e)
-    {
-      chkFullShelves.Checked = false;
-    }
-
     private void ckSelectAll_Click(object sender, EventArgs e)
     {
       bool checkState = ckSelectAll.Checked;

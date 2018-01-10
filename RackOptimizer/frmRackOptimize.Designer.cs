@@ -143,6 +143,7 @@
       this.fltShelvesProvider = new Infragistics.Win.SupportDialogs.FilterUIProvider.UltraGridFilterUIProvider(this.components);
       this.bgUpdateRacks = new System.ComponentModel.BackgroundWorker();
       this.bgUpdateOrders = new System.ComponentModel.BackgroundWorker();
+      this.lblClear = new System.Windows.Forms.Label();
       this.panel1.SuspendLayout();
       this.tcRackOptimize.SuspendLayout();
       this.tabShelves.SuspendLayout();
@@ -285,6 +286,7 @@
       this.label8.Size = new System.Drawing.Size(174, 13);
       this.label8.TabIndex = 9;
       this.label8.Text = "Replenishment Session Name";
+      this.label8.Click += new System.EventHandler(this.label8_Click);
       // 
       // tcRackOptimize
       // 
@@ -624,7 +626,6 @@
       this.grdStoreRacks.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdStoreRacks_AfterCellUpdate);
       this.grdStoreRacks.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdStoreRacks_InitializeLayout);
       this.grdStoreRacks.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdStoreRacks_CellChange);
-      this.grdStoreRacks.FilterCellValueChanged += new Infragistics.Win.UltraWinGrid.FilterCellValueChangedEventHandler(this.grdStoreRacks_FilterCellValueChanged);
       this.grdStoreRacks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdStoreRacks_KeyDown);
       // 
       // panel4
@@ -1161,11 +1162,24 @@
       this.bgUpdateOrders.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgUpdateOrders_ProgressChanged);
       this.bgUpdateOrders.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgUpdateOrders_RunWorkerCompleted);
       // 
+      // lblClear
+      // 
+      this.lblClear.AutoSize = true;
+      this.lblClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblClear.Location = new System.Drawing.Point(414, 9);
+      this.lblClear.Name = "lblClear";
+      this.lblClear.Size = new System.Drawing.Size(118, 13);
+      this.lblClear.TabIndex = 14;
+      this.lblClear.Text = "Clear saved layouts";
+      this.lblClear.Visible = false;
+      this.lblClear.Click += new System.EventHandler(this.lblClear_Click);
+      // 
       // frmRackOptimize
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1176, 644);
+      this.Controls.Add(this.lblClear);
       this.Controls.Add(this.panel3);
       this.Controls.Add(this.btnRefresh);
       this.Controls.Add(this.panel1);
@@ -1269,6 +1283,7 @@
     private System.ComponentModel.BackgroundWorker bgUpdateRacks;
     private System.ComponentModel.BackgroundWorker bgUpdateOrders;
     private System.Windows.Forms.CheckBox ckSelectAll;
+    private System.Windows.Forms.Label lblClear;
   }
 }
 
