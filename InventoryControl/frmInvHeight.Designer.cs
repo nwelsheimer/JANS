@@ -40,33 +40,10 @@
       Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-      this.cmbSite = new MetroFramework.Controls.MetroComboBox();
-      this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
       this.ugrdHeights = new Infragistics.Win.UltraWinGrid.UltraGrid();
+      this.cmbSelectSite = new System.Windows.Forms.ComboBox();
       ((System.ComponentModel.ISupportInitialize)(this.ugrdHeights)).BeginInit();
       this.SuspendLayout();
-      // 
-      // cmbSite
-      // 
-      this.cmbSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.cmbSite.FormattingEnabled = true;
-      this.cmbSite.ItemHeight = 23;
-      this.cmbSite.Location = new System.Drawing.Point(853, 46);
-      this.cmbSite.Name = "cmbSite";
-      this.cmbSite.Size = new System.Drawing.Size(164, 29);
-      this.cmbSite.TabIndex = 1;
-      this.cmbSite.UseSelectable = true;
-      this.cmbSite.SelectionChangeCommitted += new System.EventHandler(this.cmbSite_SelectionChangeCommitted);
-      // 
-      // metroLabel1
-      // 
-      this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.metroLabel1.AutoSize = true;
-      this.metroLabel1.Location = new System.Drawing.Point(766, 51);
-      this.metroLabel1.Name = "metroLabel1";
-      this.metroLabel1.Size = new System.Drawing.Size(81, 19);
-      this.metroLabel1.TabIndex = 2;
-      this.metroLabel1.Text = "Choose Site:";
       // 
       // ugrdHeights
       // 
@@ -139,26 +116,32 @@
       this.ugrdHeights.TabIndex = 3;
       this.ugrdHeights.Text = "ultraGrid1";
       // 
+      // cmbSelectSite
+      // 
+      this.cmbSelectSite.FormattingEnabled = true;
+      this.cmbSelectSite.Location = new System.Drawing.Point(97, 31);
+      this.cmbSelectSite.Name = "cmbSelectSite";
+      this.cmbSelectSite.Size = new System.Drawing.Size(121, 21);
+      this.cmbSelectSite.TabIndex = 4;
+      this.cmbSelectSite.SelectedIndexChanged += new System.EventHandler(this.cmbSelectSite_SelectedIndexChanged);
+      // 
       // frmInvHeight
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1040, 647);
+      this.Controls.Add(this.cmbSelectSite);
       this.Controls.Add(this.ugrdHeights);
-      this.Controls.Add(this.metroLabel1);
-      this.Controls.Add(this.cmbSite);
       this.Name = "frmInvHeight";
       this.Text = "Inventory Height Control";
       ((System.ComponentModel.ISupportInitialize)(this.ugrdHeights)).EndInit();
       this.ResumeLayout(false);
-      this.PerformLayout();
 
         }
 
         #endregion
-        private MetroFramework.Controls.MetroComboBox cmbSite;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private Infragistics.Win.UltraWinGrid.UltraGrid ugrdHeights;
-    }
+    private System.Windows.Forms.ComboBox cmbSelectSite;
+  }
 }
 
