@@ -12,11 +12,11 @@ using General;
 
 namespace InventoryControl
 {
-  public partial class frmInvHeight : Form
+  public partial class frmInvDim : Form
   {
     DataTable itemHeights = new DataTable(); //local working dataset
 
-    public frmInvHeight()
+    public frmInvDim()
     {
       InitializeComponent();
 
@@ -31,7 +31,7 @@ namespace InventoryControl
   private void updateGrid()
   {
     if (cmbSelectSite.SelectedIndex>0)
-      itemHeights = Global.GetData("usp_INV_SelectHeights @siteId=" + cmbSelectSite.SelectedValue.ToString()).Tables[0];
+      itemHeights = Global.GetData("usp_IC_SelectHeights @siteId=" + cmbSelectSite.SelectedValue.ToString()).Tables[0];
     ugrdHeights.DataSource = itemHeights;
   }
 

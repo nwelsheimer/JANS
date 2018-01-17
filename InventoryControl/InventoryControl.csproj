@@ -74,16 +74,16 @@
     <Compile Include="..\Nursery-Production-Software\etc\metroTools.cs">
       <Link>metroTools.cs</Link>
     </Compile>
-    <Compile Include="frmInvHeight.cs">
+    <Compile Include="frmInvDim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInvHeight.Designer.cs">
-      <DependentUpon>frmInvHeight.cs</DependentUpon>
+    <Compile Include="frmInvDim.Designer.cs">
+      <DependentUpon>frmInvDim.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmInvHeight.resx">
-      <DependentUpon>frmInvHeight.cs</DependentUpon>
+    <EmbeddedResource Include="frmInvDim.resx">
+      <DependentUpon>frmInvDim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,6 +1,6 @@
 ﻿namespace InventoryControl
 {
-    partial class frmInvHeight
+    partial class frmInvDim
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
       Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
       this.ugrdHeights = new Infragistics.Win.UltraWinGrid.UltraGrid();
       this.cmbSelectSite = new System.Windows.Forms.ComboBox();
+      this.label1 = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.ugrdHeights)).BeginInit();
       this.SuspendLayout();
       // 
@@ -110,38 +111,50 @@
       this.ugrdHeights.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
       this.ugrdHeights.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
       this.ugrdHeights.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-      this.ugrdHeights.Location = new System.Drawing.Point(23, 81);
+      this.ugrdHeights.Location = new System.Drawing.Point(12, 33);
       this.ugrdHeights.Name = "ugrdHeights";
-      this.ugrdHeights.Size = new System.Drawing.Size(994, 543);
+      this.ugrdHeights.Size = new System.Drawing.Size(1016, 602);
       this.ugrdHeights.TabIndex = 3;
       this.ugrdHeights.Text = "ultraGrid1";
       // 
       // cmbSelectSite
       // 
       this.cmbSelectSite.FormattingEnabled = true;
-      this.cmbSelectSite.Location = new System.Drawing.Point(97, 31);
+      this.cmbSelectSite.Location = new System.Drawing.Point(87, 6);
       this.cmbSelectSite.Name = "cmbSelectSite";
       this.cmbSelectSite.Size = new System.Drawing.Size(121, 21);
       this.cmbSelectSite.TabIndex = 4;
       this.cmbSelectSite.SelectedIndexChanged += new System.EventHandler(this.cmbSelectSite_SelectedIndexChanged);
       // 
-      // frmInvHeight
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(20, 9);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(61, 13);
+      this.label1.TabIndex = 5;
+      this.label1.Text = "Select Site:";
+      // 
+      // frmInvDim
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1040, 647);
+      this.Controls.Add(this.label1);
       this.Controls.Add(this.cmbSelectSite);
       this.Controls.Add(this.ugrdHeights);
-      this.Name = "frmInvHeight";
-      this.Text = "Inventory Height Control";
+      this.Name = "frmInvDim";
+      this.Text = "Inventory Dimension Control";
       ((System.ComponentModel.ISupportInitialize)(this.ugrdHeights)).EndInit();
       this.ResumeLayout(false);
+      this.PerformLayout();
 
         }
 
         #endregion
         private Infragistics.Win.UltraWinGrid.UltraGrid ugrdHeights;
     private System.Windows.Forms.ComboBox cmbSelectSite;
+    private System.Windows.Forms.Label label1;
   }
 }
 

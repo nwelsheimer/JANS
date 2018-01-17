@@ -66,6 +66,12 @@ namespace RackOptimizer
         formatInventoryGrid();
 
         pnlRackWarning1.Visible = false;
+      } else
+      {
+        storeRackInfo.Clear();
+        sessionInventory.Clear();
+
+        pnlRackWarning1.Visible = true;
       }
     }
 

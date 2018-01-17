@@ -16,7 +16,7 @@ namespace InventoryControl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInvHeight());
+            Application.Run(new frmInvDim());
         }
     }
 }
