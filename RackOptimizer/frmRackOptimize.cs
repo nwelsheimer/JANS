@@ -79,6 +79,8 @@ namespace RackOptimizer
     {
       rackRounding = Global.GetData("usp_RO_SelectRackOptimize @sessionId="+sessionId+", @threshold="+txtThreshold.Text).Tables[0];
 
+      rackRounding.Columns.Add("Predicted");
+
       grdRackOptimize.DataSource = rackRounding.DefaultView;
     }
 
@@ -250,10 +252,12 @@ namespace RackOptimizer
       grdStoreRacks.DisplayLayout.Bands[0].Columns["Racks"].CellActivation = Activation.Disabled;
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastRack"].CellActivation = Activation.Disabled;
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastSlot"].CellActivation = Activation.Disabled;
+      grdStoreRacks.DisplayLayout.Bands[0].Columns["OriginalRacks"].CellActivation = Activation.Disabled;
 
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastRack"].Header.Caption = "Precise";
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastSlot"].Header.Caption = "Slot";
       grdStoreRacks.DisplayLayout.Bands[0].Columns["SuggestedRacks"].Header.Caption = "Target";
+      grdStoreRacks.DisplayLayout.Bands[0].Columns["OriginalRacks"].Header.Caption = "Original Racks";
 
       grdStoreRacks.DisplayLayout.Bands[0].Columns["Skip"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
 
@@ -281,6 +285,9 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["qtyAck"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["available"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Racks"].CellActivation = Activation.Disabled;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["Rank"].CellActivation = Activation.Disabled;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["Zone"].CellActivation = Activation.Disabled;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["Height"].CellActivation = Activation.Disabled;
 
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderNum"].Header.Caption = "Order #";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["StoreNum"].Header.Caption = "Store #";
@@ -290,11 +297,6 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["qtyAck"].Header.Caption = "On Order";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["available"].Header.Caption = "Available";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Racks"].Header.Caption = "Total Racks";
-
-      grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
-      grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-      grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].Hidden = true;
-      grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
     }
 
     private void formatInventoryGrid()
