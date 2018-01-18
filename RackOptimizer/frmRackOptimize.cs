@@ -58,6 +58,7 @@ namespace RackOptimizer
       if (totalRackRound>0) //Only run this code if racks have been built
       {
         storeRackInfo = Global.GetData("usp_RO_SelectStoreRacks @sessionId=" + sessionId).Tables[0];
+        storeRackInfo.Columns.Add("NewRacks");
         grdStoreRacks.DataSource = storeRackInfo.DefaultView;
         formatStoreGrid();
 
@@ -79,9 +80,22 @@ namespace RackOptimizer
     {
       rackRounding = Global.GetData("usp_RO_SelectRackOptimize @sessionId="+sessionId+", @threshold="+txtThreshold.Text).Tables[0];
 
-      rackRounding.Columns.Add("Predicted");
-
       grdRackOptimize.DataSource = rackRounding.DefaultView;
+
+      string shipId;
+      string newRacks="";
+      foreach (DataRow dr in storeRackInfo.Rows)
+      {
+        shipId = dr["shipId"].ToString();
+        foreach (DataRow rr in rackRounding.Rows)
+        {
+          if (rr["shipId"].ToString() == shipId)
+            newRacks = rr["PredictedRacks"].ToString();
+        }
+        dr["NewRacks"] = newRacks;
+        newRacks = "";
+        shipId = "";
+      }
     }
 
     private Boolean refreshRackAnalysis()
@@ -118,6 +132,8 @@ namespace RackOptimizer
       if (refreshRackAnalysis())
       {
         partialShelves = Global.GetData("usp_RO_SelectPartialShelves @sessionId=" + sessionId).Tables[0];
+        partialShelves.Columns.Add("Incomplete");
+        partialShelves.Columns.Add("NewQty");
 
         string sizeCode = "";
         int qtyRemain = 0;
@@ -125,6 +141,7 @@ namespace RackOptimizer
         double partial = 0.0;
         int suggested;
         string prodId = "";
+        string store = "";
 
         foreach (DataRow dr in partialShelves.Rows)
         {
@@ -132,9 +149,10 @@ namespace RackOptimizer
           available = (int)Convert.ToDouble(dr["Available"].ToString());
           prodId = dr["prodId"].ToString();
 
-          if (dr["sizeGroup"].ToString() != sizeCode)
-          { //New size group
+          if (dr["sizeGroup"].ToString() != sizeCode || dr["Store"].ToString() != store)
+          { //New size group or store
             sizeCode = dr["SizeGroup"].ToString();
+            store = dr["Store"].ToString();
             qtyRemain = (int)Convert.ToDouble(dr["UnitsNeeded"].ToString());
             partial = Convert.ToDouble(dr["ShelfRound"].ToString());
           }
@@ -162,11 +180,14 @@ namespace RackOptimizer
                 //update available
                 recalculateAvailableShelf(suggested * -1, available, prodId);
               }
+              else
+                dr["Incomplete"] = "1";
             }
           }
           dr["SuggestedQty"] = suggested.ToString();
         }
 
+        recalculateAvailableShelf(0, 0, "0");
         grdPartialShelves.DataSource = partialShelves.DefaultView;
         filterZeroPartials();
 
@@ -199,6 +220,8 @@ namespace RackOptimizer
       grdPartialShelves.DisplayLayout.Bands[0].Columns["replId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["Incomplete"].Hidden = true;
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["Incomplete"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Store"].CellActivation = Activation.Disabled;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["custom4"].CellActivation = Activation.Disabled;
@@ -212,6 +235,7 @@ namespace RackOptimizer
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SizeGroup"].CellActivation = Activation.Disabled;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Requested"].CellActivation = Activation.Disabled;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Available"].CellActivation = Activation.Disabled;
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["Incomplete"].CellActivation = Activation.Disabled;
 
       grdPartialShelves.DisplayLayout.Bands[0].Columns["TotalShelves"].Format = "n0";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["PartialShelves"].Format = "n0";
@@ -219,8 +243,10 @@ namespace RackOptimizer
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Requested"].Format = "n0";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Available"].Format = "n0";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SuggestedQty"].Format = "n0";
-      
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["NewQty"].Format = "n0";
+
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SuggestedQty"].MaskInput = "{double:-5.0}";
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["NewQty"].MaskInput = "{double:-5.0}";
 
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Store"].Header.Caption = "Store Number";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["custom4"].Header.Caption = "Rank";
@@ -233,6 +259,10 @@ namespace RackOptimizer
       grdPartialShelves.DisplayLayout.Bands[0].Columns["UnitsNeeded"].Header.Caption = "Units Needed";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Available"].Header.Caption = "Available";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SuggestedQty"].Header.Caption = "Suggested Change";
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["NewQty"].Header.Caption = "New Qty";
+
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["SuggestedQty"].CellAppearance.BackColor = Color.Wheat;
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["NewQty"].CellAppearance.BackColor = Color.Wheat;
     }
 
     private void formatStoreGrid()
@@ -253,11 +283,14 @@ namespace RackOptimizer
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastRack"].CellActivation = Activation.Disabled;
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastSlot"].CellActivation = Activation.Disabled;
       grdStoreRacks.DisplayLayout.Bands[0].Columns["OriginalRacks"].CellActivation = Activation.Disabled;
+      grdStoreRacks.DisplayLayout.Bands[0].Columns["NewRacks"].CellActivation = Activation.Disabled;
 
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastRack"].Header.Caption = "Precise";
       grdStoreRacks.DisplayLayout.Bands[0].Columns["LastSlot"].Header.Caption = "Slot";
       grdStoreRacks.DisplayLayout.Bands[0].Columns["SuggestedRacks"].Header.Caption = "Target";
       grdStoreRacks.DisplayLayout.Bands[0].Columns["OriginalRacks"].Header.Caption = "Original Racks";
+      grdStoreRacks.DisplayLayout.Bands[0].Columns["Racks"].Header.Caption = "Current Racks";
+      grdStoreRacks.DisplayLayout.Bands[0].Columns["NewRacks"].Header.Caption = "New Racks";
 
       grdStoreRacks.DisplayLayout.Bands[0].Columns["Skip"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
 
@@ -275,9 +308,12 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].Hidden = true;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["shipId"].Hidden = true;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["shipId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderNum"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderId"].CellActivation = Activation.Disabled;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["ShipId"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["StoreNum"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["prodId"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["ItemDescription"].CellActivation = Activation.Disabled;
@@ -288,6 +324,7 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Rank"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Zone"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Height"].CellActivation = Activation.Disabled;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["PredictedRacks"].CellActivation = Activation.Disabled;
 
       grdRackOptimize.DisplayLayout.Bands[0].Columns["OrderNum"].Header.Caption = "Order #";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["StoreNum"].Header.Caption = "Store #";
@@ -297,6 +334,10 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["qtyAck"].Header.Caption = "On Order";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["available"].Header.Caption = "Available";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Racks"].Header.Caption = "Total Racks";
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["PredictedRacks"].Header.Caption = "New Racks";
+
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["StoreNum"].SortIndicator = SortIndicator.Ascending;
+      //highlightRoundingRowsBySort();
     }
 
     private void formatInventoryGrid()
@@ -366,6 +407,27 @@ namespace RackOptimizer
         e.Row.Cells["UnitsNeeded"].Appearance.ForeColor = Color.Red;
       if (Convert.ToInt32(e.Row.Cells["UnitsNeeded"].Value) == 0)
         e.Row.Cells["UnitsNeeded"].Appearance.ForeColor = Color.Black;
+
+      if (e.Row.Cells["Incomplete"].Value.ToString() == "1")
+        e.Row.Appearance.BackColor = Color.LightPink;
+    }
+
+    private void highlightRoundingRowsBySort()
+    {
+      int groupCount = 0;
+      string groupVal = "";
+      string sortColumn = grdRackOptimize.DisplayLayout.Bands[0].SortedColumns[0].Key;
+
+      foreach (UltraGridRow gr in grdRackOptimize.Rows)
+      {
+        if (groupVal != gr.Cells[sortColumn].Value.ToString())
+        { //New sort group begins
+          groupVal = gr.Cells[sortColumn].Value.ToString();
+          groupCount++;
+        }
+
+        gr.Appearance.BackColor = groupCount % 2 == 0 ? Color.Silver : Color.White;
+      }
     }
 
     private void grdRackOptimize_InitializeRow(object sender, InitializeRowEventArgs e)
@@ -513,8 +575,11 @@ namespace RackOptimizer
     private void recalculateAvailableShelf(int adjust, int available, string prodId)
     {
       foreach (DataRow dr2 in partialShelves.Rows)
+      {
         if (dr2["prodId"].ToString() == prodId)
           dr2["Available"] = available + adjust;
+        dr2["NewQty"] = (int)Convert.ToDouble(dr2["Requested"].ToString()) + Convert.ToInt32(dr2["SuggestedQty"].ToString());
+      }
     }
 
     private void updateRacks()
@@ -536,12 +601,14 @@ namespace RackOptimizer
       int qty;
       int id;
       int suggestedQty;
-      foreach (DataRow dr in partialShelves.Rows)
+
+      foreach (UltraGridRow gr in grdPartialShelves.Rows.GetFilteredInNonGroupByRows())
       {
         qty = id = suggestedQty = 0;
-        suggestedQty = int.Parse(dr["SuggestedQty"].ToString(), format);
-        qty = (int)double.Parse(dr["Requested"].ToString(), format) + suggestedQty;
-        id = Convert.ToInt32(dr["replId"].ToString());
+        suggestedQty = int.Parse(gr.Cells["SuggestedQty"].Value.ToString(), format);
+
+        qty = (int)double.Parse(gr.Cells["Requested"].Value.ToString(), format) + suggestedQty;
+        id = Convert.ToInt32(gr.Cells["replId"].Value.ToString());
 
         if (suggestedQty != 0)
           Global.GetData("usp_RO_UpdateReplenishment @id=" + id + ", @qty=" + qty);
@@ -567,7 +634,14 @@ namespace RackOptimizer
     {
       string prodId = e.Cell.Row.Cells["prodId"].Text;
       int available = Convert.ToInt32(e.Cell.Row.Cells["Available"].Text);
-      int qty = Convert.ToInt32(e.Cell.Row.Cells["SuggestedQty"].Text.Replace("_", ""));
+      int qty = 0;
+
+      if (e.Cell.Column.Key == "SuggestedQty")
+        qty = Convert.ToInt32(e.Cell.Row.Cells["SuggestedQty"].Text.Replace("_", ""));
+      else
+      {
+        e.Cell.Row.Cells["SuggestedQty"].Value = Convert.ToInt32(e.Cell.Row.Cells["NewQty"].Text.Replace("_", "")) - (int)Convert.ToDouble(e.Cell.Row.Cells["Requested"].Text.Replace("_", ""));
+      }
 
       recalculateAvailableShelf(qty * -1, available, prodId);
     }
@@ -678,6 +752,11 @@ namespace RackOptimizer
     {
       if (e.Cell.Column.Key == "Skip")
         grdStoreRacks.PerformAction(UltraGridAction.ExitEditMode);
+    }
+
+    private void grdRackOptimize_AfterSortChange(object sender, BandEventArgs e)
+    {
+      highlightRoundingRowsBySort();
     }
   }
 }
