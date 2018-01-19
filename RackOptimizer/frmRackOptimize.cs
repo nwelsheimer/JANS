@@ -149,7 +149,7 @@ namespace RackOptimizer
           available = (int)Convert.ToDouble(dr["Available"].ToString());
           prodId = dr["prodId"].ToString();
 
-          if (dr["sizeGroup"].ToString() != sizeCode || dr["Store"].ToString() != store)
+          if ((dr["sizeGroup"].ToString() != sizeCode || dr["Store"].ToString() != store) && (int)Convert.ToDouble(dr["UnitsNeeded"].ToString())>0)
           { //New size group or store
             sizeCode = dr["SizeGroup"].ToString();
             store = dr["Store"].ToString();
