@@ -9,11 +9,11 @@ namespace RackOptimizer
 {
   public partial class frmRackOptimize : Form
   {
-    DataTable rackAnalysisSummary;
-    DataTable storeRackInfo;
-    DataTable sessionInventory;
-    DataTable rackRounding;
-    DataTable partialShelves;
+    DataTable rackAnalysisSummary = new DataTable();
+    DataTable storeRackInfo = new DataTable();
+    DataTable sessionInventory = new DataTable();
+    DataTable rackRounding = new DataTable();
+    DataTable partialShelves = new DataTable();
     
     int totalRackRound = 0;
     string sessionId = "";
@@ -142,6 +142,7 @@ namespace RackOptimizer
         int suggested;
         string prodId = "";
         string store = "";
+        bool noneNeeded = false;
 
         foreach (DataRow dr in partialShelves.Rows)
         {
@@ -149,16 +150,24 @@ namespace RackOptimizer
           available = (int)Convert.ToDouble(dr["Available"].ToString());
           prodId = dr["prodId"].ToString();
 
-          if ((dr["sizeGroup"].ToString() != sizeCode || dr["Store"].ToString() != store) && (int)Convert.ToDouble(dr["UnitsNeeded"].ToString())>0)
+          if (dr["sizeGroup"].ToString() != sizeCode || dr["Store"].ToString() != store)
           { //New size group or store
             sizeCode = dr["SizeGroup"].ToString();
             store = dr["Store"].ToString();
             qtyRemain = (int)Convert.ToDouble(dr["UnitsNeeded"].ToString());
+            noneNeeded = qtyRemain == 0 ? true : false;
             partial = Convert.ToDouble(dr["ShelfRound"].ToString());
           }
 
-          //Add negative signs to round down 'units needed' --NDW 1/10/2018
-          if (partial <= .4)
+          if (noneNeeded)
+            if((int)Convert.ToDouble(dr["UnitsNeeded"].ToString())>0)
+            {
+              qtyRemain = (int)Convert.ToDouble(dr["UnitsNeeded"].ToString());
+              noneNeeded = false;
+            }
+
+            //Add negative signs to round down 'units needed' --NDW 1/10/2018
+            if (partial <= .4)
             dr["UnitsNeeded"] = (int)Convert.ToDouble(dr["UnitsNeeded"].ToString())*-1;
 
           if (qtyRemain > 0)
