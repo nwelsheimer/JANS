@@ -678,12 +678,14 @@
       this.txtThreshold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.txtThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtThreshold.Location = new System.Drawing.Point(1635, 9);
-      this.txtThreshold.Mask = ".0";
+      this.txtThreshold.Mask = ".00";
       this.txtThreshold.Name = "txtThreshold";
+      this.txtThreshold.PromptChar = '0';
       this.txtThreshold.Size = new System.Drawing.Size(70, 30);
       this.txtThreshold.TabIndex = 2;
       this.txtThreshold.Text = "7";
       this.txtThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      this.txtThreshold.Leave += new System.EventHandler(this.txtThreshold_Leave);
       // 
       // label21
       // 

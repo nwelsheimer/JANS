@@ -636,7 +636,7 @@ namespace RackOptimizer
 
       Global.ExecuteQuery("usp_RO_UpdateSessionStores @sessionId=" + sessionId + ", @shipId=" + shipId + ", @target=" + target + ", @exclude=" + exclude);
 
-      refreshRackAnalysis(); //Update analysis in case # of stores has changed
+      
     }
 
     private void grdPartialShelves_AfterCellUpdate(object sender, CellEventArgs e)
@@ -741,6 +741,7 @@ namespace RackOptimizer
     {
       refreshData();
       refreshRoundingData();
+      highlightRoundingRowsBySort();
       pnLoading.Visible = false;
     }
     #endregion
@@ -748,12 +749,15 @@ namespace RackOptimizer
     private void ckSelectAll_Click(object sender, EventArgs e)
     {
       bool checkState = ckSelectAll.Checked;
+
+      
       foreach (UltraGridRow r in grdStoreRacks.Rows.GetFilteredInNonGroupByRows())
       {
         r.Cells["Skip"].Value = checkState;
       }
-
+      
       grdStoreRacks.UpdateData();
+      refreshRackAnalysis(); //Update analysis in case # of stores has changed
     }
     #endregion
 
@@ -761,11 +765,26 @@ namespace RackOptimizer
     {
       if (e.Cell.Column.Key == "Skip")
         grdStoreRacks.PerformAction(UltraGridAction.ExitEditMode);
+
+      refreshRackAnalysis(); //Update analysis in case # of stores has changed
     }
 
     private void grdRackOptimize_AfterSortChange(object sender, BandEventArgs e)
     {
       highlightRoundingRowsBySort();
+    }
+
+    private void txtThreshold_Leave(object sender, EventArgs e)
+    {
+      Decimal threshold = Convert.ToDecimal(txtThreshold.Text);
+
+      foreach (UltraGridRow r in grdStoreRacks.Rows.GetFilteredInNonGroupByRows())
+      {
+        r.Cells["Skip"].Value = Convert.ToDecimal(r.Cells["LastRack"].Value) >= threshold ? true : false;
+      }
+
+      grdStoreRacks.UpdateData();
+      refreshRackAnalysis(); //Update analysis in case # of stores has changed
     }
   }
 }
