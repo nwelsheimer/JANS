@@ -244,6 +244,7 @@ namespace RackOptimizer
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SizeGroup"].CellActivation = Activation.Disabled;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Requested"].CellActivation = Activation.Disabled;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Available"].CellActivation = Activation.Disabled;
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["adjustedOH"].CellActivation = Activation.Disabled;
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Incomplete"].CellActivation = Activation.Disabled;
 
       grdPartialShelves.DisplayLayout.Bands[0].Columns["TotalShelves"].Format = "n0";
@@ -267,6 +268,7 @@ namespace RackOptimizer
       grdPartialShelves.DisplayLayout.Bands[0].Columns["PartialShelves"].Header.Caption = "Partial Shelves";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["UnitsNeeded"].Header.Caption = "Units Needed";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["Available"].Header.Caption = "Available";
+      grdPartialShelves.DisplayLayout.Bands[0].Columns["adjustedOH"].Header.Caption = "Adj On Hand";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["SuggestedQty"].Header.Caption = "Suggested Change";
       grdPartialShelves.DisplayLayout.Bands[0].Columns["NewQty"].Header.Caption = "New Qty";
 
@@ -301,7 +303,7 @@ namespace RackOptimizer
       grdStoreRacks.DisplayLayout.Bands[0].Columns["Racks"].Header.Caption = "Current Racks";
       grdStoreRacks.DisplayLayout.Bands[0].Columns["NewRacks"].Header.Caption = "New Racks";
 
-      grdStoreRacks.DisplayLayout.Bands[0].Columns["Skip"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
+      grdStoreRacks.DisplayLayout.Bands[0].Columns["include"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
 
       grdStoreRacks.DisplayLayout.Bands[0].Columns["SuggestedRacks"].MaskInput = "{double:2.0}";
     }
@@ -328,6 +330,7 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["ItemDescription"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["SizeDescription"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["qtyAck"].CellActivation = Activation.Disabled;
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["adjustedOH"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["available"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Racks"].CellActivation = Activation.Disabled;
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Rank"].CellActivation = Activation.Disabled;
@@ -341,6 +344,7 @@ namespace RackOptimizer
       grdRackOptimize.DisplayLayout.Bands[0].Columns["SizeDescription"].Header.Caption = "Size Description";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["QtyAdjusted"].Header.Caption = "Adjustment Qty";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["qtyAck"].Header.Caption = "On Order";
+      grdRackOptimize.DisplayLayout.Bands[0].Columns["adjustedOH"].Header.Caption = "Adj On Hand";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["available"].Header.Caption = "Available";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["Racks"].Header.Caption = "Total Racks";
       grdRackOptimize.DisplayLayout.Bands[0].Columns["PredictedRacks"].Header.Caption = "New Racks";
@@ -371,6 +375,7 @@ namespace RackOptimizer
       grdSessionInventory.DisplayLayout.Bands[0].Columns["OnOrderUnits"].CellActivation = Activation.Disabled;
       grdSessionInventory.DisplayLayout.Bands[0].Columns["NumOfStores"].CellActivation = Activation.Disabled;
       grdSessionInventory.DisplayLayout.Bands[0].Columns["Available"].CellActivation = Activation.Disabled;
+      grdSessionInventory.DisplayLayout.Bands[0].Columns["avgOrdered"].CellActivation = Activation.Disabled;
 
       grdSessionInventory.DisplayLayout.Bands[0].Columns["ProductId"].Header.Caption = "Product ID";
       grdSessionInventory.DisplayLayout.Bands[0].Columns["ItemDescription"].Header.Caption = "Item Description";
@@ -384,6 +389,7 @@ namespace RackOptimizer
       grdSessionInventory.DisplayLayout.Bands[0].Columns["OnOrderUnits"].Header.Caption = "On Orders";
       grdSessionInventory.DisplayLayout.Bands[0].Columns["NumOfStores"].Header.Caption = "Total Stores";
       grdSessionInventory.DisplayLayout.Bands[0].Columns["Available"].Header.Caption = "Available";
+      grdSessionInventory.DisplayLayout.Bands[0].Columns["avgOrdered"].Header.Caption = "Avg Ordered";
 
       grdSessionInventory.DisplayLayout.Bands[0].Columns["RndDwnPriority"].MaskInput = "{double:2.0}";
       grdSessionInventory.DisplayLayout.Bands[0].Columns["RndDwnMax"].MaskInput = "{double:3.0}";
@@ -632,9 +638,9 @@ namespace RackOptimizer
       string shipId = e.Cell.Row.Cells["shipId"].Text.Replace("_", "");
 
       string target = e.Cell.Row.Cells["SuggestedRacks"].Text.Replace("_", "");
-      string exclude = Convert.ToBoolean(e.Cell.Row.Cells["Skip"].Text) ? "1" : "0";
+      string include = Convert.ToBoolean(e.Cell.Row.Cells["include"].Text) ? "1" : "0";
 
-      Global.ExecuteQuery("usp_RO_UpdateSessionStores @sessionId=" + sessionId + ", @shipId=" + shipId + ", @target=" + target + ", @exclude=" + exclude);
+      Global.ExecuteQuery("usp_RO_UpdateSessionStores @sessionId=" + sessionId + ", @shipId=" + shipId + ", @target=" + target + ", @include=" + include);
 
       
     }
@@ -753,7 +759,7 @@ namespace RackOptimizer
       
       foreach (UltraGridRow r in grdStoreRacks.Rows.GetFilteredInNonGroupByRows())
       {
-        r.Cells["Skip"].Value = checkState;
+        r.Cells["include"].Value = checkState;
       }
       
       grdStoreRacks.UpdateData();
@@ -763,7 +769,7 @@ namespace RackOptimizer
 
     private void grdStoreRacks_CellChange(object sender, CellEventArgs e)
     {
-      if (e.Cell.Column.Key == "Skip")
+      if (e.Cell.Column.Key == "include")
         grdStoreRacks.PerformAction(UltraGridAction.ExitEditMode);
 
       refreshRackAnalysis(); //Update analysis in case # of stores has changed
@@ -780,7 +786,7 @@ namespace RackOptimizer
 
       foreach (UltraGridRow r in grdStoreRacks.Rows.GetFilteredInNonGroupByRows())
       {
-        r.Cells["Skip"].Value = Convert.ToDecimal(r.Cells["LastRack"].Value) >= threshold ? true : false;
+        r.Cells["include"].Value = Convert.ToDecimal(r.Cells["LastRack"].Value) >= threshold ? false : true;
       }
 
       grdStoreRacks.UpdateData();
