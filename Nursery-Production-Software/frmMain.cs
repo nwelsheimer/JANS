@@ -96,6 +96,7 @@ namespace Nursery_Production_Software
             }
             _Auth.swipe(false);
             userId = _Auth.userId;
+      this.Focus();
         }
 #region dynaminc button clicking
         private void DynamicMouseOver(object sender, EventArgs e)
