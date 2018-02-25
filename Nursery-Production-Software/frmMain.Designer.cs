@@ -28,26 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+      this.components = new System.ComponentModel.Container();
+      Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+      Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
       this.mnuMain = new System.Windows.Forms.MenuStrip();
-      this.pnlHeader = new Infragistics.Win.Misc.UltraPanel();
-      this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
       this.ultraPanel1 = new Infragistics.Win.Misc.UltraPanel();
-      this.ultraPanel2 = new Infragistics.Win.Misc.UltraPanel();
       this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
+      this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
+      this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
       this.ultraTilePanel1 = new Infragistics.Win.Misc.UltraTilePanel();
-      this.tilePatchNotes = new Infragistics.Win.Misc.UltraTile();
+      this.tileCalender = new Infragistics.Win.Misc.UltraTile();
+      this.ultraTile2 = new Infragistics.Win.Misc.UltraTile();
+      this.ultraCalculator1 = new Infragistics.Win.UltraWinEditors.UltraWinCalc.UltraCalculator();
+      this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.ultraTilePanel2 = new Infragistics.Win.Misc.UltraTilePanel();
+      this.ultraTile1 = new Infragistics.Win.Misc.UltraTile();
+      this.ultraTile3 = new Infragistics.Win.Misc.UltraTile();
+      this.ultraPictureBox1 = new Infragistics.Win.UltraWinEditors.UltraPictureBox();
       this.textBox1 = new System.Windows.Forms.TextBox();
-      this.ultraPanel1.ClientArea.SuspendLayout();
-      this.pnlHeader.SuspendLayout();
+      this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton2 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton3 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton4 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton5 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton6 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton7 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton8 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton9 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton10 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraButton11 = new Infragistics.Win.Misc.UltraButton();
+      this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
+      this.ultraPictureBox2 = new Infragistics.Win.UltraWinEditors.UltraPictureBox();
+      this.textBox2 = new System.Windows.Forms.TextBox();
+      this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
+      this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
       this.ultraPanel1.ClientArea.SuspendLayout();
       this.ultraPanel1.SuspendLayout();
-      this.ultraPanel2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.ultraTilePanel1)).BeginInit();
       this.ultraTilePanel1.SuspendLayout();
-      this.tilePatchNotes.SuspendLayout();
+      this.tileCalender.SuspendLayout();
+      this.ultraTile2.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.ultraCalculator1)).BeginInit();
+      this.panel1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.ultraTilePanel2)).BeginInit();
+      this.ultraTilePanel2.SuspendLayout();
+      this.ultraTile1.SuspendLayout();
+      this.ultraTile3.SuspendLayout();
       this.SuspendLayout();
       // 
       // mnuMain
@@ -60,78 +90,149 @@
       this.mnuMain.TabIndex = 18;
       this.mnuMain.Text = "menuStrip1";
       // 
-      // pnlHeader
-      // 
-      // 
-      // pnlHeader.ClientArea
-      // 
-      this.ultraPanel1.ClientArea.Controls.Add(this.ultraLabel1);
-      this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pnlHeader.Location = new System.Drawing.Point(0, 24);
-      this.pnlHeader.Name = "pnlHeader";
-      this.pnlHeader.Size = new System.Drawing.Size(1846, 62);
-      this.pnlHeader.TabIndex = 19;
-      // 
-      // ultraLabel1
-      // 
-      appearance2.ForeColor = System.Drawing.Color.White;
-      this.ultraLabel1.Appearance = appearance2;
-      this.ultraLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ultraLabel1.Location = new System.Drawing.Point(3, 3);
-      this.ultraLabel1.Name = "ultraLabel1";
-      this.ultraLabel1.Size = new System.Drawing.Size(426, 42);
-      this.ultraLabel1.TabIndex = 0;
-      this.ultraLabel1.Text = "Just Another Nursery System";
-      // 
       // ultraPanel1
       // 
       // 
       // ultraPanel1.ClientArea
       // 
-      this.ultraPanel1.ClientArea.Controls.Add(this.ultraTilePanel1);
-      this.ultraPanel1.ClientArea.Controls.Add(this.ultraSplitter1);
-      this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-      this.ultraPanel1.Location = new System.Drawing.Point(425, 86);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraLabel3);
+      this.ultraPanel1.ClientArea.Controls.Add(this.textBox2);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton11);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton10);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton9);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton8);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton7);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton6);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton5);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton4);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton3);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton2);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraButton1);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraLabel2);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraPictureBox2);
+      this.ultraPanel1.ClientArea.Controls.Add(this.ultraLabel1);
+      this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+      this.ultraPanel1.Location = new System.Drawing.Point(0, 24);
       this.ultraPanel1.Name = "ultraPanel1";
-      this.ultraPanel1.Size = new System.Drawing.Size(1421, 1056);
+      this.ultraPanel1.Size = new System.Drawing.Size(435, 1118);
       this.ultraPanel1.TabIndex = 20;
-      // 
-      // ultraPanel2
-      // 
-      this.ultraPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ultraPanel2.Location = new System.Drawing.Point(0, 86);
-      this.ultraPanel2.Name = "ultraPanel2";
-      this.ultraPanel2.Size = new System.Drawing.Size(425, 1056);
-      this.ultraPanel2.TabIndex = 21;
       // 
       // ultraSplitter1
       // 
-      this.ultraSplitter1.Location = new System.Drawing.Point(0, 0);
+      this.ultraSplitter1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+      this.ultraSplitter1.Location = new System.Drawing.Point(435, 24);
       this.ultraSplitter1.Name = "ultraSplitter1";
-      this.ultraSplitter1.RestoreExtent = 0;
-      this.ultraSplitter1.Size = new System.Drawing.Size(6, 1056);
-      this.ultraSplitter1.TabIndex = 0;
+      this.ultraSplitter1.RestoreExtent = 429;
+      this.ultraSplitter1.Size = new System.Drawing.Size(6, 1118);
+      this.ultraSplitter1.TabIndex = 21;
+      // 
+      // ultraLabel1
+      // 
+      appearance3.ForeColor = System.Drawing.Color.White;
+      appearance3.TextHAlignAsString = "Center";
+      this.ultraLabel1.Appearance = appearance3;
+      this.ultraLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ultraLabel1.Location = new System.Drawing.Point(0, 0);
+      this.ultraLabel1.Name = "ultraLabel1";
+      this.ultraLabel1.Size = new System.Drawing.Size(435, 51);
+      this.ultraLabel1.TabIndex = 1;
+      this.ultraLabel1.Text = "Just Another Nursery System";
       // 
       // ultraTilePanel1
       // 
-      this.ultraTilePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ultraTilePanel1.Location = new System.Drawing.Point(6, 0);
+      this.ultraTilePanel1.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraTilePanel1.Location = new System.Drawing.Point(441, 24);
+      this.ultraTilePanel1.MaximumRows = 1;
       this.ultraTilePanel1.Name = "ultraTilePanel1";
-      this.ultraTilePanel1.NormalModeDimensions = new System.Drawing.Size(1, 1);
-      this.ultraTilePanel1.Size = new System.Drawing.Size(1415, 1056);
-      this.ultraTilePanel1.TabIndex = 1;
-      this.ultraTilePanel1.Tiles.Add(this.tilePatchNotes);
+      this.ultraTilePanel1.NormalModeDimensions = new System.Drawing.Size(4, 1);
+      this.ultraTilePanel1.Size = new System.Drawing.Size(1405, 545);
+      this.ultraTilePanel1.TabIndex = 22;
+      this.ultraTilePanel1.Tiles.Add(this.tileCalender);
+      this.ultraTilePanel1.Tiles.Add(this.ultraTile2);
+      this.ultraTilePanel1.Tiles.Add(this.ultraTile1);
+      this.ultraTilePanel1.Tiles.Add(this.ultraTile3);
       // 
-      // tilePatchNotes
+      // tileCalender
       // 
-      this.tilePatchNotes.Caption = "Patch Notes";
-      this.tilePatchNotes.Control = this.textBox1;
-      this.tilePatchNotes.Controls.Add(this.textBox1);
-      this.tilePatchNotes.Name = "tilePatchNotes";
-      this.tilePatchNotes.PositionInNormalMode = new System.Drawing.Point(0, 0);
-      appearance1.AlphaLevel = ((short)(100));
-      this.tilePatchNotes.Settings.Appearance = appearance1;
-      this.tilePatchNotes.TabIndex = 0;
+      this.tileCalender.Caption = "Calender";
+      this.tileCalender.Control = this.monthCalendar1;
+      this.tileCalender.Controls.Add(this.monthCalendar1);
+      this.tileCalender.Name = "tileCalender";
+      this.tileCalender.PositionInNormalMode = new System.Drawing.Point(1, 0);
+      this.tileCalender.TabIndex = 0;
+      // 
+      // ultraTile2
+      // 
+      this.ultraTile2.Caption = "Calculator";
+      this.ultraTile2.Control = this.ultraCalculator1;
+      this.ultraTile2.Controls.Add(this.ultraCalculator1);
+      this.ultraTile2.Name = "ultraTile2";
+      this.ultraTile2.PositionInNormalMode = new System.Drawing.Point(0, 0);
+      this.ultraTile2.TabIndex = 1;
+      // 
+      // ultraCalculator1
+      // 
+      this.ultraCalculator1.Location = new System.Drawing.Point(0, 19);
+      this.ultraCalculator1.Name = "ultraCalculator1";
+      this.ultraCalculator1.Size = new System.Drawing.Size(338, 506);
+      this.ultraCalculator1.TabIndex = 0;
+      this.ultraCalculator1.Text = "0.";
+      // 
+      // monthCalendar1
+      // 
+      this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(1, 2);
+      this.monthCalendar1.Cursor = System.Windows.Forms.Cursors.Default;
+      this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.monthCalendar1.Location = new System.Drawing.Point(0, 19);
+      this.monthCalendar1.Name = "monthCalendar1";
+      this.monthCalendar1.TabIndex = 0;
+      // 
+      // panel1
+      // 
+      this.panel1.Controls.Add(this.ultraLabel4);
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.panel1.Location = new System.Drawing.Point(441, 1109);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(1405, 33);
+      this.panel1.TabIndex = 23;
+      // 
+      // ultraTilePanel2
+      // 
+      this.ultraTilePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ultraTilePanel2.Location = new System.Drawing.Point(441, 569);
+      this.ultraTilePanel2.Name = "ultraTilePanel2";
+      this.ultraTilePanel2.NormalModeDimensions = new System.Drawing.Size(0, 0);
+      this.ultraTilePanel2.Size = new System.Drawing.Size(1405, 540);
+      this.ultraTilePanel2.TabIndex = 24;
+      // 
+      // ultraTile1
+      // 
+      this.ultraTile1.Caption = "Picture of the day";
+      this.ultraTile1.Control = this.ultraPictureBox1;
+      this.ultraTile1.Controls.Add(this.ultraPictureBox1);
+      this.ultraTile1.Name = "ultraTile1";
+      this.ultraTile1.PositionInNormalMode = new System.Drawing.Point(2, 0);
+      this.ultraTile1.TabIndex = 2;
+      // 
+      // ultraTile3
+      // 
+      this.ultraTile3.Caption = "Company Notes";
+      this.ultraTile3.Control = this.textBox1;
+      this.ultraTile3.Controls.Add(this.textBox1);
+      this.ultraTile3.Name = "ultraTile3";
+      this.ultraTile3.PositionInNormalMode = new System.Drawing.Point(3, 0);
+      this.ultraTile3.TabIndex = 3;
+      // 
+      // ultraPictureBox1
+      // 
+      this.ultraPictureBox1.BorderShadowColor = System.Drawing.Color.Empty;
+      this.ultraPictureBox1.Image = ((object)(resources.GetObject("ultraPictureBox1.Image")));
+      this.ultraPictureBox1.Location = new System.Drawing.Point(0, 19);
+      this.ultraPictureBox1.Name = "ultraPictureBox1";
+      this.ultraPictureBox1.ScaleImage = Infragistics.Win.ScaleImage.Always;
+      this.ultraPictureBox1.Size = new System.Drawing.Size(338, 506);
+      this.ultraPictureBox1.TabIndex = 0;
       // 
       // textBox1
       // 
@@ -139,9 +240,172 @@
       this.textBox1.Location = new System.Drawing.Point(0, 19);
       this.textBox1.Multiline = true;
       this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(1395, 1017);
+      this.textBox1.Size = new System.Drawing.Size(338, 506);
       this.textBox1.TabIndex = 0;
-      this.textBox1.Text = "Patch Notes ";
+      this.textBox1.Text = "2/25/2018 - February month end\r\n\r\n2/26/2018 - Meijer merchandiser meetings in ups" +
+    "tairs conference room\r\n\r\n";
+      // 
+      // ultraButton1
+      // 
+      this.ultraButton1.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton1.Location = new System.Drawing.Point(0, 199);
+      this.ultraButton1.Name = "ultraButton1";
+      this.ultraButton1.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton1.TabIndex = 2;
+      this.ultraButton1.Text = "ultraButton1";
+      // 
+      // ultraButton2
+      // 
+      this.ultraButton2.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton2.Location = new System.Drawing.Point(0, 256);
+      this.ultraButton2.Name = "ultraButton2";
+      this.ultraButton2.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton2.TabIndex = 3;
+      this.ultraButton2.Text = "ultraButton2";
+      // 
+      // ultraButton3
+      // 
+      this.ultraButton3.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton3.Location = new System.Drawing.Point(0, 313);
+      this.ultraButton3.Name = "ultraButton3";
+      this.ultraButton3.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton3.TabIndex = 4;
+      this.ultraButton3.Text = "ultraButton3";
+      // 
+      // ultraButton4
+      // 
+      this.ultraButton4.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton4.Location = new System.Drawing.Point(0, 370);
+      this.ultraButton4.Name = "ultraButton4";
+      this.ultraButton4.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton4.TabIndex = 5;
+      this.ultraButton4.Text = "ultraButton4";
+      // 
+      // ultraButton5
+      // 
+      this.ultraButton5.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton5.Location = new System.Drawing.Point(0, 427);
+      this.ultraButton5.Name = "ultraButton5";
+      this.ultraButton5.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton5.TabIndex = 6;
+      this.ultraButton5.Text = "ultraButton5";
+      // 
+      // ultraButton6
+      // 
+      this.ultraButton6.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton6.Location = new System.Drawing.Point(0, 484);
+      this.ultraButton6.Name = "ultraButton6";
+      this.ultraButton6.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton6.TabIndex = 7;
+      this.ultraButton6.Text = "ultraButton6";
+      // 
+      // ultraButton7
+      // 
+      this.ultraButton7.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton7.Location = new System.Drawing.Point(0, 541);
+      this.ultraButton7.Name = "ultraButton7";
+      this.ultraButton7.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton7.TabIndex = 8;
+      this.ultraButton7.Text = "ultraButton7";
+      // 
+      // ultraButton8
+      // 
+      this.ultraButton8.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton8.Location = new System.Drawing.Point(0, 598);
+      this.ultraButton8.Name = "ultraButton8";
+      this.ultraButton8.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton8.TabIndex = 9;
+      this.ultraButton8.Text = "ultraButton8";
+      // 
+      // ultraButton9
+      // 
+      this.ultraButton9.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton9.Location = new System.Drawing.Point(0, 655);
+      this.ultraButton9.Name = "ultraButton9";
+      this.ultraButton9.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton9.TabIndex = 10;
+      this.ultraButton9.Text = "ultraButton9";
+      // 
+      // ultraButton10
+      // 
+      this.ultraButton10.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton10.Location = new System.Drawing.Point(0, 712);
+      this.ultraButton10.Name = "ultraButton10";
+      this.ultraButton10.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton10.TabIndex = 11;
+      this.ultraButton10.Text = "ultraButton10";
+      // 
+      // ultraButton11
+      // 
+      this.ultraButton11.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraButton11.Location = new System.Drawing.Point(0, 769);
+      this.ultraButton11.Name = "ultraButton11";
+      this.ultraButton11.Size = new System.Drawing.Size(435, 57);
+      this.ultraButton11.TabIndex = 12;
+      this.ultraButton11.Text = "ultraButton11";
+      // 
+      // ultraLabel2
+      // 
+      appearance2.ForeColor = System.Drawing.Color.White;
+      appearance2.TextHAlignAsString = "Center";
+      appearance2.TextVAlignAsString = "Bottom";
+      this.ultraLabel2.Appearance = appearance2;
+      this.ultraLabel2.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraLabel2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ultraLabel2.Location = new System.Drawing.Point(0, 121);
+      this.ultraLabel2.Name = "ultraLabel2";
+      this.ultraLabel2.Size = new System.Drawing.Size(435, 78);
+      this.ultraLabel2.TabIndex = 13;
+      this.ultraLabel2.Text = "Favorite Applications";
+      // 
+      // ultraPictureBox2
+      // 
+      this.ultraPictureBox2.BorderShadowColor = System.Drawing.Color.Empty;
+      this.ultraPictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraPictureBox2.Image = ((object)(resources.GetObject("ultraPictureBox2.Image")));
+      this.ultraPictureBox2.Location = new System.Drawing.Point(0, 51);
+      this.ultraPictureBox2.Name = "ultraPictureBox2";
+      this.ultraPictureBox2.ScaleImage = Infragistics.Win.ScaleImage.Always;
+      this.ultraPictureBox2.Size = new System.Drawing.Size(435, 70);
+      this.ultraPictureBox2.TabIndex = 14;
+      // 
+      // textBox2
+      // 
+      this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.textBox2.Location = new System.Drawing.Point(0, 826);
+      this.textBox2.Multiline = true;
+      this.textBox2.Name = "textBox2";
+      this.textBox2.Size = new System.Drawing.Size(435, 292);
+      this.textBox2.TabIndex = 15;
+      // 
+      // ultraLabel3
+      // 
+      appearance1.ForeColor = System.Drawing.Color.White;
+      appearance1.TextHAlignAsString = "Center";
+      appearance1.TextVAlignAsString = "Bottom";
+      this.ultraLabel3.Appearance = appearance1;
+      this.ultraLabel3.Dock = System.Windows.Forms.DockStyle.Top;
+      this.ultraLabel3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ultraLabel3.Location = new System.Drawing.Point(0, 826);
+      this.ultraLabel3.Name = "ultraLabel3";
+      this.ultraLabel3.Size = new System.Drawing.Size(435, 69);
+      this.ultraLabel3.TabIndex = 16;
+      this.ultraLabel3.Text = "To-do List";
+      // 
+      // ultraLabel4
+      // 
+      appearance4.ForeColor = System.Drawing.Color.White;
+      appearance4.TextHAlignAsString = "Right";
+      appearance4.TextVAlignAsString = "Middle";
+      this.ultraLabel4.Appearance = appearance4;
+      this.ultraLabel4.Dock = System.Windows.Forms.DockStyle.Right;
+      this.ultraLabel4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ultraLabel4.Location = new System.Drawing.Point(497, 0);
+      this.ultraLabel4.Name = "ultraLabel4";
+      this.ultraLabel4.Size = new System.Drawing.Size(908, 33);
+      this.ultraLabel4.TabIndex = 2;
+      this.ultraLabel4.Text = "We can put some login information down here, or the time, or a version, or whatev" +
+    "er...";
       // 
       // frmMain
       // 
@@ -149,9 +413,11 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
       this.ClientSize = new System.Drawing.Size(1846, 1142);
-      this.Controls.Add(this.ultraPanel2);
+      this.Controls.Add(this.ultraTilePanel2);
+      this.Controls.Add(this.panel1);
+      this.Controls.Add(this.ultraTilePanel1);
+      this.Controls.Add(this.ultraSplitter1);
       this.Controls.Add(this.ultraPanel1);
-      this.Controls.Add(this.pnlHeader);
       this.Controls.Add(this.mnuMain);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.KeyPreview = true;
@@ -163,14 +429,19 @@
       this.Shown += new System.EventHandler(this.frmMain_Shown);
       this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyUp);
       this.ultraPanel1.ClientArea.ResumeLayout(false);
-      this.pnlHeader.ResumeLayout(false);
-      this.ultraPanel1.ClientArea.ResumeLayout(false);
+      this.ultraPanel1.ClientArea.PerformLayout();
       this.ultraPanel1.ResumeLayout(false);
-      this.ultraPanel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.ultraTilePanel1)).EndInit();
       this.ultraTilePanel1.ResumeLayout(false);
-      this.tilePatchNotes.ResumeLayout(false);
-      this.tilePatchNotes.PerformLayout();
+      this.tileCalender.ResumeLayout(false);
+      this.ultraTile2.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.ultraCalculator1)).EndInit();
+      this.panel1.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.ultraTilePanel2)).EndInit();
+      this.ultraTilePanel2.ResumeLayout(false);
+      this.ultraTile1.ResumeLayout(false);
+      this.ultraTile3.ResumeLayout(false);
+      this.ultraTile3.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -178,13 +449,36 @@
 
         #endregion
         private System.Windows.Forms.MenuStrip mnuMain;
-    private Infragistics.Win.Misc.UltraPanel pnlHeader;
-    private Infragistics.Win.Misc.UltraLabel ultraLabel1;
     private Infragistics.Win.Misc.UltraPanel ultraPanel1;
-    private Infragistics.Win.Misc.UltraTilePanel ultraTilePanel1;
-    private Infragistics.Win.Misc.UltraTile tilePatchNotes;
-    private System.Windows.Forms.TextBox textBox1;
     private Infragistics.Win.Misc.UltraSplitter ultraSplitter1;
-    private Infragistics.Win.Misc.UltraPanel ultraPanel2;
+    private Infragistics.Win.Misc.UltraLabel ultraLabel1;
+    private Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
+    private Infragistics.Win.Misc.UltraTilePanel ultraTilePanel1;
+    private Infragistics.Win.Misc.UltraTile tileCalender;
+    private Infragistics.Win.Misc.UltraTile ultraTile2;
+    private Infragistics.Win.UltraWinEditors.UltraWinCalc.UltraCalculator ultraCalculator1;
+    private System.Windows.Forms.MonthCalendar monthCalendar1;
+    private Infragistics.Win.Misc.UltraTile ultraTile1;
+    private Infragistics.Win.UltraWinEditors.UltraPictureBox ultraPictureBox1;
+    private Infragistics.Win.Misc.UltraTile ultraTile3;
+    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.Panel panel1;
+    private Infragistics.Win.Misc.UltraTilePanel ultraTilePanel2;
+    private Infragistics.Win.Misc.UltraLabel ultraLabel3;
+    private System.Windows.Forms.TextBox textBox2;
+    private Infragistics.Win.Misc.UltraButton ultraButton11;
+    private Infragistics.Win.Misc.UltraButton ultraButton10;
+    private Infragistics.Win.Misc.UltraButton ultraButton9;
+    private Infragistics.Win.Misc.UltraButton ultraButton8;
+    private Infragistics.Win.Misc.UltraButton ultraButton7;
+    private Infragistics.Win.Misc.UltraButton ultraButton6;
+    private Infragistics.Win.Misc.UltraButton ultraButton5;
+    private Infragistics.Win.Misc.UltraButton ultraButton4;
+    private Infragistics.Win.Misc.UltraButton ultraButton3;
+    private Infragistics.Win.Misc.UltraButton ultraButton2;
+    private Infragistics.Win.Misc.UltraButton ultraButton1;
+    private Infragistics.Win.Misc.UltraLabel ultraLabel2;
+    private Infragistics.Win.UltraWinEditors.UltraPictureBox ultraPictureBox2;
+    private Infragistics.Win.Misc.UltraLabel ultraLabel4;
   }
 }
