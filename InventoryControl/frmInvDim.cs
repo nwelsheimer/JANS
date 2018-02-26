@@ -30,8 +30,8 @@ namespace InventoryControl
         grdDIM.DisplayLayout.PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand, true);
 
         grdDIM.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
-        grdDIM.DisplayLayout.Bands[0].Columns["siteId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
-        grdDIM.DisplayLayout.Bands[0].Columns["prodId"].Hidden = true;
+        grdDIM.DisplayLayout.Bands[0].Columns["prodId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
+        grdDIM.DisplayLayout.Bands[0].Columns["siteId"].Hidden = true;
         grdDIM.DisplayLayout.Bands[0].Columns["siteId"].ExcludeFromColumnChooser = ExcludeFromColumnChooser.True;
 
         grdDIM.DisplayLayout.Bands[0].Columns["Site"].CellActivation = Activation.Disabled;
@@ -64,6 +64,11 @@ namespace InventoryControl
       string currentHeight = e.Row.Cells["Current Height"].Text;
 
       Global.ExecuteQuery("usp_IC_UpdateHeights @prodId=" + prodId + ", @siteId=" + siteId + ", @defaultHeight=" + defaultHeight + ", @currentHeight=" + currentHeight);
+    }
+
+    private void grdDIM_KeyDown(object sender, KeyEventArgs e)
+    {
+      Global.GridNavigation(grdDIM, e);
     }
   }
 }

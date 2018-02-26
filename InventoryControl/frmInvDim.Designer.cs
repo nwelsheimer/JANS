@@ -112,43 +112,40 @@
       this.grdDIM.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
       this.grdDIM.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
       this.grdDIM.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-      this.grdDIM.Location = new System.Drawing.Point(18, 51);
-      this.grdDIM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grdDIM.Location = new System.Drawing.Point(12, 33);
       this.grdDIM.Name = "grdDIM";
-      this.grdDIM.Size = new System.Drawing.Size(1524, 926);
+      this.grdDIM.Size = new System.Drawing.Size(1016, 602);
       this.grdDIM.TabIndex = 3;
       this.grdDIM.Text = "ultraGrid1";
       this.grdDIM.AfterRowUpdate += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.grdDIM_AfterRowUpdate);
+      this.grdDIM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdDIM_KeyDown);
       // 
       // cmbSelectSite
       // 
       this.cmbSelectSite.FormattingEnabled = true;
-      this.cmbSelectSite.Location = new System.Drawing.Point(130, 9);
-      this.cmbSelectSite.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.cmbSelectSite.Location = new System.Drawing.Point(87, 6);
       this.cmbSelectSite.Name = "cmbSelectSite";
-      this.cmbSelectSite.Size = new System.Drawing.Size(180, 28);
+      this.cmbSelectSite.Size = new System.Drawing.Size(121, 21);
       this.cmbSelectSite.TabIndex = 4;
       this.cmbSelectSite.SelectedIndexChanged += new System.EventHandler(this.cmbSelectSite_SelectedIndexChanged);
       // 
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(30, 14);
-      this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label1.Location = new System.Drawing.Point(20, 9);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(90, 20);
+      this.label1.Size = new System.Drawing.Size(61, 13);
       this.label1.TabIndex = 5;
       this.label1.Text = "Select Site:";
       // 
       // frmInvDim
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1560, 995);
+      this.ClientSize = new System.Drawing.Size(1040, 647);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.cmbSelectSite);
       this.Controls.Add(this.grdDIM);
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "frmInvDim";
       this.Text = "Inventory Dimension Control";
       ((System.ComponentModel.ISupportInitialize)(this.grdDIM)).EndInit();
