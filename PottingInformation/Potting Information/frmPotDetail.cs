@@ -31,10 +31,12 @@ namespace Potting_Information
             selectColumn.TrueValue = true;
             dgPottingDetail.Columns.Insert(0, selectColumn);
             dgPottingDetail.Columns[0].Visible = false;
+      
             connectToDB();
-        }
 
-        private void connectToDB()
+    }
+
+    private void connectToDB()
         {
             //if (Properties.Settings.Default.dbServer == "")
             //{
@@ -183,5 +185,11 @@ namespace Potting_Information
             Properties.Settings.Default.defType = cmbItemType.Text;
             Properties.Settings.Default.Save();
         }
+
+    private void dgPottingDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+      frmUpdatePotting f = new frmUpdatePotting(dgPottingDetail.Rows[e.RowIndex].Cells[10].Value.ToString());
+      f.ShowDialog();
     }
+  }
 }
