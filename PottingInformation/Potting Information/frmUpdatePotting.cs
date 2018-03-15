@@ -15,9 +15,12 @@ namespace Potting_Information
   {
     string lotId;
     string siteId;
+    string fromItemId;
     bool loaded = false;
     DataTable locations;
     DataTable pottingLog;
+    DataTable inputDetail;
+    DataTable inputLocations;
 
     public frmUpdatePotting(string LOTID)
     {
@@ -27,12 +30,15 @@ namespace Potting_Information
 
     private void frmUpdatePotting_Load(object sender, EventArgs e)
     {
-      lblLotId.Text = "Lot ID:" + lotId;
+      lblLotId.Text = "Lot ID: " + lotId;
 
       DataTable itemName = Global.GetData("usp_PI_SelectUpdateSummary @lotId=" + lotId).Tables[0];
       lblItemName.Text = itemName.Rows[0]["itemDesc"].ToString() + " " + itemName.Rows[0]["sizeDesc"].ToString();
+      lblFromSize.Text = "From Size: " + itemName.Rows[0]["fromSize"].ToString();
       siteId = itemName.Rows[0]["siteId"].ToString();
+      fromItemId = itemName.Rows[0]["iFrom"].ToString();
       setupLogGrid();
+      setupInputGrid();
       loaded = true;
     }
 
@@ -59,6 +65,34 @@ namespace Potting_Information
       pottingLog.RowChanged += new DataRowChangeEventHandler(recordChanged);
     }
 
+    private void setupInputGrid()
+    {
+      inputDetail = Global.GetData("usp_PI_SelectPottingInputDetail @lotId=" + lotId).Tables[0];
+      inputLocations = Global.GetData("usp_PI_SelectInputLocations @prodId=" + fromItemId + " , @siteId=" + siteId).Tables[0];
+
+      //TODO input location combo box
+      DataGridViewComboBoxColumn cmbInputs = new DataGridViewComboBoxColumn();
+      cmbInputs.DataSource = inputLocations;
+      cmbInputs.DisplayMember = "Description";
+      cmbInputs.HeaderText = "Input Location";
+      cmbInputs.DataPropertyName = "inputLocId";
+      cmbInputs.ValueMember = "inputLocId";
+      cmbInputs.Name = "inputLocId";
+
+      grdInputItems.Columns.Add(cmbInputs);
+      grdInputItems.DataSource = inputDetail;
+
+      grdInputItems.Columns["id"].Visible = false;
+      grdInputItems.Columns["qty"].HeaderText = "Quantity";
+
+      inputDetail.RowChanged += new DataRowChangeEventHandler(inputRecordChanged);
+    }
+
+    private void inputRecordChanged(object sender, DataRowChangeEventArgs e)
+    {
+
+    }
+
     private void recordChanged(object sender, DataRowChangeEventArgs e)
     {
       string rowIndex = e.Row["id"].ToString(); //grdDriverLog.Rows[e.RowIndex].Cells["id"].Value.ToString();
@@ -80,16 +114,9 @@ namespace Potting_Information
       }
     }
 
-    private void grdDriverLog_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+    private void btnClose_Click(object sender, EventArgs e)
     {
-      if (loaded)
-      {
-      }
-    }
-
-    private void grdDriverLog_RowLeave(object sender, DataGridViewCellEventArgs e)
-    {
-     
+      this.Close();
     }
   }
 }
