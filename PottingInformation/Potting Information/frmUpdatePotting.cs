@@ -59,8 +59,16 @@ namespace Potting_Information
       grdDriverLog.DataSource = pottingLog;
 
       grdDriverLog.Columns["id"].Visible = false;
-      
+      grdDriverLog.Columns["counted"].Visible = false;
+
       grdDriverLog.Columns["qty"].HeaderText = "Quantity";
+      
+      foreach (DataGridViewRow r in grdDriverLog.Rows)
+      {
+        string counted = r.Cells["counted"].Value == null ? "0" : r.Cells["counted"].Value.ToString();
+        if (counted == "1")
+          r.ReadOnly = true;
+      }
 
       pottingLog.RowChanged += new DataRowChangeEventHandler(recordChanged);
     }
@@ -90,7 +98,22 @@ namespace Potting_Information
 
     private void inputRecordChanged(object sender, DataRowChangeEventArgs e)
     {
+      string rowIndex = e.Row["id"].ToString();
+      string inputLocId = e.Row["inputLocId"].ToString();
+      string qty = e.Row["qty"].ToString();
 
+      if (inputLocId.Length > 0 && qty.Length > 0)
+      {
+        if (rowIndex.Length > 0)
+        {
+          Global.ExecuteQuery("usp_PI_UpdatePottingLogInputs @lotId=" + lotId + ",@locId=" + inputLocId + ", @qty=" + qty + ",@logIndex=" + rowIndex);
+        }
+        else
+        {
+          string newIndex = Global.ExecuteQueryGetId("exec usp_PI_UpdatePottingLogInputs @lotId=" + lotId + ",@locId=" + inputLocId + ",@qty=" + qty);
+          e.Row["id"] = newIndex;
+        }
+      }
     }
 
     private void recordChanged(object sender, DataRowChangeEventArgs e)
