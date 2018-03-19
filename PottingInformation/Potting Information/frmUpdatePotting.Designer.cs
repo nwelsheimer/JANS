@@ -59,10 +59,9 @@
       // 
       this.lblLotId.AutoSize = true;
       this.lblLotId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblLotId.Location = new System.Drawing.Point(18, 14);
-      this.lblLotId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblLotId.Location = new System.Drawing.Point(12, 9);
       this.lblLotId.Name = "lblLotId";
-      this.lblLotId.Size = new System.Drawing.Size(162, 29);
+      this.lblLotId.Size = new System.Drawing.Size(116, 20);
       this.lblLotId.TabIndex = 0;
       this.lblLotId.Text = "Lot Id: 12345";
       // 
@@ -70,10 +69,9 @@
       // 
       this.lblItemName.AutoSize = true;
       this.lblItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblItemName.Location = new System.Drawing.Point(18, 45);
-      this.lblItemName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblItemName.Location = new System.Drawing.Point(12, 29);
       this.lblItemName.Name = "lblItemName";
-      this.lblItemName.Size = new System.Drawing.Size(200, 29);
+      this.lblItemName.Size = new System.Drawing.Size(142, 20);
       this.lblItemName.TabIndex = 2;
       this.lblItemName.Text = "Item Information";
       // 
@@ -84,10 +82,9 @@
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(20, 86);
-      this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label1.Location = new System.Drawing.Point(13, 56);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(236, 20);
+      this.label1.Size = new System.Drawing.Size(158, 13);
       this.label1.TabIndex = 4;
       this.label1.Text = "Input driver log information here:";
       // 
@@ -95,10 +92,9 @@
       // 
       this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(20, 522);
-      this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label2.Location = new System.Drawing.Point(13, 232);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(229, 20);
+      this.label2.Size = new System.Drawing.Size(153, 13);
       this.label2.TabIndex = 5;
       this.label2.Text = "Select locations for input items:";
       // 
@@ -111,18 +107,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.grdInputItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
       this.grdInputItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.grdInputItems.Location = new System.Drawing.Point(18, 552);
-      this.grdInputItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grdInputItems.Location = new System.Drawing.Point(12, 252);
       this.grdInputItems.Name = "grdInputItems";
-      this.grdInputItems.Size = new System.Drawing.Size(962, 222);
+      this.grdInputItems.Size = new System.Drawing.Size(635, 144);
       this.grdInputItems.TabIndex = 6;
       // 
       // btnClose
       // 
-      this.btnClose.Location = new System.Drawing.Point(18, 805);
-      this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.btnClose.Location = new System.Drawing.Point(12, 416);
       this.btnClose.Name = "btnClose";
-      this.btnClose.Size = new System.Drawing.Size(174, 35);
+      this.btnClose.Size = new System.Drawing.Size(116, 23);
       this.btnClose.TabIndex = 7;
       this.btnClose.Text = "Save and close";
       this.btnClose.UseVisualStyleBackColor = true;
@@ -130,12 +125,11 @@
       // 
       // lblFromSize
       // 
-      this.lblFromSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblFromSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lblFromSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblFromSize.Location = new System.Drawing.Point(419, 516);
-      this.lblFromSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lblFromSize.Location = new System.Drawing.Point(273, 228);
       this.lblFromSize.Name = "lblFromSize";
-      this.lblFromSize.Size = new System.Drawing.Size(561, 31);
+      this.lblFromSize.Size = new System.Drawing.Size(374, 20);
       this.lblFromSize.TabIndex = 8;
       this.lblFromSize.Text = "From Size: 38 cell std";
       this.lblFromSize.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -208,18 +202,17 @@
       this.grdPottingDetail.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
       this.grdPottingDetail.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
       this.grdPottingDetail.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-      this.grdPottingDetail.Location = new System.Drawing.Point(18, 111);
-      this.grdPottingDetail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grdPottingDetail.Location = new System.Drawing.Point(12, 72);
       this.grdPottingDetail.Name = "grdPottingDetail";
-      this.grdPottingDetail.Size = new System.Drawing.Size(962, 406);
+      this.grdPottingDetail.Size = new System.Drawing.Size(635, 157);
       this.grdPottingDetail.TabIndex = 9;
       this.grdPottingDetail.Text = "ultraGrid1";
       // 
       // frmUpdatePotting
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(998, 858);
+      this.ClientSize = new System.Drawing.Size(659, 451);
       this.Controls.Add(this.grdPottingDetail);
       this.Controls.Add(this.lblFromSize);
       this.Controls.Add(this.btnClose);
@@ -228,7 +221,6 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.lblItemName);
       this.Controls.Add(this.lblLotId);
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "frmUpdatePotting";
       this.Text = "Update Potting Detail";
       this.Load += new System.EventHandler(this.frmUpdatePotting_Load);
