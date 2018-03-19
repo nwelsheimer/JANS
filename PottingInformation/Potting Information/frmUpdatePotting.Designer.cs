@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
       Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -42,8 +43,7 @@
       Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
       this.lblLotId = new System.Windows.Forms.Label();
       this.lblItemName = new System.Windows.Forms.Label();
-      this.pIPottingLogBindingSource = new System.Windows.Forms.BindingSource();
-      this.grdDriverLog = new System.Windows.Forms.DataGridView();
+      this.pIPottingLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.grdInputItems = new System.Windows.Forms.DataGridView();
@@ -51,7 +51,6 @@
       this.lblFromSize = new System.Windows.Forms.Label();
       this.grdPottingDetail = new Infragistics.Win.UltraWinGrid.UltraGrid();
       ((System.ComponentModel.ISupportInitialize)(this.pIPottingLogBindingSource)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.grdDriverLog)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdInputItems)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdPottingDetail)).BeginInit();
       this.SuspendLayout();
@@ -60,9 +59,10 @@
       // 
       this.lblLotId.AutoSize = true;
       this.lblLotId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblLotId.Location = new System.Drawing.Point(12, 9);
+      this.lblLotId.Location = new System.Drawing.Point(18, 14);
+      this.lblLotId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblLotId.Name = "lblLotId";
-      this.lblLotId.Size = new System.Drawing.Size(116, 20);
+      this.lblLotId.Size = new System.Drawing.Size(162, 29);
       this.lblLotId.TabIndex = 0;
       this.lblLotId.Text = "Lot Id: 12345";
       // 
@@ -70,9 +70,10 @@
       // 
       this.lblItemName.AutoSize = true;
       this.lblItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblItemName.Location = new System.Drawing.Point(12, 29);
+      this.lblItemName.Location = new System.Drawing.Point(18, 45);
+      this.lblItemName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblItemName.Name = "lblItemName";
-      this.lblItemName.Size = new System.Drawing.Size(142, 20);
+      this.lblItemName.Size = new System.Drawing.Size(200, 29);
       this.lblItemName.TabIndex = 2;
       this.lblItemName.Text = "Item Information";
       // 
@@ -80,25 +81,13 @@
       // 
       this.pIPottingLogBindingSource.DataMember = "PI_PottingLog";
       // 
-      // grdDriverLog
-      // 
-      this.grdDriverLog.AllowUserToOrderColumns = true;
-      this.grdDriverLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.grdDriverLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-      this.grdDriverLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.grdDriverLog.Location = new System.Drawing.Point(12, 72);
-      this.grdDriverLog.Name = "grdDriverLog";
-      this.grdDriverLog.Size = new System.Drawing.Size(641, 67);
-      this.grdDriverLog.TabIndex = 3;
-      // 
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(13, 56);
+      this.label1.Location = new System.Drawing.Point(20, 86);
+      this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(158, 13);
+      this.label1.Size = new System.Drawing.Size(236, 20);
       this.label1.TabIndex = 4;
       this.label1.Text = "Input driver log information here:";
       // 
@@ -106,29 +95,34 @@
       // 
       this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(13, 339);
+      this.label2.Location = new System.Drawing.Point(20, 522);
+      this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(153, 13);
+      this.label2.Size = new System.Drawing.Size(229, 20);
       this.label2.TabIndex = 5;
       this.label2.Text = "Select locations for input items:";
       // 
       // grdInputItems
       // 
+      this.grdInputItems.AllowUserToAddRows = false;
+      this.grdInputItems.AllowUserToDeleteRows = false;
       this.grdInputItems.AllowUserToOrderColumns = true;
       this.grdInputItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.grdInputItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
       this.grdInputItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.grdInputItems.Location = new System.Drawing.Point(12, 359);
+      this.grdInputItems.Location = new System.Drawing.Point(18, 552);
+      this.grdInputItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.grdInputItems.Name = "grdInputItems";
-      this.grdInputItems.Size = new System.Drawing.Size(641, 144);
+      this.grdInputItems.Size = new System.Drawing.Size(962, 222);
       this.grdInputItems.TabIndex = 6;
       // 
       // btnClose
       // 
-      this.btnClose.Location = new System.Drawing.Point(12, 523);
+      this.btnClose.Location = new System.Drawing.Point(18, 805);
+      this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.btnClose.Name = "btnClose";
-      this.btnClose.Size = new System.Drawing.Size(116, 23);
+      this.btnClose.Size = new System.Drawing.Size(174, 35);
       this.btnClose.TabIndex = 7;
       this.btnClose.Text = "Save and close";
       this.btnClose.UseVisualStyleBackColor = true;
@@ -138,9 +132,10 @@
       // 
       this.lblFromSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lblFromSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblFromSize.Location = new System.Drawing.Point(279, 9);
+      this.lblFromSize.Location = new System.Drawing.Point(419, 516);
+      this.lblFromSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblFromSize.Name = "lblFromSize";
-      this.lblFromSize.Size = new System.Drawing.Size(374, 20);
+      this.lblFromSize.Size = new System.Drawing.Size(561, 31);
       this.lblFromSize.TabIndex = 8;
       this.lblFromSize.Text = "From Size: 38 cell std";
       this.lblFromSize.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -178,7 +173,10 @@
       appearance6.BackColor = System.Drawing.SystemColors.Highlight;
       appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
       this.grdPottingDetail.DisplayLayout.Override.ActiveRowAppearance = appearance6;
-      this.grdPottingDetail.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+      this.grdPottingDetail.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.TemplateOnBottom;
+      this.grdPottingDetail.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+      this.grdPottingDetail.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
+      this.grdPottingDetail.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.True;
       this.grdPottingDetail.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
       this.grdPottingDetail.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
       appearance7.BackColor = System.Drawing.SystemColors.Window;
@@ -192,7 +190,6 @@
       this.grdPottingDetail.DisplayLayout.Override.FilterClearButtonLocation = Infragistics.Win.UltraWinGrid.FilterClearButtonLocation.Hidden;
       this.grdPottingDetail.DisplayLayout.Override.FilterOperatorDefaultValue = Infragistics.Win.UltraWinGrid.FilterOperatorDefaultValue.Contains;
       this.grdPottingDetail.DisplayLayout.Override.FilterOperatorLocation = Infragistics.Win.UltraWinGrid.FilterOperatorLocation.Hidden;
-      this.grdPottingDetail.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
       appearance9.BackColor = System.Drawing.SystemColors.Control;
       appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
       appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
@@ -211,31 +208,31 @@
       this.grdPottingDetail.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
       this.grdPottingDetail.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
       this.grdPottingDetail.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-      this.grdPottingDetail.Location = new System.Drawing.Point(12, 154);
+      this.grdPottingDetail.Location = new System.Drawing.Point(18, 111);
+      this.grdPottingDetail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.grdPottingDetail.Name = "grdPottingDetail";
-      this.grdPottingDetail.Size = new System.Drawing.Size(641, 182);
+      this.grdPottingDetail.Size = new System.Drawing.Size(962, 406);
       this.grdPottingDetail.TabIndex = 9;
       this.grdPottingDetail.Text = "ultraGrid1";
       // 
       // frmUpdatePotting
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(665, 558);
+      this.ClientSize = new System.Drawing.Size(998, 858);
       this.Controls.Add(this.grdPottingDetail);
       this.Controls.Add(this.lblFromSize);
       this.Controls.Add(this.btnClose);
       this.Controls.Add(this.grdInputItems);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
-      this.Controls.Add(this.grdDriverLog);
       this.Controls.Add(this.lblItemName);
       this.Controls.Add(this.lblLotId);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "frmUpdatePotting";
       this.Text = "Update Potting Detail";
       this.Load += new System.EventHandler(this.frmUpdatePotting_Load);
       ((System.ComponentModel.ISupportInitialize)(this.pIPottingLogBindingSource)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.grdDriverLog)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdInputItems)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdPottingDetail)).EndInit();
       this.ResumeLayout(false);
@@ -248,7 +245,6 @@
     private System.Windows.Forms.Label lblLotId;
     private System.Windows.Forms.Label lblItemName;
     private System.Windows.Forms.BindingSource pIPottingLogBindingSource;
-    private System.Windows.Forms.DataGridView grdDriverLog;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.DataGridView grdInputItems;

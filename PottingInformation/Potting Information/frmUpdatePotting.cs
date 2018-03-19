@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
 using General;
+using Infragistics.Win;
 
 namespace Potting_Information
 {
@@ -47,27 +43,23 @@ namespace Potting_Information
       locations = Global.GetData("usp_PI_SelectLocations @siteId=" + siteId).Tables[0];
       pottingLog = Global.GetData("usp_PI_SelectPottingLog @lotId=" + lotId).Tables[0];
 
-      DataGridViewComboBoxColumn cmbLocations = new DataGridViewComboBoxColumn();
-      cmbLocations.DataSource = locations;
-      cmbLocations.DisplayMember = "locationCode";
-      cmbLocations.HeaderText = "Set down location";
-      cmbLocations.DataPropertyName = "locId";
-      cmbLocations.ValueMember = "locId";
-      cmbLocations.Name = "locId";
+      grdPottingDetail.DataSource = pottingLog;
 
-      grdDriverLog.Columns.Add(cmbLocations);
-      grdDriverLog.DataSource = pottingLog;
-
-      grdDriverLog.Columns["id"].Visible = false;
-      grdDriverLog.Columns["counted"].Visible = false;
-
-      grdDriverLog.Columns["qty"].HeaderText = "Quantity";
+      grdPottingDetail.DisplayLayout.Bands[0].Columns["locId"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDown;
+      grdPottingDetail.DisplayLayout.Bands[0].Columns["locId"].AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+      grdPottingDetail.DisplayLayout.Bands[0].Columns["locId"].ValueList = new BindableValueList(locations, "", "locationCode", "locId", this.grdPottingDetail);
       
-      foreach (DataGridViewRow r in grdDriverLog.Rows)
+      grdPottingDetail.DisplayLayout.Bands[0].Columns["id"].Hidden = true;
+      grdPottingDetail.DisplayLayout.Bands[0].Columns["counted"].Hidden = true;
+
+      grdPottingDetail.DisplayLayout.Bands[0].Columns["locId"].Header.Caption = "Set down location";
+      grdPottingDetail.DisplayLayout.Bands[0].Columns["qty"].Header.Caption = "Quantity";
+      
+      foreach (UltraGridRow r in grdPottingDetail.Rows)
       {
         string counted = r.Cells["counted"].Value == null ? "0" : r.Cells["counted"].Value.ToString();
         if (counted == "1")
-          r.ReadOnly = true;
+          r.Activation = Activation.NoEdit;
       }
 
       pottingLog.RowChanged += new DataRowChangeEventHandler(recordChanged);
@@ -75,23 +67,17 @@ namespace Potting_Information
 
     private void setupInputGrid()
     {
-      inputDetail = Global.GetData("usp_PI_SelectPottingInputDetail @lotId=" + lotId).Tables[0];
-      inputLocations = Global.GetData("usp_PI_SelectInputLocations @prodId=" + fromItemId + " , @siteId=" + siteId).Tables[0];
+      inputDetail = Global.GetData("usp_PI_SelectPottingInputDetail @lotId=" + lotId + ", @prodId=" + fromItemId + " , @siteId=" + siteId).Tables[0];
 
-      //TODO input location combo box
-      DataGridViewComboBoxColumn cmbInputs = new DataGridViewComboBoxColumn();
-      cmbInputs.DataSource = inputLocations;
-      cmbInputs.DisplayMember = "Description";
-      cmbInputs.HeaderText = "Input Location";
-      cmbInputs.DataPropertyName = "inputLocId";
-      cmbInputs.ValueMember = "inputLocId";
-      cmbInputs.Name = "inputLocId";
-
-      grdInputItems.Columns.Add(cmbInputs);
       grdInputItems.DataSource = inputDetail;
 
+      grdInputItems.Columns["description"].ReadOnly = true;
+
       grdInputItems.Columns["id"].Visible = false;
+      grdInputItems.Columns["inputLocId"].Visible = false;
+
       grdInputItems.Columns["qty"].HeaderText = "Quantity";
+      grdInputItems.Columns["description"].HeaderText = "From Location";
 
       inputDetail.RowChanged += new DataRowChangeEventHandler(inputRecordChanged);
     }
