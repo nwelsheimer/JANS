@@ -14,8 +14,10 @@ namespace Potting_Information
     public partial class frmPotDetail : Form
     {
         DataSet PottingDS = new DataSet();
-        
-        RegistryKey jans = Global.get_reg_key("JANS", true); //Getting settings from registry now.
+
+    DateTime pottedDate = DateTime.Now;
+
+    RegistryKey jans = Global.get_reg_key("JANS", true); //Getting settings from registry now.
 
         public frmPotDetail()
         {
@@ -188,8 +190,11 @@ namespace Potting_Information
 
     private void dgPottingDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-      frmUpdatePotting f = new frmUpdatePotting(dgPottingDetail.Rows[e.RowIndex].Cells[10].Value.ToString());
-      f.ShowDialog();
+      using (frmUpdatePotting f = new frmUpdatePotting(dgPottingDetail.Rows[e.RowIndex].Cells[10].Value.ToString(), pottedDate))
+      {
+        f.ShowDialog();
+        pottedDate = f.returnPottingDate();
+      }
     }
   }
 }

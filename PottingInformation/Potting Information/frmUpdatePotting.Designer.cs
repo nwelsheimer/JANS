@@ -50,6 +50,9 @@
       this.btnClose = new System.Windows.Forms.Button();
       this.lblFromSize = new System.Windows.Forms.Label();
       this.grdPottingDetail = new Infragistics.Win.UltraWinGrid.UltraGrid();
+      this.ckComplete = new System.Windows.Forms.CheckBox();
+      this.dtPottedDate = new System.Windows.Forms.DateTimePicker();
+      this.label3 = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.pIPottingLogBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdInputItems)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdPottingDetail)).BeginInit();
@@ -208,11 +211,42 @@
       this.grdPottingDetail.TabIndex = 9;
       this.grdPottingDetail.Text = "ultraGrid1";
       // 
+      // ckComplete
+      // 
+      this.ckComplete.AutoSize = true;
+      this.ckComplete.Location = new System.Drawing.Point(238, 52);
+      this.ckComplete.Name = "ckComplete";
+      this.ckComplete.Size = new System.Drawing.Size(93, 17);
+      this.ckComplete.TabIndex = 10;
+      this.ckComplete.Text = "Lot completed";
+      this.ckComplete.UseVisualStyleBackColor = true;
+      this.ckComplete.CheckedChanged += new System.EventHandler(this.ckComplete_CheckedChanged);
+      // 
+      // dtPottedDate
+      // 
+      this.dtPottedDate.Location = new System.Drawing.Point(434, 48);
+      this.dtPottedDate.Name = "dtPottedDate";
+      this.dtPottedDate.Size = new System.Drawing.Size(200, 20);
+      this.dtPottedDate.TabIndex = 11;
+      // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label3.Location = new System.Drawing.Point(349, 53);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(79, 13);
+      this.label3.TabIndex = 12;
+      this.label3.Text = "Potted Date:";
+      // 
       // frmUpdatePotting
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(659, 451);
+      this.Controls.Add(this.label3);
+      this.Controls.Add(this.dtPottedDate);
+      this.Controls.Add(this.ckComplete);
       this.Controls.Add(this.grdPottingDetail);
       this.Controls.Add(this.lblFromSize);
       this.Controls.Add(this.btnClose);
@@ -243,5 +277,8 @@
     private System.Windows.Forms.Button btnClose;
     private System.Windows.Forms.Label lblFromSize;
     private Infragistics.Win.UltraWinGrid.UltraGrid grdPottingDetail;
+    private System.Windows.Forms.CheckBox ckComplete;
+    private System.Windows.Forms.DateTimePicker dtPottedDate;
+    private System.Windows.Forms.Label label3;
   }
 }

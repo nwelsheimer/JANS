@@ -12,16 +12,16 @@ namespace Potting_Information
     string lotId;
     string siteId;
     string fromItemId;
-    bool loaded = false;
+
     DataTable locations;
     DataTable pottingLog;
     DataTable inputDetail;
-    DataTable inputLocations;
 
-    public frmUpdatePotting(string LOTID)
+    public frmUpdatePotting(string LOTID, DateTime POTTEDDATE)
     {
       InitializeComponent();
       lotId = LOTID;
+      dtPottedDate.Value = POTTEDDATE;
     }
 
     private void frmUpdatePotting_Load(object sender, EventArgs e)
@@ -31,11 +31,16 @@ namespace Potting_Information
       DataTable itemName = Global.GetData("usp_PI_SelectUpdateSummary @lotId=" + lotId).Tables[0];
       lblItemName.Text = itemName.Rows[0]["itemDesc"].ToString() + " " + itemName.Rows[0]["sizeDesc"].ToString();
       lblFromSize.Text = "From Size: " + itemName.Rows[0]["fromSize"].ToString();
+      ckComplete.Checked = Convert.ToBoolean(itemName.Rows[0]["lotComplete"] == null ? 0 : Convert.ToInt16(itemName.Rows[0]["lotComplete"].ToString()));
       siteId = itemName.Rows[0]["siteId"].ToString();
       fromItemId = itemName.Rows[0]["iFrom"].ToString();
       setupLogGrid();
       setupInputGrid();
-      loaded = true;
+    }
+
+    public DateTime returnPottingDate()
+    {
+      return dtPottedDate.Value;
     }
 
     private void setupLogGrid()
@@ -57,8 +62,8 @@ namespace Potting_Information
       
       foreach (UltraGridRow r in grdPottingDetail.Rows)
       {
-        string counted = r.Cells["counted"].Value == null ? "0" : r.Cells["counted"].Value.ToString();
-        if (counted == "1")
+        string counted = r.Cells["counted"].Value == null ? "False" : r.Cells["counted"].Value.ToString();
+        if (counted == "True")
           r.Activation = Activation.NoEdit;
       }
 
@@ -112,11 +117,11 @@ namespace Potting_Information
       {
         if (rowIndex.Length > 0)
         {
-          Global.ExecuteQuery("usp_PI_UpdatePottingLog @lotId=" + lotId + ",@locId=" + locId + ", @qty=" + qty + ",@counted=0,@logIndex=" + rowIndex);
+          Global.ExecuteQuery("usp_PI_UpdatePottingLog @lotId=" + lotId + ",@locId=" + locId + ", @qty=" + qty + ",@counted=0,@logIndex=" + rowIndex + ",@potDate='" + dtPottedDate.Value.ToString("yyyy/MM/dd") + "'");
         }
         else
         {
-          string newIndex = Global.ExecuteQueryGetId("exec usp_PI_UpdatePottingLog @lotId=" + lotId + ",@locId=" + locId + ",@qty=" + qty);
+          string newIndex = Global.ExecuteQueryGetId("exec usp_PI_UpdatePottingLog @lotId=" + lotId + ",@locId=" + locId + ",@qty=" + qty + ",@potDate='" + dtPottedDate.Value.ToString("yyyy/MM/dd") + "'");
           e.Row["id"] = newIndex;
           //grdDriverLog.Rows[e.RowIndex].Cells["id"].Value = newIndex;
         }
@@ -126,6 +131,12 @@ namespace Potting_Information
     private void btnClose_Click(object sender, EventArgs e)
     {
       this.Close();
+    }
+
+    private void ckComplete_CheckedChanged(object sender, EventArgs e)
+    {
+      string complete = ckComplete.Checked ? "1" : "0";
+      Global.ExecuteQuery("update PI_PottingLog set lotComplete="+complete+" where lotId="+lotId);
     }
   }
 }

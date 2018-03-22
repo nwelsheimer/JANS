@@ -174,7 +174,7 @@
       this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbConnected,
             this.sbStoreCount});
-      this.statusStrip1.Location = new System.Drawing.Point(0, 558);
+      this.statusStrip1.Location = new System.Drawing.Point(0, 576);
       this.statusStrip1.Name = "statusStrip1";
       this.statusStrip1.Size = new System.Drawing.Size(1100, 22);
       this.statusStrip1.TabIndex = 4;
@@ -250,7 +250,7 @@
       this.grdStores.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
       this.grdStores.Location = new System.Drawing.Point(0, 111);
       this.grdStores.Name = "grdStores";
-      this.grdStores.Size = new System.Drawing.Size(1100, 597);
+      this.grdStores.Size = new System.Drawing.Size(1100, 487);
       this.grdStores.TabIndex = 6;
       this.grdStores.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdStores_InitializeLayout);
       this.grdStores.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdStores_CellChange);
@@ -449,7 +449,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1100, 580);
+      this.ClientSize = new System.Drawing.Size(1100, 598);
       this.Controls.Add(this.btnImport);
       this.Controls.Add(this.btnExport);
       this.Controls.Add(this.pnlLoadSession);
