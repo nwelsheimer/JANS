@@ -648,7 +648,7 @@ namespace RackOptimizer
     private void grdPartialShelves_AfterCellUpdate(object sender, CellEventArgs e)
     {
       string prodId = e.Cell.Row.Cells["prodId"].Text;
-      int available = int.Parse(e.Cell.Row.Cells["Available"].Text, System.Globalization.NumberStyles.AllowThousands);
+      int available = int.Parse(e.Cell.Row.Cells["Available"].Text, System.Globalization.NumberStyles.AllowThousands | System.Globalization.NumberStyles.AllowLeadingSign);
       int qty = 0;
 
       if (e.Cell.Column.Key == "SuggestedQty")
@@ -664,7 +664,7 @@ namespace RackOptimizer
     private void grdPartialShelves_BeforeCellUpdate(object sender, BeforeCellUpdateEventArgs e)
     {
       string prodId = e.Cell.Row.Cells["prodId"].Text;
-      int available = int.Parse(e.Cell.Row.Cells["Available"].Text, System.Globalization.NumberStyles.AllowThousands);
+      int available = int.Parse(e.Cell.Row.Cells["Available"].Text, System.Globalization.NumberStyles.AllowThousands | System.Globalization.NumberStyles.AllowLeadingSign);
       int qty = Convert.ToInt32(e.Cell.Row.Cells["SuggestedQty"].Value.ToString().Replace("_", ""));
 
       recalculateAvailableShelf(qty, available, prodId);
