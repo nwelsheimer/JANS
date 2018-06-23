@@ -9,7 +9,7 @@ using System.Security.Permissions;
 using Infragistics.Win.UltraWinGrid;
 using Microsoft.Win32;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 
 //TODO(JLT): Set up App-level Registry properties in Program.cs files that can override Sawyer-level
 //TODO(JLT): set up the cascading Form.Text idea so only one taskbar button will show text of currently open form, and revert when form is closed.
@@ -32,14 +32,14 @@ namespace General
         private static string strHKLM_TopRegKey = @"Software\Sawyer";
         private static SqlConnection sqlConn = null; //= new SqlConnection(SQLCON);
 
-        private static MySqlConnection mySqlConn = null; //NDW - 10/27/2017 - Added mySQL support
+        //private static MySqlConnection mySqlConn = null; //NDW - 10/27/2017 - Added mySQL support
         #endregion
 
         #region Public Data Functions
         public static bool ExecuteQuery(string query)
         {
             CheckConnection();
-
+      /*
             if (mySql)  //NDW - 10/27/2017 - Added mySQL support
             {
                 MySqlCommand com = new MySqlCommand(query, mySqlConn);
@@ -63,7 +63,7 @@ namespace General
                 }
             }
             else
-            {
+            {*/
                 SqlCommand com = new SqlCommand(query, sqlConn);
                 com.Connection.Open();
                 try
@@ -84,14 +84,14 @@ namespace General
                     com.Connection.Close();
                     return false;
                 }
-            }
+            //}
         }
 
-        public static SqlConnection extSQL()
-        {
-            CheckConnection();
-            return sqlConn;
-        }
+    public static SqlConnection extSQL() //Returns the internally generated SQL connection for working directly with data objects.
+    {   //External SQL
+      connectToDB();
+      return sqlConn;
+    }
 
         public static void connectToDB()
         {
@@ -197,7 +197,7 @@ namespace General
         {
             CheckConnection();
             DataSet ds = new DataSet();
-
+      /*
             if (mySql)
             {
                 MySqlDataAdapter da = new MySqlDataAdapter(query, mySqlConn);
@@ -215,7 +215,7 @@ namespace General
                 }
             }
             else
-            {
+            {*/
                 SqlDataAdapter da = new SqlDataAdapter(query, sqlConn);
                 da.SelectCommand.CommandTimeout = 0;
                 try
@@ -234,7 +234,7 @@ namespace General
                     MessageBox.Show("Unknown error occurred:\n" + X.Message, "General Error", MessageBoxButtons.OK);
                     return null;
                 }
-            }
+           // }
             return ds;
         }
 
@@ -282,7 +282,7 @@ namespace General
         //    return mds;
         //}
 
-        public static void SetConnectionString(string server, string db, string port = "1433", string username = "", string password = "")
+        public static void SetConnectionString(string server, string db, string port = "1433", string username = "", string password = "") //Builds andsets the connection string to SQLCON
         {
             //NDW - 10/27/2017 - Adding mySQL support
             if (mySql)
@@ -648,7 +648,7 @@ namespace General
         #region Private Functions
         private static void CheckConnection()
         {
-            if (mySql)
+           /* if (mySql)
             {   //NDW - 10/27/2017 - Added mySQL support
                 if (mySqlConn == null)
                 {
@@ -678,13 +678,13 @@ namespace General
                 }
             }
             else
-            {
+            {*/
                 if (sqlConn == null)
                 {
 
                     sqlConn = new SqlConnection(SQLCON);
                 }
-            }
+            //}
         }
 
         private static string GetConnectionString()

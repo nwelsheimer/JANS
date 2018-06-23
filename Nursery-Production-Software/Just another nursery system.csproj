@@ -279,6 +279,10 @@
       <Project>{e5ffcb5c-31e3-47c2-a499-63c01fa88cdc}</Project>
       <Name>InventoryControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Open Miracle\Open Miracle.csproj">
+      <Project>{92a6449e-fea8-427f-853f-cdbe191a2a31}</Project>
+      <Name>Open Miracle</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PottingInformation\Potting Information\PottingInformation.csproj">
       <Project>{58cebb45-0a24-4e4e-8a21-796940145203}</Project>
       <Name>PottingInformation</Name>
