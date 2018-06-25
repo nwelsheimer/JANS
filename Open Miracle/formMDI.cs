@@ -69,8 +69,8 @@ namespace Open_Miracle
         public formMDI()
         {
             InitializeComponent();
-            ControlMover.Init(this.ucCalculator1);
-            ControlMover.Init(this.ucQuickLaunch1);
+            //ControlMover.Init(this.ucCalculator1);
+            //ControlMover.Init(this.ucQuickLaunch1);
             infoError.PropertyChanged += new PropertyChangedEventHandler(CategoryInfo_PropertyChanged);
         }
         /// <summary>
@@ -1699,7 +1699,7 @@ namespace Open_Miracle
                 lblQuickLaunch.ForeColor = Color.WhiteSmoke;
                 lblQuickLaunch.NewText = "Quick Launch";
                 lblQuickLaunch.RotateAngle = 90;
-                lblQuickLaunch.Location = new Point(ucQuickLaunch1.Location.X + ucQuickLaunch1.Width, ucQuickLaunch1.Location.Y);
+                //lblQuickLaunch.Location = new Point(ucQuickLaunch1.Location.X + ucQuickLaunch1.Width, ucQuickLaunch1.Location.Y);
                 lblQuickLaunch.Click += new EventHandler(lblQuickLaunch_Click);
                 this.Controls.Add(lblQuickLaunch);
 
@@ -1713,7 +1713,7 @@ namespace Open_Miracle
                 lblCalculator.ForeColor = Color.WhiteSmoke;
                 lblCalculator.NewText = "Calculator";
                 lblCalculator.RotateAngle = 90;
-                lblCalculator.Location = new Point(ucQuickLaunch1.Location.X + ucQuickLaunch1.Width, ucQuickLaunch1.Location.Y + 110);
+                //lblCalculator.Location = new Point(ucQuickLaunch1.Location.X + ucQuickLaunch1.Width, ucQuickLaunch1.Location.Y + 110);
                 lblCalculator.Click += new EventHandler(lblCalculator_Click);
                 this.Controls.Add(lblCalculator);
 
@@ -1727,7 +1727,7 @@ namespace Open_Miracle
                 lblMiracleI.ForeColor = Color.Wheat;
                 lblMiracleI.NewText = "Miracle I";
                 lblMiracleI.RotateAngle = 90;
-                lblMiracleI.Location = new Point(ucQuickLaunch1.Location.X + ucQuickLaunch1.Width, ucQuickLaunch1.Location.Y + 210);
+                //lblMiracleI.Location = new Point(ucQuickLaunch1.Location.X + ucQuickLaunch1.Width, ucQuickLaunch1.Location.Y + 210);
                 lblMiracleI.Click += new EventHandler(lblMiracleI_Click);
                 this.Controls.Add(lblMiracleI);
 
@@ -1809,7 +1809,7 @@ namespace Open_Miracle
         {
             try
             {
-                ucCalculator1.Visible = (ucCalculator1.Visible) ? false : true;
+                //ucCalculator1.Visible = (ucCalculator1.Visible) ? false : true;
             }
             catch (Exception ex)
             {
@@ -1854,7 +1854,7 @@ namespace Open_Miracle
         void lblQuickLaunch_Click(object sender, EventArgs e)
         {
 
-            ucQuickLaunch1.Visible = (ucQuickLaunch1.Visible) ? false : true;
+            //ucQuickLaunch1.Visible = (ucQuickLaunch1.Visible) ? false : true;
         }
         /// <summary>
         /// On 'Exit' menu click to exit application
@@ -7153,9 +7153,9 @@ namespace Open_Miracle
                         f.Close();
                 }
                 MDIObj = this;
-                ucQuickLaunch1.Visible = false;
+                //ucQuickLaunch1.Visible = false;
                 lblQuickLaunch.Visible = false;
-                ucCalculator1.Visible = false;
+                //ucCalculator1.Visible = false;
                 lblCalculator.Visible = false;
                 lblMiracleI.Visible = false;
                 PublicVariables._decCurrentCompanyId = 0;
@@ -8225,7 +8225,7 @@ namespace Open_Miracle
         {
             try
             {
-                ucQuickLaunch1.Visible = (ucQuickLaunch1.Visible) ? false : true;
+                //ucQuickLaunch1.Visible = (ucQuickLaunch1.Visible) ? false : true;
             }
             catch (Exception ex)
             {
@@ -8243,11 +8243,11 @@ namespace Open_Miracle
             {
                 if (this.WindowState == FormWindowState.Maximized)
                 {
-                    ucQuickLaunch1.Visible = (ucQuickLaunch1.Visible) ? true : false;
+                    //ucQuickLaunch1.Visible = (ucQuickLaunch1.Visible) ? true : false;
                 }
                 else
                 {
-                    ucQuickLaunch1.Visible = false;
+                    //ucQuickLaunch1.Visible = false;
                 }
 
             }

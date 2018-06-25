@@ -18,28 +18,30 @@ using System.Data;
 using System.Data.SqlClient;
 namespace Open_Miracle
 {
-    class CheckUserPrivilege : DBConnection
+  class CheckUserPrivilege : DBConnection
+  {
+    /// <summary>
+    /// Function to check the privilege
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="formName"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public static bool PrivilegeCheck(decimal userId, string formName, string action)
     {
-        /// <summary>
-        /// Function to check the privilege
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="formName"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        public static bool PrivilegeCheck(decimal userId, string formName, string action)
-        {
-            bool isPrivilege = false;
-            PrivilegeSP spPrivilege = new PrivilegeSP();
-            if (spPrivilege.PrivilegeCheck(userId, formName, action))
-            {
-                isPrivilege = true;
-            }
-            else
-            {
-                isPrivilege = false;
-            }
-            return isPrivilege;
-        }
+      bool isPrivilege = true;
+      /*
+      PrivilegeSP spPrivilege = new PrivilegeSP();
+      if (spPrivilege.PrivilegeCheck(userId, formName, action))
+      {
+        isPrivilege = true;
+      }
+      else
+      {
+        isPrivilege = false;
+      }
+      */
+      return isPrivilege;
     }
+  }
 }

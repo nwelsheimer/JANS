@@ -11,17 +11,8 @@
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.IO;
-using System.ServiceProcess;
-using Microsoft.SqlServer.Management.Common;
-using Microsoft.SqlServer.Management.Smo;
-using System.Diagnostics;
-using System.Configuration;
 using General;
 
 //<summary>    
@@ -29,69 +20,32 @@ using General;
 //</summary>    
 namespace Open_Miracle
 {
-    public class DBConnection
+  public class DBConnection
+  {
+    protected SqlConnection sqlcon;
+    /* Old code for DBOM database credentials
+	protected string serverName = (ConfigurationManager.AppSettings["MsSqlServer"] == null || ConfigurationManager.AppSettings["MsSqlServer"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["MsSqlServer"].ToString();
+	protected string userId = (ConfigurationManager.AppSettings["MsSqlUserId"] == null || ConfigurationManager.AppSettings["MsSqlUserId"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["MsSqlUserId"].ToString();
+	protected string password = (ConfigurationManager.AppSettings["MsSqlPassword"] == null || ConfigurationManager.AppSettings["MsSqlPassword"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["MsSqlPassword"].ToString();
+	protected string ApplicationPath = (ConfigurationManager.AppSettings["ApplicationPath"] == null || ConfigurationManager.AppSettings["ApplicationPath"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["ApplicationPath"].ToString();
+	protected string isSqlServer = (ConfigurationManager.AppSettings["isServerConnection"] == null || ConfigurationManager.AppSettings["isServerConnection"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["isServerConnection"].ToString();
+	*/
+    public DBConnection()
     {
-        protected SqlConnection sqlcon;
-    /*
-        protected string serverName = (ConfigurationManager.AppSettings["MsSqlServer"] == null || ConfigurationManager.AppSettings["MsSqlServer"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["MsSqlServer"].ToString();
-        protected string userId = (ConfigurationManager.AppSettings["MsSqlUserId"] == null || ConfigurationManager.AppSettings["MsSqlUserId"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["MsSqlUserId"].ToString();
-        protected string password = (ConfigurationManager.AppSettings["MsSqlPassword"] == null || ConfigurationManager.AppSettings["MsSqlPassword"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["MsSqlPassword"].ToString();
-        protected string ApplicationPath = (ConfigurationManager.AppSettings["ApplicationPath"] == null || ConfigurationManager.AppSettings["ApplicationPath"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["ApplicationPath"].ToString();
-        protected string isSqlServer = (ConfigurationManager.AppSettings["isServerConnection"] == null || ConfigurationManager.AppSettings["isServerConnection"].ToString() == string.Empty) ? null : ConfigurationManager.AppSettings["isServerConnection"].ToString();
-        */
-        public DBConnection()
-        {
-            SqlConnection.ClearAllPools();
-      /*
-            string path = string.Empty;
-            if (PublicVariables._decCurrentCompanyId > 0)
-            {
-                path = ApplicationPath + "\\Data\\" + PublicVariables._decCurrentCompanyId + "\\DBOpenmiracle.mdf";
-            }
-            else if (PublicVariables._decCurrentCompanyId == 0)
-            {
-                path = ApplicationPath + "\\Data\\DBOpenmiracle.mdf";
-            }
-            else
-            {
-                path = ApplicationPath + "\\Data\\COMP\\DBOpenmiracle.mdf";
-            }
-
-            if (serverName != null)
-            {
-                if (isSqlServer != null)
-                {
-                    if (userId == null || password == null)
-                    {
-                        sqlcon = new SqlConnection(@"Data Source=" + serverName + ";AttachDbFilename=" + path + ";Integrated Security=True;Connect Timeout=120");
-                    }
-                    else
-                    {
-                        sqlcon = new SqlConnection(@"Data Source=" + serverName + ";AttachDbFilename=" + path + ";user id='" + userId + "';password='" + password + "'; Connect Timeout=120");
-                    }
-                }
-                else
-                {
-                    if (userId == null || password == null)
-                    {
-                        sqlcon = new SqlConnection(@"Data Source=" + serverName + ";AttachDbFilename=" + path + ";Integrated Security=True;Connect Timeout=120;User Instance=True");
-                    }
-                    else
-                    {
-                        sqlcon = new SqlConnection(@"Data Source=" + serverName + ";AttachDbFilename=" + path + ";user id='" + userId + "';password='" + password + "'; Connect Timeout=120; User Instance=False");
-                    }
-                }*/
-      sqlcon = Global.extSQL();
-                try
-                {
-                    sqlcon.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            
-        }
-
+      SqlConnection.ClearAllPools();
+      sqlcon = Global.extSQL("DBOpenMiracle");
+      try
+      {
+        sqlcon.Open();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+      finally
+      {
+        sqlcon.Close();
+      }
     }
+  }
 }
