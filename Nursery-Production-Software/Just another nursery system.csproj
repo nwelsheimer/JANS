@@ -181,6 +181,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysForms\frmSystemSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sysForms\frmSystemSetup.Designer.cs">
+      <DependentUpon>frmSystemSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="usrPref.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="sysForms\frmSystemSetup.resx">
+      <DependentUpon>frmSystemSetup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="usrPref.resx">
       <DependentUpon>usrPref.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,9 +288,9 @@
       <Project>{e5ffcb5c-31e3-47c2-a499-63c01fa88cdc}</Project>
       <Name>InventoryControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Open Miracle\Open Miracle.csproj">
-      <Project>{92a6449e-fea8-427f-853f-cdbe191a2a31}</Project>
-      <Name>Open Miracle</Name>
+    <ProjectReference Include="..\NBSio\NBSio.csproj">
+      <Project>{41f9aa8e-cb52-49e6-869c-db955ec16b45}</Project>
+      <Name>NBSio</Name>
     </ProjectReference>
     <ProjectReference Include="..\PottingInformation\Potting Information\PottingInformation.csproj">
       <Project>{58cebb45-0a24-4e4e-8a21-796940145203}</Project>
@@ -519,6 +528,7 @@
     <Content Include="flower_icon_3_Kea_icon.ico" />
     <Content Include="Resources\singlerock100.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

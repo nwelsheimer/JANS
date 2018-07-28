@@ -127,5 +127,11 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NBSio\NBSio.csproj">
+      <Project>{41f9aa8e-cb52-49e6-869c-db955ec16b45}</Project>
+      <Name>NBSio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
