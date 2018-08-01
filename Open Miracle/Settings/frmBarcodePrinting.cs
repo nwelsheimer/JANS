@@ -424,18 +424,18 @@ namespace Open_Miracle
                             code128.TextAlignment = Element.ALIGN_CENTER;
                             iTextSharp.text.Image image128 = code128.CreateImageWithBarcode(pdfcb, null, null);
                             Phrase phrase = new Phrase();
- 
-                            phrase.Add(new Chunk(strCompanyName, new iTextSharp.text.Font(-1, 9, iTextSharp.text.Font.BOLD)));
-                            phrase.Add(new Chunk(Environment.NewLine + Environment.NewLine, new iTextSharp.text.Font(-1, 4)));
+              BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.EMBEDDED);
+              phrase.Add(new Chunk(strCompanyName, new iTextSharp.text.Font(bf, 9, iTextSharp.text.Font.BOLD)));
+                            phrase.Add(new Chunk(Environment.NewLine + Environment.NewLine, new iTextSharp.text.Font(bf, 4)));
                             PdfPCell cell = new PdfPCell(phrase);
                             cell.HorizontalAlignment = Element.ALIGN_CENTER;
                             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                             cell.Border = iTextSharp.text.Rectangle.NO_BORDER;
                             phrase.Add(new Chunk(image128, 0, 0));
-                            phrase.Add(new Chunk(Environment.NewLine, new iTextSharp.text.Font(-1, 4)));
-                            phrase.Add(new Chunk(strMRP, new iTextSharp.text.Font(-1, 8)));
-                            phrase.Add(new Chunk(Environment.NewLine + strSecretPurchaseRateCode, new iTextSharp.text.Font(-1, 7)));
-                            phrase.Add(new Chunk(Environment.NewLine + Environment.NewLine, new iTextSharp.text.Font(-1, 1.2f)));
+                            phrase.Add(new Chunk(Environment.NewLine, new iTextSharp.text.Font(bf, 4)));
+                            phrase.Add(new Chunk(strMRP, new iTextSharp.text.Font(bf, 8)));
+                            phrase.Add(new Chunk(Environment.NewLine + strSecretPurchaseRateCode, new iTextSharp.text.Font(bf, 7)));
+                            phrase.Add(new Chunk(Environment.NewLine + Environment.NewLine, new iTextSharp.text.Font(bf, 1.2f)));
                             tbl.AddCell(cell);
                             intotalCount++; 
                         }

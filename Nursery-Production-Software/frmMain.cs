@@ -97,6 +97,7 @@ namespace Nursery_Production_Software
             _Auth.swipe(false);
             userId = _Auth.userId;
       this.Focus();
+      Open_Miracle.PublicVariables._dtCurrentDate = System.DateTime.Today;
         }
 #region dynaminc button clicking
         private void DynamicMouseOver(object sender, EventArgs e)
@@ -156,5 +157,11 @@ namespace Nursery_Production_Software
                 console.Show();
             }
         }
+
+    private void ultraButton1_Click(object sender, EventArgs e)
+    {
+      Open_Miracle.formMDI f = new Open_Miracle.formMDI();
+        f.Show();
     }
+  }
 }
