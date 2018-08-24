@@ -159,6 +159,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AP\frmVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AP\frmVendor.Designer.cs">
+      <DependentUpon>frmVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AR\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AR\frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AR\frmCustomerShipTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AR\frmCustomerShipTo.Designer.cs">
+      <DependentUpon>frmCustomerShipTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AR\frmReceivables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AR\frmReceivables.Designer.cs">
+      <DependentUpon>frmReceivables.cs</DependentUpon>
+    </Compile>
     <Compile Include="class\plAuth.cs">
       <SubType>UserControl</SubType>
     </Compile>
