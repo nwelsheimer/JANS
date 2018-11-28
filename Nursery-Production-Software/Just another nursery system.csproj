@@ -74,6 +74,16 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Infragistics4.Shared.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files (x86)\Infragistics\NetAdvantage 2011.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v11.2.dll</HintPath>
@@ -195,6 +205,9 @@
     <Compile Include="class\plSlider.Designer.cs">
       <DependentUpon>plSlider.cs</DependentUpon>
     </Compile>
+    <Compile Include="etc\dxGridAutofilter.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="etc\metroTools.cs" />
     <Compile Include="etc\Global4k.cs" />
     <Compile Include="frmMain.cs">
@@ -210,6 +223,12 @@
     </Compile>
     <Compile Include="sysForms\frmSystemSetup.Designer.cs">
       <DependentUpon>frmSystemSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sysForms\frmWwwUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sysForms\frmWwwUsers.Designer.cs">
+      <DependentUpon>frmWwwUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="usrPref.cs">
       <SubType>Form</SubType>
@@ -240,11 +259,15 @@
     <EmbeddedResource Include="sysForms\frmSystemSetup.resx">
       <DependentUpon>frmSystemSetup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="sysForms\frmWwwUsers.resx">
+      <DependentUpon>frmWwwUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="usrPref.resx">
       <DependentUpon>usrPref.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Just another nursery system_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\NBSio.etc.dbobj.wwwUserObj.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

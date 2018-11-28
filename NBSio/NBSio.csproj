@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConn.cs" />
+    <Compile Include="etc\dbobj\wwwUserObj.cs" />
     <Compile Include="etc\dbobj\sysSiteObj.cs" />
+    <Compile Include="etc\sp\wwwUserSP.cs" />
     <Compile Include="etc\sp\sysSiteSP.cs" />
     <Compile Include="global5k.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
