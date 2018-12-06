@@ -9,10 +9,10 @@ namespace NBSio.etc.sp
   public class wwwUserSP : DBConn
   {
     /// <summary>
-    /// Inserts new site to DB
+    /// Inserts new user to DB
     /// </summary>
-    /// <param name="siteObj">DB site object</param>
-    public void UserAdd(wwwUserObj wwwUser)
+    /// <param name="wwwUser">DB user object</param>
+    public int UserAdd(wwwUserObj wwwUser)
     {
       try
       {
@@ -20,31 +20,30 @@ namespace NBSio.etc.sp
         {
           sqlcon.Open();
         }
-        SqlCommand cmd = new SqlCommand("usp_SYS_InsertSite", sqlcon);
+        SqlCommand cmd = new SqlCommand("sp_www_InsertUser", sqlcon);
         cmd.CommandType = CommandType.StoredProcedure;
         SqlParameter prm = new SqlParameter();
         prm = cmd.Parameters.Add("@username", SqlDbType.NVarChar);
-        prm.Value = wwwUser.username;/*
-        prm = cmd.Parameters.Add("@address1", SqlDbType.NVarChar);
-        prm.Value = siteObj.address1;
-        prm = cmd.Parameters.Add("@address2", SqlDbType.NVarChar);
-        prm.Value = siteObj.address2;
-        prm = cmd.Parameters.Add("@city", SqlDbType.NVarChar);
-        prm.Value = siteObj.city;
-        prm = cmd.Parameters.Add("@state", SqlDbType.NVarChar);
-        prm.Value = siteObj.state;
-        prm = cmd.Parameters.Add("@zip", SqlDbType.NVarChar);
-        prm.Value = siteObj.zip;
-        prm = cmd.Parameters.Add("@phone", SqlDbType.NVarChar);
-        prm.Value = siteObj.phone;
-        prm = cmd.Parameters.Add("@managed", SqlDbType.Bit);
-        prm.Value = siteObj.managed;
-        prm = cmd.Parameters.Add("@dflt", SqlDbType.Bit);
-        prm.Value = siteObj.dflt;*/
-        cmd.ExecuteNonQuery();
+        prm.Value = wwwUser.username;
+        prm = cmd.Parameters.Add("@emailAddress", SqlDbType.NVarChar);
+        prm.Value = wwwUser.emailAddress;
+        prm = cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+        prm.Value = wwwUser.password;
+        prm = cmd.Parameters.Add("@firstName", SqlDbType.NVarChar);
+        prm.Value = wwwUser.firstName;
+        prm = cmd.Parameters.Add("@lastName", SqlDbType.NVarChar);
+        prm.Value = wwwUser.lastName;
+        prm = cmd.Parameters.Add("@phoneNumber", SqlDbType.NVarChar);
+        prm.Value = wwwUser.phoneNumber;
+        prm = cmd.Parameters.Add("@vendorId", SqlDbType.Int);
+        prm.Value = wwwUser.vendorId;
+        prm = cmd.Parameters.Add("@isApproved", SqlDbType.Bit);
+        prm.Value = wwwUser.isApproved;
+        return Convert.ToInt32(cmd.ExecuteScalar());
       } catch (Exception ex)
       {
-        MessageBox.Show("sysSiteSP : siteAdd \r\n" + ex);
+        MessageBox.Show("wwwUserSP : userAdd \r\n" + ex);
+        return 0;
       } finally
       {
         sqlcon.Close();
@@ -52,9 +51,9 @@ namespace NBSio.etc.sp
     }
 
     /// <summary>
-    /// Selects all sites with detail from DB
+    /// Selects all users from DB
     /// </summary>
-    /// <returns>siteObj object</returns>
+    /// <returns>wwwUser object</returns>
     public DataTable ViewAllUsers()
     {
       DataTable dt = new DataTable();
@@ -79,45 +78,61 @@ namespace NBSio.etc.sp
       return dt;
     }
 
-    public sysSiteObj GetUserById(int _userId)
+    /// <summary>
+    /// Selects contract grower vendors
+    /// </summary>
+    /// <returns>CG vendor datatable</returns>
+    public DataTable ViewCGVendors()
     {
-      sysSiteObj obj = new sysSiteObj();
-      SqlDataReader rdr = null;
+      DataTable dt = new DataTable();
       try
       {
         if (sqlcon.State == ConnectionState.Closed)
         {
           sqlcon.Open();
         }
-        SqlCommand cmd = new SqlCommand("usp_SYS_GetSiteById", sqlcon);
-        cmd.CommandType = CommandType.StoredProcedure;
-        SqlParameter prm = new SqlParameter();
-        prm = cmd.Parameters.Add("@siteId", SqlDbType.Int);
-        prm.Value = _userId;
-        rdr = cmd.ExecuteReader();
-        while (rdr.Read())
-        {
-          obj.siteId = Convert.ToInt32(rdr["siteId"].ToString());
-          obj.description = rdr["description"].ToString();
-          obj.address1 = rdr["address1"].ToString();
-          obj.address2 = rdr["address2"].ToString();
-          obj.city = rdr["city"].ToString();
-          obj.state = rdr["state"].ToString(); 
-          obj.zip = rdr["zip"].ToString();
-          obj.phone = rdr["phone"].ToString();
-          obj.managed = Convert.ToBoolean(rdr["managed"].ToString());
-          obj.dflt = Convert.ToBoolean(rdr["dflt"].ToString());
-        }
+        SqlDataAdapter adp = new SqlDataAdapter("sp_ic_GetCGVendors", sqlcon);
+        adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+        adp.Fill(dt);
       }
       catch (Exception ex)
       {
-        MessageBox.Show("sysSiteSP : GetSiteById \r\n" + ex);
+        MessageBox.Show("wwwUserSP : ViewCGVendors \r\n" + ex);
       }
       finally
       {
         sqlcon.Close();
       }
-      return obj;
+      return dt;
     }
+
+    /// <summary>
+    /// Deletes a single user from the WWW table
+    /// </summary>
+    /// <param name="userId">User Id of the user that's being deleted</param>
+    public void UserDelete(int userId)
+    {
+      try
+      {
+        if (sqlcon.State == ConnectionState.Closed)
+        {
+          sqlcon.Open();
+        }
+        SqlCommand cmd = new SqlCommand("sp_www_DeleteUser", sqlcon);
+        cmd.CommandType = CommandType.StoredProcedure;
+        SqlParameter prm = new SqlParameter();
+        prm = cmd.Parameters.Add("@userId", SqlDbType.Int);
+        prm.Value = userId;
+
+        cmd.ExecuteNonQuery();
+      } catch (Exception ex)
+      {
+        MessageBox.Show("wwwUserSP : userDelete \r\n" + ex);
+      } finally
+      {
+        sqlcon.Close();
+      }
+    }
+
   }
 }

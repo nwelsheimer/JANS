@@ -44,14 +44,17 @@
       this.colvendorName = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colisApproved = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colcreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
+      this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+      this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
       this.SuspendLayout();
       // 
       // defaultLookAndFeel1
       // 
-      this.defaultLookAndFeel1.LookAndFeel.SkinName = "Visual Studio 2013 Dark";
+      this.defaultLookAndFeel1.LookAndFeel.SkinName = "DevExpress Dark Style";
       // 
       // wwwUserObjBindingSource
       // 
@@ -63,6 +66,8 @@
       this.grdWwwUsers.Location = new System.Drawing.Point(12, 71);
       this.grdWwwUsers.MainView = this.gridView1;
       this.grdWwwUsers.Name = "grdWwwUsers";
+      this.grdWwwUsers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemComboBox1});
       this.grdWwwUsers.Size = new System.Drawing.Size(814, 461);
       this.grdWwwUsers.TabIndex = 0;
       this.grdWwwUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -142,6 +147,7 @@
       // colvendorName
       // 
       this.colvendorName.Caption = "Assigned Vendor";
+      this.colvendorName.ColumnEdit = this.repositoryItemComboBox1;
       this.colvendorName.FieldName = "vendorName";
       this.colvendorName.Name = "colvendorName";
       this.colvendorName.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
@@ -165,11 +171,29 @@
       this.colcreatedDate.Visible = true;
       this.colcreatedDate.VisibleIndex = 8;
       // 
+      // btnDelete
+      // 
+      this.btnDelete.Location = new System.Drawing.Point(12, 42);
+      this.btnDelete.Name = "btnDelete";
+      this.btnDelete.Size = new System.Drawing.Size(94, 23);
+      this.btnDelete.TabIndex = 2;
+      this.btnDelete.Text = "Delete Selected";
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+      // 
+      // repositoryItemComboBox1
+      // 
+      this.repositoryItemComboBox1.AutoHeight = false;
+      this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+      this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+      this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+      // 
       // frmWwwUsers
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(838, 544);
+      this.Controls.Add(this.btnDelete);
       this.Controls.Add(this.grdWwwUsers);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "frmWwwUsers";
@@ -178,6 +202,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -198,5 +223,7 @@
     private DevExpress.XtraGrid.Columns.GridColumn colcreatedDate;
     private etc.MyGridControl grdWwwUsers;
     private etc.MyGridView gridView1;
+    private DevExpress.XtraEditors.SimpleButton btnDelete;
+    private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
   }
 }
