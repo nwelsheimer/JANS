@@ -42,14 +42,27 @@
       this.collastName = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colphoneNumber = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colvendorName = new DevExpress.XtraGrid.Columns.GridColumn();
+      this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
       this.colisApproved = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colcreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
       this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
-      this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+      this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+      this.popGrid1 = new DevExpress.XtraBars.PopupMenu(this.components);
+      this.barMan1 = new DevExpress.XtraBars.BarManager(this.components);
+      this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+      this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+      this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+      this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+      this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+      this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
+      this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+      this.barLargeButtonItem3 = new DevExpress.XtraBars.BarLargeButtonItem();
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.popGrid1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.barMan1)).BeginInit();
       this.SuspendLayout();
       // 
       // defaultLookAndFeel1
@@ -92,6 +105,7 @@
       this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
       this.gridView1.OptionsView.ShowAutoFilterRow = true;
       this.gridView1.OptionsView.ShowGroupPanel = false;
+      this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
       // 
       // coluserId
       // 
@@ -154,6 +168,14 @@
       this.colvendorName.Visible = true;
       this.colvendorName.VisibleIndex = 6;
       // 
+      // repositoryItemComboBox1
+      // 
+      this.repositoryItemComboBox1.AutoHeight = false;
+      this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+      this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+      this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+      // 
       // colisApproved
       // 
       this.colisApproved.Caption = "Approved";
@@ -180,21 +202,103 @@
       this.btnDelete.Text = "Delete Selected";
       this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
       // 
-      // repositoryItemComboBox1
+      // labelControl1
       // 
-      this.repositoryItemComboBox1.AutoHeight = false;
-      this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-      this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
-      this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+      this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+      this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+      this.labelControl1.Location = new System.Drawing.Point(12, 12);
+      this.labelControl1.Name = "labelControl1";
+      this.labelControl1.Size = new System.Drawing.Size(814, 24);
+      this.labelControl1.TabIndex = 3;
+      this.labelControl1.Text = "Add or modify website users";
+      // 
+      // popGrid1
+      // 
+      this.popGrid1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem3)});
+      this.popGrid1.Manager = this.barMan1;
+      this.popGrid1.Name = "popGrid1";
+      // 
+      // barMan1
+      // 
+      this.barMan1.DockControls.Add(this.barDockControlTop);
+      this.barMan1.DockControls.Add(this.barDockControlBottom);
+      this.barMan1.DockControls.Add(this.barDockControlLeft);
+      this.barMan1.DockControls.Add(this.barDockControlRight);
+      this.barMan1.Form = this;
+      this.barMan1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barSubItem1,
+            this.barLargeButtonItem1,
+            this.barLargeButtonItem2,
+            this.barLargeButtonItem3});
+      this.barMan1.MaxItemId = 4;
+      // 
+      // barDockControlTop
+      // 
+      this.barDockControlTop.CausesValidation = false;
+      this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+      this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+      this.barDockControlTop.Size = new System.Drawing.Size(838, 0);
+      // 
+      // barDockControlBottom
+      // 
+      this.barDockControlBottom.CausesValidation = false;
+      this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.barDockControlBottom.Location = new System.Drawing.Point(0, 544);
+      this.barDockControlBottom.Size = new System.Drawing.Size(838, 0);
+      // 
+      // barDockControlLeft
+      // 
+      this.barDockControlLeft.CausesValidation = false;
+      this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+      this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+      this.barDockControlLeft.Size = new System.Drawing.Size(0, 544);
+      // 
+      // barDockControlRight
+      // 
+      this.barDockControlRight.CausesValidation = false;
+      this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+      this.barDockControlRight.Location = new System.Drawing.Point(838, 0);
+      this.barDockControlRight.Size = new System.Drawing.Size(0, 544);
+      // 
+      // barSubItem1
+      // 
+      this.barSubItem1.Caption = "barSubItem1";
+      this.barSubItem1.Id = 0;
+      this.barSubItem1.Name = "barSubItem1";
+      // 
+      // barLargeButtonItem1
+      // 
+      this.barLargeButtonItem1.Caption = "Change Password";
+      this.barLargeButtonItem1.Id = 1;
+      this.barLargeButtonItem1.Name = "barLargeButtonItem1";
+      // 
+      // barLargeButtonItem2
+      // 
+      this.barLargeButtonItem2.Caption = "Delete User";
+      this.barLargeButtonItem2.Id = 2;
+      this.barLargeButtonItem2.Name = "barLargeButtonItem2";
+      // 
+      // barLargeButtonItem3
+      // 
+      this.barLargeButtonItem3.Caption = "Open Details";
+      this.barLargeButtonItem3.Id = 3;
+      this.barLargeButtonItem3.Name = "barLargeButtonItem3";
       // 
       // frmWwwUsers
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(838, 544);
+      this.Controls.Add(this.labelControl1);
       this.Controls.Add(this.btnDelete);
       this.Controls.Add(this.grdWwwUsers);
+      this.Controls.Add(this.barDockControlLeft);
+      this.Controls.Add(this.barDockControlRight);
+      this.Controls.Add(this.barDockControlBottom);
+      this.Controls.Add(this.barDockControlTop);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "frmWwwUsers";
       this.Text = "Website User Setup";
@@ -203,7 +307,10 @@
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.popGrid1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.barMan1)).EndInit();
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
 
@@ -225,5 +332,16 @@
     private etc.MyGridView gridView1;
     private DevExpress.XtraEditors.SimpleButton btnDelete;
     private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+    private DevExpress.XtraEditors.LabelControl labelControl1;
+    private DevExpress.XtraBars.PopupMenu popGrid1;
+    private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem1;
+    private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem2;
+    private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem3;
+    private DevExpress.XtraBars.BarManager barMan1;
+    private DevExpress.XtraBars.BarDockControl barDockControlTop;
+    private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+    private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+    private DevExpress.XtraBars.BarDockControl barDockControlRight;
+    private DevExpress.XtraBars.BarSubItem barSubItem1;
   }
 }

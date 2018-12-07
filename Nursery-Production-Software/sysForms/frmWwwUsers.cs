@@ -27,11 +27,34 @@ namespace Nursery_Production_Software.sysForms
 
     private void frmWwwUsers_Load(object sender, EventArgs e)
     {
+      buildGrid();
+
+      //Events to hand data changes
+      wwwUsersMainView.RowChanged += WwwUsersMainView_RowChanged;
+      wwwUsersMainView.RowDeleted += WwwUsersMainView_RowDeleted;
+    }
+
+    private void buildGrid()
+    {
       //no pre-load filters. Hopefully this doesn't bite us with larger datasets
       wwwUsersMainView = wwwSP.ViewAllUsers();
       grdWwwUsers.DataSource = wwwUsersMainView;
-      wwwUsersMainView.RowChanged += WwwUsersMainView_RowChanged;
-      wwwUsersMainView.RowDeleted += WwwUsersMainView_RowDeleted;
+
+      //create contract grower lookup
+      DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lk = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+      DataTable cgList = wwwSP.ViewCGVendors();
+      lk.DataSource = cgList.DefaultView;
+      lk.ValueMember = "vendorId";
+      lk.DisplayMember = "vendorName";
+
+      lk.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+      lk.DropDownRows = cgList.DefaultView.Count;
+      lk.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
+      lk.NullText = "";
+
+      //and bind the lookup to the grid
+      gridView1.Columns["vendorName"].ColumnEdit = lk;
+      gridView1.BestFitColumns();
     }
 
     private void WwwUsersMainView_RowDeleted(object sender, DataRowChangeEventArgs e)
@@ -65,7 +88,7 @@ namespace Nursery_Production_Software.sysForms
             wwwUser.firstName = e.Row["firstName"].ToString();
             wwwUser.lastName = e.Row["lastName"].ToString();
             wwwUser.phoneNumber = e.Row["phoneNumber"].ToString();
-            wwwUser.vendorId = 0;
+            wwwUser.vendorId = Convert.ToInt32(string.IsNullOrEmpty(e.Row["vendorName"].ToString()) ? "0" : e.Row["vendorName"].ToString());
             wwwUser.isApproved = Convert.ToBoolean(string.IsNullOrEmpty(e.Row["isApproved"].ToString()) ? "false" : e.Row["isApproved"]);
 
             e.Row["userId"] = wwwSP.UserAdd(wwwUser).ToString();
@@ -77,10 +100,21 @@ namespace Nursery_Production_Software.sysForms
         addingRow = false;
       }
 
-      if (e.Action == DataRowAction.Change)
+      if (e.Action == DataRowAction.Change && !addingRow)
       {
-        MessageBox.Show("data changed" + e.Row.ItemArray[1]);
-        //e.Row[3] = "we can change";
+        wwwUser.clear();
+        wwwUser.userId = Convert.ToInt32(string.IsNullOrEmpty(e.Row["userId"].ToString()) ? "0" : e.Row["userId"].ToString());
+        wwwUser.username = e.Row["username"].ToString();
+        wwwUser.emailAddress = e.Row["emailAddress"].ToString();
+        wwwUser.password = "";
+        wwwUser.firstName = e.Row["firstName"].ToString();
+        wwwUser.lastName = e.Row["lastName"].ToString();
+        wwwUser.phoneNumber = e.Row["phoneNumber"].ToString();
+        wwwUser.vendorId = Convert.ToInt32(string.IsNullOrEmpty(e.Row["vendorName"].ToString()) ? "0" : e.Row["vendorName"].ToString());
+        wwwUser.isApproved = Convert.ToBoolean(string.IsNullOrEmpty(e.Row["isApproved"].ToString()) ? "false" : e.Row["isApproved"]);
+
+        if (wwwUser.userId > 0)
+          wwwSP.UserUpdate(wwwUser);
       }
     }
 
@@ -88,6 +122,19 @@ namespace Nursery_Production_Software.sysForms
     {
       if (MessageBox.Show("Warning: about to delete " + gridView1.SelectedRowsCount.ToString() + " users. Continue?", "Delete users", MessageBoxButtons.OKCancel) == DialogResult.OK)
         gridView1.DeleteSelectedRows();
+    }
+
+    private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+    {
+      int userId = 0;
+      if (e.HitInfo.InRow)
+        Convert.ToInt32(string.IsNullOrEmpty(gridView1.GetRowCellValue(e.HitInfo.RowHandle, "userId").ToString()) ? "0" : gridView1.GetRowCellValue(e.HitInfo.RowHandle, "userId").ToString());
+
+      if (userId > 0)
+      {
+        System.Drawing.Point p = Control.MousePosition;
+        popGrid1.ShowPopup(p);
+      }
     }
   }
 }

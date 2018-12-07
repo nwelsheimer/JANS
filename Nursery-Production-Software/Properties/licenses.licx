@@ -12,6 +12,7 @@ Infragistics.Win.UltraWinSchedule.UltraCalendarLook, Infragistics4.Win.UltraWinS
 Infragistics.Win.UltraWinSchedule.UltraWeekView, Infragistics4.Win.UltraWinSchedule.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb
 Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb
 Infragistics.Win.UltraWinListBar.UltraListBar, Infragistics4.Win.UltraWinListBar.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb
+DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 Infragistics.Win.UltraWinEditors.UltraTextEditor, Infragistics4.Win.UltraWinEditors.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb
 DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 Infragistics.Win.UltraWinEditors.UltraWinCalc.UltraCalculator, Infragistics4.Win.UltraWinEditors.v11.2, Version=11.2.20112.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb

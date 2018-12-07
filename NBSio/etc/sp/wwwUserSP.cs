@@ -20,7 +20,7 @@ namespace NBSio.etc.sp
         {
           sqlcon.Open();
         }
-        SqlCommand cmd = new SqlCommand("sp_www_InsertUser", sqlcon);
+        SqlCommand cmd = new SqlCommand("sp_www_UpdateUser", sqlcon);
         cmd.CommandType = CommandType.StoredProcedure;
         SqlParameter prm = new SqlParameter();
         prm = cmd.Parameters.Add("@username", SqlDbType.NVarChar);
@@ -45,6 +45,52 @@ namespace NBSio.etc.sp
         MessageBox.Show("wwwUserSP : userAdd \r\n" + ex);
         return 0;
       } finally
+      {
+        sqlcon.Close();
+      }
+    }
+
+    /// <summary>
+    /// Updates existing user record
+    /// </summary>
+    /// <param name="wwwUser">DB user object</param>
+    public int UserUpdate(wwwUserObj wwwUser)
+    {
+      try
+      {
+        if (sqlcon.State == ConnectionState.Closed)
+        {
+          sqlcon.Open();
+        }
+        SqlCommand cmd = new SqlCommand("sp_www_UpdateUser", sqlcon);
+        cmd.CommandType = CommandType.StoredProcedure;
+        SqlParameter prm = new SqlParameter();
+        prm = cmd.Parameters.Add("@username", SqlDbType.NVarChar);
+        prm.Value = wwwUser.username;
+        prm = cmd.Parameters.Add("@emailAddress", SqlDbType.NVarChar);
+        prm.Value = wwwUser.emailAddress;
+        prm = cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+        prm.Value = wwwUser.password;
+        prm = cmd.Parameters.Add("@firstName", SqlDbType.NVarChar);
+        prm.Value = wwwUser.firstName;
+        prm = cmd.Parameters.Add("@lastName", SqlDbType.NVarChar);
+        prm.Value = wwwUser.lastName;
+        prm = cmd.Parameters.Add("@phoneNumber", SqlDbType.NVarChar);
+        prm.Value = wwwUser.phoneNumber;
+        prm = cmd.Parameters.Add("@vendorId", SqlDbType.Int);
+        prm.Value = wwwUser.vendorId;
+        prm = cmd.Parameters.Add("@isApproved", SqlDbType.Bit);
+        prm.Value = wwwUser.isApproved;
+        prm = cmd.Parameters.Add("@userId", SqlDbType.Int);
+        prm.Value = wwwUser.userId;
+        return Convert.ToInt32(cmd.ExecuteScalar());
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("wwwUserSP : userUpdate \r\n" + ex);
+        return 0;
+      }
+      finally
       {
         sqlcon.Close();
       }
