@@ -48,15 +48,15 @@
       this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
       this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
       this.popGrid1 = new DevExpress.XtraBars.PopupMenu(this.components);
+      this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
+      this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+      this.barLargeButtonItem3 = new DevExpress.XtraBars.BarLargeButtonItem();
       this.barMan1 = new DevExpress.XtraBars.BarManager(this.components);
       this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
       this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
       this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
       this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
       this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-      this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
-      this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
-      this.barLargeButtonItem3 = new DevExpress.XtraBars.BarLargeButtonItem();
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -76,12 +76,14 @@
       // grdWwwUsers
       // 
       this.grdWwwUsers.DataSource = this.wwwUserObjBindingSource;
-      this.grdWwwUsers.Location = new System.Drawing.Point(12, 71);
+      this.grdWwwUsers.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.grdWwwUsers.Location = new System.Drawing.Point(18, 104);
       this.grdWwwUsers.MainView = this.gridView1;
+      this.grdWwwUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
       this.grdWwwUsers.Name = "grdWwwUsers";
       this.grdWwwUsers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1});
-      this.grdWwwUsers.Size = new System.Drawing.Size(814, 461);
+      this.grdWwwUsers.Size = new System.Drawing.Size(1221, 674);
       this.grdWwwUsers.TabIndex = 0;
       this.grdWwwUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -195,9 +197,10 @@
       // 
       // btnDelete
       // 
-      this.btnDelete.Location = new System.Drawing.Point(12, 42);
+      this.btnDelete.Location = new System.Drawing.Point(18, 61);
+      this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
       this.btnDelete.Name = "btnDelete";
-      this.btnDelete.Size = new System.Drawing.Size(94, 23);
+      this.btnDelete.Size = new System.Drawing.Size(141, 34);
       this.btnDelete.TabIndex = 2;
       this.btnDelete.Text = "Delete Selected";
       this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -205,10 +208,12 @@
       // labelControl1
       // 
       this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+      this.labelControl1.Appearance.Options.UseFont = true;
       this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-      this.labelControl1.Location = new System.Drawing.Point(12, 12);
+      this.labelControl1.Location = new System.Drawing.Point(18, 18);
+      this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
       this.labelControl1.Name = "labelControl1";
-      this.labelControl1.Size = new System.Drawing.Size(814, 24);
+      this.labelControl1.Size = new System.Drawing.Size(1221, 35);
       this.labelControl1.TabIndex = 3;
       this.labelControl1.Text = "Add or modify website users";
       // 
@@ -220,6 +225,24 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem3)});
       this.popGrid1.Manager = this.barMan1;
       this.popGrid1.Name = "popGrid1";
+      // 
+      // barLargeButtonItem1
+      // 
+      this.barLargeButtonItem1.Caption = "Change Password";
+      this.barLargeButtonItem1.Id = 1;
+      this.barLargeButtonItem1.Name = "barLargeButtonItem1";
+      // 
+      // barLargeButtonItem2
+      // 
+      this.barLargeButtonItem2.Caption = "Delete User";
+      this.barLargeButtonItem2.Id = 2;
+      this.barLargeButtonItem2.Name = "barLargeButtonItem2";
+      // 
+      // barLargeButtonItem3
+      // 
+      this.barLargeButtonItem3.Caption = "Open Details";
+      this.barLargeButtonItem3.Id = 3;
+      this.barLargeButtonItem3.Name = "barLargeButtonItem3";
       // 
       // barMan1
       // 
@@ -240,28 +263,36 @@
       this.barDockControlTop.CausesValidation = false;
       this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
       this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-      this.barDockControlTop.Size = new System.Drawing.Size(838, 0);
+      this.barDockControlTop.Manager = this.barMan1;
+      this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.barDockControlTop.Size = new System.Drawing.Size(1257, 0);
       // 
       // barDockControlBottom
       // 
       this.barDockControlBottom.CausesValidation = false;
       this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.barDockControlBottom.Location = new System.Drawing.Point(0, 544);
-      this.barDockControlBottom.Size = new System.Drawing.Size(838, 0);
+      this.barDockControlBottom.Location = new System.Drawing.Point(0, 795);
+      this.barDockControlBottom.Manager = this.barMan1;
+      this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.barDockControlBottom.Size = new System.Drawing.Size(1257, 0);
       // 
       // barDockControlLeft
       // 
       this.barDockControlLeft.CausesValidation = false;
       this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
       this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-      this.barDockControlLeft.Size = new System.Drawing.Size(0, 544);
+      this.barDockControlLeft.Manager = this.barMan1;
+      this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.barDockControlLeft.Size = new System.Drawing.Size(0, 795);
       // 
       // barDockControlRight
       // 
       this.barDockControlRight.CausesValidation = false;
       this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-      this.barDockControlRight.Location = new System.Drawing.Point(838, 0);
-      this.barDockControlRight.Size = new System.Drawing.Size(0, 544);
+      this.barDockControlRight.Location = new System.Drawing.Point(1257, 0);
+      this.barDockControlRight.Manager = this.barMan1;
+      this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.barDockControlRight.Size = new System.Drawing.Size(0, 795);
       // 
       // barSubItem1
       // 
@@ -269,29 +300,11 @@
       this.barSubItem1.Id = 0;
       this.barSubItem1.Name = "barSubItem1";
       // 
-      // barLargeButtonItem1
-      // 
-      this.barLargeButtonItem1.Caption = "Change Password";
-      this.barLargeButtonItem1.Id = 1;
-      this.barLargeButtonItem1.Name = "barLargeButtonItem1";
-      // 
-      // barLargeButtonItem2
-      // 
-      this.barLargeButtonItem2.Caption = "Delete User";
-      this.barLargeButtonItem2.Id = 2;
-      this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-      // 
-      // barLargeButtonItem3
-      // 
-      this.barLargeButtonItem3.Caption = "Open Details";
-      this.barLargeButtonItem3.Id = 3;
-      this.barLargeButtonItem3.Name = "barLargeButtonItem3";
-      // 
       // frmWwwUsers
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(838, 544);
+      this.ClientSize = new System.Drawing.Size(1257, 795);
       this.Controls.Add(this.labelControl1);
       this.Controls.Add(this.btnDelete);
       this.Controls.Add(this.grdWwwUsers);
@@ -300,6 +313,7 @@
       this.Controls.Add(this.barDockControlBottom);
       this.Controls.Add(this.barDockControlTop);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
       this.Name = "frmWwwUsers";
       this.Text = "Website User Setup";
       this.Load += new System.EventHandler(this.frmWwwUsers_Load);
