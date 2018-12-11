@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NBSio.etc.sp;
 using NBSio.etc.dbobj;
+using Nursery_Production_Software.etc;
 using BCrypt.Net;
 
 namespace Nursery_Production_Software.sysForms
@@ -19,6 +20,7 @@ namespace Nursery_Production_Software.sysForms
     wwwUserSP wwwSP = new wwwUserSP();
     DataTable wwwUsersMainView;
     bool addingRow = false;
+    int rightClickedRowId;
 
     public frmWwwUsers()
     {
@@ -124,17 +126,32 @@ namespace Nursery_Production_Software.sysForms
         gridView1.DeleteSelectedRows();
     }
 
-    private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+    private int GetRowAt(MyGridView view, Point p)
     {
-      int userId = 0;
-      if (e.HitInfo.InRow)
-        Convert.ToInt32(string.IsNullOrEmpty(gridView1.GetRowCellValue(e.HitInfo.RowHandle, "userId").ToString()) ? "0" : gridView1.GetRowCellValue(e.HitInfo.RowHandle, "userId").ToString());
+      int hitinfo = -1;
+      hitinfo = view.CalcHitInfo(p).RowHandle;
+      return hitinfo;
+    }
 
-      if (userId > 0)
+    private void grdWwwUsers_MouseUp(object sender, MouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Right)
       {
-        System.Drawing.Point p = Control.MousePosition;
-        popGrid1.ShowPopup(p);
+        rightClickedRowId = -1;
+        Point p = new Point(e.X, e.Y);
+        int rowId = GetRowAt(gridView1, p);
+
+        if (rowId>=0)
+        {
+          rightClickedRowId = rowId;
+          popGrid1.ShowPopup(p);
+        }
       }
+    }
+
+    private void btnDeleteUser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+      MessageBox.Show("Delete user " + rightClickedRowId.ToString());
     }
   }
 }
