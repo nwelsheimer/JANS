@@ -144,14 +144,14 @@ namespace Nursery_Production_Software.sysForms
         if (rowId>=0)
         {
           rightClickedRowId = rowId;
-          popGrid1.ShowPopup(p);
+          popGrid1.ShowPopup(Cursor.Position);
         }
       }
     }
 
     private void btnDeleteUser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
     {
-      MessageBox.Show("Delete user " + rightClickedRowId.ToString());
+      MessageBox.Show("Are you sure you want to delete user " + grdWwwUsers.ToString() + rightClickedRowId.ToString());
     }
   }
 }
