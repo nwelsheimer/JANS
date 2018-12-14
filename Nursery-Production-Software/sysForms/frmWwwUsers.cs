@@ -151,7 +151,10 @@ namespace Nursery_Production_Software.sysForms
 
     private void btnDeleteUser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
     {
-      MessageBox.Show("Are you sure you want to delete user " + grdWwwUsers.ToString() + rightClickedRowId.ToString());
+      if (MessageBox.Show("Are you sure you want to delete user " + gridView1.GetRowCellValue(rightClickedRowId, "username") + "?", "Confirm delete users", MessageBoxButtons.OKCancel)==DialogResult.OK)
+      {
+        gridView1.DeleteRow(rightClickedRowId);
+      }
     }
   }
 }
