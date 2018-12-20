@@ -33,8 +33,8 @@
       this.dxFrmAssitant = new DevExpress.XtraBars.FormAssistant();
       this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
       this.wwwUserObjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.grdWwwUsers = new Nursery_Production_Software.etc.MyGridControl();
-      this.gridView1 = new Nursery_Production_Software.etc.MyGridView();
+      this.grdWwwUsers = new Nursery_Production_Software.etc.NBSGrid();
+      this.gridView1 = new Nursery_Production_Software.etc.NBSGridView();
       this.coluserId = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colusername = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colemailAddress = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -343,8 +343,8 @@
     private DevExpress.XtraGrid.Columns.GridColumn colvendorName;
     private DevExpress.XtraGrid.Columns.GridColumn colisApproved;
     private DevExpress.XtraGrid.Columns.GridColumn colcreatedDate;
-    private etc.MyGridControl grdWwwUsers;
-    private etc.MyGridView gridView1;
+    private etc.NBSGrid grdWwwUsers;
+    private etc.NBSGridView gridView1;
     private DevExpress.XtraEditors.SimpleButton btnDelete;
     private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
     private DevExpress.XtraEditors.LabelControl labelControl1;

@@ -126,7 +126,7 @@ namespace Nursery_Production_Software.sysForms
         gridView1.DeleteSelectedRows();
     }
 
-    private int GetRowAt(MyGridView view, Point p)
+    private int GetRowAt(NBSGridView view, Point p)
     {
       int hitinfo = -1;
       hitinfo = view.CalcHitInfo(p).RowHandle;
