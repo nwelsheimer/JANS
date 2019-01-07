@@ -121,5 +121,32 @@ namespace NBSio.etc.sp
         sqlcon.Close();
       }
     }
+
+    public String ImportStopDetail(string orderNumbers)
+    {
+      try
+      {
+        if (sqlcon.State == ConnectionState.Closed)
+        {
+          sqlcon.Open();
+        }
+        SqlCommand cmd = new SqlCommand("usp_log_ImportStopDetails", sqlcon);
+        cmd.CommandType = CommandType.StoredProcedure;
+        SqlParameter prm = new SqlParameter();
+        prm = cmd.Parameters.Add("@orderNumbers", SqlDbType.NVarChar);
+        prm.Value = orderNumbers;
+
+        return cmd.ExecuteScalar().ToString();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("logOrdSP : ImportStopDetail \r\n" + ex);
+        return "Stop file failed to import.";
+      }
+      finally
+      {
+        sqlcon.Close();
+      }
+    }
   }
 }

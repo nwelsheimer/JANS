@@ -74,10 +74,13 @@ namespace ODL_Integration
       DataTable dt = NBSio.xl4k.basicExcelImport(filename, "Exported-Stop-Details", true);
       if (dt.Rows.Count>0)
       {
+        string orderIds = "";
         foreach (DataRow dr in dt.Rows)
         {
-          MessageBox.Show(dr["stop-id"].ToString());
+          orderIds += dr["stop-id"].ToString() + "|" + dr["travel-km"].ToString() + "|" + dr["stop-number"].ToString() + "|" + dr["vehicle-id"].ToString() + ",";
         }
+
+        MessageBox.Show(orderSP.ImportStopDetail(orderIds));
       }
     }
   }
