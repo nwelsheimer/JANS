@@ -80,7 +80,7 @@ namespace ODL_Integration
           orderIds += dr["stop-id"].ToString() + "|" + dr["travel-km"].ToString() + "|" + dr["stop-number"].ToString() + "|" + dr["vehicle-id"].ToString() + ",";
         }
 
-        MessageBox.Show(orderSP.ImportStopDetail(orderIds));
+        MessageBox.Show(orderSP.ImportStopDetail(txtNextLoad.Text,orderIds));
       }
     }
   }

@@ -122,7 +122,7 @@ namespace NBSio.etc.sp
       }
     }
 
-    public String ImportStopDetail(string orderNumbers)
+    public String ImportStopDetail(string nextLoadNum, string orderNumbers)
     {
       try
       {
@@ -135,6 +135,8 @@ namespace NBSio.etc.sp
         SqlParameter prm = new SqlParameter();
         prm = cmd.Parameters.Add("@orderNumbers", SqlDbType.NVarChar);
         prm.Value = orderNumbers;
+        prm = cmd.Parameters.Add("@nextLoadNum", SqlDbType.NVarChar);
+        prm.Value = nextLoadNum;
 
         return cmd.ExecuteScalar().ToString();
       }
