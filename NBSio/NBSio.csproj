@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\Nursery-Production-Software\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
@@ -59,6 +62,9 @@
     <Compile Include="etc\dbobj\logOrdObj.cs" />
     <Compile Include="etc\dbobj\wwwUserObj.cs" />
     <Compile Include="etc\dbobj\sysSiteObj.cs" />
+    <Compile Include="etc\dxGridAutofilter.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="etc\sp\logOrdSP.cs" />
     <Compile Include="etc\sp\wwwUserSP.cs" />
     <Compile Include="etc\sp\sysSiteSP.cs" />

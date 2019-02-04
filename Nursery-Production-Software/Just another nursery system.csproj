@@ -32,7 +32,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationRevision>25</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -346,6 +346,10 @@
     <ProjectReference Include="..\NBSio\NBSio.csproj">
       <Project>{41f9aa8e-cb52-49e6-869c-db955ec16b45}</Project>
       <Name>NBSio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ODL Integration\ODL Integration.csproj">
+      <Project>{5f93a25a-cfe3-4d50-990d-75dbd25393b6}</Project>
+      <Name>ODL Integration</Name>
     </ProjectReference>
     <ProjectReference Include="..\PottingInformation\Potting Information\PottingInformation.csproj">
       <Project>{58cebb45-0a24-4e4e-8a21-796940145203}</Project>
