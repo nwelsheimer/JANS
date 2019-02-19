@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NBSio.etc.sp;
 using NBSio.etc.dbobj;
 using Nursery_Production_Software.etc;
-using BCrypt.Net;
 
 namespace Nursery_Production_Software.sysForms
 {
@@ -19,8 +13,11 @@ namespace Nursery_Production_Software.sysForms
     wwwUserObj wwwUser = new wwwUserObj();
     wwwUserSP wwwSP = new wwwUserSP();
     DataTable wwwUsersMainView;
+    DataTable stList;
     bool addingRow = false;
     int rightClickedRowId;
+    int leftClickedRowId;
+    int rowId=-1;
 
     public frmWwwUsers()
     {
@@ -54,9 +51,26 @@ namespace Nursery_Production_Software.sysForms
       lk.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
       lk.NullText = "";
 
+      //Create store lookup grid
+      DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit storeLookup = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
+      stList = wwwSP.ViewCustomerShipTos();
+      grdShipTos.DataSource = stList;
+      gvShipTos.BestFitColumns();
+      storeLookup.PopupControl = popStoreList;
+
+      //Bind store lookup grid to column
+      DevExpress.XtraGrid.Columns.GridColumn shipTos = new DevExpress.XtraGrid.Columns.GridColumn();
+      shipTos.Caption = "Locations";
+      shipTos.Name = "ShipTos";
+      shipTos.FieldName = "ShipTos";
+      shipTos.Visible = true;
+
+      shipTos.ColumnEdit = storeLookup;
+
       //and bind the lookup to the grid
-      gridView1.Columns["vendorName"].ColumnEdit = lk;
-      gridView1.BestFitColumns();
+      gvWWWUsers.Columns["vendorName"].ColumnEdit = lk;
+      gvWWWUsers.Columns.Add(shipTos);
+      gvWWWUsers.BestFitColumns();
     }
 
     private void WwwUsersMainView_RowDeleted(object sender, DataRowChangeEventArgs e)
@@ -122,8 +136,8 @@ namespace Nursery_Production_Software.sysForms
 
     private void btnDelete_Click(object sender, EventArgs e)
     {
-      if (MessageBox.Show("Warning: about to delete " + gridView1.SelectedRowsCount.ToString() + " users. Continue?", "Delete users", MessageBoxButtons.OKCancel) == DialogResult.OK)
-        gridView1.DeleteSelectedRows();
+      if (MessageBox.Show("Warning: About to delete " + gvWWWUsers.SelectedRowsCount.ToString() + " users. Continue?", "Delete users", MessageBoxButtons.OKCancel) == DialogResult.OK)
+        gvWWWUsers.DeleteSelectedRows();
     }
 
     private int GetRowAt(NBSGridView view, Point p)
@@ -139,22 +153,87 @@ namespace Nursery_Production_Software.sysForms
       {
         rightClickedRowId = -1;
         Point p = new Point(e.X, e.Y);
-        int rowId = GetRowAt(gridView1, p);
-
+        int rowId = GetRowAt(gvWWWUsers, p);
         if (rowId>=0)
         {
           rightClickedRowId = rowId;
           popGrid1.ShowPopup(Cursor.Position);
         }
+      } else
+      {
+        leftClickedRowId = -1;
+        Point p = new Point(e.X, e.Y);
+        int rowId = GetRowAt(gvWWWUsers, p);
+        if (rowId >= 0)
+          leftClickedRowId = rowId;
       }
     }
 
     private void btnDeleteUser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
     {
-      if (MessageBox.Show("Are you sure you want to delete user " + gridView1.GetRowCellValue(rightClickedRowId, "username") + "?", "Confirm delete users", MessageBoxButtons.OKCancel)==DialogResult.OK)
+      if (MessageBox.Show("Are you sure you want to delete user " + gvWWWUsers.GetRowCellValue(rightClickedRowId, "username").ToString() + "?", "Confirm delete users", MessageBoxButtons.OKCancel)==DialogResult.OK)
       {
-        gridView1.DeleteRow(rightClickedRowId);
+        gvWWWUsers.DeleteRow(rightClickedRowId);
       }
+    }
+
+    private void btnChangePassword_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+      etc.passwordBox pbox = new etc.passwordBox();
+      string password = pbox.Show("New password for " + gvWWWUsers.GetRowCellValue(rightClickedRowId, "username"), "Confirm Password", true, true, 6);
+
+      if (password.Length > 0)
+      {
+        wwwUser.clear();
+        wwwUser.userId = Convert.ToInt32(gvWWWUsers.GetRowCellValue(rightClickedRowId, "userId"));
+        wwwUser.password = password;
+        wwwSP.UserUpdate(wwwUser);
+
+        MessageBox.Show("Password updated!");
+      }
+
+    }
+
+    private void popStoreList_Paint(object sender, PaintEventArgs e)
+    {
+      rowId = leftClickedRowId;
+
+      lblStoreNum.Text = "Editing user: " + gvWWWUsers.GetRowCellValue(rowId, "username");
+      stList = wwwSP.ViewCustomerShipTos(Convert.ToInt32(gvWWWUsers.GetRowCellValue(rowId, "userId")));
+      grdShipTos.DataSource = stList;
+      gvShipTos.Columns[1].OptionsColumn.AllowEdit = false;
+      gvShipTos.Columns[2].OptionsColumn.AllowEdit = false;
+      gvShipTos.Columns[3].OptionsColumn.AllowEdit = false;
+    }
+
+    private void gvShipTos_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+    {
+      if (e.RowHandle>=0)
+        wwwSP.VMIUserUpdate(Convert.ToInt32(gvWWWUsers.GetRowCellValue(rowId, "userId")), Convert.ToInt32(gvShipTos.GetRowCellValue(e.RowHandle, "ShipId")), Convert.ToBoolean(e.Value));
+    }
+
+    private void btnExport_Click(object sender, EventArgs e)
+    {
+      //get file name to save the spreadsheet
+      string filename = NBSio.xl4k.getFilePath(1, DateTime.Now.ToString("MM-dd-yyyy")+" User Template");
+      //create master dataset for export 
+      DataSet userExport = new DataSet();
+      //add user dataset
+      DataTable userlist = wwwSP.ExportUsers();
+      userlist.TableName = "UserList";
+      userExport.Tables.Add(userlist);
+      //add ship to dataset
+      stList.TableName = "ShipToList";
+      userExport.Tables.Add(stList);
+
+
+      if (NBSio.xl4k.basicExcelExport(userExport, filename))
+        MessageBox.Show("Export Complete");
+    }
+
+    private void btnImport_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }

@@ -153,6 +153,65 @@ namespace NBSio.etc.sp
     }
 
     /// <summary>
+    /// Creates dataset for excel user export
+    /// </summary>
+    /// <returns>Export user datatable</returns>
+    public DataTable ExportUsers()
+    {
+      DataTable dt = new DataTable();
+      try
+      {
+        if (sqlcon.State == ConnectionState.Closed)
+        {
+          sqlcon.Open();
+        }
+        SqlDataAdapter adp = new SqlDataAdapter("sp_www_SelectUserExport", sqlcon);
+        adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+        adp.Fill(dt);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("wwwUserSP : ExportUsers \r\n" + ex);
+      }
+      finally
+      {
+        sqlcon.Close();
+      }
+      return dt;
+    }
+
+    /// <summary>
+    /// Selects customer ship to locations
+    /// </summary>
+    /// <returns>Customer ship to datatable</returns>
+    public DataTable ViewCustomerShipTos(int userId = 0)
+    {
+      DataTable dt = new DataTable();
+      try
+      {
+        if (sqlcon.State == ConnectionState.Closed)
+        {
+          sqlcon.Open();
+        }
+        SqlDataAdapter adp = new SqlDataAdapter("sp_www_SelectShipTos", sqlcon);
+        adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+        SqlParameter prm = new SqlParameter();
+        prm = adp.SelectCommand.Parameters.Add("@userId", SqlDbType.NVarChar);
+        prm.Value = userId;
+        adp.Fill(dt);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("wwwUserSP : ViewCustomerShipTos \r\n" + ex);
+      }
+      finally
+      {
+        sqlcon.Close();
+      }
+      return dt;
+    }
+
+    /// <summary>
     /// Deletes a single user from the WWW table
     /// </summary>
     /// <param name="userId">User Id of the user that's being deleted</param>
@@ -175,6 +234,40 @@ namespace NBSio.etc.sp
       {
         MessageBox.Show("wwwUserSP : userDelete \r\n" + ex);
       } finally
+      {
+        sqlcon.Close();
+      }
+    }
+
+    /// <summary>
+    /// Deletes a single user from the WWW table
+    /// </summary>
+    /// <param name="userId">User Id of the user that's being deleted</param>
+    public void VMIUserUpdate(int userId, int shipid, bool updateBit)
+    {
+      try
+      {
+        if (sqlcon.State == ConnectionState.Closed)
+        {
+          sqlcon.Open();
+        }
+        SqlCommand cmd = new SqlCommand("sp_www_UpdateVMIShipTo", sqlcon);
+        cmd.CommandType = CommandType.StoredProcedure;
+        SqlParameter prm = new SqlParameter();
+        prm = cmd.Parameters.Add("@shipId", SqlDbType.Int);
+        prm.Value = shipid;
+        prm = cmd.Parameters.Add("@userId", SqlDbType.Int);
+        prm.Value = userId;
+        prm = cmd.Parameters.Add("@updateBit", SqlDbType.Int);
+        prm.Value = updateBit;
+
+        cmd.ExecuteNonQuery();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("wwwUserSP : VMIUserUpdate \r\n" + ex);
+      }
+      finally
       {
         sqlcon.Close();
       }

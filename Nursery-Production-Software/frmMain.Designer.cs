@@ -84,8 +84,7 @@
       this.mnuMain.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.mnuMain.Location = new System.Drawing.Point(0, 0);
       this.mnuMain.Name = "mnuMain";
-      this.mnuMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-      this.mnuMain.Size = new System.Drawing.Size(1641, 24);
+      this.mnuMain.Size = new System.Drawing.Size(1231, 24);
       this.mnuMain.TabIndex = 18;
       this.mnuMain.Text = "menuStrip1";
       // 
@@ -111,19 +110,19 @@
       this.ultraPanel1.ClientArea.Controls.Add(this.ultraLabel1);
       this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Left;
       this.ultraPanel1.Location = new System.Drawing.Point(0, 24);
-      this.ultraPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraPanel1.Margin = new System.Windows.Forms.Padding(2);
       this.ultraPanel1.Name = "ultraPanel1";
-      this.ultraPanel1.Size = new System.Drawing.Size(387, 833);
+      this.ultraPanel1.Size = new System.Drawing.Size(290, 672);
       this.ultraPanel1.TabIndex = 20;
       // 
       // textBox2
       // 
       this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox2.Location = new System.Drawing.Point(0, 673);
-      this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.textBox2.Location = new System.Drawing.Point(0, 543);
+      this.textBox2.Margin = new System.Windows.Forms.Padding(2);
       this.textBox2.Multiline = true;
       this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(387, 160);
+      this.textBox2.Size = new System.Drawing.Size(290, 129);
       this.textBox2.TabIndex = 15;
       // 
       // ultraLabel3
@@ -134,113 +133,112 @@
       this.ultraLabel3.Appearance = appearance1;
       this.ultraLabel3.Dock = System.Windows.Forms.DockStyle.Top;
       this.ultraLabel3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ultraLabel3.Location = new System.Drawing.Point(0, 618);
-      this.ultraLabel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraLabel3.Location = new System.Drawing.Point(0, 498);
+      this.ultraLabel3.Margin = new System.Windows.Forms.Padding(2);
       this.ultraLabel3.Name = "ultraLabel3";
-      this.ultraLabel3.Size = new System.Drawing.Size(387, 55);
+      this.ultraLabel3.Size = new System.Drawing.Size(290, 45);
       this.ultraLabel3.TabIndex = 16;
       this.ultraLabel3.Text = "To-do List";
       // 
       // ultraButton10
       // 
       this.ultraButton10.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton10.Location = new System.Drawing.Point(0, 572);
-      this.ultraButton10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton10.Location = new System.Drawing.Point(0, 461);
+      this.ultraButton10.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton10.Name = "ultraButton10";
-      this.ultraButton10.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton10.Size = new System.Drawing.Size(290, 37);
       this.ultraButton10.TabIndex = 11;
       this.ultraButton10.Text = "fav10";
       // 
       // ultraButton9
       // 
       this.ultraButton9.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton9.Location = new System.Drawing.Point(0, 526);
-      this.ultraButton9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton9.Location = new System.Drawing.Point(0, 424);
+      this.ultraButton9.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton9.Name = "ultraButton9";
-      this.ultraButton9.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton9.Size = new System.Drawing.Size(290, 37);
       this.ultraButton9.TabIndex = 10;
       this.ultraButton9.Text = "fav9";
       // 
       // ultraButton8
       // 
       this.ultraButton8.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton8.Location = new System.Drawing.Point(0, 480);
-      this.ultraButton8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton8.Location = new System.Drawing.Point(0, 387);
+      this.ultraButton8.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton8.Name = "ultraButton8";
-      this.ultraButton8.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton8.Size = new System.Drawing.Size(290, 37);
       this.ultraButton8.TabIndex = 9;
       this.ultraButton8.Text = "fav8";
       // 
       // ultraButton7
       // 
       this.ultraButton7.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton7.Location = new System.Drawing.Point(0, 434);
-      this.ultraButton7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton7.Location = new System.Drawing.Point(0, 350);
+      this.ultraButton7.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton7.Name = "ultraButton7";
-      this.ultraButton7.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton7.Size = new System.Drawing.Size(290, 37);
       this.ultraButton7.TabIndex = 8;
       this.ultraButton7.Text = "fav7";
       // 
       // ultraButton6
       // 
       this.ultraButton6.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton6.Location = new System.Drawing.Point(0, 388);
-      this.ultraButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton6.Location = new System.Drawing.Point(0, 313);
+      this.ultraButton6.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton6.Name = "ultraButton6";
-      this.ultraButton6.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton6.Size = new System.Drawing.Size(290, 37);
       this.ultraButton6.TabIndex = 7;
       this.ultraButton6.Text = "fav6";
       // 
       // ultraButton5
       // 
       this.ultraButton5.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton5.Location = new System.Drawing.Point(0, 342);
-      this.ultraButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton5.Location = new System.Drawing.Point(0, 276);
+      this.ultraButton5.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton5.Name = "ultraButton5";
-      this.ultraButton5.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton5.Size = new System.Drawing.Size(290, 37);
       this.ultraButton5.TabIndex = 6;
       this.ultraButton5.Text = "fav5";
       // 
       // ultraButton4
       // 
       this.ultraButton4.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton4.Location = new System.Drawing.Point(0, 296);
-      this.ultraButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton4.Location = new System.Drawing.Point(0, 239);
+      this.ultraButton4.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton4.Name = "ultraButton4";
-      this.ultraButton4.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton4.Size = new System.Drawing.Size(290, 37);
       this.ultraButton4.TabIndex = 5;
       this.ultraButton4.Text = "fav4";
       // 
       // ultraButton3
       // 
       this.ultraButton3.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton3.Location = new System.Drawing.Point(0, 250);
-      this.ultraButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton3.Location = new System.Drawing.Point(0, 202);
+      this.ultraButton3.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton3.Name = "ultraButton3";
-      this.ultraButton3.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton3.Size = new System.Drawing.Size(290, 37);
       this.ultraButton3.TabIndex = 4;
       this.ultraButton3.Text = "fav3";
       // 
       // ultraButton2
       // 
       this.ultraButton2.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraButton2.Location = new System.Drawing.Point(0, 204);
-      this.ultraButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraButton2.Location = new System.Drawing.Point(0, 165);
+      this.ultraButton2.Margin = new System.Windows.Forms.Padding(2);
       this.ultraButton2.Name = "ultraButton2";
-      this.ultraButton2.Size = new System.Drawing.Size(387, 46);
+      this.ultraButton2.Size = new System.Drawing.Size(290, 37);
       this.ultraButton2.TabIndex = 3;
       this.ultraButton2.Text = "fav2";
       // 
       // btnODL
       // 
       this.btnODL.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnODL.Location = new System.Drawing.Point(0, 158);
-      this.btnODL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.btnODL.Location = new System.Drawing.Point(0, 128);
+      this.btnODL.Margin = new System.Windows.Forms.Padding(2);
       this.btnODL.Name = "btnODL";
-      this.btnODL.Size = new System.Drawing.Size(387, 46);
+      this.btnODL.Size = new System.Drawing.Size(290, 37);
       this.btnODL.TabIndex = 2;
       this.btnODL.Text = "ODL Integration";
-      this.btnODL.Click += new System.EventHandler(this.btnODL_Click);
       // 
       // ultraLabel2
       // 
@@ -250,10 +248,10 @@
       this.ultraLabel2.Appearance = appearance2;
       this.ultraLabel2.Dock = System.Windows.Forms.DockStyle.Top;
       this.ultraLabel2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ultraLabel2.Location = new System.Drawing.Point(0, 96);
-      this.ultraLabel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraLabel2.Location = new System.Drawing.Point(0, 78);
+      this.ultraLabel2.Margin = new System.Windows.Forms.Padding(2);
       this.ultraLabel2.Name = "ultraLabel2";
-      this.ultraLabel2.Size = new System.Drawing.Size(387, 62);
+      this.ultraLabel2.Size = new System.Drawing.Size(290, 50);
       this.ultraLabel2.TabIndex = 13;
       this.ultraLabel2.Text = "Favorite Applications";
       // 
@@ -262,11 +260,11 @@
       this.ultraPictureBox2.BorderShadowColor = System.Drawing.Color.Empty;
       this.ultraPictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
       this.ultraPictureBox2.Image = ((object)(resources.GetObject("ultraPictureBox2.Image")));
-      this.ultraPictureBox2.Location = new System.Drawing.Point(0, 41);
-      this.ultraPictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraPictureBox2.Location = new System.Drawing.Point(0, 33);
+      this.ultraPictureBox2.Margin = new System.Windows.Forms.Padding(2);
       this.ultraPictureBox2.Name = "ultraPictureBox2";
       this.ultraPictureBox2.ScaleImage = Infragistics.Win.ScaleImage.Always;
-      this.ultraPictureBox2.Size = new System.Drawing.Size(387, 55);
+      this.ultraPictureBox2.Size = new System.Drawing.Size(290, 45);
       this.ultraPictureBox2.TabIndex = 14;
       // 
       // ultraLabel1
@@ -277,31 +275,31 @@
       this.ultraLabel1.Dock = System.Windows.Forms.DockStyle.Top;
       this.ultraLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ultraLabel1.Location = new System.Drawing.Point(0, 0);
-      this.ultraLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraLabel1.Margin = new System.Windows.Forms.Padding(2);
       this.ultraLabel1.Name = "ultraLabel1";
-      this.ultraLabel1.Size = new System.Drawing.Size(387, 41);
+      this.ultraLabel1.Size = new System.Drawing.Size(290, 33);
       this.ultraLabel1.TabIndex = 1;
       this.ultraLabel1.Text = "Just Another Nursery System";
       // 
       // ultraSplitter1
       // 
       this.ultraSplitter1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.ultraSplitter1.Location = new System.Drawing.Point(387, 24);
-      this.ultraSplitter1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraSplitter1.Location = new System.Drawing.Point(290, 24);
+      this.ultraSplitter1.Margin = new System.Windows.Forms.Padding(2);
       this.ultraSplitter1.Name = "ultraSplitter1";
       this.ultraSplitter1.RestoreExtent = 429;
-      this.ultraSplitter1.Size = new System.Drawing.Size(5, 833);
+      this.ultraSplitter1.Size = new System.Drawing.Size(4, 672);
       this.ultraSplitter1.TabIndex = 21;
       // 
       // ultraTilePanel1
       // 
       this.ultraTilePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-      this.ultraTilePanel1.Location = new System.Drawing.Point(392, 24);
-      this.ultraTilePanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraTilePanel1.Location = new System.Drawing.Point(294, 24);
+      this.ultraTilePanel1.Margin = new System.Windows.Forms.Padding(2);
       this.ultraTilePanel1.MaximumRows = 1;
       this.ultraTilePanel1.Name = "ultraTilePanel1";
       this.ultraTilePanel1.NormalModeDimensions = new System.Drawing.Size(4, 1);
-      this.ultraTilePanel1.Size = new System.Drawing.Size(1249, 436);
+      this.ultraTilePanel1.Size = new System.Drawing.Size(937, 354);
       this.ultraTilePanel1.TabIndex = 22;
       this.ultraTilePanel1.Tiles.Add(this.tileCalender);
       this.ultraTilePanel1.Tiles.Add(this.ultraTile2);
@@ -323,7 +321,7 @@
       this.monthCalendar1.Cursor = System.Windows.Forms.Cursors.Default;
       this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.monthCalendar1.Location = new System.Drawing.Point(0, 18);
-      this.monthCalendar1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+      this.monthCalendar1.Margin = new System.Windows.Forms.Padding(6);
       this.monthCalendar1.Name = "monthCalendar1";
       this.monthCalendar1.TabIndex = 0;
       // 
@@ -339,9 +337,9 @@
       // ultraCalculator1
       // 
       this.ultraCalculator1.Location = new System.Drawing.Point(0, 18);
-      this.ultraCalculator1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraCalculator1.Margin = new System.Windows.Forms.Padding(2);
       this.ultraCalculator1.Name = "ultraCalculator1";
-      this.ultraCalculator1.Size = new System.Drawing.Size(299, 398);
+      this.ultraCalculator1.Size = new System.Drawing.Size(221, 316);
       this.ultraCalculator1.TabIndex = 0;
       this.ultraCalculator1.Text = "0.";
       // 
@@ -359,10 +357,10 @@
       this.ultraPictureBox1.BorderShadowColor = System.Drawing.Color.Empty;
       this.ultraPictureBox1.Image = ((object)(resources.GetObject("ultraPictureBox1.Image")));
       this.ultraPictureBox1.Location = new System.Drawing.Point(0, 18);
-      this.ultraPictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraPictureBox1.Margin = new System.Windows.Forms.Padding(2);
       this.ultraPictureBox1.Name = "ultraPictureBox1";
       this.ultraPictureBox1.ScaleImage = Infragistics.Win.ScaleImage.Always;
-      this.ultraPictureBox1.Size = new System.Drawing.Size(299, 398);
+      this.ultraPictureBox1.Size = new System.Drawing.Size(221, 316);
       this.ultraPictureBox1.TabIndex = 0;
       // 
       // ultraTile3
@@ -378,22 +376,22 @@
       // 
       this.textBox1.Enabled = false;
       this.textBox1.Location = new System.Drawing.Point(0, 18);
-      this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.textBox1.Margin = new System.Windows.Forms.Padding(2);
       this.textBox1.Multiline = true;
       this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(299, 398);
+      this.textBox1.Size = new System.Drawing.Size(221, 316);
       this.textBox1.TabIndex = 0;
-      this.textBox1.Text = "2/25/2018 - February month end\r\n\r\n2/26/2018 - Meijer merchandiser meetings in ups" +
-    "tairs conference room\r\n\r\n";
+      this.textBox1.Text = "2/19/2019 - Nick finally made an update to this thing\r\n\r\n2/26/2046 - Meijer merch" +
+    "andiser meetings in upstairs conference room\r\n\r\n";
       // 
       // panel1
       // 
       this.panel1.Controls.Add(this.ultraLabel4);
       this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.panel1.Location = new System.Drawing.Point(392, 831);
-      this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.panel1.Location = new System.Drawing.Point(294, 675);
+      this.panel1.Margin = new System.Windows.Forms.Padding(2);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(1249, 26);
+      this.panel1.Size = new System.Drawing.Size(937, 21);
       this.panel1.TabIndex = 23;
       // 
       // ultraLabel4
@@ -404,10 +402,10 @@
       this.ultraLabel4.Appearance = appearance4;
       this.ultraLabel4.Dock = System.Windows.Forms.DockStyle.Right;
       this.ultraLabel4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ultraLabel4.Location = new System.Drawing.Point(442, 0);
-      this.ultraLabel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraLabel4.Location = new System.Drawing.Point(332, 0);
+      this.ultraLabel4.Margin = new System.Windows.Forms.Padding(2);
       this.ultraLabel4.Name = "ultraLabel4";
-      this.ultraLabel4.Size = new System.Drawing.Size(807, 26);
+      this.ultraLabel4.Size = new System.Drawing.Size(605, 21);
       this.ultraLabel4.TabIndex = 2;
       this.ultraLabel4.Text = "We can put some login information down here, or the time, or a version, or whatev" +
     "er...";
@@ -415,19 +413,19 @@
       // ultraTilePanel2
       // 
       this.ultraTilePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ultraTilePanel2.Location = new System.Drawing.Point(392, 460);
-      this.ultraTilePanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.ultraTilePanel2.Location = new System.Drawing.Point(294, 378);
+      this.ultraTilePanel2.Margin = new System.Windows.Forms.Padding(2);
       this.ultraTilePanel2.Name = "ultraTilePanel2";
       this.ultraTilePanel2.NormalModeDimensions = new System.Drawing.Size(0, 0);
-      this.ultraTilePanel2.Size = new System.Drawing.Size(1249, 371);
+      this.ultraTilePanel2.Size = new System.Drawing.Size(937, 297);
       this.ultraTilePanel2.TabIndex = 24;
       // 
       // frmMain
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.ClientSize = new System.Drawing.Size(1641, 857);
+      this.ClientSize = new System.Drawing.Size(1231, 696);
       this.Controls.Add(this.ultraTilePanel2);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.ultraTilePanel1);
@@ -437,7 +435,6 @@
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.KeyPreview = true;
       this.MainMenuStrip = this.mnuMain;
-      this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
       this.Name = "frmMain";
       this.Text = "NBS";
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

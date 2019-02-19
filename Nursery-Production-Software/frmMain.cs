@@ -156,10 +156,5 @@ namespace Nursery_Production_Software
                 console.Show();
             }
         }
-
-    private void btnODL_Click(object sender, EventArgs e)
-    {
-      
-    }
   }
 }

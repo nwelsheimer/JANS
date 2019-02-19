@@ -34,7 +34,7 @@
       this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
       this.wwwUserObjBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.grdWwwUsers = new Nursery_Production_Software.etc.NBSGrid();
-      this.gridView1 = new Nursery_Production_Software.etc.NBSGridView();
+      this.gvWWWUsers = new Nursery_Production_Software.etc.NBSGridView();
       this.coluserId = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colusername = new DevExpress.XtraGrid.Columns.GridColumn();
       this.colemailAddress = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,19 +50,31 @@
       this.popGrid1 = new DevExpress.XtraBars.PopupMenu(this.components);
       this.btnChangePassword = new DevExpress.XtraBars.BarLargeButtonItem();
       this.btnDeleteUser = new DevExpress.XtraBars.BarLargeButtonItem();
-      this.btnOpenDetails = new DevExpress.XtraBars.BarLargeButtonItem();
       this.barMan1 = new DevExpress.XtraBars.BarManager(this.components);
       this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
       this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
       this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
       this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
       this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+      this.btnOpenDetails = new DevExpress.XtraBars.BarLargeButtonItem();
+      this.popStoreList = new DevExpress.XtraEditors.PopupContainerControl();
+      this.lblStoreNum = new System.Windows.Forms.Label();
+      this.grdShipTos = new DevExpress.XtraGrid.GridControl();
+      this.gvShipTos = new DevExpress.XtraGrid.Views.Grid.GridView();
+      this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+      this.btnExport = new DevExpress.XtraEditors.SimpleButton();
+      this.btnImport = new DevExpress.XtraEditors.SimpleButton();
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.gvWWWUsers)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.popGrid1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.barMan1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.popStoreList)).BeginInit();
+      this.popStoreList.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.grdShipTos)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.gvShipTos)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
       this.SuspendLayout();
       // 
       // defaultLookAndFeel1
@@ -75,21 +87,26 @@
       // 
       // grdWwwUsers
       // 
+      this.grdWwwUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.grdWwwUsers.DataSource = this.wwwUserObjBindingSource;
-      this.grdWwwUsers.Location = new System.Drawing.Point(14, 88);
-      this.grdWwwUsers.MainView = this.gridView1;
+      this.grdWwwUsers.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.grdWwwUsers.Location = new System.Drawing.Point(12, 72);
+      this.grdWwwUsers.MainView = this.gvWWWUsers;
+      this.grdWwwUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.grdWwwUsers.Name = "grdWwwUsers";
       this.grdWwwUsers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1});
-      this.grdWwwUsers.Size = new System.Drawing.Size(950, 568);
+      this.grdWwwUsers.Size = new System.Drawing.Size(814, 462);
       this.grdWwwUsers.TabIndex = 0;
       this.grdWwwUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvWWWUsers});
       this.grdWwwUsers.MouseUp += new System.Windows.Forms.MouseEventHandler(this.grdWwwUsers_MouseUp);
       // 
-      // gridView1
+      // gvWWWUsers
       // 
-      this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+      this.gvWWWUsers.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.coluserId,
             this.colusername,
             this.colemailAddress,
@@ -99,13 +116,13 @@
             this.colvendorName,
             this.colisApproved,
             this.colcreatedDate});
-      this.gridView1.GridControl = this.grdWwwUsers;
-      this.gridView1.Name = "gridView1";
-      this.gridView1.OptionsSelection.MultiSelect = true;
-      this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-      this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
-      this.gridView1.OptionsView.ShowAutoFilterRow = true;
-      this.gridView1.OptionsView.ShowGroupPanel = false;
+      this.gvWWWUsers.GridControl = this.grdWwwUsers;
+      this.gvWWWUsers.Name = "gvWWWUsers";
+      this.gvWWWUsers.OptionsSelection.MultiSelect = true;
+      this.gvWWWUsers.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+      this.gvWWWUsers.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+      this.gvWWWUsers.OptionsView.ShowAutoFilterRow = true;
+      this.gvWWWUsers.OptionsView.ShowGroupPanel = false;
       // 
       // coluserId
       // 
@@ -195,9 +212,10 @@
       // 
       // btnDelete
       // 
-      this.btnDelete.Location = new System.Drawing.Point(14, 51);
+      this.btnDelete.Location = new System.Drawing.Point(12, 41);
+      this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btnDelete.Name = "btnDelete";
-      this.btnDelete.Size = new System.Drawing.Size(110, 29);
+      this.btnDelete.Size = new System.Drawing.Size(94, 24);
       this.btnDelete.TabIndex = 2;
       this.btnDelete.Text = "Delete Selected";
       this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -207,9 +225,10 @@
       this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
       this.labelControl1.Appearance.Options.UseFont = true;
       this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-      this.labelControl1.Location = new System.Drawing.Point(14, 15);
+      this.labelControl1.Location = new System.Drawing.Point(12, 12);
+      this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.labelControl1.Name = "labelControl1";
-      this.labelControl1.Size = new System.Drawing.Size(950, 29);
+      this.labelControl1.Size = new System.Drawing.Size(242, 24);
       this.labelControl1.TabIndex = 3;
       this.labelControl1.Text = "Add or modify website users";
       // 
@@ -217,8 +236,7 @@
       // 
       this.popGrid1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnChangePassword),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDeleteUser),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnOpenDetails)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDeleteUser)});
       this.popGrid1.Manager = this.barMan1;
       this.popGrid1.Name = "popGrid1";
       // 
@@ -227,6 +245,7 @@
       this.btnChangePassword.Caption = "Change Password";
       this.btnChangePassword.Id = 1;
       this.btnChangePassword.Name = "btnChangePassword";
+      this.btnChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChangePassword_ItemClick);
       // 
       // btnDeleteUser
       // 
@@ -234,12 +253,6 @@
       this.btnDeleteUser.Id = 2;
       this.btnDeleteUser.Name = "btnDeleteUser";
       this.btnDeleteUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteUser_ItemClick);
-      // 
-      // btnOpenDetails
-      // 
-      this.btnOpenDetails.Caption = "Open Details";
-      this.btnOpenDetails.Id = 3;
-      this.btnOpenDetails.Name = "btnOpenDetails";
       // 
       // barMan1
       // 
@@ -261,15 +274,17 @@
       this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
       this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
       this.barDockControlTop.Manager = this.barMan1;
-      this.barDockControlTop.Size = new System.Drawing.Size(978, 0);
+      this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.barDockControlTop.Size = new System.Drawing.Size(838, 0);
       // 
       // barDockControlBottom
       // 
       this.barDockControlBottom.CausesValidation = false;
       this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.barDockControlBottom.Location = new System.Drawing.Point(0, 669);
+      this.barDockControlBottom.Location = new System.Drawing.Point(0, 544);
       this.barDockControlBottom.Manager = this.barMan1;
-      this.barDockControlBottom.Size = new System.Drawing.Size(978, 0);
+      this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.barDockControlBottom.Size = new System.Drawing.Size(838, 0);
       // 
       // barDockControlLeft
       // 
@@ -277,15 +292,17 @@
       this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
       this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
       this.barDockControlLeft.Manager = this.barMan1;
-      this.barDockControlLeft.Size = new System.Drawing.Size(0, 669);
+      this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.barDockControlLeft.Size = new System.Drawing.Size(0, 544);
       // 
       // barDockControlRight
       // 
       this.barDockControlRight.CausesValidation = false;
       this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-      this.barDockControlRight.Location = new System.Drawing.Point(978, 0);
+      this.barDockControlRight.Location = new System.Drawing.Point(838, 0);
       this.barDockControlRight.Manager = this.barMan1;
-      this.barDockControlRight.Size = new System.Drawing.Size(0, 669);
+      this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.barDockControlRight.Size = new System.Drawing.Size(0, 544);
       // 
       // barSubItem1
       // 
@@ -293,11 +310,94 @@
       this.barSubItem1.Id = 0;
       this.barSubItem1.Name = "barSubItem1";
       // 
+      // btnOpenDetails
+      // 
+      this.btnOpenDetails.Caption = "Open Details";
+      this.btnOpenDetails.Id = 3;
+      this.btnOpenDetails.Name = "btnOpenDetails";
+      // 
+      // popStoreList
+      // 
+      this.popStoreList.Controls.Add(this.lblStoreNum);
+      this.popStoreList.Controls.Add(this.grdShipTos);
+      this.popStoreList.Location = new System.Drawing.Point(280, 181);
+      this.popStoreList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.popStoreList.Name = "popStoreList";
+      this.popStoreList.Size = new System.Drawing.Size(546, 284);
+      this.popStoreList.TabIndex = 8;
+      this.popStoreList.Paint += new System.Windows.Forms.PaintEventHandler(this.popStoreList_Paint);
+      // 
+      // lblStoreNum
+      // 
+      this.lblStoreNum.AutoSize = true;
+      this.lblStoreNum.Location = new System.Drawing.Point(3, 5);
+      this.lblStoreNum.Name = "lblStoreNum";
+      this.lblStoreNum.Size = new System.Drawing.Size(91, 13);
+      this.lblStoreNum.TabIndex = 1;
+      this.lblStoreNum.Text = "Editing user : nick";
+      // 
+      // grdShipTos
+      // 
+      this.grdShipTos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.grdShipTos.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.grdShipTos.Location = new System.Drawing.Point(0, 22);
+      this.grdShipTos.MainView = this.gvShipTos;
+      this.grdShipTos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.grdShipTos.MenuManager = this.barMan1;
+      this.grdShipTos.Name = "grdShipTos";
+      this.grdShipTos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+      this.grdShipTos.Size = new System.Drawing.Size(546, 262);
+      this.grdShipTos.TabIndex = 0;
+      this.grdShipTos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvShipTos});
+      // 
+      // gvShipTos
+      // 
+      this.gvShipTos.GridControl = this.grdShipTos;
+      this.gvShipTos.Name = "gvShipTos";
+      this.gvShipTos.OptionsCustomization.AllowGroup = false;
+      this.gvShipTos.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+      this.gvShipTos.OptionsView.ShowAutoFilterRow = true;
+      this.gvShipTos.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+      this.gvShipTos.OptionsView.ShowGroupPanel = false;
+      this.gvShipTos.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvShipTos_CellValueChanging);
+      // 
+      // repositoryItemCheckEdit1
+      // 
+      this.repositoryItemCheckEdit1.AutoHeight = false;
+      this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+      // 
+      // btnExport
+      // 
+      this.btnExport.Location = new System.Drawing.Point(260, 41);
+      this.btnExport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.btnExport.Name = "btnExport";
+      this.btnExport.Size = new System.Drawing.Size(94, 24);
+      this.btnExport.TabIndex = 13;
+      this.btnExport.Text = "Export to Excel";
+      this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+      // 
+      // btnImport
+      // 
+      this.btnImport.Location = new System.Drawing.Point(360, 41);
+      this.btnImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.btnImport.Name = "btnImport";
+      this.btnImport.Size = new System.Drawing.Size(94, 24);
+      this.btnImport.TabIndex = 14;
+      this.btnImport.Text = "Import from Excel";
+      this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+      // 
       // frmWwwUsers
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(978, 669);
+      this.ClientSize = new System.Drawing.Size(838, 544);
+      this.Controls.Add(this.btnImport);
+      this.Controls.Add(this.btnExport);
+      this.Controls.Add(this.popStoreList);
       this.Controls.Add(this.labelControl1);
       this.Controls.Add(this.btnDelete);
       this.Controls.Add(this.grdWwwUsers);
@@ -306,15 +406,22 @@
       this.Controls.Add(this.barDockControlBottom);
       this.Controls.Add(this.barDockControlTop);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.Name = "frmWwwUsers";
       this.Text = "Website User Setup";
       this.Load += new System.EventHandler(this.frmWwwUsers_Load);
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.gvWWWUsers)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.popGrid1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.barMan1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.popStoreList)).EndInit();
+      this.popStoreList.ResumeLayout(false);
+      this.popStoreList.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.grdShipTos)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.gvShipTos)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -335,7 +442,7 @@
     private DevExpress.XtraGrid.Columns.GridColumn colisApproved;
     private DevExpress.XtraGrid.Columns.GridColumn colcreatedDate;
     private etc.NBSGrid grdWwwUsers;
-    private etc.NBSGridView gridView1;
+    private etc.NBSGridView gvWWWUsers;
     private DevExpress.XtraEditors.SimpleButton btnDelete;
     private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
     private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -349,5 +456,12 @@
     private DevExpress.XtraBars.BarDockControl barDockControlLeft;
     private DevExpress.XtraBars.BarDockControl barDockControlRight;
     private DevExpress.XtraBars.BarSubItem barSubItem1;
+    private DevExpress.XtraEditors.PopupContainerControl popStoreList;
+    private DevExpress.XtraGrid.GridControl grdShipTos;
+    private DevExpress.XtraGrid.Views.Grid.GridView gvShipTos;
+    private System.Windows.Forms.Label lblStoreNum;
+    private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+    private DevExpress.XtraEditors.SimpleButton btnImport;
+    private DevExpress.XtraEditors.SimpleButton btnExport;
   }
 }
