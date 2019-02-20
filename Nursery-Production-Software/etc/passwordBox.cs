@@ -89,7 +89,7 @@ namespace Nursery_Production_Software.etc
       if (DR == DialogResult.OK)
       {
         if (blowfish)
-          return BCrypt.Net.BCrypt.HashPassword(password1.Text);
+          return computeBlowfish(password1.Text);
         else
           return password1.Text;
       }
@@ -97,6 +97,10 @@ namespace Nursery_Production_Software.etc
       {
         return "";
       }
+    }
+    public string computeBlowfish(string password)
+    {
+      return BCrypt.Net.BCrypt.HashPassword(password);
     }
     private void okClick(object sender, System.EventArgs e)
     {

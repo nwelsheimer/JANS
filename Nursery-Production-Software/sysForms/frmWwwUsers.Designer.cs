@@ -64,6 +64,9 @@
       this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
       this.btnExport = new DevExpress.XtraEditors.SimpleButton();
       this.btnImport = new DevExpress.XtraEditors.SimpleButton();
+      this.loadingBar = new DevExpress.XtraWaitForm.ProgressPanel();
+      this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
+      this.txtSearch = new DevExpress.XtraEditors.TextEdit();
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.gvWWWUsers)).BeginInit();
@@ -75,6 +78,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.grdShipTos)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.gvShipTos)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
       this.SuspendLayout();
       // 
       // defaultLookAndFeel1
@@ -390,11 +394,46 @@
       this.btnImport.Text = "Import from Excel";
       this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
       // 
+      // loadingBar
+      // 
+      this.loadingBar.Appearance.BackColor = System.Drawing.Color.Transparent;
+      this.loadingBar.Appearance.Options.UseBackColor = true;
+      this.loadingBar.BarAnimationElementThickness = 2;
+      this.loadingBar.Caption = "Please wait";
+      this.loadingBar.Description = "Importing ";
+      this.loadingBar.Location = new System.Drawing.Point(-1, 479);
+      this.loadingBar.Name = "loadingBar";
+      this.loadingBar.Size = new System.Drawing.Size(246, 66);
+      this.loadingBar.TabIndex = 19;
+      this.loadingBar.Text = "progressPanel1";
+      this.loadingBar.Visible = false;
+      // 
+      // btnSearch
+      // 
+      this.btnSearch.Location = new System.Drawing.Point(751, 41);
+      this.btnSearch.Name = "btnSearch";
+      this.btnSearch.Size = new System.Drawing.Size(75, 23);
+      this.btnSearch.TabIndex = 24;
+      this.btnSearch.Text = "Search";
+      this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+      // 
+      // txtSearch
+      // 
+      this.txtSearch.Location = new System.Drawing.Point(520, 43);
+      this.txtSearch.MenuManager = this.barMan1;
+      this.txtSearch.Name = "txtSearch";
+      this.txtSearch.Properties.NullValuePrompt = "Search by store name";
+      this.txtSearch.Size = new System.Drawing.Size(225, 20);
+      this.txtSearch.TabIndex = 25;
+      // 
       // frmWwwUsers
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(838, 544);
+      this.Controls.Add(this.txtSearch);
+      this.Controls.Add(this.btnSearch);
+      this.Controls.Add(this.loadingBar);
       this.Controls.Add(this.btnImport);
       this.Controls.Add(this.btnExport);
       this.Controls.Add(this.popStoreList);
@@ -422,6 +461,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.grdShipTos)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.gvShipTos)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -463,5 +503,8 @@
     private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
     private DevExpress.XtraEditors.SimpleButton btnImport;
     private DevExpress.XtraEditors.SimpleButton btnExport;
+    private DevExpress.XtraWaitForm.ProgressPanel loadingBar;
+    private DevExpress.XtraEditors.TextEdit txtSearch;
+    private DevExpress.XtraEditors.SimpleButton btnSearch;
   }
 }

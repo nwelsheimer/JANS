@@ -100,7 +100,7 @@ namespace NBSio.etc.sp
     /// Selects all users from DB
     /// </summary>
     /// <returns>wwwUser object</returns>
-    public DataTable ViewAllUsers()
+    public DataTable ViewAllUsers(string searchString="")
     {
       DataTable dt = new DataTable();
       try
@@ -111,6 +111,9 @@ namespace NBSio.etc.sp
         }
         SqlDataAdapter adp = new SqlDataAdapter("sp_www_SelectAllUsers", sqlcon);
         adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+        SqlParameter prm = new SqlParameter();
+        prm = adp.SelectCommand.Parameters.Add("@search", SqlDbType.NVarChar);
+        prm.Value = searchString;
         adp.Fill(dt);
       }
       catch (Exception ex)
@@ -234,6 +237,54 @@ namespace NBSio.etc.sp
       {
         MessageBox.Show("wwwUserSP : userDelete \r\n" + ex);
       } finally
+      {
+        sqlcon.Close();
+      }
+    }
+
+    /// <summary>
+    /// Imports the excel template one record at a time
+    /// </summary>
+    /// <param name="userName">User Id of the user that's being deleted</param>
+    /// <param name="password">User Id of the user that's being deleted</param>
+    /// <param name="email">User Id of the user that's being deleted</param>
+    /// <param name="firstName">User Id of the user that's being deleted</param>
+    /// <param name="lastName">User Id of the user that's being deleted</param>
+    /// <param name="phoneNumber">User Id of the user that's being deleted</param>
+    /// <param name="pbsLocation">User Id of the user that's being deleted</param>
+    public void UserImport(string userName, string password, string email, string firstName, string lastName, string phoneNumber, string pbsLocation)
+    {
+      try
+      {
+        if (sqlcon.State == ConnectionState.Closed)
+        {
+          sqlcon.Open();
+        }
+        SqlCommand cmd = new SqlCommand("sp_www_ImportUsers", sqlcon);
+        cmd.CommandType = CommandType.StoredProcedure;
+        SqlParameter prm = new SqlParameter();
+        prm = cmd.Parameters.Add("@username", SqlDbType.NVarChar);
+        prm.Value = userName;
+        prm = cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+        prm.Value = password;
+        prm = cmd.Parameters.Add("@email", SqlDbType.NVarChar);
+        prm.Value = email;
+        prm = cmd.Parameters.Add("@firstName", SqlDbType.NVarChar);
+        prm.Value = firstName;
+        prm = cmd.Parameters.Add("@lastName", SqlDbType.NVarChar);
+        prm.Value = lastName;
+        prm = cmd.Parameters.Add("@phoneNumber", SqlDbType.NVarChar);
+        prm.Value = phoneNumber;
+        prm = cmd.Parameters.Add("@pbsLocation", SqlDbType.NVarChar);
+        prm.Value = pbsLocation;
+
+        cmd.ExecuteNonQuery();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("wwwUserSP : ImportUsers \r\n" + ex);
+      }
+      finally
       {
         sqlcon.Close();
       }

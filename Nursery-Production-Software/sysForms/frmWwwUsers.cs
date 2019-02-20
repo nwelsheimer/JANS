@@ -33,10 +33,10 @@ namespace Nursery_Production_Software.sysForms
       wwwUsersMainView.RowDeleted += WwwUsersMainView_RowDeleted;
     }
 
-    private void buildGrid()
+    private void buildGrid(string searchString="")
     {
       //no pre-load filters. Hopefully this doesn't bite us with larger datasets
-      wwwUsersMainView = wwwSP.ViewAllUsers();
+      wwwUsersMainView = wwwSP.ViewAllUsers(searchString);
       grdWwwUsers.DataSource = wwwUsersMainView;
 
       //create contract grower lookup
@@ -233,7 +233,66 @@ namespace Nursery_Production_Software.sysForms
 
     private void btnImport_Click(object sender, EventArgs e)
     {
+      //establish the fields used for the import
+      string username = "";
+      string password = "";
+      string email = "";
+      string firstName = "";
+      string lastName = "";
+      string phoneNumber = "";
+      string pbsLocation = "";
+      int maxRecord = 0;
+      int currentRecord = 1;
 
+      etc.passwordBox pbox = new passwordBox();
+
+      string filename = NBSio.xl4k.getFilePath(2);
+
+      DataTable dt = NBSio.xl4k.basicExcelImport(filename, "UserList", true);
+      if (dt.Rows.Count > 0)
+      {
+        //set up loading dialog
+        maxRecord = dt.Rows.Count;
+        Point p = new Point();
+        p.X = (this.Width - loadingBar.Width) / 2;
+        p.Y = (this.Height - loadingBar.Height) / 2;
+        loadingBar.Location = p;
+        loadingBar.Visible = true;
+
+        foreach (DataRow dr in dt.Rows)
+        {
+          loadingBar.Description = "Importing " + currentRecord.ToString() + " of " + maxRecord.ToString();
+          //extract details from datarow
+          username = dr["username"].ToString();
+          password = pbox.computeBlowfish(dr["password"].ToString());
+          email = dr["emailAddress"].ToString();
+          firstName = dr["firstName"].ToString();
+          lastName = dr["lastName"].ToString();
+          phoneNumber = dr["phoneNumber"].ToString();
+          pbsLocation = dr["pbsLocation"].ToString();
+
+          //process incoming data
+          wwwSP.UserImport(username, password, email, firstName, lastName, phoneNumber, pbsLocation);
+
+          //reset variables for next row
+          username = "";
+          password = "";
+          email = "";
+          firstName = "";
+          lastName = "";
+          phoneNumber = "";
+          pbsLocation = "";
+          currentRecord++;
+        }
+      }
+      loadingBar.Visible = false;
+      buildGrid();
+    }
+
+    private void btnSearch_Click(object sender, EventArgs e)
+    {
+      string search = txtSearch.Text.Length > 0 ? "%" + txtSearch.Text + "%" : "";
+      buildGrid(search);
     }
   }
 }
