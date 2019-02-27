@@ -67,6 +67,7 @@
       this.loadingBar = new DevExpress.XtraWaitForm.ProgressPanel();
       this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
       this.txtSearch = new DevExpress.XtraEditors.TextEdit();
+      this.bgWorkUpload = new System.ComponentModel.BackgroundWorker();
       ((System.ComponentModel.ISupportInitialize)(this.wwwUserObjBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.grdWwwUsers)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.gvWWWUsers)).BeginInit();
@@ -110,6 +111,10 @@
       // 
       // gvWWWUsers
       // 
+      this.gvWWWUsers.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.gvWWWUsers.Appearance.HeaderPanel.Options.UseFont = true;
+      this.gvWWWUsers.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.gvWWWUsers.Appearance.Row.Options.UseFont = true;
       this.gvWWWUsers.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.coluserId,
             this.colusername,
@@ -360,6 +365,10 @@
       // 
       // gvShipTos
       // 
+      this.gvShipTos.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.gvShipTos.Appearance.HeaderPanel.Options.UseFont = true;
+      this.gvShipTos.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.gvShipTos.Appearance.Row.Options.UseFont = true;
       this.gvShipTos.GridControl = this.grdShipTos;
       this.gvShipTos.Name = "gvShipTos";
       this.gvShipTos.OptionsCustomization.AllowGroup = false;
@@ -425,6 +434,13 @@
       this.txtSearch.Properties.NullValuePrompt = "Search by store name";
       this.txtSearch.Size = new System.Drawing.Size(225, 20);
       this.txtSearch.TabIndex = 25;
+      // 
+      // bgWorkUpload
+      // 
+      this.bgWorkUpload.WorkerReportsProgress = true;
+      this.bgWorkUpload.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkUpload_DoWork);
+      this.bgWorkUpload.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkUpload_ProgressChanged);
+      this.bgWorkUpload.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkUpload_RunWorkerCompleted);
       // 
       // frmWwwUsers
       // 
@@ -506,5 +522,6 @@
     private DevExpress.XtraWaitForm.ProgressPanel loadingBar;
     private DevExpress.XtraEditors.TextEdit txtSearch;
     private DevExpress.XtraEditors.SimpleButton btnSearch;
+    private System.ComponentModel.BackgroundWorker bgWorkUpload;
   }
 }

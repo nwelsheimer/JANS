@@ -14,6 +14,7 @@ namespace Nursery_Production_Software.sysForms
     wwwUserSP wwwSP = new wwwUserSP();
     DataTable wwwUsersMainView;
     DataTable stList;
+    DataTable xlImport;
     bool addingRow = false;
     int rightClickedRowId;
     int leftClickedRowId;
@@ -33,11 +34,16 @@ namespace Nursery_Production_Software.sysForms
       wwwUsersMainView.RowDeleted += WwwUsersMainView_RowDeleted;
     }
 
+    private void loadWWWdataSource(string search="")
+    {
+      wwwUsersMainView = wwwSP.ViewAllUsers(search);
+      grdWwwUsers.DataSource = wwwUsersMainView;
+    }
+
     private void buildGrid(string searchString="")
     {
       //no pre-load filters. Hopefully this doesn't bite us with larger datasets
-      wwwUsersMainView = wwwSP.ViewAllUsers(searchString);
-      grdWwwUsers.DataSource = wwwUsersMainView;
+      loadWWWdataSource(searchString);
 
       //create contract grower lookup
       DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lk = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -233,6 +239,31 @@ namespace Nursery_Production_Software.sysForms
 
     private void btnImport_Click(object sender, EventArgs e)
     {
+      string filename = NBSio.xl4k.getFilePath(2);
+      xlImport = NBSio.xl4k.basicExcelImport(filename, "UserList", true);
+
+      if (xlImport.Rows.Count > 0)
+      {
+        Point p = new Point();
+        p.X = (this.Width - loadingBar.Width) / 2;
+        p.Y = (this.Height - loadingBar.Height) / 2;
+        loadingBar.Location = p;
+        loadingBar.Visible = true;
+        if (bgWorkUpload.IsBusy != true)
+        {
+          bgWorkUpload.RunWorkerAsync();
+        }
+      }
+    }
+
+    private void btnSearch_Click(object sender, EventArgs e)
+    {
+      string search = txtSearch.Text.Length > 0 ? "%" + txtSearch.Text + "%" : "";
+      loadWWWdataSource(search);
+    }
+
+    private void bgWorkUpload_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+    {      
       //establish the fields used for the import
       string username = "";
       string password = "";
@@ -241,27 +272,19 @@ namespace Nursery_Production_Software.sysForms
       string lastName = "";
       string phoneNumber = "";
       string pbsLocation = "";
+      //set up loading dialog
       int maxRecord = 0;
+      maxRecord = xlImport.Rows.Count;
       int currentRecord = 1;
 
       etc.passwordBox pbox = new passwordBox();
 
-      string filename = NBSio.xl4k.getFilePath(2);
-
-      DataTable dt = NBSio.xl4k.basicExcelImport(filename, "UserList", true);
-      if (dt.Rows.Count > 0)
+      
+      if (xlImport.Rows.Count > 0)
       {
-        //set up loading dialog
-        maxRecord = dt.Rows.Count;
-        Point p = new Point();
-        p.X = (this.Width - loadingBar.Width) / 2;
-        p.Y = (this.Height - loadingBar.Height) / 2;
-        loadingBar.Location = p;
-        loadingBar.Visible = true;
 
-        foreach (DataRow dr in dt.Rows)
+        foreach (DataRow dr in xlImport.Rows)
         {
-          loadingBar.Description = "Importing " + currentRecord.ToString() + " of " + maxRecord.ToString();
           //extract details from datarow
           username = dr["username"].ToString();
           password = pbox.computeBlowfish(dr["password"].ToString());
@@ -282,17 +305,21 @@ namespace Nursery_Production_Software.sysForms
           lastName = "";
           phoneNumber = "";
           pbsLocation = "";
+          bgWorkUpload.ReportProgress((currentRecord * 100) / maxRecord);
           currentRecord++;
         }
       }
-      loadingBar.Visible = false;
-      buildGrid();
     }
 
-    private void btnSearch_Click(object sender, EventArgs e)
+    private void bgWorkUpload_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
     {
-      string search = txtSearch.Text.Length > 0 ? "%" + txtSearch.Text + "%" : "";
-      buildGrid(search);
+      loadingBar.Description = "Importing... " + e.ProgressPercentage.ToString() + "%";
+    }
+
+    private void bgWorkUpload_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+    {
+      loadingBar.Visible = false;
+      buildGrid();
     }
   }
 }

@@ -596,4 +596,7 @@
         Wlz+BCDpvTDPboAAAQIECBAgQIAAAQIkP/4P83RV2fX8BdkAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="bgWorkUpload.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>800, 19</value>
+  </metadata>
 </root>
