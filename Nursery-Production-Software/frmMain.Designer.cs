@@ -149,6 +149,7 @@
       this.ultraButton10.Size = new System.Drawing.Size(290, 37);
       this.ultraButton10.TabIndex = 11;
       this.ultraButton10.Text = "fav10";
+      this.ultraButton10.Click += new System.EventHandler(this.ultraButton10_Click);
       // 
       // ultraButton9
       // 

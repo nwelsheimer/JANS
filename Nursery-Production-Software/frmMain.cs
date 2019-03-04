@@ -156,5 +156,11 @@ namespace Nursery_Production_Software
                 console.Show();
             }
         }
+
+    private void ultraButton10_Click(object sender, EventArgs e)
+    {
+      sysForms.frmRFIDRead f = new sysForms.frmRFIDRead();
+      f.ShowDialog();
+    }
   }
 }
