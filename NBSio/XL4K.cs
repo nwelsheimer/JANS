@@ -122,7 +122,7 @@ namespace NBSio
         var ws = pck.Workbook.Worksheets[tabName];
 
         DataTable tbl = new DataTable();
-        foreach (var firstRowCell in ws.Cells[1, 1, 1, ws.Dimension.End.Column])
+        foreach (var firstRowCell in ws.Cells[1, 1, 1, ws.Dimension.End.Column]) //add warning message when tab is not found. "Make sure you exported the stop details"
         {
           tbl.Columns.Add(hasHeader ? firstRowCell.Text : string.Format("Column {0}", firstRowCell.Start.Column));
         }
